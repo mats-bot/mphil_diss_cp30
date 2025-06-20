@@ -1,0 +1,6 @@
+FOR PERSONAL USE WHILE DEVELOPING
+
+each time i run activate env like this:
+    conda activate calliope-CP30-rep
+
+    shouldn't need: mamba env create -f environment.yml

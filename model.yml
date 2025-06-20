@@ -1,0 +1,4 @@
+model:
+  name: "CP30-main-rep"
+  timestep: 1h
+  calliope_version: 0.7.0.dev6
