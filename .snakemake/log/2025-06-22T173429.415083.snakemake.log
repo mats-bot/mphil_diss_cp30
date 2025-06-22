@@ -1,0 +1,41 @@
+Assuming unrestricted shared filesystem usage.
+None
+host: MSI
+Building DAG of jobs...
+Your conda installation is not configured to use strict channel priorities. This is however important for having robust and correct environments (for details, see https://conda-forge.org/docs/user/tipsandtricks.html). Please consider to configure strict priorities by executing 'conda config --set channel_priority strict'.
+Creating conda environment envs\data_processing.yaml...
+Downloading and installing remote packages.
+CreateCondaEnvironmentException:
+Could not create conda environment from C:\Users\Mats\OneDrive - University of Cambridge\Desktop\Serious\Thesis\mphil_diss_cp30\rules\../envs/data_processing.yaml:
+Command:
+conda env create --quiet --no-default-packages --file "C:\Users\Mats\OneDrive - University of Cambridge\Desktop\Serious\Thesis\mphil_diss_cp30\.snakemake\conda\c1d9445b71ee3357947596d5072d686a_.yaml" --prefix "C:\Users\Mats\OneDrive - University of Cambridge\Desktop\Serious\Thesis\mphil_diss_cp30\.snakemake\conda\c1d9445b71ee3357947596d5072d686a_"
+Output:
+Retrieving notices: ...working... done
+WARNING: A space was detected in your requested environment path:
+'C:\Users\Mats\OneDrive - University of Cambridge\Desktop\Serious\Thesis\mphil_diss_cp30\.snakemake\conda\c1d9445b71ee3357947596d5072d686a_'
+Spaces in paths can sometimes be problematic. To minimize issues,
+make sure you activate your environment before running any executables!
+
+Channels:
+ - conda-forge
+Platform: win-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... failed
+
+PackagesNotFoundError: The following packages are not available from current channels:
+
+  - sys
+
+Current channels:
+
+  - https://conda.anaconda.org/conda-forge
+
+To search for alternate channels that may provide the conda package you're
+looking for, navigate to
+
+    https://anaconda.org
+
+and use the search bar at the top of the page.
+
+
+

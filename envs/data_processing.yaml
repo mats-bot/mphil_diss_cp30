@@ -1,0 +1,9 @@
+# General multipurpose env
+name: data_processing
+channels:
+  - conda-forge
+dependencies:
+  - curl
+  - python=3.12
+  - pandas
+  - openpyxl  
