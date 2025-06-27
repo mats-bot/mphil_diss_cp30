@@ -45,3 +45,5 @@ rule combine_demand_files:
         "../envs/data_processing.yaml"
     script:
         "../scripts/combine_demand_coords.py"
+
+
