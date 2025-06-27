@@ -7,3 +7,6 @@ dependencies:
   - python=3.12
   - pandas
   - openpyxl  
+  - numpy
+  - pip:
+      - kagglehub[pandas-datasets] # For downloading 2013 demand data
