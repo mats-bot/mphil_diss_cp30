@@ -1,11 +1,6 @@
 name: calliope-CP30-rep
 channels:
-  - conda-forge/label/calliope_dev
-  - conda-forge
   - bioconda
-  - gurobi
 dependencies:
   - python=3.12
-  - calliope=0.7.0dev6
-  - snakemake
-  - pandas
+  - snakemake-minimal=9.6.2
