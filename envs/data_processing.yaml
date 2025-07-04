@@ -3,13 +3,15 @@ name: data_processing
 channels:
   - conda-forge
 dependencies:
-  - curl
+  - curl=8.14.1
   - python=3.12
+  - pandas=2.3.0
+  - openpyxl=3.1.5
+  - numpy=2.3.1
+  - kagglehub=0.3.8
   - pandas
   - openpyxl  
   - numpy
-  - pip:
-      - kagglehub[pandas-datasets] # For downloading 2013 demand data
   - geopandas
   - shapely
 
