@@ -97,11 +97,6 @@ for idx, row in FES.iterrows():
 FES['Demand'] = results
 FES = FES.drop(columns=['DemandPk', 'DemandAM', 'DemandPM'])
 
-print(type(results[0]))       # should be <class 'list'>
-print(len(results[0]))        # should be 8760 (hours in a year)
-print(results[0][:5])   
-
-
 FES.to_csv(snakemake.output[0])
 
 
