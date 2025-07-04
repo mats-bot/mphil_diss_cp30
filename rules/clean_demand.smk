@@ -1,7 +1,7 @@
 rule download_demand_data:
     output:
         "data/raw/demand.xlsx"
-    conda: 
+    conda:
         "../envs/data_processing.yaml"
     shell:
         """
@@ -19,7 +19,7 @@ rule extract_demand_GSPs:
         "../envs/data_processing.yaml"
     script:
         "../scripts/extract_GSP_demand_peaks.py"
-        
+
 
 
 rule extract_GSP_coordinates:
@@ -38,7 +38,6 @@ rule combine_demand_files:
     input:
         demand = "data/intermediates/GSP_demand_peaks.csv",
         coords = "data/intermediates/GSP_coords.csv"
-
     output:
         "data/intermediates/GSP_demand_coords.csv"
     conda:

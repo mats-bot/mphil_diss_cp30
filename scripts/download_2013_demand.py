@@ -1,8 +1,7 @@
 import kagglehub
 from kagglehub import KaggleDatasetAdapter
-import pandas as pd
 
-FILE_PATH = "historic_demand_year_2013.csv"
+FILE_PATH = f"historic_demand_year_{snakemake.params.year}.csv"
 
 # from code in https://www.kaggle.com/datasets/albertovidalrod/electricity-consumption-uk-20092022/data?select=historic_demand_year_2013.csv
 df = kagglehub.load_dataset(
@@ -11,4 +10,4 @@ df = kagglehub.load_dataset(
     FILE_PATH,
 )
 
-df.to_csv("data/raw/2013_demand_bihourly.csv", index=False)
+df.to_csv(snakemake.output[0], index=False)
