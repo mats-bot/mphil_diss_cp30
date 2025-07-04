@@ -6,14 +6,16 @@ coords_df = pd.read_csv(snakemake.input["coords"])
 demand_key = "GSP"
 coords_key = "GSP ID"   
 
-# Used to check which ones missing from GSP coordinates list. See final comment.
+# Used to check which ones missing from GSP coordinates list. Created document using this where 
+# manually matched coordinates to GSP_IDs in function of FES24 regional breakdown "MAIN DATA" sheet
+# giving location information (e.g. name of a town).
 unmatched_ids = set(demand_df[demand_key]) - set(coords_df[coords_key])
-# if unmatched_ids:
-#     print(f"\n Found {len(unmatched_ids)} unmatched GSP IDs in demand data (not found in coordinates):\n")
-#     for gsp_id in sorted(unmatched_ids):
-#         print(f"  - {gsp_id}")
-# else:
-#     print("All GSP IDs in demand data have corresponding entries in coordinates.")
+if unmatched_ids:
+    print(f"\n Found {len(unmatched_ids)} unmatched GSP IDs in demand data (not found in coordinates):\n")
+    for gsp_id in sorted(unmatched_ids):
+        print(f"  - {gsp_id}")
+else:
+    print("All PPS IDs in demand data have corresponding entries in coordinates.")
 
 merged_df = pd.merge(
     demand_df,

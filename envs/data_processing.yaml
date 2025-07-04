@@ -10,3 +10,8 @@ dependencies:
   - numpy
   - pip:
       - kagglehub[pandas-datasets] # For downloading 2013 demand data
+  - geopandas
+  - shapely
+
+
+
