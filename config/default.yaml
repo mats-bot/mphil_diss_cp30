@@ -1,16 +1,6 @@
-# Placeholder copied from workflow tut
-resources:
-  automatic:
-    # Links for automatically downloaded files
-    dummy_readme: "https://raw.githubusercontent.com/calliope-project/clio/refs/heads/main/README.md"
-dummy_text: foobar
-double_value: 2
-
-
-
-
-demand_data: 
+demand_data:
   url: "https://www.neso.energy/document/321056/download"
   raw: "data_sources/raw/demand_highlights.xlsx"
   cleaned: "data_sources/raw/demand_highlights_cleaned.csv"
   expanded: "data_sources/processed/demand_timeseries.csv"
+  year: 2013
