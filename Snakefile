@@ -9,7 +9,7 @@ include: "rules/aggregate_demand_tzone.smk"
 rule all:
     input:
         "data/intermediates/GSP_timeseries.csv"
-    default_target: true
+    default_target: True
 
 rule dag_dot:
     output: temp("data/interim/dag.dot")
@@ -25,8 +25,6 @@ rule rulegraph:
 include: "rules/estimate_demand_timeseries.smk" 
 include: "rules/aggregate_demand_tzone.smk"
 
-# rule all:
-#     input:
-#         config["demand_data"]["expanded"]
+
 
 

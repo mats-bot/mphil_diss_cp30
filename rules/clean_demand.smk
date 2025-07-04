@@ -37,7 +37,7 @@ rule extract_GSP_coordinates:
 rule combine_demand_files:
     input:
         demand = "data/intermediates/GSP_demand_peaks.csv",
-        coords = "data/intermediates/GSP_coords.csv"
+        coords = "data/intermediates/GSP_coords.csv",
     output:
         "data/intermediates/GSP_demand_coords.csv"
     conda:

@@ -15,7 +15,7 @@ if unmatched_ids:
     for gsp_id in sorted(unmatched_ids):
         print(f"  - {gsp_id}")
 else:
-    print("All PPS IDs in demand data have corresponding entries in coordinates.")
+    print("All GSP IDs in demand data have corresponding entries in coordinates.")
 
 merged_df = pd.merge(
     demand_df, coords_df, how="left", left_on=demand_key, right_on=coords_key
