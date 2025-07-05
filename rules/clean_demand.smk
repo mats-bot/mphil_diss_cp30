@@ -38,6 +38,7 @@ rule combine_demand_files:
     input:
         demand = "data/intermediates/GSP_demand_peaks.csv",
         coords = "data/intermediates/GSP_coords.csv",
+        unmatched_GSP_coords = "uploaded_data/GSP_unmatched.xlsx"
     output:
         "data/intermediates/GSP_demand_coords.csv"
     conda:
