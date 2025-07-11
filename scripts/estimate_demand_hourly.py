@@ -87,16 +87,15 @@ for idx, row in FES.iterrows():
         A=row["DemandAM"],
         M=row["DemandPM"],
     )
-    # Reduce memory requirement, perhaps use parquet file?
-    scaled_ts_float16 = scaled_ts.values.astype(np.float16)
-    results.append(scaled_ts_float16)
+    
+    scaled_ts= scaled_ts.values.astype(np.float16)
+    results.append(scaled_ts)
 
 FES['Demand'] = results
 FES = FES.drop(columns=['DemandPk', 'DemandAM', 'DemandPM'])
 
-print(type(results[0]))      
-print(len(results[0]))        # should be 8760 (hours in a year)
-print(results[0][:5])   
+# Store with one data point per hour of year
+FES['Demand'] = FES['Demand'].apply(
+    lambda x: '[' + ' '.join([f"{val:.6f}" for val in x]) + ']')
 
-
-FES.to_csv(snakemake.output[0])
+FES.to_csv(snakemake.output[0], index=False,)

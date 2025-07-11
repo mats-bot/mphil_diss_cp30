@@ -6,7 +6,7 @@ each time i run activate env like this:
     shouldn't need: mamba env create -f environment.yml
 
 to test certain parts (check file name)
-    snakemake --cores all --use-conda data/intermediates/GSP_demand_coords.csv
+    snakemake --cores all --use-conda data/intermediates/GSP_timeseries.csv
 
 if permission issue with files, run from command prompt:
     attrib -r +s "path of the folder"
