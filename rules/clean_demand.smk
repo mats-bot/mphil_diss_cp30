@@ -7,7 +7,6 @@ rule download_demand_data:
         """
         curl --ssl-no-revoke -sSL https://www.neso.energy/document/321056/download -o {output}
         """
-        # curl --ssl-no-revoke -L https://www.neso.energy/document/321056/download -o {output}
 
 
 rule extract_demand_GSPs:
