@@ -1,0 +1,158 @@
+links:
+  z1-z2:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0086154316070897
+  z1-z3:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0111587903329236
+  z2-z3:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0098997886585916
+  z3-z4:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 7.3
+      loss: 0.0067893174291886
+  z4-z5:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 10.2
+      loss: 0.0086497834978852
+  z4-z6:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 10.2
+      loss: 0.0096913463056016
+  'z5 -z6 ':
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0049645962565866
+  z5 -z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0095614006377243
+  z6 -z8:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0083009783031288
+  z7-z8:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0102970897026264
+  z13-z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0094936246402351
+  z10-z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0067709276775425
+  z8-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0051098456952318
+  z10-z8:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.010032393162305
+  z10-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0081090555892844
+  z11-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0058164193681007
+  z10-z13:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 2.9
+      loss: 0.0092405285060491
+  z10-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0070000801685633
+  z10-z11:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0083572172272935
+  z11-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0099275081369144
+  z11-z12:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0056657685230161
+  z11-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0078614724647475
+  z12-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0088251631081807
+  z13-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 2.9
+      loss: 0.008894815886772
+  z14-z15:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0095643427077276
+  z14-z16:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 9.4
+      loss: 0.0052441651483259
+  z16-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0061737848587644

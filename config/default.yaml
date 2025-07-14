@@ -4,3 +4,6 @@ demand_data:
   cleaned: "data_sources/raw/demand_highlights_cleaned.csv"
   expanded: "data_sources/processed/demand_timeseries.csv"
   year: 2013
+
+# For endpoint, deafult target year.
+default_year: 2030
