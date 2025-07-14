@@ -10,3 +10,20 @@ to test certain parts (check file name)
 
 if permission issue with files, run from command prompt:
     attrib -r +s "path of the folder"
+
+
+# Writing transmission links file
+# Wrinting onshore links file
+with open("config/default.yaml") as f:
+    config = yaml.safe_load(f)
+target_year = str(config["default_year"])
+
+links = {}
+for _, row in links_df.iterrows():
+    zone_pair = "-".join(sorted([row["Zone 1"], row["Zone 2"]]))
+    capacity = row[target_year]
+
+    constraints = {
+        "techs": ["ac_transmission"],
+        "constraints": {}
+    }
