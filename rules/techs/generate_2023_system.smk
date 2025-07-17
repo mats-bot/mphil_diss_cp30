@@ -31,7 +31,8 @@ rule download_REPD_queue:
 
 rule clean_REPD_queue:
     input:
-        "data/raw/techs/REPD_queue.xlsx"
+        "data/raw/techs/REPD_queue.xlsx",
+        "uploaded_data/GSP_unmatched.xlsx"
     output:
         "data/intermediates/techs/REPD_cleaned.csv"
     conda:
