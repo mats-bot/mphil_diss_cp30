@@ -32,9 +32,11 @@ rule download_REPD_queue:
 rule clean_REPD_queue:
     input:
         "data/raw/techs/REPD_queue.xlsx",
-        "uploaded_data/GSP_unmatched.xlsx"
+        "uploaded_data/GSP_unmatched.xlsx",
+        "uploaded_data/tzones.gpkg"
     output:
-        "data/intermediates/techs/REPD_cleaned.csv"
+        "data/intermediates/techs/offshore_wind_queue.csv",
+        "data/intermediates/techs/renewables_2023.csv"
     conda:
         "../../envs/gpkg_data.yaml"
     script:
@@ -49,19 +51,20 @@ rule generate_CP30_techs:
         "../../envs/data_processing.yaml"
     script:
         "../../scripts/techs/generate_CP30_techs.py"
-    
 
 
-
-
-
-
-rule clean_2024_operational:
+rule clean_DUKES: 
     input:
-        "data/raw/techs/DUKES_power_2024.xlsx"
+        "data/raw/techs/DUKES_power_2024.xlsx",
+        "uploaded_data/GSP_unmatched.xlsx",
+        "uploaded_data/tzones.gpkg"
     output: 
-        "data/intermediates/techs/DUKES_power_2024.csv"
+        "data/intermediates/techs/fossil_nuclear_2023.csv"
     conda:
-        "../../envs/data_processing.yaml"
+        "../../envs/gpkg_data.yaml"
     script:
-        "../../scripts/techs/clean_2024_DUKES.py"     
+        "../../scripts/techs/clean_2024_DUKES.py"
+
+
+
+

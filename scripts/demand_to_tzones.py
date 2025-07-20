@@ -13,7 +13,7 @@ demand_gdf = gpd.GeoDataFrame(
     crs="EPSG:4326"
 )
 
-# Ensure same referenece system
+# Ensure same reference system
 zones_gdf = zones_gdf.to_crs("EPSG:4326")
 
 # Assign zone to each data point
