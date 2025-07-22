@@ -66,5 +66,17 @@ rule clean_DUKES:
         "../../scripts/techs/clean_2024_DUKES.py"
 
 
+rule clean_offshore_wind:
+    input: 
+        "data/intermediates/techs/offshore_wind_queue.csv",
+        "uploaded_data/tzones.gpkg"
+    output:
+        "data/processed/techs/offshore_wind_2023.csv",
+        "data/processed/techs/offshore_wind_2030.csv"
+    conda:
+        "../../envs/gpkg_data.yaml"
+    script:
+        "../../scripts/techs/clean_offshore_wind.py"
+
 
 
