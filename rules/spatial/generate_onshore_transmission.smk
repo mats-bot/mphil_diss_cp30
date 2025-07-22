@@ -1,6 +1,6 @@
 rule download_GTCs:
     output: 
-        "data/raw/FES_GTCs.xlsx"
+        "data/raw/spatial/FES_GTCs.xlsx"
     conda:
         "../../envs/data_processing.yaml"
     shell:
@@ -10,7 +10,7 @@ rule download_GTCs:
 
 rule clean_onshore_transmission_caps:
     input: 
-        "data/raw/FES_GTCs.xlsx",
+        "data/raw/spatial/FES_GTCs.xlsx",
         "uploaded_data/GTC_boundaries.xlsx"
     output:
         "data/intermediates/spatial/GTCs_linked.csv"
