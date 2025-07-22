@@ -154,10 +154,8 @@ capacity_by_cp30 = operational_2023_df.groupby("CP30 technology")["Installed Cap
 print(capacity_by_cp30)
 
 # Remove offshore wind since this needs to be handled seperately
-offshore_wind_df = operational_2023_df[operational_2023_df["CP30 technology"] == "Offshore Wind"]
+offshore_wind_df = REPD_df[REPD_df["CP30 technology"] == "Offshore Wind"]
 offshore_wind_df.to_csv(snakemake.output[0], index=False)
-total_offshore_capacity = offshore_wind_df["Installed Capacity (MWelec)"].sum()
-print(f"Total installed capacity of offshore wind: {total_offshore_capacity:.2f} MW")
 
 operational_2023_df = operational_2023_df[operational_2023_df["CP30 technology"] != "Offshore Wind"]
 
