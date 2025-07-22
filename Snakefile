@@ -1,8 +1,8 @@
 configfile: "config/default.yaml"
 
-include: "rules/clean_demand.smk"
-include: "rules/estimate_demand_timeseries.smk"
-include: "rules/aggregate_demand_tzone.smk"
+include: "rules/demand/clean_demand.smk"
+include: "rules/demand/estimate_demand_timeseries.smk"
+include: "rules/demand/aggregate_demand_tzone.smk"
 include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
 include: "rules/techs/generate_2023_system.smk"
@@ -11,7 +11,7 @@ include: "rules/techs/generate_2023_system.smk"
 
 rule all:
     input:
-        "data/intermediates/GSP_timeseries.csv"
+        "data/intermediates/demand/GSP_timeseries.csv"
     default_target: True
 
 rule dag_dot:
@@ -25,8 +25,12 @@ rule rulegraph:
     # Output is deliberately omitted so rule is executed each time.
     conda: "envs/dag.yaml"
     shell: "dot -Tpdf {input} -o rulegraph.pdf"
-include: "rules/estimate_demand_timeseries.smk" 
-include: "rules/aggregate_demand_tzone.smk"
+include: "rules/demand/estimate_demand_timeseries.smk" 
+include: "rules/demand/aggregate_demand_tzone.smk"
+include: "rules/demand/aggregate_demand_tzone.smk"
+include: "rules/spatial/create_zones.smk"
+include: "rules/spatial/generate_onshore_transmission.smk"
+include: "rules/techs/generate_2023_system.smk"
 
 
 
