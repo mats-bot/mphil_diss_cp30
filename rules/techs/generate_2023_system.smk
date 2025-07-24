@@ -71,8 +71,7 @@ rule clean_offshore_wind:
         "data/intermediates/techs/offshore_wind_queue.csv",
         "uploaded_data/tzones.gpkg"
     output:
-        "data/processed/techs/offshore_wind_2023.csv",
-        "data/processed/techs/offshore_wind_2030.csv"
+        "data/processed/techs/offshore_wind_projects.csv"
     conda:
         "../../envs/gpkg_data.yaml"
     script:

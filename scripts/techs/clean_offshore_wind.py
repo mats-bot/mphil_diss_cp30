@@ -7,13 +7,13 @@ offshore_df = pd.read_csv(snakemake.input[0])
 zones_gdf = gpd.read_file(snakemake.input[1])
 
 # Adding missing values in data (mainly coordinates)
-missing_data = offshore_df[
-    (offshore_df['Latitude'].isnull() | (offshore_df['Latitude'] == 0)) |
-    (offshore_df['Longitude'].isnull() | (offshore_df['Longitude'] == 0)) |
-    (offshore_df['Installed Capacity (MWelec)'].isnull() | (offshore_df['Installed Capacity (MWelec)'] == 0))
-]
+# missing_data = offshore_df[
+#     (offshore_df['Latitude'].isnull() | (offshore_df['Latitude'] == 0)) |
+#     (offshore_df['Longitude'].isnull() | (offshore_df['Longitude'] == 0)) |
+#     (offshore_df['Installed Capacity (MWelec)'].isnull() | (offshore_df['Installed Capacity (MWelec)'] == 0))
+# ]
 
-print(missing_data[['Site Name', 'Latitude', 'Longitude', 'Installed Capacity (MWelec)', 'Development Status (short)']])
+# print(missing_data[['Site Name', 'Latitude', 'Longitude', 'Installed Capacity (MWelec)', 'Development Status (short)']])
 
 manual_data = {
     "North Falls Offshore Wind Farm": { # https://www.northfallsoffshore.com/project-description/
@@ -74,4 +74,4 @@ offshore_df = pd.DataFrame(offshore_gdf.drop(columns='geometry'))
 
 
 offshore_df.to_csv(snakemake.output[0],index=False)
-offshore_df.to_csv(snakemake.output[1], index=False)
+
