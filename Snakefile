@@ -6,6 +6,7 @@ include: "rules/demand/aggregate_demand_tzone.smk"
 include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
 include: "rules/techs/generate_2023_system.smk"
+include: "rules/techs/generate_monetary_costs.smk"
 
 
 
