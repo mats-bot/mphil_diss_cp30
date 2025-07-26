@@ -10,7 +10,9 @@ target_year = str(config["default_year"])
 
 links = {}
 for _, row in df.iterrows():
-    zone_pair = "-".join(sorted([row["Zone 1"], row["Zone 2"]]))
+    zone_1 = row["Zone 1"].strip()
+    zone_2 = row["Zone 2"].strip()
+    zone_pair = "-".join(sorted([zone_1, zone_2]))
     
     constraints = {
         "techs": ["ac_transmission"],

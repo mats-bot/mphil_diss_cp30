@@ -34,18 +34,18 @@ links:
     constraints:
       energy_cap_max: 10.2
       loss: 0.0096913463056016
-  'z5 -z6 ':
+  z5-z6:
     techs:
     - ac_transmission
     constraints:
       loss: 0.0049645962565866
-  z5 -z7:
+  z5-z7:
     techs:
     - ac_transmission
     constraints:
       energy_cap_max: 13.5
       loss: 0.0095614006377243
-  z6 -z8:
+  z6-z8:
     techs:
     - ac_transmission
     constraints:
