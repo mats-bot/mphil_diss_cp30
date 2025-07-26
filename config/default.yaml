@@ -8,8 +8,6 @@ demand_data:
 # For endpoint, deafult target year.
 default_year: 2030
 
-
-pypsa_tech_filter:
-  'solar'
+weather_year: 2013
   
   
