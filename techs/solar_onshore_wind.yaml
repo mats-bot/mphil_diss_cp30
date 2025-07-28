@@ -1,0 +1,30 @@
+Onshore_Wind:
+  category: renewable
+  cp30_category: renewable
+  essentials:
+    name: Onshore_Wind
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.0
+    resource: data/processed/spatial/onshore_cf_2013.csv
+    resource_unit: per_unit
+    lifetime: 25
+  costs:
+    cost_energy_cap: 1564.655183857693
+    om_annual: 36834498.20788531
+    om_prod: 7198.924731182797
+Solar_PV:
+  category: renewable
+  cp30_category: renewable
+  essentials:
+    name: Solar_PV
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.0
+    resource: data/processed/spatial/solar_cf_2013.csv
+    resource_unit: per_unit
+    lifetime: 35
+  costs:
+    cost_energy_cap: 623.9068100358423
+    om_annual: 11158333.333333336
+    om_prod: 0.0

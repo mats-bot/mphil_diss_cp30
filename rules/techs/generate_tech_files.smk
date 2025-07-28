@@ -1,3 +1,6 @@
+weather_year = config["weather_year"]
+
+
 rule generate_fossil_nuclear_capacities:
     input: 
         "data/processed/techs/fossil_nuclear_2023.csv"
@@ -52,14 +55,26 @@ rule generate_ccs_techs_definitions:
 rule generate_solar_onshore_wind_definitions:
     input: 
         "data/processed/techs/generation_costs.csv",
-        "data/procssed/techs/onshore_cf_{year}.csv",
-        "data/procssed/techs/solar_cf_{year}.csv"
+        f"data/processed/spatial/onshore_cf_{weather_year}.csv",
+        f"data/processed/spatial/solar_cf_{weather_year}.csv"
     output:
         "techs/solar_onshore_wind.yaml"
     conda: 
         "../../envs/data_processing.yaml"
     script:
         "../../scripts/techs/generate_land_VRE_defs.py"
+
+rule generate_offshore_wind_project_defs:
+    input: 
+        "data/processed/techs/generation_costs.csv",
+        "data/processed/techs/offshore_wind_projects.csv",
+        f"data/processed/spatial/offshore_cfs_{weather_year}.csv"
+    output:
+        "techs/offshore_wind.yaml"
+    conda: 
+        "../../envs/data_processing.yaml"
+    script:
+        "../../scripts/techs/generate_offshore_wind_defs.py"
 
 rule generate_other_renewables_definitions:
     input: 
@@ -80,3 +95,14 @@ rule generate_storage_tech_definitions:
         "../../envs/data_processing.yaml"
     script:
         "../../scripts/techs/generate_storage_defs.py"
+
+rule generate_transmission_definitions:
+    output:
+        "techs/transmission.yaml"
+    conda:
+        "../../envs/data_processing.yaml"
+    script:
+        "../../scripts/techs/generate_transmission_defs.py"
+
+
+

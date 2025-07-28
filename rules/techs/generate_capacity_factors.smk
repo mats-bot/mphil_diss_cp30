@@ -3,15 +3,11 @@ rule generate_CFs:
         "uploaded_data/tzones.gpkg",
         "data/processed/techs/offshore_wind_projects.csv"
     output:
-        # "data/intermediates/spatial/atlite_cutout1a_{year}.nc",
-        # "data/intermediates/spatial/atlite_cutout1b_{year}.nc",
-        # "data/intermediates/spatial/atlite_cutout1c_{year}.nc",
-        # "data/intermediates/spatial/atlite_cutout1d_{year}.nc",
-        protected(directory("data/intermediates/techs/onshore_cutouts/{year}")),
-        "data/processed/spatial/solar_cf_{year}.csv",
-        "data/processed/spatial/onshore_cf_{year}.csv",
-        protected(directory("data/intermediates/techs/offshore_cutouts/{year}")),
-        "data/processed/spatial/offshore_cfs_{year}.csv"
+        onshore_cutouts = expand("data/intermediates/techs/onshore_cutouts/{weather_year}/cutout_{month}.nc", weather_year="{weather_year}", month=[f"{m:02d}" for m in range(1,13)]),
+        solar_cf = "data/processed/spatial/solar_cf_{weather_year}.csv",
+        onshore_cf = "data/processed/spatial/onshore_cf_{weather_year}.csv",
+        offshore_cutouts = expand("data/intermediates/techs/offshore_cutouts/{weather_year}/offshore_cutout_{month}.nc", weather_year="{weather_year}", month=[f"{m:02d}" for m in range(1,13)]),
+        offshore_cf = "data/processed/spatial/offshore_cfs_{weather_year}.csv"
     conda:
         "../../envs/atlite_data.yaml"
     script:
