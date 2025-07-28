@@ -2,3 +2,10 @@ model:
   name: "CP30-main-rep"
   timestep: 1h
   calliope_version: 0.7.0.dev6
+
+
+# need to include which techs not to allow investment for  e.g. need to include ffs here
+# techs:
+#   hydro_run_of_river:
+#     constraints:
+#       energy_cap_max: 0  

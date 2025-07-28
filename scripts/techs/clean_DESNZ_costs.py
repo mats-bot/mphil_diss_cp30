@@ -28,6 +28,7 @@ technologies_to_include = [
 # LDES (all types)
 # Batteries
 # BECCS
+# CCS gas
  
 # Keep only data for projects commissioning in 2025
 cols_to_keep = DESNZ_df.columns[:3].tolist()

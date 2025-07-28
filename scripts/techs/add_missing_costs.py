@@ -16,50 +16,46 @@ c22 = 133.9/121.7
 
 # assuming 30 MW (avg value REPD) and 4h charge/discharge time (common)
 # eff, loss, life from https://www.sciencedirect.com/science/article/pii/B9780444626165000164
-battery_eff = 0.95
-battery_storage_cap = 120 # MWh
-battery_cap_per_storage_cap_max = 1/4
-battery_energy_cap = 30
+battery_eff = 0.95 # frac
+battery_power_cap = 30 * 1000 # kW
+battery_energy_cap_max= 120 * 1000 # kWh
 battery_life = 25 # yrs, own assumption
-battery_storage_loss = 0.02 / (7*24) # 2% per week at hourly timestep
+battery_storage_loss = 0.02 / (7*24) # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015 2015 euro, mean values
 # 2015 costs 
-battery_energy_cap = 65 * 1 / 0.7263 * c15 # euro/kW * pound/euro|2015 https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-battery_storage_cap = 420  * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
-battery_om_annual = battery_energy_cap * 0.02 / 20 * 1 / 0.7263 * c15 # euro/kW * 1/yrs * pound/euro|2015  
-
+battery_capital_cost = 65 / 0.7263 * c15 # euro/kW * pound/euro|2015 https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+battery_om_prod = 420 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
+battery_om_annual = battery_capital_cost * 0.02 / 20 # euro/kW * 1/yrs
 
 # pumped hydro  technical from https://www.sciencedirect.com/science/article/pii/B9780444626165000073
 pumped_hydro_eff =  0.825 # frac
-pumped_hydro_storage_cap = 700 * 8 # MWh, 700 is avg pumped hydro cap, assumed 8 hrs but large variation since one 1.7 GW and rest <0.5 GW
-pumped_hydro_cap_per_storage_cap_max = 1/8 # /hr
-pumped_hydro_energy_cap = 700 #MW 
+pumped_hydro_power_cap = 700 * 1000 #kW 
+pumped_hydro_energy_cap_max = pumped_hydro_power_cap * 8 # kWh, 700 is avg pumped hydro cap, assumed 8 hrs but large variation since one 1.7 GW and rest <0.5 GW
 pumped_hydro_life =  80 # yrs
-pumped_hydro_storage_loss = 0.025 / 2 / 24 
+pumped_hydro_storage_loss = 0.025 / 2 / 24 # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015
 # 2015 costs 
-pumped_hydro_energy_cap = 750* 1 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-pumped_hydro_storage_cap = 15 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
-pumped_hydro_om_annual = 11 / 80 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
+pumped_hydro_capital_cost = 750 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+pumped_hydro_energy_storage_cost = 15 * 1 /0.7263 * c15 # euro/kWh * pound/euro|2015
+pumped_hydro_om_fixed = 11 / 80 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
 pumped_hydro_om_prod = 0.0005 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
 
 
 # CAES technical from https://www.sciencedirect.com/science/article/pii/B9780444626165000073
 # assume 5 MW from REPD and 6 hrs from https://assets.publishing.service.gov.uk/media/659bde4dd7737c000ef3351a/long-duration-electricity-storage-policy-framework-consultation.pdf#:~:text=Pumped%20hydro%20storage%204%20hours,of%20projects%20that%20provide%20the
 CAES_eff = 0.75 # frac
-CAES_storage_cap = 5 * 6 # MWh
-CAES_cap_per_storage_cap_max = 1/6 #/hr
-CAES_energy_cap = 5 # yr
+CAES_power_cap = 5 * 1000 # kW
+CAES_energy_cap_max = CAES_power_cap * 6 # kWh
 CAES_life = 25 # yrs
-CAES_storage_loss = 0.75 / 24 #/hr
+CAES_storage_loss = 0.75 / 24 # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015
 # 2015 costs
-CAES_energy_cap = 795 * 1.25 * 1 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-CAES_cap = 25 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
-CAES_om_annual = 9 / 35 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
+CAES_capital_cost = 795 * 1.25 * 1 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+CAES_energy_storage_cost = 25 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
+CAES_om_fixed = 9 / 35 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
 CAES_om_prod = 0.0033 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
 
 
@@ -68,71 +64,43 @@ CAES_om_prod = 0.0033 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
 # lifespan from https://assets.publishing.service.gov.uk/media/659bde4dd7737c000ef3351a/long-duration-electricity-storage-policy-framework-consultation.pdf
 # storage loss from https://www.sciencedirect.com/science/article/pii/S1364032120308571
 LAES_eff = 0.55 # frac
-LAES_storage_cap = 50 * 14 # MWh
-LAES_cap_per_storage_cap_max = 1/14
-LAES_energy_cap = 50
+LAES_power_cap = 50 * 1000 # kW
+LAES_energy_cap_max = LAES_power_cap * 14 # kWh
 LAES_life = 35 # yrs
-LAES_storage_loss = 0.15 / 24
+LAES_storage_loss = 0.15 / 24 # frac per hr
 
 # LAES capital costs, median values from https://www.sciencedirect.com/science/article/pii/S0360544219323758?via%3Dihub
 # OPEX costs from https://www.sciencedirect.com/science/article/pii/S0360544220303820#bib30
 # 2019 costs 
-LAES_energy_cap = 1365 * c19 #£/kW
-LAES_storage_cap = 330 * c19#£/kWh
+LAES_capital_cost = 1365 * c19 # £/kW
+LAES_storage_cap = 330 * c19 # £/kWh
 # 2015 costs 
-LAES_om_annual = 11.2 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 #https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-LAES_om_con = 30 * 0.00264 * 1 / 0.7263 * c15 # euro/kWh/yr * pound/euro|2015
+LAES_om_fixed = 11.2 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 #https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+LAES_om_con = 30 * 0.00264 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
 
-storage_df = pd.DataFrame([
-    {
-        "technology": "battery",
-        "energy_eff": battery_eff,
-        "storage_loss": battery_storage_loss,
-        "charge_rate": battery_cap_per_storage_cap_max,
-        "energy_cap": battery_energy_cap,
-        "storage_cap": battery_storage_cap,
-        "om_annual": battery_om_annual,
-        "om_prod": None,
-        "om_con": None,
-        "plant_life": battery_life,
-    },
-    {
-        "technology": "pumped_hydro",
-        "energy_eff": pumped_hydro_eff,
-        "storage_loss": pumped_hydro_storage_loss,
-        "charge_rate": pumped_hydro_cap_per_storage_cap_max,
-        "energy_cap": pumped_hydro_energy_cap,
-        "storage_cap": pumped_hydro_storage_cap,
-        "om_annual": pumped_hydro_om_annual,
-        "om_prod": pumped_hydro_om_prod,
-        "om_con": None,
-        "plant_life": pumped_hydro_life,
-    },
-    {
-        "technology": "caes",
-        "energy_eff": CAES_eff,
-        "storage_loss": CAES_storage_loss,
-        "charge_rate": CAES_cap_per_storage_cap_max,
-        "energy_cap": CAES_energy_cap,
-        "storage_cap": CAES_cap,
-        "om_annual": CAES_om_annual,
-        "om_prod": CAES_om_prod,
-        "om_con": None,
-        "plant_life": CAES_life,
-    },
-    {
-        "technology": "laes",
-        "energy_eff": LAES_eff,
-        "storage_loss": LAES_storage_loss,
-        "charge_rate": LAES_cap_per_storage_cap_max,
-        "energy_cap": LAES_energy_cap,
-        "storage_cap": LAES_storage_cap,
-        "om_annual": LAES_om_annual,
-        "om_prod": None,
-        "om_con": LAES_om_con,
-        "plant_life": LAES_life,
-    }
-])
+storage_data = {
+    "technology": ["battery", "pumped_hydro", "caes", "laes"],
+    
+    "energy_eff": [battery_eff, pumped_hydro_eff, CAES_eff, LAES_eff],
+    "storage_loss": [battery_storage_loss, pumped_hydro_storage_loss, CAES_storage_loss, LAES_storage_loss],
+    "charge_rate": [
+        battery_power_cap / battery_energy_cap_max,
+        pumped_hydro_power_cap / pumped_hydro_energy_cap_max,
+        CAES_power_cap / CAES_energy_cap_max,
+        LAES_power_cap / LAES_energy_cap_max
+    ],
+    "energy_cap_equals": [battery_power_cap, pumped_hydro_power_cap, CAES_power_cap, LAES_power_cap],
+    "storage_cap_equals": [battery_energy_cap_max, pumped_hydro_energy_cap_max, CAES_energy_cap_max, LAES_energy_cap_max],
+    "lifetime": [battery_life, pumped_hydro_life, CAES_life, LAES_life],
+    
+    "cost_energy_cap": [battery_capital_cost, pumped_hydro_capital_cost, CAES_capital_cost, LAES_capital_cost],
+    "cost_storage_cap": [None, pumped_hydro_energy_storage_cost, CAES_energy_storage_cost, LAES_storage_cap],
+    "om_annual": [battery_om_annual, pumped_hydro_om_fixed, CAES_om_fixed, LAES_om_fixed],
+    "om_prod": [battery_om_prod, pumped_hydro_om_prod, CAES_om_prod, None],
+    "om_con": [None, None, None, LAES_om_con],
+}
+
+storage_df = pd.DataFrame(storage_data)
 
 storage_df.to_csv(snakemake.output[0], index=None)
 
@@ -167,7 +135,7 @@ df['Nuclear'] = None
 df.loc['capex', 'Nuclear'] = nuclear_capex
 df.loc['om_annual', 'Nuclear'] = nuclear_om_annual
 df.loc['om_prod', 'Nuclear'] = nuclear_om_prod
-df.loc['efficiency', 'Nuclear'] = 100
+df.loc['efficiency', 'Nuclear'] = 1.0
 df.loc['lifetime', 'Nuclear'] = 60
 
 
@@ -194,7 +162,7 @@ df['BECCS'] = None
 df.loc['capex', 'BECCS'] = BECCS_capex
 df.loc['om_annual', 'BECCS'] = BECCS_om_annual
 df.loc['om_prod', 'BECCS'] = BECCS_om_prod
-df.loc['efficiency', 'BECCS'] = 100 # need to change if assign biomass cost
+df.loc['efficiency', 'BECCS'] = 1.0 # need to change if assign biomass cost
 df.loc['lifetime', 'BECCS'] = 25 
 
 
@@ -228,7 +196,11 @@ coal_cost = 1.5 * gas_cost
 # own assumption for diesel
 diesel_fuel_oil_cost = gas_cost
 
+# Overwriting diesel om_annual since in data is negative (receives subsidies to operate), set to zero for now
+df.loc["om_annual", "Diesel"] = 0
 
+# Overwriting efficiency=0 for biomasss (since no cost)
+df.loc["efficiency", "Biomass"] = 1.0
 
 
 fuel_costs = {

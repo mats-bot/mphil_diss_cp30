@@ -1,0 +1,96 @@
+biomass:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Biomass
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.0
+    lifetime: 25
+  costs:
+    energy_cap: 4021.6173570830633
+    om_annual: 123461559.13978496
+    om_prod: 8398.745519713262
+    fuel: 0.0
+biomass_chp:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Biomass_CHP
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.21
+    lifetime: 24
+  costs:
+    energy_cap: 7167.304415306619
+    om_annual: 418017562.7240144
+    om_prod: 11998.20788530466
+    fuel: 0.0
+waste:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Waste
+    carrier_in: waste
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.28
+    lifetime: 35
+  costs:
+    energy_cap: 11561.078613068365
+    om_annual: 245363351.25448036
+    om_prod: 32395.161290322587
+    fuel: 0.0
+waste_chp:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Waste_CHP
+    carrier_in: waste
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.24
+    lifetime: 27
+  costs:
+    energy_cap: 17651.763440860217
+    om_annual: 335109946.2365592
+    om_prod: 73189.06810035843
+    fuel: 0.0
+hydrogen:
+  category: thermal
+  cp30_category: thermal
+  essentials:
+    name: Hydrogen
+    carrier_in: hydrogen
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.48
+    lifetime: 25
+  costs:
+    energy_cap: 871.9697580645162
+    om_annual: 26516039.4265233
+    om_prod: 2399.6415770609324
+    fuel: 0.0459468347169785
+nuclear:
+  category: thermal
+  cp30_category: low_carbon
+  essentials:
+    name: Nuclear
+    carrier_in: nuclear_fuel
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: 0
+    energy_eff: 100.0
+    lifetime: 60
+  costs:
+    energy_cap: 5815.926212121211
+    om_annual: 111672600.0
+    om_prod: 16068.0
+    fuel: 0.0

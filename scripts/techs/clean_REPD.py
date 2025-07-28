@@ -78,13 +78,13 @@ def map_cp30_technology(row):
     # significant difference with CP30, check methodology.
     if row["Technology Type"] == "Biomass (co-firing)":
         if str(row["CHP Enabled"]).strip().lower() == "yes":
-            return "Biomass CHP"
+            return "Biomass"
         elif str(row["CHP Enabled"]).strip().lower() == "no":
             return "Biomass"
         
     elif row["Technology Type"] == "Biomass (dedicated)":
         if str(row["CHP Enabled"]).strip().lower() == "yes":
-            return "Biomass CHP"
+            return "Biomass"
         elif str(row["CHP Enabled"]).strip().lower() == "no":
             return "Biomass"
         else:
@@ -110,22 +110,22 @@ def map_cp30_technology(row):
         return "Battery"
     
     elif row["Technology Type"] == "Solar Photovoltaics":
-        return "Solar PV"
+        return "Solar_PV"
 
     elif row["Technology Type"] == "Wind Offshore":
-        return "Offshore Wind"
+        return "Offshore_Wind"
     
     elif row["Technology Type"] == "Wind Onshore":
-        return "Onshore Wind"
+        return "Onshore_Wind"
     
     elif row["Technology Type"] == "Pumped Storage Hydroelectricity":
-        return "Pumped hydro (LDES)"
+        return "Pumped_Hydro"
     
     elif row["Technology Type"] == "Liquid Air Energy Storage":
-        return "LAES (LDES)"
+        return "LAES"
     
     elif row["Technology Type"] == "Compressed Air Energy Storage":
-        return "CAES (LDES)"
+        return "CAES"
     
     elif row["Technology Type"] == "Hydrogen":
         if str(row["CHP Enabled"]).strip().lower() == "yes":
@@ -135,7 +135,7 @@ def map_cp30_technology(row):
         else:
             return "Waste"
     else:
-        return "Other Renewables"
+        return "Other_Renewables"
     
 
 REPD_df["CP30 technology"] = REPD_df.apply(map_cp30_technology, axis=1)
@@ -154,10 +154,10 @@ capacity_by_cp30 = operational_2023_df.groupby("CP30 technology")["Installed Cap
 print(capacity_by_cp30)
 
 # Remove offshore wind since this needs to be handled seperately
-offshore_wind_df = REPD_df[REPD_df["CP30 technology"] == "Offshore Wind"]
+offshore_wind_df = REPD_df[REPD_df["CP30 technology"] == "Offshore_Wind"]
 offshore_wind_df.to_csv(snakemake.output[0], index=False)
 
-operational_2023_df = operational_2023_df[operational_2023_df["CP30 technology"] != "Offshore Wind"]
+operational_2023_df = operational_2023_df[operational_2023_df["CP30 technology"] != "Offshore_Wind"]
 
 
 
@@ -203,10 +203,10 @@ operational_2023_df["Installed Capacity (MWelec)"] = pd.to_numeric(
 
 # Check these entries 
 missing_capacity = operational_2023_df[operational_2023_df["Installed Capacity (MWelec)"].isna()]
-print("Entries with missing Installed Capacity:")
+print("Entries with missing Installed Capacity:\n")
 print(missing_capacity[["Site Name", "CP30 technology", "zone", "Latitude", "Longitude"]])
 print(f"Total entries with missing capacity: {len(missing_capacity)}")
-print(f"Entries with missing capacity and technology 'Battery': {len(missing_capacity[missing_capacity['CP30 technology'] == 'Battery'])}")
+print(f"Entries with missing capacity and technology 'Battery': {len(missing_capacity[missing_capacity['CP30 technology'] == 'Battery'])}\n\n")
 
 
 
@@ -220,6 +220,6 @@ operational_2023_df = (
 )
 
 
-operational_2023_df.to_csv(snakemake.output[1])
+operational_2023_df.to_csv(snakemake.output[1], index=False)
 
 

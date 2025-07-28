@@ -1,0 +1,30 @@
+beccs:
+  category: ccs
+  cp30_category: low_carbon
+  essentials:
+    name: BECCS
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_eff: 1.0
+    lifetime: 25
+  costs:
+    energy_cap: 4786.586868686869
+    om_annual: 259899900.0
+    om_prod: 31072.834
+    fuel: 0.0
+gas_ccs:
+  category: ccs
+  cp30_category: low_carbon
+  essentials:
+    name: Gas_CCS
+    carrier_in: gas
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.47
+    lifetime: 25
+  costs:
+    energy_cap: 2042.3046780303027
+    om_annual: 60790600.0
+    om_prod: 32411.834
+    fuel: 0.0382890289308155

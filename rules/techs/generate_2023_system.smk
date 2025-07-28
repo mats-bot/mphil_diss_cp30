@@ -36,7 +36,7 @@ rule clean_REPD_queue:
         "uploaded_data/tzones.gpkg"
     output:
         "data/intermediates/techs/offshore_wind_queue.csv",
-        "data/intermediates/techs/renewables_2023.csv"
+        "data/processed/techs/renewables_2023.csv"
     conda:
         "../../envs/gpkg_data.yaml"
     script:
@@ -59,7 +59,7 @@ rule clean_DUKES:
         "uploaded_data/GSP_unmatched.xlsx",
         "uploaded_data/tzones.gpkg"
     output: 
-        "data/intermediates/techs/fossil_nuclear_2023.csv"
+        "data/processed/techs/fossil_nuclear_2023.csv"
     conda:
         "../../envs/gpkg_data.yaml"
     script:
