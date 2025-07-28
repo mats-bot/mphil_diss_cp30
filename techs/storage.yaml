@@ -1,0 +1,84 @@
+battery:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: battery
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.95
+    storage_loss: 0.0001190476190476
+    charge_rate: 0.25
+    energy_cap_equals: 30000.0
+    storage_cap_equals: 120000.0
+    lifetime: 25
+  costs:
+    cost_energy_cap: 119.83340217540962
+    cost_storage_cap: 0
+    om_annual: 0.1198334021754096
+    om_prod: 774.3081371334159
+    om_con: 0
+pumped_hydro:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: pumped_hydro
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.825
+    storage_loss: 0.0005208333333333
+    charge_rate: 0.125
+    energy_cap_equals: 700000.0
+    storage_cap_equals: 5600000.0
+    lifetime: 80
+  costs:
+    cost_energy_cap: 1382.693102023957
+    cost_storage_cap: 27.65386204047914
+    om_annual: 0.2534937353710588
+    om_prod: 0.0009217954013493
+    om_con: 0
+caes:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: caes
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.75
+    storage_loss: 0.03125
+    charge_rate: 0.1666666666666666
+    energy_cap_equals: 5000.0
+    storage_cap_equals: 30000.0
+    lifetime: 25
+  costs:
+    cost_energy_cap: 1832.0683601817432
+    cost_storage_cap: 46.08977006746524
+    om_annual: 0.4740662064082138
+    om_prod: 0.0060838496489054
+    om_con: 0
+laes:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: laes
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.55
+    storage_loss: 0.0062499999999999
+    charge_rate: 0.0714285714285714
+    energy_cap_equals: 50000.0
+    storage_cap_equals: 700000.0
+    lifetime: 35
+  costs:
+    cost_energy_cap: 1695.487012987013
+    cost_storage_cap: 409.8979591836735
+    om_annual: 20.648216990224427
+    om_prod: 0
+    om_con: 0.1460123915737298

@@ -9,3 +9,13 @@ model:
 #   hydro_run_of_river:
 #     constraints:
 #       energy_cap_max: 0  
+
+# LDES:
+#   essentials:
+#     name: LDES
+#     storage: true
+#   children:
+#     - Pumped_Hydro
+#     - Hydrogen
+#     - Thermal_Storage
+#     - Other_LDES_Tech
