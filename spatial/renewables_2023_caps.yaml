@@ -1,0 +1,127 @@
+Battery:
+  constraints:
+    energy_cap_equals:
+      z1: 3.1
+      z10: 150.5
+      z11: 250.6
+      z12: 0.1
+      z13: 42.0
+      z14: 278.39
+      z15: 64.4
+      z16: 41.3
+      z17: 283.28
+      z2: 1.0
+      z3: 149.7
+      z4: 199.99
+      z5: 61.0
+      z6: 88.9
+      z7: 243.89
+      z8: 277.1
+      z9: 59.0
+Solar_PV:
+  constraints:
+    energy_cap_equals:
+      z1: 5.5
+      z10: 827.913
+      z11: 1304.20064
+      z12: 456.6052
+      z13: 731.6
+      z14: 1372.901
+      z15: 1618.31812
+      z16: 616.2
+      z17: 673.05423
+      z2: 6.1
+      z3: 32.910000000000004
+      z4: 39.245
+      z5: 152.33
+      z6: 81.259
+      z7: 315.641
+      z8: 430.4794
+      z9: 341.0
+Biomass:
+  constraints:
+    energy_cap_equals:
+      z1: 29.3
+      z10: 14.5
+      z11: 72.4
+      z12: 104.2
+      z13: 120.19
+      z14: 5.7
+      z15: 6.2
+      z17: 115.8
+      z2: 1.2
+      z3: 6.8
+      z4: 200.5
+      z5: 58.0
+      z6: 500.9
+      z7: 65.995
+      z8: 2769.4
+      z9: 73.5
+Pumped_Hydro:
+  constraints:
+    energy_cap_equals:
+      z1: 300.0
+      z3: 440.0
+      z7: 2088.0
+Hydro:
+  constraints:
+    energy_cap_equals:
+      z1: 456.9
+      z10: 1.7
+      z13: 8.4
+      z15: 10.0
+      z2: 2.0
+      z3: 89.8
+      z4: 8.2
+      z5: 6.1
+      z7: 46.4
+Onshore_Wind:
+  constraints:
+    energy_cap_equals:
+      z1: 2711.3
+      z10: 134.3
+      z11: 515.7
+      z12: 40.8
+      z13: 850.5
+      z14: 53.3
+      z15: 238.1
+      z16: 2.0
+      z17: 172.7
+      z2: 381.35
+      z3: 736.9
+      z4: 5010.65
+      z5: 252.7
+      z6: 459.95
+      z7: 593.6
+      z8: 703.7
+      z9: 44.2
+Waste:
+  constraints:
+    energy_cap_equals:
+      z10: 161.6
+      z11: 97.7
+      z12: 20.0
+      z13: 30.0
+      z14: 104.5
+      z15: 55.5
+      z16: 46.6
+      z17: 387.2
+      z2: 11.1
+      z3: 8.3
+      z4: 38.1
+      z6: 131.3
+      z7: 160.3
+      z8: 211.6
+      z9: 16.4
+Hydrogen:
+  constraints:
+    energy_cap_equals:
+      z15: 0.9
+LAES:
+  constraints:
+    energy_cap_equals:
+      z7: 5.0
+CAES:
+  constraints:
+    energy_cap_equals:
+      z8: 0.0

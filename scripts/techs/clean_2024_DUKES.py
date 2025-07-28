@@ -63,31 +63,24 @@ DUKES_df = DUKES_df.apply(lambda row: assign_coords(row, onshore_dict, ref_coord
 # drop the coordinates in BNG
 DUKES_df = DUKES_df.drop(columns=["X-Coordinate", "Y-Coordinate"])
 
-# rename/combine columns to match CP30 estimation
+
+# maps to link with tech names in cost processing, see aggregation assumptions in mapping file
+# may need to modify to incl chp or undefined techs
+TECH_MAPPING = {
+    ("CCGT", "Natural Gas"): "Gas_CCGT",
+    ("CCGT", "Sour Gas"): "Gas_CCGT", 
+    ("Conventional steam", "Coal"): "Coal",
+    ("Conventional steam", "Natural Gas"): "Gas_CCGT",
+    ("Single cycle", "Natural Gas"): "Gas_OCGT",
+    ("Single cycle", "Diesel/Gas Oil"): "Diesel",
+    ("AGR", None): "Nuclear",
+    ("PWR", None): "Nuclear",
+}
+    
 def map_cp30_technology(row):
     type_ = row["Type"]
-    fuel = row["Primary Fuel"]
-
-    # enables modularity for grouping techs further on
-    if type_ == "CCGT" and fuel == "Natural Gas":
-        return "Gas CCGT"
-    elif type_ == "CCGT" and fuel == "Sour Gas":
-        return "Sour Gas CCGT"
-    elif type_ == "Conventional steam" and fuel == "Coal":
-        return "Coal"
-    elif type_ == "Conventional steam" and fuel == "Natural Gas":
-        return "Conventional steam gas"
-    elif type_ == "Single cycle" and fuel == "Natural Gas":
-        return "Single cycle gas"
-    elif type_ == "Single cycle" and fuel == "Diesel/Gas Oil":
-        return "Single cycle fuel oil"
-    elif type_ == "AGR":
-        return "Nuclear AGR"
-    elif type_ == "PWR":
-        return "Nuclear PWR"
-    else:
-        return "Other"
-    
+    fuel = row.get("Primary Fuel", None)
+    return TECH_MAPPING.get((type_, fuel), TECH_MAPPING.get((type_, None), "other"))
 
     
 DUKES_df["CP30 technology"] = DUKES_df.apply(map_cp30_technology, axis=1)
