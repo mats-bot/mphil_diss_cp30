@@ -17,46 +17,46 @@ c22 = 133.9/121.7
 # assuming 30 MW (avg value REPD) and 4h charge/discharge time (common)
 # eff, loss, life from https://www.sciencedirect.com/science/article/pii/B9780444626165000164
 battery_eff = 0.95 # frac
-battery_power_cap = 30 * 1000 # kW
-battery_energy_cap_max= 120 * 1000 # kWh
+battery_power_cap = 30  # MW
+battery_energy_cap_max= 120  # MWh
 battery_life = 25 # yrs, own assumption
 battery_storage_loss = 0.02 / (7*24) # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015 2015 euro, mean values
 # 2015 costs 
-battery_capital_cost = 65 / 0.7263 * c15 # euro/kW * pound/euro|2015 https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-battery_om_prod = 420 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
-battery_om_annual = battery_capital_cost * 0.02 / 20 # euro/kW * 1/yrs
+battery_capital_cost = 65 / 0.7263 * c15 * 1000 # euro/MW * pound/euro|2015 https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+battery_om_prod = 420 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
+battery_om_annual = battery_capital_cost * 0.02 / 20 # euro/MW * 1/yrs
 
 # pumped hydro  technical from https://www.sciencedirect.com/science/article/pii/B9780444626165000073
 pumped_hydro_eff =  0.825 # frac
-pumped_hydro_power_cap = 700 * 1000 #kW 
-pumped_hydro_energy_cap_max = pumped_hydro_power_cap * 8 # kWh, 700 is avg pumped hydro cap, assumed 8 hrs but large variation since one 1.7 GW and rest <0.5 GW
+pumped_hydro_power_cap = 700 # MW 
+pumped_hydro_energy_cap_max = pumped_hydro_power_cap * 8 # MWh, 700 is avg pumped hydro cap, assumed 8 hrs but large variation since one 1.7 GW and rest <0.5 GW
 pumped_hydro_life =  80 # yrs
 pumped_hydro_storage_loss = 0.025 / 2 / 24 # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015
 # 2015 costs 
-pumped_hydro_capital_cost = 750 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-pumped_hydro_energy_storage_cost = 15 * 1 /0.7263 * c15 # euro/kWh * pound/euro|2015
-pumped_hydro_om_fixed = 11 / 80 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
-pumped_hydro_om_prod = 0.0005 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
+pumped_hydro_capital_cost = 750 / 0.7263 * c15 * 1000 # euro/MW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+pumped_hydro_energy_storage_cost = 15 * 1 /0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
+pumped_hydro_om_fixed = 11 / 80 * 1 / 0.7263 * c15 * 1000 # euro/MW/yr * pound/euro|2015 
+pumped_hydro_om_prod = 0.0005 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
 
 
 # CAES technical from https://www.sciencedirect.com/science/article/pii/B9780444626165000073
 # assume 5 MW from REPD and 6 hrs from https://assets.publishing.service.gov.uk/media/659bde4dd7737c000ef3351a/long-duration-electricity-storage-policy-framework-consultation.pdf#:~:text=Pumped%20hydro%20storage%204%20hours,of%20projects%20that%20provide%20the
 CAES_eff = 0.75 # frac
-CAES_power_cap = 5 * 1000 # kW
-CAES_energy_cap_max = CAES_power_cap * 6 # kWh
+CAES_power_cap = 5 # MW
+CAES_energy_cap_max = CAES_power_cap * 6 # MWh
 CAES_life = 25 # yrs
 CAES_storage_loss = 0.75 / 24 # frac per hour
 
 # costs from https://www.sciencedirect.com/science/article/pii/S0306261916312740#s0015
 # 2015 costs
-CAES_capital_cost = 795 * 1.25 * 1 / 0.7263 * c15 # euro/kW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-CAES_energy_storage_cost = 25 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
-CAES_om_fixed = 9 / 35 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 
-CAES_om_prod = 0.0033 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
+CAES_capital_cost = 795 * 1.25 * 1 / 0.7263 * c15 * 1000 # euro/MW * pound/euro|2015  https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+CAES_energy_storage_cost = 25 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
+CAES_om_fixed = 9 / 35 * 1 / 0.7263 * c15 * 1000 # euro/MW/yr * pound/euro|2015 
+CAES_om_prod = 0.0033 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
 
 
 # LAES 14 hrs, 0.55 eff from https://assets.publishing.service.gov.uk/media/659bde4dd7737c000ef3351a/long-duration-electricity-storage-policy-framework-consultation.pdf#:~:text=Pumped%20hydro%20storage%204%20hours,of%20projects%20that%20provide%20the
@@ -64,19 +64,19 @@ CAES_om_prod = 0.0033 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
 # lifespan from https://assets.publishing.service.gov.uk/media/659bde4dd7737c000ef3351a/long-duration-electricity-storage-policy-framework-consultation.pdf
 # storage loss from https://www.sciencedirect.com/science/article/pii/S1364032120308571
 LAES_eff = 0.55 # frac
-LAES_power_cap = 50 * 1000 # kW
-LAES_energy_cap_max = LAES_power_cap * 14 # kWh
+LAES_power_cap = 50 # MW
+LAES_energy_cap_max = LAES_power_cap * 14 # MWh
 LAES_life = 35 # yrs
 LAES_storage_loss = 0.15 / 24 # frac per hr
 
 # LAES capital costs, median values from https://www.sciencedirect.com/science/article/pii/S0360544219323758?via%3Dihub
 # OPEX costs from https://www.sciencedirect.com/science/article/pii/S0360544220303820#bib30
 # 2019 costs 
-LAES_capital_cost = 1365 * c19 # £/kW
-LAES_storage_cap = 330 * c19 # £/kWh
+LAES_capital_cost = 1365 * c19 * 1000 # £/MW
+LAES_storage_cap = 330 * c19 * 1000 # £/MWh
 # 2015 costs 
-LAES_om_fixed = 11.2 * 1 / 0.7263 * c15 # euro/kW/yr * pound/euro|2015 #https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
-LAES_om_con = 30 * 0.00264 * 1 / 0.7263 * c15 # euro/kWh * pound/euro|2015
+LAES_om_fixed = 11.2 * 1 / 0.7263 * c15 * 1000 # euro/MW/yr * pound/euro|2015 #https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
+LAES_om_con = 30 * 0.00264 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
 
 storage_data = {
     "technology": ["battery", "pumped_hydro", "caes", "laes"],
@@ -127,9 +127,9 @@ df.loc['efficiency', 'Coal'] = 0.25 # own assumption
 # while for FOAK PWR commissioning 2025, is CP30 ref. took medium estimates.
 # assumed insurance meant to be per MW and not MWh since value otherwie uncreasonable
 # costs in 2014 GBP
-nuclear_capex = (240 + 4100 + 11500000/3300000) * c14 #  £/kW includes insurance
-nuclear_om_annual = (72900+500+10000)*1000 * c14 # £/MW/yr * MW/kW  includes connection/use of system and insurance
-nuclear_om_prod = (5 + 5 + 2) * 1000 * c14 # £/MWh * MWh/kWh includes fuel and decommissioning  
+nuclear_capex = (240 + 4100 + 11500000/3300000) * c14  * 1000 #  £/MW includes insurance
+nuclear_om_annual = (72900+500+10000) * c14 # £/MW/yr  includes connection/use of system and insurance
+nuclear_om_prod = (5 + 5 + 2) * c14 # £/MWh includes fuel and decommissioning  
 
 df['Nuclear'] = None
 df.loc['capex', 'Nuclear'] = nuclear_capex
@@ -144,19 +144,19 @@ co2ts = 18 * c15 # £/tCO2, 2015 cost https://ukerc.rl.ac.uk/publications/techni
 # Converting to add to BECCS and Gas CCS costs 
 
 # sawmill residue CCS at 88% capture rate: https://www.sciencedirect.com/science/article/pii/S0961953421002002
-BECCS_co2 = 1067 * co2ts/1000 * 1000 # kgCO2/MWh * £/tCO2 * tCO2/kgCO2 * MWh/kWh = £/kWh
+BECCS_co2 = 1067 * co2ts/1000  # kgCO2/MWh * £/tCO2 * tCO2/kgCO2  = £/MWh
 
 # CCGT + CCS source for UK, but considers co2e 
-gas_ccs_co2 = 676.8 * co2ts/1000 * 1000 # kgCO2/MWh * £/tCO2 * tCO2/kgCO2 * MWh/kWh = £/kWh
+gas_ccs_co2 = 676.8 * co2ts/1000  # kgCO2/MWh * £/tCO2 * tCO2/kgCO2 = £/MWh
 
 
 
 # Adding BECCS, assuming 2025 commissioning and FOAK, medium estimates
 # costs from spreadsheet https://www.gov.uk/government/publications/beis-electricity-generation-costs-2020
 # costs in 2018 basis
-BECCS_capex = (100 + 3400 + 29600/396) * c14 #  £/kW
-BECCS_om_annual = (160400+29600+4100)*1000 * c14 # £/MW/yr * MW/kW  includes connection/use of system and insurance
-BECCS_om_prod = 4 * 1000 * c14 + BECCS_co2 # £/MWh * MWh/kWh includes fuel and decommissioning
+BECCS_capex = (100 + 3400 + 29600/396) * c14 * 1000 #  £/MW
+BECCS_om_annual = (160400+29600+4100) * c14 # £/MW/yr  includes connection/use of system and insurance
+BECCS_om_prod = 4 * c14 + BECCS_co2 # £/MWh includes fuel and decommissioning
 
 df['BECCS'] = None
 df.loc['capex', 'BECCS'] = BECCS_capex
@@ -169,9 +169,9 @@ df.loc['lifetime', 'BECCS'] = 25
 # Adding Gas + CCS, assuming 2025 commissioning and FOAK, medium estimates
 # costs from spreadsheet https://www.gov.uk/government/publications/beis-electricity-generation-costs-2020
 # costs in 2018 basis
-Gas_CCS_capex = (10 + 1500 + 16100/1056) * c14 #  £/kW
-Gas_CCS_om_annual = (25800+16100+3500)*1000 * c14 # £/MW/yr * MW/kW  includes connection/use of system and insurance
-Gas_CCS_om_prod = 5 * 1000 * c14 + BECCS_co2 # £/MWh * MWh/kWh includes fuel and decommissioning
+Gas_CCS_capex = (10 + 1500 + 16100/1056) * c14 * 1000 #  £/MW
+Gas_CCS_om_annual = (25800+16100+3500) * c14 # £/MW/yr  includes connection/use of system and insurance
+Gas_CCS_om_prod = 5 * c14 + BECCS_co2 # £/MWh includes fuel and decommissioning
 
 df['Gas_CCS'] = None
 df.loc['capex', 'Gas_CCS'] = Gas_CCS_capex
@@ -183,7 +183,7 @@ df.loc['lifetime', 'Gas_CCS'] = 25
 
 # Gas cost said to be ~100 p/therm in CP30 assumptions, close to Oct 23/24 values. took 23 yr avg.
 # 2022 cost
-gas_cost = 102/100  * 1/29.31 * c22 # GBP/therm * therm/kWh https://www.metric-conversions.org/energy-and-power/therms-uk-to-kilowatt-hours.htm
+gas_cost = 102/100  * 1/29.31 * c22 * 1000 # GBP/therm * therm/MWh https://www.metric-conversions.org/energy-and-power/therms-uk-to-kilowatt-hours.htm
 hydrogen_cost = 1.2 * gas_cost
 
 # Own assumption for now. 

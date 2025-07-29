@@ -9,7 +9,6 @@ hydro:
     lifetime: 41
     capacity_factor_max: 0.45
   costs:
-    energy_cap: 4511.326164874553
-    om_annual: 46912992.831541225
-    om_prod: 8398.745519713262
-    fuel: 0.0
+    cost_energy_cap: 4511.326164874553
+    om_cost: 46912.992831541225
+    om_prod: 8.398745519713263

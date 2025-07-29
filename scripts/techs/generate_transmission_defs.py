@@ -34,7 +34,7 @@ techs = {
 }
 
 with open(snakemake.output[0], "w") as f:
-    yaml.dump({"techs": techs}, f, sort_keys=False)
+    yaml.dump(techs, f, sort_keys=False)
 
 print("Transmission tech definitions written to techs_transmission.yaml")
 

@@ -71,9 +71,9 @@ lifetime_years = get_param_values(DESNZ_df, 'Operating lifetime').astype(float)
 
 
 
-capex = pre_dev_cost + construction_cost + (infrastructure * 1000 / (plant_size * 1000))  # £/kW
-om_annual = (fixed_om + insurance + connection) * 1000  # £/MW/year * MW/kW
-om_prod = variable_om * 1000 # £/MWh * MWh/kWh
+capex = pre_dev_cost + construction_cost + (infrastructure * 1000 / (plant_size * 1000)) * 1000 # £/MW
+om_annual = (fixed_om + insurance + connection)  # £/MW/year
+om_prod = variable_om # £/MWh 
 efficiency = fuel_efficiency  # fraction
 lifetime = lifetime_years  # years
 

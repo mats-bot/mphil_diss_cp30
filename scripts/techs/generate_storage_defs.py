@@ -12,7 +12,7 @@ for tech in df.index:
     def get(val):
         return float(val) if pd.notna(val) else 0
 
-    storage_techs[tech] = {
+    storage_techs[tech.lower()] = {
         "category": "storage",
         "cp30_category": "thermal",
 

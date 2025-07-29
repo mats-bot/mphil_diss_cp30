@@ -9,7 +9,7 @@ locations_yaml = {"locations": {}}
 
 for _, row in df.iterrows():
     zone = row["zone"]
-    tech = row["CP30 technology"]
+    tech = row["CP30 technology"].lower()
     cap = float(row["InstalledCapacity (MW)"])
 
     if zone not in locations_yaml["locations"]:
@@ -17,7 +17,7 @@ for _, row in df.iterrows():
     
     locations_yaml["locations"][zone]["techs"][tech] = {
         "constraints": {
-            "energy_cap": cap
+            "energy_cap_max": cap
         }
     }
 

@@ -1,13 +1,12 @@
-techs:
-  subsea_dc_transmission:
-    essentials:
-      name: subsea_dc_transmission
-      carrier: electricity
-      carrier_out: electricity
-      parent: transmission
-  ac_transmission:
-    essentials:
-      name: ac_transmission
-      carrier: electricity
-      carrier_out: electricity
-      parent: transmission
+subsea_dc_transmission:
+  essentials:
+    name: subsea_dc_transmission
+    carrier: electricity
+    carrier_out: electricity
+    parent: transmission
+ac_transmission:
+  essentials:
+    name: ac_transmission
+    carrier: electricity
+    carrier_out: electricity
+    parent: transmission

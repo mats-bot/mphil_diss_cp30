@@ -6,14 +6,13 @@ gas_ccgt:
     carrier_in: gas
     carrier_out: electricity
   constraints:
-    energy_cap_max: .inf
     energy_eff: 0.53
     lifetime: 25
   costs:
-    energy_cap: 749.1880973715652
-    om_annual: 24236379.928315416
-    om_prod: 2399.6415770609324
-    fuel: 0.0382890289308155
+    cost_energy_cap: 18029.307048984472
+    om_cost: 24236.37992831541
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
 gas_ccgt_chp:
   category: fossil
   cp30_category: thermal
@@ -22,14 +21,13 @@ gas_ccgt_chp:
     carrier_in: gas
     carrier_out: electricity
   constraints:
-    energy_cap_max: .inf
     energy_eff: 0.33
     lifetime: 25
   costs:
-    energy_cap: 1154.541837344257
-    om_annual: 47272939.06810036
-    om_prod: 4799.283154121865
-    fuel: 0.0382890289308155
+    cost_energy_cap: 111741.59540877285
+    om_cost: 47272.93906810037
+    om_prod: 4.799283154121865
+    fuel: 38.2890289308155
 gas_ocgt:
   category: fossil
   cp30_category: thermal
@@ -38,14 +36,13 @@ gas_ocgt:
     carrier_in: gas
     carrier_out: electricity
   constraints:
-    energy_cap_max: .inf
     energy_eff: 0.35
     lifetime: 25
   costs:
-    energy_cap: 1127.8315412186382
-    om_annual: 20276971.32616488
-    om_prod: 2399.6415770609324
-    fuel: 0.0382890289308155
+    cost_energy_cap: 180920.97670250895
+    om_cost: 20276.97132616488
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
 diesel:
   category: fossil
   cp30_category: thermal
@@ -54,14 +51,13 @@ diesel:
     carrier_in: diesel
     carrier_out: electricity
   constraints:
-    energy_cap_max: 0
     energy_eff: 0.34
     lifetime: 15
   costs:
-    energy_cap: 521.9220430107528
-    om_annual: 0.0
+    cost_energy_cap: 150349.5430107527
+    om_cost: 0.0
     om_prod: 0.0
-    fuel: 0.0382890289308155
+    fuel: 38.2890289308155
 coal:
   category: fossil
   cp30_category: thermal
@@ -70,11 +66,10 @@ coal:
     carrier_in: coal
     carrier_out: electricity
   constraints:
-    energy_cap_max: 0
     energy_eff: 0.25
     lifetime: 25
   costs:
-    energy_cap: 1123.7821460573475
-    om_annual: 29083655.9139785
-    om_prod: 4799.283154121865
-    fuel: 0.0574335433962232
+    cost_energy_cap: 27043.96057347671
+    om_cost: 29083.6559139785
+    om_prod: 4.799283154121865
+    fuel: 57.43354339622324
