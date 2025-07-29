@@ -23,7 +23,7 @@ rule all:
 
 rule run_calliope:
     input:
-        model="full_model.yaml"
+        model="model.yml"
     output:
         "results/model.nc"
     shell:

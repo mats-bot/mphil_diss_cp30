@@ -14,9 +14,14 @@ fuels = {
     "Coal": "coal"
 }
 
+# Choose which techs can invest in
+allow_investment = {"Gas_CCGT", "Gas_CCGT_CHP", "Gas_OCGT"}
+
 
 for tech in fossil_techs:
-    techs_yaml[tech.lower()] = {
+    tech_name = tech.lower()
+
+    techs_yaml[tech_name] = {
         "category": "fossil",         
         "cp30_category": "thermal", 
         
@@ -29,14 +34,29 @@ for tech in fossil_techs:
             "energy_eff": float(df.loc["efficiency", tech]),   # unitless (fraction)
             "lifetime": int(df.loc["lifetime", tech])          # years
         },
+    }
+
+    # Existing tech: no capex, only operational/fuel costs
+    techs_yaml[f"{tech_name}_existing"] = {
+        "parent": tech_name,
         "costs": {
-            "cost_energy_cap": float(df.loc["capex", tech]),        # £/kW installed
-            "om_cost": float(df.loc["om_annual", tech]),     # £/kW/year
-            "om_prod": float(df.loc["om_prod", tech]),         # £/kWh
-            "fuel": float(df.loc["fuel_cost", tech])           # £/kWh fuel
+            "om_cost": float(df.loc["om_annual", tech]),
+            "om_prod": float(df.loc["om_prod", tech]),
+            "fuel": float(df.loc["fuel_cost", tech])
         }
     }
 
+    # New tech: full cost structure
+    if tech in allow_investment:
+        techs_yaml[f"{tech_name}_new"] = {
+            "parent": tech_name,
+            "costs": {
+                "cost_energy_cap": float(df.loc["capex", tech]),
+                "om_cost": float(df.loc["om_annual", tech]),
+                "om_prod": float(df.loc["om_prod", tech]),
+                "fuel": float(df.loc["fuel_cost", tech])
+        }
+    }
 
 
 with open(snakemake.output[0], "w") as f:
