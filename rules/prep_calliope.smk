@@ -38,14 +38,3 @@ rule combine_spatial:
         "../envs/data_processing.yaml"
     script:
         "../scripts/merge_spatial.py"
-
-
-rule create_model:
-    input:
-        techs="techs.yaml",
-        spatial="spatial.yaml",
-        demand="demand.yaml"
-    output:
-        "full_model.yaml"
-    script:
-        "../scripts/create_model_yaml.py"

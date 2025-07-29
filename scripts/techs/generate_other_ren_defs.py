@@ -9,7 +9,9 @@ techs = ["Hydro"]
 techs_yaml = {}
 
 for tech in techs:
-    techs_yaml[tech.lower()] = {
+    tech_name = tech.lower()
+
+    techs_yaml[tech_name] = {
         "category": "renewable",
         "cp30_category": "renewable",  
 
@@ -22,10 +24,15 @@ for tech in techs:
             "lifetime": int(df.loc["lifetime", tech]),         # years
             "capacity_factor_max": 0.45 # from Electricity Generation costs 2023 to avoid full load
         },
+    }
+    
+    # Existing tech: no capex, only operational/fuel costs
+    techs_yaml[f"{tech_name}_existing"] = {
+        "parent": tech_name,
         "costs": {
-            "cost_energy_cap": float(df.loc["capex", tech]),        # £/kW installed
-            "om_cost": float(df.loc["om_annual", tech]),     # £/kW/year
-            "om_prod": float(df.loc["om_prod", tech]),         # £/kWh
+            "om_cost": float(df.loc["om_annual", tech]),
+            "om_prod": float(df.loc["om_prod", tech]),
+            "fuel": float(df.loc["fuel_cost", tech])
         }
     }
 

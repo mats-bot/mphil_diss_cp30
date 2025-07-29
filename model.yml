@@ -1,12 +1,21 @@
-model:
-  name: "CP30-main-rep"
-  years: [2030]
-  timestep: 1h
-  calliope_version: 0.7.0.dev6
+import:
+ - techs.yaml
+ - spatial.yaml
+ - demand.yaml
 
-  techs: techs.yaml
-  spatial: spatial.yaml
-  demand: demand.yaml
+config:
+  init:
+    name: "CP30-main-rep"
+    calliope_version: "0.7.0.dev6"
+    years: [2030]
+    timestep: 1h
+  build:
+    backend: gurobi
+  solve:
+    solver_options:
+      Threads: 4
+
+
 
   # constraints:
   #   limit_dirty_generation:

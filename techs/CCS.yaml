@@ -8,9 +8,11 @@ beccs:
   constraints:
     energy_eff: 1.0
     lifetime: 25
+beccs_new:
+  parent: beccs
   costs:
-    energy_cap: 4786586.868686869
-    om_annual: 259899.9
+    cost_energy_cap: 4786586.868686869
+    om_cost: 259899.9
     om_prod: 31.072834
     fuel: 0.0
 gas_ccs:
@@ -23,8 +25,10 @@ gas_ccs:
   constraints:
     energy_eff: 0.47
     lifetime: 25
+gas_ccs_new:
+  parent: gas_ccs
   costs:
-    energy_cap: 2042304.6780303027
-    om_annual: 60790.6
+    cost_energy_cap: 2042304.6780303027
+    om_cost: 60790.6
     om_prod: 32.411834
     fuel: 38.2890289308155

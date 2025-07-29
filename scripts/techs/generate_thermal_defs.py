@@ -25,15 +25,16 @@ classif = {
 }
 
 
-new_build_cap = {
-    "Nuclear": 0
-}
+disallow_investment = {"nuclear"}
+
 
 # Initialize YAML dict
 techs_yaml = {}
 
 for tech in techs:
-    techs_yaml[tech.lower()] = {
+    tech_name = tech.lower()
+
+    techs_yaml[tech_name] = {
         "category": "thermal",
         "cp30_category": classif[tech],  
 
@@ -43,17 +44,32 @@ for tech in techs:
             "carrier_out": "electricity"
         },
         "constraints": {
-            "energy_cap_max": new_build_cap.get(tech, float("nan")),
             "energy_eff": float(df.loc["efficiency", tech]),   # unitless (fraction)
             "lifetime": int(df.loc["lifetime", tech])          # years
         },
+    }
+    # Existing tech: no capex, only operational/fuel costs
+    techs_yaml[f"{tech_name}_existing"] = {
+        "parent": tech_name,
         "costs": {
-            "cost_energy_cap": float(df.loc["capex", tech]),        # £/kW installed
-            "om_cost": float(df.loc["om_annual", tech]),     # £/kW/year
-            "om_prod": float(df.loc["om_prod", tech]),         # £/kWh
-            "fuel": float(df.loc["fuel_cost", tech])           # £/kWh fuel
+            "om_cost": float(df.loc["om_annual", tech]),
+            "om_prod": float(df.loc["om_prod", tech]),
+            "fuel": float(df.loc["fuel_cost", tech])
         }
     }
+
+    # New tech: full cost structure
+    if tech not in disallow_investment:
+        techs_yaml[f"{tech_name}_new"] = {
+            "parent": tech_name,
+            "costs": {
+                "cost_energy_cap": float(df.loc["capex", tech]),
+                "om_cost": float(df.loc["om_annual", tech]),
+                "om_prod": float(df.loc["om_prod", tech]),
+                "fuel": float(df.loc["fuel_cost", tech])
+        }
+    }
+        
 
 # Write output YAML
 with open(snakemake.output[0], "w") as f:

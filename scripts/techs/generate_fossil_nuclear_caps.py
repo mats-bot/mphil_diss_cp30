@@ -9,7 +9,7 @@ locations_yaml = {"locations": {}}
 
 for _, row in df.iterrows():
     zone = row["zone"]
-    tech = row["CP30 technology"].lower()
+    tech = row["CP30 technology"].lower() + "_existing"
     cap = float(row["InstalledCapacity (MW)"])
 
     if zone not in locations_yaml["locations"]:

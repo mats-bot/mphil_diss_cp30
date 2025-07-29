@@ -6,9 +6,16 @@ biomass:
     carrier_in: biomass
     carrier_out: electricity
   constraints:
-    energy_cap_max: .nan
     energy_eff: 1.0
     lifetime: 25
+biomass_existing:
+  parent: biomass
+  costs:
+    om_cost: 123461.55913978496
+    om_prod: 8.398745519713263
+    fuel: 0.0
+biomass_new:
+  parent: biomass
   costs:
     cost_energy_cap: 30209.534502417035
     om_cost: 123461.55913978496
@@ -22,9 +29,16 @@ biomass_chp:
     carrier_in: biomass
     carrier_out: electricity
   constraints:
-    energy_cap_max: .nan
     energy_eff: 0.21
     lifetime: 24
+biomass_chp_existing:
+  parent: biomass_chp
+  costs:
+    om_cost: 418017.5627240144
+    om_prod: 11.998207885304662
+    fuel: 0.0
+biomass_chp_new:
+  parent: biomass_chp
   costs:
     cost_energy_cap: 95440.70562919868
     om_cost: 418017.5627240144
@@ -38,9 +52,16 @@ waste:
     carrier_in: waste
     carrier_out: electricity
   constraints:
-    energy_cap_max: .nan
     energy_eff: 0.28
     lifetime: 35
+waste_existing:
+  parent: waste
+  costs:
+    om_cost: 245363.35125448037
+    om_prod: 32.395161290322584
+    fuel: 0.0
+waste_new:
+  parent: waste
   costs:
     cost_energy_cap: 222124.2582296498
     om_cost: 245363.35125448037
@@ -54,9 +75,16 @@ waste_chp:
     carrier_in: waste
     carrier_out: electricity
   constraints:
-    energy_cap_max: .nan
     energy_eff: 0.24
     lifetime: 27
+waste_chp_existing:
+  parent: waste_chp
+  costs:
+    om_cost: 335109.9462365592
+    om_prod: 73.18906810035844
+    fuel: 0.0
+waste_chp_new:
+  parent: waste_chp
   costs:
     cost_energy_cap: 343676.66666666674
     om_cost: 335109.9462365592
@@ -70,9 +98,16 @@ hydrogen:
     carrier_in: hydrogen
     carrier_out: electricity
   constraints:
-    energy_cap_max: .nan
     energy_eff: 0.48
     lifetime: 25
+hydrogen_existing:
+  parent: hydrogen
+  costs:
+    om_cost: 26516.0394265233
+    om_prod: 2.3996415770609323
+    fuel: 45.94683471697859
+hydrogen_new:
+  parent: hydrogen
   costs:
     cost_energy_cap: 20948.87096774194
     om_cost: 26516.0394265233
@@ -86,9 +121,16 @@ nuclear:
     carrier_in: nuclear_fuel
     carrier_out: electricity
   constraints:
-    energy_cap_max: 0
     energy_eff: 1.0
     lifetime: 60
+nuclear_existing:
+  parent: nuclear
+  costs:
+    om_cost: 111672.6
+    om_prod: 16.067999999999998
+    fuel: 0.0
+nuclear_new:
+  parent: nuclear
   costs:
     cost_energy_cap: 5815926.212121211
     om_cost: 111672.6

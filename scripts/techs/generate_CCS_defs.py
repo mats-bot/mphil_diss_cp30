@@ -13,7 +13,9 @@ fuels = {
 techs_yaml = {}
 
 for tech in techs:
-    techs_yaml[tech.lower()] = {
+    tech_name = tech.lower()
+
+    techs_yaml[tech_name] = {
         "category": "ccs",
         "cp30_category": "low_carbon",  
 
@@ -26,11 +28,14 @@ for tech in techs:
             "energy_eff": float(df.loc["efficiency", tech]),   # unitless (fraction)
             "lifetime": int(df.loc["lifetime", tech])          # years
         },
-        "costs": {
-            "energy_cap": float(df.loc["capex", tech]),        # £/kW installed
-            "om_annual": float(df.loc["om_annual", tech]),     # £/kW/year
-            "om_prod": float(df.loc["om_prod", tech]),         # £/kWh
-            "fuel": float(df.loc["fuel_cost", tech])           # £/kWh fuel
+    }
+    techs_yaml[f"{tech_name}_new"] = {
+            "parent": tech_name,
+            "costs": {
+                "cost_energy_cap": float(df.loc["capex", tech]),
+                "om_cost": float(df.loc["om_annual", tech]),
+                "om_prod": float(df.loc["om_prod", tech]),
+                "fuel": float(df.loc["fuel_cost", tech])
         }
     }
 

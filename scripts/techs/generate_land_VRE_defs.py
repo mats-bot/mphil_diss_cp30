@@ -20,32 +20,41 @@ resources = {
 techs_yaml = {}
 
 for tech in renewable_techs:
-    capex = float(df.loc["capex", tech])
-    om_annual = float(df.loc["om_annual", tech])
-    om_prod = float(df.loc["om_prod", tech])
-    efficiency = float(df.loc["efficiency", tech])
-    lifetime = int(float(df.loc["lifetime", tech]))
+    tech_base = tech.lower()
 
-    techs_yaml[tech.lower()] = {
-        "category": "renewable",         
+    techs_yaml[tech_base] = {
+        "category": "renewable",
         "cp30_category": "renewable",
-
         "essentials": {
             "name": tech,
             "carrier_out": "electricity"
         },
         "constraints": {
-            "energy_eff": efficiency,
+            "energy_eff": float(df.loc["efficiency", tech]),
             "resource": resources[tech],
             "resource_unit": "per_unit",
-            "lifetime": lifetime
-        },
-        "costs": {
-            "cost_energy_cap": capex,
-            "om_annual": om_annual,
-            "om_prod": om_prod
+            "lifetime": int(df.loc["lifetime", tech])
         }
     }
+
+    # Existing sites 
+    techs_yaml[f"{tech_base}_existing"] = {
+        "parent": tech_base,
+        "costs": {
+            "om_annual": float(df.loc["om_annual", tech]),
+            "om_prod": float(df.loc["om_prod", tech])
+        }
+    }
+
+    # New projects
+    techs_yaml[f"{tech_base}_new"] = {
+            "parent": tech_base,
+            "costs": {
+                "cost_energy_cap": float(df.loc["capex", tech]),
+                "om_annual": float(df.loc["om_annual", tech]),
+                "om_prod": float(df.loc["om_prod", tech])
+            }
+        }
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump(techs_yaml, f, sort_keys=False)

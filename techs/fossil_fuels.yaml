@@ -8,6 +8,14 @@ gas_ccgt:
   constraints:
     energy_eff: 0.53
     lifetime: 25
+gas_ccgt_existing:
+  parent: gas_ccgt
+  costs:
+    om_cost: 24236.37992831541
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
+gas_ccgt_new:
+  parent: gas_ccgt
   costs:
     cost_energy_cap: 18029.307048984472
     om_cost: 24236.37992831541
@@ -23,6 +31,14 @@ gas_ccgt_chp:
   constraints:
     energy_eff: 0.33
     lifetime: 25
+gas_ccgt_chp_existing:
+  parent: gas_ccgt_chp
+  costs:
+    om_cost: 47272.93906810037
+    om_prod: 4.799283154121865
+    fuel: 38.2890289308155
+gas_ccgt_chp_new:
+  parent: gas_ccgt_chp
   costs:
     cost_energy_cap: 111741.59540877285
     om_cost: 47272.93906810037
@@ -38,6 +54,14 @@ gas_ocgt:
   constraints:
     energy_eff: 0.35
     lifetime: 25
+gas_ocgt_existing:
+  parent: gas_ocgt
+  costs:
+    om_cost: 20276.97132616488
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
+gas_ocgt_new:
+  parent: gas_ocgt
   costs:
     cost_energy_cap: 180920.97670250895
     om_cost: 20276.97132616488
@@ -53,8 +77,9 @@ diesel:
   constraints:
     energy_eff: 0.34
     lifetime: 15
+diesel_existing:
+  parent: diesel
   costs:
-    cost_energy_cap: 150349.5430107527
     om_cost: 0.0
     om_prod: 0.0
     fuel: 38.2890289308155
@@ -68,8 +93,9 @@ coal:
   constraints:
     energy_eff: 0.25
     lifetime: 25
+coal_existing:
+  parent: coal
   costs:
-    cost_energy_cap: 27043.96057347671
     om_cost: 29083.6559139785
     om_prod: 4.799283154121865
     fuel: 57.43354339622324

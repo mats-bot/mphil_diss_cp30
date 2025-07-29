@@ -37,7 +37,7 @@ def generate_demand_yaml(input_dir, output_path):
 
         demand_data[tech_name]["constraints"][f"sink_use_equals::{zone}"] = f"file={filename}"
 
-    yaml_output = {"techs": demand_data}
+    yaml_output = {demand_data}
 
     with open(output_path, "w") as f:
         yaml.dump(yaml_output, f, sort_keys=False)

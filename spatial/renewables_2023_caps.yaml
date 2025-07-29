@@ -1,147 +1,326 @@
-battery:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 3.1
-      z10: 150.5
-      z11: 250.6
-      z12: 0.1
-      z13: 42.0
-      z14: 278.39
-      z15: 64.4
-      z16: 41.3
-      z17: 283.28
-      z2: 1.0
-      z3: 149.7
-      z4: 199.99
-      z5: 61.0
-      z6: 88.9
-      z7: 243.89
-      z8: 277.1
-      z9: 59.0
-    energy_cap_max: {}
-solar_pv:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 5.5
-      z10: 827.913
-      z11: 1304.20064
-      z12: 456.6052
-      z13: 731.6
-      z14: 1372.901
-      z15: 1618.31812
-      z16: 616.2
-      z17: 673.05423
-      z2: 6.1
-      z3: 32.910000000000004
-      z4: 39.245
-      z5: 152.33
-      z6: 81.259
-      z7: 315.641
-      z8: 430.4794
-      z9: 341.0
-    energy_cap_max: {}
-biomass:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 29.3
-      z10: 14.5
-      z11: 72.4
-      z12: 104.2
-      z13: 120.19
-      z14: 5.7
-      z15: 6.2
-      z17: 115.8
-      z2: 1.2
-      z3: 6.8
-      z4: 200.5
-      z5: 58.0
-      z6: 500.9
-      z7: 65.995
-      z8: 2769.4
-      z9: 73.5
-    energy_cap_max: {}
-pumped_hydro:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 300.0
-      z3: 440.0
-      z7: 2088.0
-    energy_cap_max: {}
-hydro:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 456.9
-      z10: 1.7
-      z13: 8.4
-      z15: 10.0
-      z2: 2.0
-      z3: 89.8
-      z4: 8.2
-      z5: 6.1
-      z7: 46.4
-    energy_cap_max: {}
-onshore_wind:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z1: 2711.3
-      z10: 134.3
-      z11: 515.7
-      z12: 40.8
-      z13: 850.5
-      z14: 53.3
-      z15: 238.1
-      z16: 2.0
-      z17: 172.7
-      z2: 381.35
-      z3: 736.9
-      z4: 5010.65
-      z5: 252.7
-      z6: 459.95
-      z7: 593.6
-      z8: 703.7
-      z9: 44.2
-    energy_cap_max: {}
-waste:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z10: 161.6
-      z11: 97.7
-      z12: 20.0
-      z13: 30.0
-      z14: 104.5
-      z15: 55.5
-      z16: 46.6
-      z17: 387.2
-      z2: 11.1
-      z3: 8.3
-      z4: 38.1
-      z6: 131.3
-      z7: 160.3
-      z8: 211.6
-      z9: 16.4
-    energy_cap_max: {}
-hydrogen:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z15: 0.9
-    energy_cap_max: {}
-laes:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z7: 5.0
-    energy_cap_max: {}
-caes:
-  constraints:
-    energy_cap: {}
-    energy_cap_min:
-      z8: 0.0
-    energy_cap_max: {}
+locations:
+  z1:
+    techs:
+      battery_existing:
+        constraints:
+          energy_cap_max: 3.1
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 5.5
+      biomass_existing:
+        constraints:
+          energy_cap_max: 29.3
+      pumped_hydro_existing:
+        constraints:
+          energy_cap_max: 300.0
+      hydro_existing:
+        constraints:
+          energy_cap_max: 456.9
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 2711.3
+  z10:
+    techs:
+      hydro_existing:
+        constraints:
+          energy_cap_max: 1.7
+      biomass_existing:
+        constraints:
+          energy_cap_max: 14.5
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 134.3
+      battery_existing:
+        constraints:
+          energy_cap_max: 150.5
+      waste_existing:
+        constraints:
+          energy_cap_max: 161.6
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 827.913
+  z11:
+    techs:
+      biomass_existing:
+        constraints:
+          energy_cap_max: 72.4
+      waste_existing:
+        constraints:
+          energy_cap_max: 97.7
+      battery_existing:
+        constraints:
+          energy_cap_max: 250.6
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 515.7
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 1304.20064
+  z12:
+    techs:
+      battery_existing:
+        constraints:
+          energy_cap_max: 0.1
+      waste_existing:
+        constraints:
+          energy_cap_max: 20.0
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 40.8
+      biomass_existing:
+        constraints:
+          energy_cap_max: 104.2
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 456.6052
+  z13:
+    techs:
+      hydro_existing:
+        constraints:
+          energy_cap_max: 8.4
+      waste_existing:
+        constraints:
+          energy_cap_max: 30.0
+      battery_existing:
+        constraints:
+          energy_cap_max: 42.0
+      biomass_existing:
+        constraints:
+          energy_cap_max: 120.19
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 731.6
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 850.5
+  z14:
+    techs:
+      biomass_existing:
+        constraints:
+          energy_cap_max: 5.7
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 53.3
+      waste_existing:
+        constraints:
+          energy_cap_max: 104.5
+      battery_existing:
+        constraints:
+          energy_cap_max: 278.39
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 1372.901
+  z15:
+    techs:
+      hydrogen_existing:
+        constraints:
+          energy_cap_max: 0.9
+      biomass_existing:
+        constraints:
+          energy_cap_max: 6.2
+      hydro_existing:
+        constraints:
+          energy_cap_max: 10.0
+      waste_existing:
+        constraints:
+          energy_cap_max: 55.5
+      battery_existing:
+        constraints:
+          energy_cap_max: 64.4
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 238.1
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 1618.31812
+  z16:
+    techs:
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 2.0
+      battery_existing:
+        constraints:
+          energy_cap_max: 41.3
+      waste_existing:
+        constraints:
+          energy_cap_max: 46.6
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 616.2
+  z17:
+    techs:
+      biomass_existing:
+        constraints:
+          energy_cap_max: 115.8
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 172.7
+      battery_existing:
+        constraints:
+          energy_cap_max: 283.28
+      waste_existing:
+        constraints:
+          energy_cap_max: 387.2
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 673.05423
+  z2:
+    techs:
+      battery_existing:
+        constraints:
+          energy_cap_max: 1.0
+      biomass_existing:
+        constraints:
+          energy_cap_max: 1.2
+      hydro_existing:
+        constraints:
+          energy_cap_max: 2.0
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 6.1
+      waste_existing:
+        constraints:
+          energy_cap_max: 11.1
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 381.35
+  z3:
+    techs:
+      biomass_existing:
+        constraints:
+          energy_cap_max: 6.8
+      waste_existing:
+        constraints:
+          energy_cap_max: 8.3
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 32.910000000000004
+      hydro_existing:
+        constraints:
+          energy_cap_max: 89.8
+      battery_existing:
+        constraints:
+          energy_cap_max: 149.7
+      pumped_hydro_existing:
+        constraints:
+          energy_cap_max: 440.0
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 736.9
+  z4:
+    techs:
+      hydro_existing:
+        constraints:
+          energy_cap_max: 8.2
+      waste_existing:
+        constraints:
+          energy_cap_max: 38.1
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 39.245
+      battery_existing:
+        constraints:
+          energy_cap_max: 199.99
+      biomass_existing:
+        constraints:
+          energy_cap_max: 200.5
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 5010.65
+  z5:
+    techs:
+      hydro_existing:
+        constraints:
+          energy_cap_max: 6.1
+      biomass_existing:
+        constraints:
+          energy_cap_max: 58.0
+      battery_existing:
+        constraints:
+          energy_cap_max: 61.0
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 152.33
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 252.7
+  z6:
+    techs:
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 81.259
+      battery_existing:
+        constraints:
+          energy_cap_max: 88.9
+      waste_existing:
+        constraints:
+          energy_cap_max: 131.3
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 459.95
+      biomass_existing:
+        constraints:
+          energy_cap_max: 500.9
+  z7:
+    techs:
+      laes_existing:
+        constraints:
+          energy_cap_max: 5.0
+      hydro_existing:
+        constraints:
+          energy_cap_max: 46.4
+      biomass_existing:
+        constraints:
+          energy_cap_max: 65.995
+      waste_existing:
+        constraints:
+          energy_cap_max: 160.3
+      battery_existing:
+        constraints:
+          energy_cap_max: 243.89
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 315.641
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 593.6
+      pumped_hydro_existing:
+        constraints:
+          energy_cap_max: 2088.0
+  z8:
+    techs:
+      caes_existing:
+        constraints:
+          energy_cap_max: 0.0
+      waste_existing:
+        constraints:
+          energy_cap_max: 211.6
+      battery_existing:
+        constraints:
+          energy_cap_max: 277.1
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 430.4794
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 703.7
+      biomass_existing:
+        constraints:
+          energy_cap_max: 2769.4
+  z9:
+    techs:
+      waste_existing:
+        constraints:
+          energy_cap_max: 16.4
+      onshore_wind_existing:
+        constraints:
+          energy_cap_max: 44.2
+      battery_existing:
+        constraints:
+          energy_cap_max: 59.0
+      biomass_existing:
+        constraints:
+          energy_cap_max: 73.5
+      solar_pv_existing:
+        constraints:
+          energy_cap_max: 341.0

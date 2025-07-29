@@ -1,6 +1,6 @@
 battery:
-  category: storage
-  cp30_category: thermal
+  category: battery
+  cp30_category: storage
   essentials:
     name: battery
     carrier_in: electricity
@@ -10,18 +10,34 @@ battery:
     energy_eff: 0.95
     storage_loss: 0.0001190476190476
     charge_rate: 0.25
+    lifetime: 25
+battery_existing:
+  parent: battery
+  costs:
+    cost_energy_cap: 0
+    cost_storage_cap: 0
+    om_annual: 119.83340217540965
+    om_prod: 774308.1371334159
+    om_con: 0
+  constraints:
     energy_cap_equals: 30.0
     storage_cap_equals: 120.0
-    lifetime: 25
+battery_new:
+  parent: battery
   costs:
     cost_energy_cap: 119833.40217540962
     cost_storage_cap: 0
     om_annual: 119.83340217540965
     om_prod: 774308.1371334159
     om_con: 0
+  constraints:
+    energy_cap_per_unit: 30.0
+    storage_cap_per_unit: 120.0
+    integer: true
+    units_max: 1
 pumped_hydro:
-  category: storage
-  cp30_category: thermal
+  category: ldes
+  cp30_category: storage
   essentials:
     name: pumped_hydro
     carrier_in: electricity
@@ -31,18 +47,21 @@ pumped_hydro:
     energy_eff: 0.825
     storage_loss: 0.0005208333333333
     charge_rate: 0.125
-    energy_cap_equals: 700.0
-    storage_cap_equals: 5600.0
     lifetime: 80
+pumped_hydro_existing:
+  parent: pumped_hydro
   costs:
-    cost_energy_cap: 1382693.102023957
-    cost_storage_cap: 27653.86204047914
+    cost_energy_cap: 0
+    cost_storage_cap: 0
     om_annual: 253.49373537105885
     om_prod: 0.9217954013493048
     om_con: 0
+  constraints:
+    energy_cap_equals: 700.0
+    storage_cap_equals: 5600.0
 caes:
-  category: storage
-  cp30_category: thermal
+  category: ldes
+  cp30_category: storage
   essentials:
     name: caes
     carrier_in: electricity
@@ -52,18 +71,34 @@ caes:
     energy_eff: 0.75
     storage_loss: 0.03125
     charge_rate: 0.1666666666666666
+    lifetime: 25
+caes_existing:
+  parent: caes
+  costs:
+    cost_energy_cap: 0
+    cost_storage_cap: 0
+    om_annual: 474.0662064082138
+    om_prod: 6.083849648905411
+    om_con: 0
+  constraints:
     energy_cap_equals: 5.0
     storage_cap_equals: 30.0
-    lifetime: 25
+caes_new:
+  parent: caes
   costs:
     cost_energy_cap: 1832068.3601817435
     cost_storage_cap: 46089.77006746524
     om_annual: 474.0662064082138
     om_prod: 6.083849648905411
     om_con: 0
+  constraints:
+    energy_cap_per_unit: 5.0
+    storage_cap_per_unit: 30.0
+    integer: true
+    units_max: 1
 laes:
-  category: storage
-  cp30_category: thermal
+  category: ldes
+  cp30_category: storage
   essentials:
     name: laes
     carrier_in: electricity
@@ -73,12 +108,28 @@ laes:
     energy_eff: 0.55
     storage_loss: 0.0062499999999999
     charge_rate: 0.0714285714285714
+    lifetime: 35
+laes_existing:
+  parent: laes
+  costs:
+    cost_energy_cap: 0
+    cost_storage_cap: 0
+    om_annual: 20648.216990224428
+    om_prod: 0
+    om_con: 146.01239157372987
+  constraints:
     energy_cap_equals: 50.0
     storage_cap_equals: 700.0
-    lifetime: 35
+laes_new:
+  parent: laes
   costs:
     cost_energy_cap: 1695487.012987013
     cost_storage_cap: 409897.9591836735
     om_annual: 20648.216990224428
     om_prod: 0
     om_con: 146.01239157372987
+  constraints:
+    energy_cap_per_unit: 50.0
+    storage_cap_per_unit: 700.0
+    integer: true
+    units_max: 1
