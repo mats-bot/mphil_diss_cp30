@@ -9,9 +9,9 @@ beccs:
     energy_eff: 1.0
     lifetime: 25
   costs:
-    energy_cap: 4786.586868686869
-    om_annual: 259899900.0
-    om_prod: 31072.834
+    energy_cap: 4786586.868686869
+    om_annual: 259899.9
+    om_prod: 31.072834
     fuel: 0.0
 gas_ccs:
   category: ccs
@@ -24,7 +24,7 @@ gas_ccs:
     energy_eff: 0.47
     lifetime: 25
   costs:
-    energy_cap: 2042.3046780303027
-    om_annual: 60790600.0
-    om_prod: 32411.834
-    fuel: 0.0382890289308155
+    energy_cap: 2042304.6780303027
+    om_annual: 60790.6
+    om_prod: 32.411834
+    fuel: 38.2890289308155

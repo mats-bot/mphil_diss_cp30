@@ -1,0 +1,374 @@
+locations:
+  z1:
+    coordinates:
+      lat: 57.89196974328606
+      lon: -4.501600395631353
+  z10:
+    coordinates:
+      lat: 52.54826713485286
+      lon: -2.036099483188362
+  z11:
+    coordinates:
+      lat: 52.38054847997431
+      lon: -0.1643338503002302
+  z12:
+    coordinates:
+      lat: 52.40623408967203
+      lon: 1.1154419004624692
+  z13:
+    coordinates:
+      lat: 51.940690543282905
+      lon: -3.8671178676635014
+  z14:
+    coordinates:
+      lat: 51.581213572316976
+      lon: -1.9715990431334822
+  z15:
+    coordinates:
+      lat: 50.74201353277187
+      lon: -3.597524902762606
+  z16:
+    coordinates:
+      lat: 51.105589523914304
+      lon: -1.097524548662983
+  z17:
+    coordinates:
+      lat: 51.31968275100239
+      lon: 0.21834144753086449
+  z2:
+    coordinates:
+      lat: 57.197034357351
+      lon: -2.7045442157690354
+  z3:
+    coordinates:
+      lat: 56.352947764108904
+      lon: -4.664903644459172
+  z4:
+    coordinates:
+      lat: 55.548363925553524
+      lon: -3.8050845899683226
+  z5:
+    coordinates:
+      lat: 54.489882370123084
+      lon: -2.838245775234413
+  z6:
+    coordinates:
+      lat: 54.83895152931869
+      lon: -1.8191923776929397
+  z7:
+    coordinates:
+      lat: 53.18315565351577
+      lon: -3.17275624137771
+  z8:
+    coordinates:
+      lat: 53.792243182458904
+      lon: -1.0155735082427775
+  z9:
+    coordinates:
+      lat: 53.160801969562044
+      lon: -0.4849307717602714
+links:
+  z1-z2:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0086154316070897
+  z1-z3:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0111587903329236
+  z2-z3:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0098997886585916
+  z3-z4:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 7.3
+      loss: 0.0067893174291886
+  z4-z5:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 10.2
+      loss: 0.0086497834978852
+  z4-z6:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 10.2
+      loss: 0.0096913463056016
+  z5-z6:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0049645962565866
+  z5-z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0095614006377243
+  z6-z8:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0083009783031288
+  z7-z8:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0102970897026264
+  z13-z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0094936246402351
+  z10-z7:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0067709276775425
+  z8-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.0051098456952318
+  z10-z8:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 16.4
+      loss: 0.010032393162305
+  z10-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0081090555892844
+  z11-z9:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0058164193681007
+  z10-z13:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 2.9
+      loss: 0.0092405285060491
+  z10-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0070000801685633
+  z10-z11:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 15.3
+      loss: 0.0083572172272935
+  z11-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      loss: 0.0099275081369144
+  z11-z12:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 13.5
+      loss: 0.0056657685230161
+  z11-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0078614724647475
+  z12-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0088251631081807
+  z13-z14:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 2.9
+      loss: 0.008894815886772
+  z14-z15:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 5.9
+      loss: 0.0095643427077276
+  z14-z16:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 9.4
+      loss: 0.0052441651483259
+  z16-z17:
+    techs:
+    - ac_transmission
+    constraints:
+      energy_cap_max: 17.3
+      loss: 0.0061737848587644
+battery:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 3.1
+      z10: 150.5
+      z11: 250.6
+      z12: 0.1
+      z13: 42.0
+      z14: 278.39
+      z15: 64.4
+      z16: 41.3
+      z17: 283.28
+      z2: 1.0
+      z3: 149.7
+      z4: 199.99
+      z5: 61.0
+      z6: 88.9
+      z7: 243.89
+      z8: 277.1
+      z9: 59.0
+    energy_cap_max: {}
+solar_pv:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 5.5
+      z10: 827.913
+      z11: 1304.20064
+      z12: 456.6052
+      z13: 731.6
+      z14: 1372.901
+      z15: 1618.31812
+      z16: 616.2
+      z17: 673.05423
+      z2: 6.1
+      z3: 32.910000000000004
+      z4: 39.245
+      z5: 152.33
+      z6: 81.259
+      z7: 315.641
+      z8: 430.4794
+      z9: 341.0
+    energy_cap_max: {}
+biomass:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 29.3
+      z10: 14.5
+      z11: 72.4
+      z12: 104.2
+      z13: 120.19
+      z14: 5.7
+      z15: 6.2
+      z17: 115.8
+      z2: 1.2
+      z3: 6.8
+      z4: 200.5
+      z5: 58.0
+      z6: 500.9
+      z7: 65.995
+      z8: 2769.4
+      z9: 73.5
+    energy_cap_max: {}
+pumped_hydro:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 300.0
+      z3: 440.0
+      z7: 2088.0
+    energy_cap_max: {}
+hydro:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 456.9
+      z10: 1.7
+      z13: 8.4
+      z15: 10.0
+      z2: 2.0
+      z3: 89.8
+      z4: 8.2
+      z5: 6.1
+      z7: 46.4
+    energy_cap_max: {}
+onshore_wind:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z1: 2711.3
+      z10: 134.3
+      z11: 515.7
+      z12: 40.8
+      z13: 850.5
+      z14: 53.3
+      z15: 238.1
+      z16: 2.0
+      z17: 172.7
+      z2: 381.35
+      z3: 736.9
+      z4: 5010.65
+      z5: 252.7
+      z6: 459.95
+      z7: 593.6
+      z8: 703.7
+      z9: 44.2
+    energy_cap_max: {}
+waste:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z10: 161.6
+      z11: 97.7
+      z12: 20.0
+      z13: 30.0
+      z14: 104.5
+      z15: 55.5
+      z16: 46.6
+      z17: 387.2
+      z2: 11.1
+      z3: 8.3
+      z4: 38.1
+      z6: 131.3
+      z7: 160.3
+      z8: 211.6
+      z9: 16.4
+    energy_cap_max: {}
+hydrogen:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z15: 0.9
+    energy_cap_max: {}
+laes:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z7: 5.0
+    energy_cap_max: {}
+caes:
+  constraints:
+    energy_cap: {}
+    energy_cap_min:
+      z8: 0.0
+    energy_cap_max: {}

@@ -1,3 +1,204 @@
+beccs:
+  category: ccs
+  cp30_category: low_carbon
+  essentials:
+    name: BECCS
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_eff: 1.0
+    lifetime: 25
+  costs:
+    energy_cap: 4786586.868686869
+    om_annual: 259899.9
+    om_prod: 31.072834
+    fuel: 0.0
+gas_ccs:
+  category: ccs
+  cp30_category: low_carbon
+  essentials:
+    name: Gas_CCS
+    carrier_in: gas
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.47
+    lifetime: 25
+  costs:
+    energy_cap: 2042304.6780303027
+    om_annual: 60790.6
+    om_prod: 32.411834
+    fuel: 38.2890289308155
+gas_ccgt:
+  category: fossil
+  cp30_category: thermal
+  essentials:
+    name: Gas_CCGT
+    carrier_in: gas
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.53
+    lifetime: 25
+  costs:
+    cost_energy_cap: 18029.307048984472
+    om_cost: 24236.37992831541
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
+gas_ccgt_chp:
+  category: fossil
+  cp30_category: thermal
+  essentials:
+    name: Gas_CCGT_CHP
+    carrier_in: gas
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.33
+    lifetime: 25
+  costs:
+    cost_energy_cap: 111741.59540877285
+    om_cost: 47272.93906810037
+    om_prod: 4.799283154121865
+    fuel: 38.2890289308155
+gas_ocgt:
+  category: fossil
+  cp30_category: thermal
+  essentials:
+    name: Gas_OCGT
+    carrier_in: gas
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.35
+    lifetime: 25
+  costs:
+    cost_energy_cap: 180920.97670250895
+    om_cost: 20276.97132616488
+    om_prod: 2.3996415770609323
+    fuel: 38.2890289308155
+diesel:
+  category: fossil
+  cp30_category: thermal
+  essentials:
+    name: Diesel
+    carrier_in: diesel
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.34
+    lifetime: 15
+  costs:
+    cost_energy_cap: 150349.5430107527
+    om_cost: 0.0
+    om_prod: 0.0
+    fuel: 38.2890289308155
+coal:
+  category: fossil
+  cp30_category: thermal
+  essentials:
+    name: Coal
+    carrier_in: coal
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.25
+    lifetime: 25
+  costs:
+    cost_energy_cap: 27043.96057347671
+    om_cost: 29083.6559139785
+    om_prod: 4.799283154121865
+    fuel: 57.43354339622324
+biomass:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Biomass
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 1.0
+    lifetime: 25
+  costs:
+    cost_energy_cap: 30209.534502417035
+    om_cost: 123461.55913978496
+    om_prod: 8.398745519713263
+    fuel: 0.0
+biomass_chp:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Biomass_CHP
+    carrier_in: biomass
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.21
+    lifetime: 24
+  costs:
+    cost_energy_cap: 95440.70562919868
+    om_cost: 418017.5627240144
+    om_prod: 11.998207885304662
+    fuel: 0.0
+waste:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Waste
+    carrier_in: waste
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.28
+    lifetime: 35
+  costs:
+    cost_energy_cap: 222124.2582296498
+    om_cost: 245363.35125448037
+    om_prod: 32.395161290322584
+    fuel: 0.0
+waste_chp:
+  category: thermal
+  cp30_category: renewable
+  essentials:
+    name: Waste_CHP
+    carrier_in: waste
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.24
+    lifetime: 27
+  costs:
+    cost_energy_cap: 343676.66666666674
+    om_cost: 335109.9462365592
+    om_prod: 73.18906810035844
+    fuel: 0.0
+hydrogen:
+  category: thermal
+  cp30_category: thermal
+  essentials:
+    name: Hydrogen
+    carrier_in: hydrogen
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: .nan
+    energy_eff: 0.48
+    lifetime: 25
+  costs:
+    cost_energy_cap: 20948.87096774194
+    om_cost: 26516.0394265233
+    om_prod: 2.3996415770609323
+    fuel: 45.94683471697859
+nuclear:
+  category: thermal
+  cp30_category: low_carbon
+  essentials:
+    name: Nuclear
+    carrier_in: nuclear_fuel
+    carrier_out: electricity
+  constraints:
+    energy_cap_max: 0
+    energy_eff: 1.0
+    lifetime: 60
+  costs:
+    cost_energy_cap: 5815926.212121211
+    om_cost: 111672.6
+    om_prod: 16.067999999999998
+    fuel: 0.0
 offshorewind_east_anglia_3_(ea_3):
   parent_category: offshore_wind
   category: renewable
@@ -1712,3 +1913,143 @@ offshorewind_moray_firth___caledonia_south_offshore_wind_farm:
     cost_energy_cap: 79104.18458781364
     om_annual: 109303.67383512546
     om_prod: 1.199820788530466
+hydro:
+  category: renewable
+  cp30_category: renewable
+  essentials:
+    name: Hydro
+    carrier_out: electricity
+  constraints:
+    energy_eff: 1.0
+    lifetime: 41
+    capacity_factor_max: 0.45
+  costs:
+    cost_energy_cap: 4511.326164874553
+    om_cost: 46912.992831541225
+    om_prod: 8.398745519713263
+onshore_wind:
+  category: renewable
+  cp30_category: renewable
+  essentials:
+    name: Onshore_Wind
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.0
+    resource: data/processed/spatial/onshore_cf_2013.csv
+    resource_unit: per_unit
+    lifetime: 25
+  costs:
+    cost_energy_cap: 90351.3935351122
+    om_annual: 36834.49820788531
+    om_prod: 7.198924731182797
+solar_pv:
+  category: renewable
+  cp30_category: renewable
+  essentials:
+    name: Solar_PV
+    carrier_out: electricity
+  constraints:
+    energy_eff: 0.0
+    resource: data/processed/spatial/solar_cf_2013.csv
+    resource_unit: per_unit
+    lifetime: 35
+  costs:
+    cost_energy_cap: 84527.37455197134
+    om_annual: 11158.333333333336
+    om_prod: 0.0
+battery:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: battery
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.95
+    storage_loss: 0.0001190476190476
+    charge_rate: 0.25
+    energy_cap_equals: 30.0
+    storage_cap_equals: 120.0
+    lifetime: 25
+  costs:
+    cost_energy_cap: 119833.40217540962
+    cost_storage_cap: 0
+    om_annual: 119.83340217540965
+    om_prod: 774308.1371334159
+    om_con: 0
+pumped_hydro:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: pumped_hydro
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.825
+    storage_loss: 0.0005208333333333
+    charge_rate: 0.125
+    energy_cap_equals: 700.0
+    storage_cap_equals: 5600.0
+    lifetime: 80
+  costs:
+    cost_energy_cap: 1382693.102023957
+    cost_storage_cap: 27653.86204047914
+    om_annual: 253.49373537105885
+    om_prod: 0.9217954013493048
+    om_con: 0
+caes:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: caes
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.75
+    storage_loss: 0.03125
+    charge_rate: 0.1666666666666666
+    energy_cap_equals: 5.0
+    storage_cap_equals: 30.0
+    lifetime: 25
+  costs:
+    cost_energy_cap: 1832068.3601817435
+    cost_storage_cap: 46089.77006746524
+    om_annual: 474.0662064082138
+    om_prod: 6.083849648905411
+    om_con: 0
+laes:
+  category: storage
+  cp30_category: thermal
+  essentials:
+    name: laes
+    carrier_in: electricity
+    carrier_out: electricity
+    storage: true
+  constraints:
+    energy_eff: 0.55
+    storage_loss: 0.0062499999999999
+    charge_rate: 0.0714285714285714
+    energy_cap_equals: 50.0
+    storage_cap_equals: 700.0
+    lifetime: 35
+  costs:
+    cost_energy_cap: 1695487.012987013
+    cost_storage_cap: 409897.9591836735
+    om_annual: 20648.216990224428
+    om_prod: 0
+    om_con: 146.01239157372987
+subsea_dc_transmission:
+  essentials:
+    name: subsea_dc_transmission
+    carrier: electricity
+    carrier_out: electricity
+    parent: transmission
+ac_transmission:
+  essentials:
+    name: ac_transmission
+    carrier: electricity
+    carrier_out: electricity
+    parent: transmission

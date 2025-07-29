@@ -1,6 +1,7 @@
-Battery:
+battery:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 3.1
       z10: 150.5
       z11: 250.6
@@ -18,9 +19,11 @@ Battery:
       z7: 243.89
       z8: 277.1
       z9: 59.0
-Solar_PV:
+    energy_cap_max: {}
+solar_pv:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 5.5
       z10: 827.913
       z11: 1304.20064
@@ -38,9 +41,11 @@ Solar_PV:
       z7: 315.641
       z8: 430.4794
       z9: 341.0
-Biomass:
+    energy_cap_max: {}
+biomass:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 29.3
       z10: 14.5
       z11: 72.4
@@ -57,15 +62,19 @@ Biomass:
       z7: 65.995
       z8: 2769.4
       z9: 73.5
-Pumped_Hydro:
+    energy_cap_max: {}
+pumped_hydro:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 300.0
       z3: 440.0
       z7: 2088.0
-Hydro:
+    energy_cap_max: {}
+hydro:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 456.9
       z10: 1.7
       z13: 8.4
@@ -75,9 +84,11 @@ Hydro:
       z4: 8.2
       z5: 6.1
       z7: 46.4
-Onshore_Wind:
+    energy_cap_max: {}
+onshore_wind:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z1: 2711.3
       z10: 134.3
       z11: 515.7
@@ -95,9 +106,11 @@ Onshore_Wind:
       z7: 593.6
       z8: 703.7
       z9: 44.2
-Waste:
+    energy_cap_max: {}
+waste:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z10: 161.6
       z11: 97.7
       z12: 20.0
@@ -113,15 +126,22 @@ Waste:
       z7: 160.3
       z8: 211.6
       z9: 16.4
-Hydrogen:
+    energy_cap_max: {}
+hydrogen:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z15: 0.9
-LAES:
+    energy_cap_max: {}
+laes:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z7: 5.0
-CAES:
+    energy_cap_max: {}
+caes:
   constraints:
-    energy_cap_equals:
+    energy_cap: {}
+    energy_cap_min:
       z8: 0.0
+    energy_cap_max: {}

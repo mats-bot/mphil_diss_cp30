@@ -26,7 +26,7 @@ for tech in renewable_techs:
     efficiency = float(df.loc["efficiency", tech])
     lifetime = int(float(df.loc["lifetime", tech]))
 
-    techs_yaml[tech] = {
+    techs_yaml[tech.lower()] = {
         "category": "renewable",         
         "cp30_category": "renewable",
 

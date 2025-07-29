@@ -21,6 +21,7 @@ for _, row in projects_df.iterrows():
     site = row["Site Name"]
     slug = site.replace(" ", "_").replace("-", "_")
     tech_name = f"OffshoreWind_{slug}"
+    tech_name = tech_name.lower()
     installed_cap = row["Installed Capacity (MW)"]
 
     status = row["Development Status (short)"]
@@ -53,6 +54,7 @@ for _, row in projects_df.iterrows():
         pass
 
     techs[tech_name] = {
+        "parent_category": "offshore_wind",
         "category": "renewable",
         "cp30_category": "renewable",
         "essentials": {

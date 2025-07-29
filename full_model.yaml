@@ -1,0 +1,2632 @@
+model:
+  name: CP30-main-rep
+  years:
+  - 2030
+  timestep: 1h
+  calliope_version: 0.7.0.dev6
+techs:
+  beccs:
+    category: ccs
+    cp30_category: low_carbon
+    essentials:
+      name: BECCS
+      carrier_in: biomass
+      carrier_out: electricity
+    constraints:
+      energy_eff: 1.0
+      lifetime: 25
+    costs:
+      energy_cap: 4786586.868686869
+      om_annual: 259899.9
+      om_prod: 31.072834
+      fuel: 0.0
+  gas_ccs:
+    category: ccs
+    cp30_category: low_carbon
+    essentials:
+      name: Gas_CCS
+      carrier_in: gas
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.47
+      lifetime: 25
+    costs:
+      energy_cap: 2042304.6780303027
+      om_annual: 60790.6
+      om_prod: 32.411834
+      fuel: 38.2890289308155
+  gas_ccgt:
+    category: fossil
+    cp30_category: thermal
+    essentials:
+      name: Gas_CCGT
+      carrier_in: gas
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.53
+      lifetime: 25
+    costs:
+      cost_energy_cap: 18029.307048984472
+      om_cost: 24236.37992831541
+      om_prod: 2.3996415770609323
+      fuel: 38.2890289308155
+  gas_ccgt_chp:
+    category: fossil
+    cp30_category: thermal
+    essentials:
+      name: Gas_CCGT_CHP
+      carrier_in: gas
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.33
+      lifetime: 25
+    costs:
+      cost_energy_cap: 111741.59540877285
+      om_cost: 47272.93906810037
+      om_prod: 4.799283154121865
+      fuel: 38.2890289308155
+  gas_ocgt:
+    category: fossil
+    cp30_category: thermal
+    essentials:
+      name: Gas_OCGT
+      carrier_in: gas
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.35
+      lifetime: 25
+    costs:
+      cost_energy_cap: 180920.97670250895
+      om_cost: 20276.97132616488
+      om_prod: 2.3996415770609323
+      fuel: 38.2890289308155
+  diesel:
+    category: fossil
+    cp30_category: thermal
+    essentials:
+      name: Diesel
+      carrier_in: diesel
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.34
+      lifetime: 15
+    costs:
+      cost_energy_cap: 150349.5430107527
+      om_cost: 0.0
+      om_prod: 0.0
+      fuel: 38.2890289308155
+  coal:
+    category: fossil
+    cp30_category: thermal
+    essentials:
+      name: Coal
+      carrier_in: coal
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.25
+      lifetime: 25
+    costs:
+      cost_energy_cap: 27043.96057347671
+      om_cost: 29083.6559139785
+      om_prod: 4.799283154121865
+      fuel: 57.43354339622324
+  biomass:
+    category: thermal
+    cp30_category: renewable
+    essentials:
+      name: Biomass
+      carrier_in: biomass
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: .nan
+      energy_eff: 1.0
+      lifetime: 25
+    costs:
+      cost_energy_cap: 30209.534502417035
+      om_cost: 123461.55913978496
+      om_prod: 8.398745519713263
+      fuel: 0.0
+  biomass_chp:
+    category: thermal
+    cp30_category: renewable
+    essentials:
+      name: Biomass_CHP
+      carrier_in: biomass
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: .nan
+      energy_eff: 0.21
+      lifetime: 24
+    costs:
+      cost_energy_cap: 95440.70562919868
+      om_cost: 418017.5627240144
+      om_prod: 11.998207885304662
+      fuel: 0.0
+  waste:
+    category: thermal
+    cp30_category: renewable
+    essentials:
+      name: Waste
+      carrier_in: waste
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: .nan
+      energy_eff: 0.28
+      lifetime: 35
+    costs:
+      cost_energy_cap: 222124.2582296498
+      om_cost: 245363.35125448037
+      om_prod: 32.395161290322584
+      fuel: 0.0
+  waste_chp:
+    category: thermal
+    cp30_category: renewable
+    essentials:
+      name: Waste_CHP
+      carrier_in: waste
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: .nan
+      energy_eff: 0.24
+      lifetime: 27
+    costs:
+      cost_energy_cap: 343676.66666666674
+      om_cost: 335109.9462365592
+      om_prod: 73.18906810035844
+      fuel: 0.0
+  hydrogen:
+    category: thermal
+    cp30_category: thermal
+    essentials:
+      name: Hydrogen
+      carrier_in: hydrogen
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: .nan
+      energy_eff: 0.48
+      lifetime: 25
+    costs:
+      cost_energy_cap: 20948.87096774194
+      om_cost: 26516.0394265233
+      om_prod: 2.3996415770609323
+      fuel: 45.94683471697859
+  nuclear:
+    category: thermal
+    cp30_category: low_carbon
+    essentials:
+      name: Nuclear
+      carrier_in: nuclear_fuel
+      carrier_out: electricity
+    constraints:
+      energy_cap_max: 0
+      energy_eff: 1.0
+      lifetime: 60
+    costs:
+      cost_energy_cap: 5815926.212121211
+      om_cost: 111672.6
+      om_prod: 16.067999999999998
+      fuel: 0.0
+  offshorewind_east_anglia_3_(ea_3):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_east_anglia_3_(ea_3)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: East Anglia 3 (EA 3)
+      resource_unit: per_unit
+      resource_area: East Anglia 3 (EA 3)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_east_anglia_1_north_(ea_4):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_east_anglia_1_north_(ea_4)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: East Anglia 1 North (EA 4)
+      resource_unit: per_unit
+      resource_area: East Anglia 1 North (EA 4)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_hornsea_3:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_hornsea_3
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Hornsea 3
+      resource_unit: per_unit
+      resource_area: Hornsea 3
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_hornsea_4:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_hornsea_4
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Hornsea 4
+      resource_unit: per_unit
+      resource_area: Hornsea 4
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_hywind_scotland_pilot_park_(hywind_2)_demonstrator:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_hywind_scotland_pilot_park_(hywind_2)_demonstrator
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Hywind Scotland Pilot Park (Hywind 2) Demonstrator
+      resource_unit: per_unit
+      resource_area: Hywind Scotland Pilot Park (Hywind 2) Demonstrator
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_the_east_anglia_array___norfolk_vanguard:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_the_east_anglia_array___norfolk_vanguard
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: The East Anglia Array - Norfolk Vanguard
+      resource_unit: per_unit
+      resource_area: The East Anglia Array - Norfolk Vanguard
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_beatrice_demonstrator:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_beatrice_demonstrator
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Beatrice Demonstrator
+      resource_unit: per_unit
+      resource_area: Beatrice Demonstrator
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_burbo_bank:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_burbo_bank
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Burbo Bank
+      resource_unit: per_unit
+      resource_area: Burbo Bank
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_gunfleet_sands___(demo)_extension:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_gunfleet_sands___(demo)_extension
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Gunfleet Sands - (Demo) Extension
+      resource_unit: per_unit
+      resource_area: Gunfleet Sands - (Demo) Extension
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_gunfleet_sands_ii\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_gunfleet_sands_ii\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Gunfleet Sands II\_"
+      resource_unit: per_unit
+      resource_area: "Gunfleet Sands II\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_gunfleet_sands_offshore_wind_scheme:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_gunfleet_sands_offshore_wind_scheme
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Gunfleet Sands Offshore Wind Scheme
+      resource_unit: per_unit
+      resource_area: Gunfleet Sands Offshore Wind Scheme
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_inner_dowsing\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_inner_dowsing\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Inner Dowsing\_"
+      resource_unit: per_unit
+      resource_area: "Inner Dowsing\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_kentish_flats\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_kentish_flats\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Kentish Flats\_"
+      resource_unit: per_unit
+      resource_area: "Kentish Flats\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_lynn:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_lynn
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Lynn
+      resource_unit: per_unit
+      resource_area: Lynn
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_north_hoyle\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_north_hoyle\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "North Hoyle\_"
+      resource_unit: per_unit
+      resource_area: "North Hoyle\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_rhyl_flats\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_rhyl_flats\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Rhyl Flats\_"
+      resource_unit: per_unit
+      resource_area: "Rhyl Flats\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_robin_rigg_east:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_robin_rigg_east
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Robin Rigg East
+      resource_unit: per_unit
+      resource_area: Robin Rigg East
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_robin_rigg_west:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_robin_rigg_west
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Robin Rigg West
+      resource_unit: per_unit
+      resource_area: Robin Rigg West
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_scroby_sands\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_scroby_sands\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Scroby Sands\_"
+      resource_unit: per_unit
+      resource_area: "Scroby Sands\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_thanet\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_thanet\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Thanet\_"
+      resource_unit: per_unit
+      resource_area: "Thanet\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_walney\_1":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_walney\_1"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Walney\_1"
+      resource_unit: per_unit
+      resource_area: "Walney\_1"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_hornsea_2___optimus_and_breesea:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_hornsea_2___optimus_and_breesea
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Hornsea 2 - Optimus and Breesea
+      resource_unit: per_unit
+      resource_area: Hornsea 2 - Optimus and Breesea
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_kentish_flats_2:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_kentish_flats_2
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Kentish Flats 2
+      resource_unit: per_unit
+      resource_area: Kentish Flats 2
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_european_offshore_wind_deployment_centre_(eowdc)_(aberdeen_bay___demonstration_site):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_european_offshore_wind_deployment_centre_(eowdc)_(aberdeen_bay___demonstration_site)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: European Offshore Wind Deployment Centre (EOWDC) (Aberdeen
+        Bay - Demonstration site)
+      resource_unit: per_unit
+      resource_area: European Offshore Wind Deployment Centre (EOWDC) (Aberdeen Bay
+        - Demonstration site)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_walney\_2":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_walney\_2"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Walney\_2"
+      resource_unit: per_unit
+      resource_area: "Walney\_2"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_ormonde_offshore:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_ormonde_offshore
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Ormonde Offshore
+      resource_unit: per_unit
+      resource_area: Ormonde Offshore
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_greater_gabbard_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_greater_gabbard_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Greater Gabbard Wind Farm
+      resource_unit: per_unit
+      resource_area: Greater Gabbard Wind Farm
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_london_array\_phase_1":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_london_array\_phase_1"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "London Array\_Phase 1"
+      resource_unit: per_unit
+      resource_area: "London Array\_Phase 1"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_sheringham_shoal\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_sheringham_shoal\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Sheringham Shoal\_"
+      resource_unit: per_unit
+      resource_area: "Sheringham Shoal\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_centrica_(lincs):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_centrica_(lincs)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Centrica (Lincs)
+      resource_unit: per_unit
+      resource_area: Centrica (Lincs)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_teeside_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_teeside_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Teeside Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Teeside Offshore Wind Farm
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_race_bank_(phase_1):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_race_bank_(phase_1)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Race Bank (Phase 1)
+      resource_unit: per_unit
+      resource_area: Race Bank (Phase 1)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_dogger_bank_c_(was_teesside_a):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_dogger_bank_c_(was_teesside_a)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Dogger Bank C (was Teesside A)
+      resource_unit: per_unit
+      resource_area: Dogger Bank C (was Teesside A)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_west_of_duddon_sands:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_west_of_duddon_sands
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: West of Duddon Sands
+      resource_unit: per_unit
+      resource_area: West of Duddon Sands
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_rampion_offshore_wind_farm_(hastings_zone):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_rampion_offshore_wind_farm_(hastings_zone)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Rampion Offshore Wind Farm (Hastings Zone)
+      resource_unit: per_unit
+      resource_area: Rampion Offshore Wind Farm (Hastings Zone)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_beatrice:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_beatrice
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Beatrice
+      resource_unit: per_unit
+      resource_area: Beatrice
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_neart_na_gaoithe:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_neart_na_gaoithe
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Neart na Gaoithe
+      resource_unit: per_unit
+      resource_area: Neart na Gaoithe
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_blyth_offshore\_wind_test_site":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_blyth_offshore\_wind_test_site"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Blyth Offshore\_Wind Test Site"
+      resource_unit: per_unit
+      resource_area: "Blyth Offshore\_Wind Test Site"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_east_anglia_1_(ea_1):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_east_anglia_1_(ea_1)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: East Anglia 1 (EA 1)
+      resource_unit: per_unit
+      resource_area: East Anglia 1 (EA 1)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_hornsea_1___heron_&_njord:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_hornsea_1___heron_&_njord
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Hornsea 1 - Heron & Njord
+      resource_unit: per_unit
+      resource_area: Hornsea 1 - Heron & Njord
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_galloper_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_galloper_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Galloper Wind Farm
+      resource_unit: per_unit
+      resource_area: Galloper Wind Farm
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_inch_cape:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_inch_cape
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Inch Cape
+      resource_unit: per_unit
+      resource_area: Inch Cape
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_levenmouth_demonstration_turbine_(fife_energy_park):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_levenmouth_demonstration_turbine_(fife_energy_park)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Levenmouth demonstration turbine (Fife Energy Park)
+      resource_unit: per_unit
+      resource_area: Levenmouth demonstration turbine (Fife Energy Park)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_triton_knoll\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_triton_knoll\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Triton Knoll\_"
+      resource_unit: per_unit
+      resource_area: "Triton Knoll\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_walney_3:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_walney_3
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Walney 3
+      resource_unit: per_unit
+      resource_area: Walney 3
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_moray_east:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_moray_east
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Moray East
+      resource_unit: per_unit
+      resource_area: Moray East
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_dudgeon_east\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_dudgeon_east\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Dudgeon East\_"
+      resource_unit: per_unit
+      resource_area: "Dudgeon East\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_burbo_bank_extension_(burbo_bank_2):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_burbo_bank_extension_(burbo_bank_2)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Burbo Bank Extension (Burbo Bank 2)
+      resource_unit: per_unit
+      resource_area: Burbo Bank Extension (Burbo Bank 2)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_seagreen:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_seagreen
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Seagreen
+      resource_unit: per_unit
+      resource_area: Seagreen
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_dogger_bank_a_&_b_(was_creyke_beck_a_&_b):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_dogger_bank_a_&_b_(was_creyke_beck_a_&_b)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Dogger Bank A & B (was Creyke Beck A & B)
+      resource_unit: per_unit
+      resource_area: Dogger Bank A & B (was Creyke Beck A & B)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_gwynt_y_mor\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_gwynt_y_mor\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Gwynt y Mor\_"
+      resource_unit: per_unit
+      resource_area: "Gwynt y Mor\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_humber_gateway_a:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_humber_gateway_a
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Humber Gateway A
+      resource_unit: per_unit
+      resource_area: Humber Gateway A
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_westermost_rough_a:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_westermost_rough_a
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Westermost Rough A
+      resource_unit: per_unit
+      resource_area: Westermost Rough A
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_barrow\_":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_barrow\_"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Barrow\_"
+      resource_unit: per_unit
+      resource_area: "Barrow\_"
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_east_anglia_2_(ea_2):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_east_anglia_2_(ea_2)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: East Anglia 2 (EA 2)
+      resource_unit: per_unit
+      resource_area: East Anglia 2 (EA 2)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_kincardine_offshore_windfarm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_kincardine_offshore_windfarm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Kincardine Offshore Windfarm
+      resource_unit: per_unit
+      resource_area: Kincardine Offshore Windfarm
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_moray_west_offshore_wind_farm_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_moray_west_offshore_wind_farm_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Moray West Offshore Wind Farm Project
+      resource_unit: per_unit
+      resource_area: Moray West Offshore Wind Farm Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_dounreay_tr\xEC_floating_wind_demonstration":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_dounreay_tr\xEC_floating_wind_demonstration"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Dounreay Tr\xEC Floating Wind Demonstration"
+      resource_unit: per_unit
+      resource_area: "Dounreay Tr\xEC Floating Wind Demonstration"
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_the_east_anglia_array___norfolk_boreas:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_the_east_anglia_array___norfolk_boreas
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: The East Anglia Array - Norfolk Boreas
+      resource_unit: per_unit
+      resource_area: The East Anglia Array - Norfolk Boreas
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_race_bank_(phase_2):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_race_bank_(phase_2)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Race Bank (Phase 2)
+      resource_unit: per_unit
+      resource_area: Race Bank (Phase 2)
+      lifetime: 30
+      energy_cap_equals: .nan
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_sofia_(teesside_b):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_sofia_(teesside_b)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Sofia (Teesside B)
+      resource_unit: per_unit
+      resource_area: Sofia (Teesside B)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_twinhub_(previously_called_wave_hub_floating_wind):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_twinhub_(previously_called_wave_hub_floating_wind)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: TwinHub (previously called Wave Hub Floating Wind)
+      resource_unit: per_unit
+      resource_area: TwinHub (previously called Wave Hub Floating Wind)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_sheringham_extension_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_sheringham_extension_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Sheringham Extension Project
+      resource_unit: per_unit
+      resource_area: Sheringham Extension Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_dudgeon_extension_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_dudgeon_extension_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Dudgeon Extension Project
+      resource_unit: per_unit
+      resource_area: Dudgeon Extension Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_rampion_wind_farm_(extension),_(rampion_2):
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_rampion_wind_farm_(extension),_(rampion_2)
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Rampion Wind Farm (Extension), (Rampion 2)
+      resource_unit: per_unit
+      resource_area: Rampion Wind Farm (Extension), (Rampion 2)
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_awel_y_mor_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_awel_y_mor_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Awel y Mor Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Awel y Mor Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_erebus___floating_offshore_wind_demonstration_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_erebus___floating_offshore_wind_demonstration_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Erebus - Floating Offshore Wind Demonstration Project
+      resource_unit: per_unit
+      resource_area: Erebus - Floating Offshore Wind Demonstration Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_five_estuaries___wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_five_estuaries___wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Five Estuaries - Wind Farm
+      resource_unit: per_unit
+      resource_area: Five Estuaries - Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_berwick_bank_offshore_wind_farm_:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_berwick_bank_offshore_wind_farm_
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: 'Berwick Bank Offshore Wind Farm '
+      resource_unit: per_unit
+      resource_area: 'Berwick Bank Offshore Wind Farm '
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_west_of_orkney_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_west_of_orkney_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: West of Orkney Wind Farm
+      resource_unit: per_unit
+      resource_area: West of Orkney Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_north_falls_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_north_falls_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: North Falls Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: North Falls Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: 504.0
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_mona_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_mona_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Mona Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Mona Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_morgan_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_morgan_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Morgan Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Morgan Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_morecombe_offshore_windfarm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_morecombe_offshore_windfarm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Morecombe Offshore Windfarm
+      resource_unit: per_unit
+      resource_area: Morecombe Offshore Windfarm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_peterhead___the_salamander_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_peterhead___the_salamander_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Peterhead - The Salamander Project
+      resource_unit: per_unit
+      resource_area: Peterhead - The Salamander Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_blyth_offshore_wind_farm_phase_2_demonstrator_project:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_blyth_offshore_wind_farm_phase_2_demonstrator_project
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Blyth Offshore Wind Farm Phase 2 Demonstrator Project
+      resource_unit: per_unit
+      resource_area: Blyth Offshore Wind Farm Phase 2 Demonstrator Project
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_dogger_bank_south_east_&_south_west:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_dogger_bank_south_east_&_south_west
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Dogger Bank South East & South West
+      resource_unit: per_unit
+      resource_area: Dogger Bank South East & South West
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_outer_dowsing_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_outer_dowsing_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Outer Dowsing Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Outer Dowsing Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_green_volt___offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_green_volt___offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Green Volt - Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Green Volt - Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_whitecross___offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_whitecross___offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Whitecross - Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Whitecross - Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_pentland_floating_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_pentland_floating_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Pentland Floating Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Pentland Floating Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_moray_firth___caledonia_north_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_moray_firth___caledonia_north_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Moray Firth - Caledonia North Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Moray Firth - Caledonia North Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_ossian:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_ossian
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Ossian
+      resource_unit: per_unit
+      resource_area: Ossian
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  "offshorewind_muir_mh\xF2r":
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: "offshorewind_muir_mh\xF2r"
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: "Muir Mh\xF2r"
+      resource_unit: per_unit
+      resource_area: "Muir Mh\xF2r"
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_cenos_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_cenos_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Cenos Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Cenos Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_seagreen_phase_1a:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_seagreen_phase_1a
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Seagreen Phase 1A
+      resource_unit: per_unit
+      resource_area: Seagreen Phase 1A
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_forthwind:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_forthwind
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Forthwind
+      resource_unit: per_unit
+      resource_area: Forthwind
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_culzean_floating_wind_pilot:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_culzean_floating_wind_pilot
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Culzean Floating Wind Pilot
+      resource_unit: per_unit
+      resource_area: Culzean Floating Wind Pilot
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+      units_min: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  offshorewind_moray_firth___caledonia_south_offshore_wind_farm:
+    parent_category: offshore_wind
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: offshorewind_moray_firth___caledonia_south_offshore_wind_farm
+      carrier_out: electricity
+    constraints:
+      resource: data/processed/spatial/offshore_cfs_2013.csv
+      resource_column: Moray Firth - Caledonia South Offshore Wind Farm
+      resource_unit: per_unit
+      resource_area: Moray Firth - Caledonia South Offshore Wind Farm
+      lifetime: 30
+      energy_cap_per_unit: .nan
+      integer: true
+      units_max: 1
+    costs:
+      cost_energy_cap: 79104.18458781364
+      om_annual: 109303.67383512546
+      om_prod: 1.199820788530466
+  hydro:
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: Hydro
+      carrier_out: electricity
+    constraints:
+      energy_eff: 1.0
+      lifetime: 41
+      capacity_factor_max: 0.45
+    costs:
+      cost_energy_cap: 4511.326164874553
+      om_cost: 46912.992831541225
+      om_prod: 8.398745519713263
+  onshore_wind:
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: Onshore_Wind
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.0
+      resource: data/processed/spatial/onshore_cf_2013.csv
+      resource_unit: per_unit
+      lifetime: 25
+    costs:
+      cost_energy_cap: 90351.3935351122
+      om_annual: 36834.49820788531
+      om_prod: 7.198924731182797
+  solar_pv:
+    category: renewable
+    cp30_category: renewable
+    essentials:
+      name: Solar_PV
+      carrier_out: electricity
+    constraints:
+      energy_eff: 0.0
+      resource: data/processed/spatial/solar_cf_2013.csv
+      resource_unit: per_unit
+      lifetime: 35
+    costs:
+      cost_energy_cap: 84527.37455197134
+      om_annual: 11158.333333333336
+      om_prod: 0.0
+  battery:
+    category: storage
+    cp30_category: thermal
+    essentials:
+      name: battery
+      carrier_in: electricity
+      carrier_out: electricity
+      storage: true
+    constraints:
+      energy_eff: 0.95
+      storage_loss: 0.0001190476190476
+      charge_rate: 0.25
+      energy_cap_equals: 30.0
+      storage_cap_equals: 120.0
+      lifetime: 25
+    costs:
+      cost_energy_cap: 119833.40217540962
+      cost_storage_cap: 0
+      om_annual: 119.83340217540965
+      om_prod: 774308.1371334159
+      om_con: 0
+  pumped_hydro:
+    category: storage
+    cp30_category: thermal
+    essentials:
+      name: pumped_hydro
+      carrier_in: electricity
+      carrier_out: electricity
+      storage: true
+    constraints:
+      energy_eff: 0.825
+      storage_loss: 0.0005208333333333
+      charge_rate: 0.125
+      energy_cap_equals: 700.0
+      storage_cap_equals: 5600.0
+      lifetime: 80
+    costs:
+      cost_energy_cap: 1382693.102023957
+      cost_storage_cap: 27653.86204047914
+      om_annual: 253.49373537105885
+      om_prod: 0.9217954013493048
+      om_con: 0
+  caes:
+    category: storage
+    cp30_category: thermal
+    essentials:
+      name: caes
+      carrier_in: electricity
+      carrier_out: electricity
+      storage: true
+    constraints:
+      energy_eff: 0.75
+      storage_loss: 0.03125
+      charge_rate: 0.1666666666666666
+      energy_cap_equals: 5.0
+      storage_cap_equals: 30.0
+      lifetime: 25
+    costs:
+      cost_energy_cap: 1832068.3601817435
+      cost_storage_cap: 46089.77006746524
+      om_annual: 474.0662064082138
+      om_prod: 6.083849648905411
+      om_con: 0
+  laes:
+    category: storage
+    cp30_category: thermal
+    essentials:
+      name: laes
+      carrier_in: electricity
+      carrier_out: electricity
+      storage: true
+    constraints:
+      energy_eff: 0.55
+      storage_loss: 0.0062499999999999
+      charge_rate: 0.0714285714285714
+      energy_cap_equals: 50.0
+      storage_cap_equals: 700.0
+      lifetime: 35
+    costs:
+      cost_energy_cap: 1695487.012987013
+      cost_storage_cap: 409897.9591836735
+      om_annual: 20648.216990224428
+      om_prod: 0
+      om_con: 146.01239157372987
+  subsea_dc_transmission:
+    essentials:
+      name: subsea_dc_transmission
+      carrier: electricity
+      carrier_out: electricity
+      parent: transmission
+  ac_transmission:
+    essentials:
+      name: ac_transmission
+      carrier: electricity
+      carrier_out: electricity
+      parent: transmission
+spatial:
+  locations:
+    z1:
+      coordinates:
+        lat: 57.89196974328606
+        lon: -4.501600395631353
+    z10:
+      coordinates:
+        lat: 52.54826713485286
+        lon: -2.036099483188362
+    z11:
+      coordinates:
+        lat: 52.38054847997431
+        lon: -0.1643338503002302
+    z12:
+      coordinates:
+        lat: 52.40623408967203
+        lon: 1.1154419004624692
+    z13:
+      coordinates:
+        lat: 51.940690543282905
+        lon: -3.8671178676635014
+    z14:
+      coordinates:
+        lat: 51.581213572316976
+        lon: -1.9715990431334822
+    z15:
+      coordinates:
+        lat: 50.74201353277187
+        lon: -3.597524902762606
+    z16:
+      coordinates:
+        lat: 51.105589523914304
+        lon: -1.097524548662983
+    z17:
+      coordinates:
+        lat: 51.31968275100239
+        lon: 0.21834144753086449
+    z2:
+      coordinates:
+        lat: 57.197034357351
+        lon: -2.7045442157690354
+    z3:
+      coordinates:
+        lat: 56.352947764108904
+        lon: -4.664903644459172
+    z4:
+      coordinates:
+        lat: 55.548363925553524
+        lon: -3.8050845899683226
+    z5:
+      coordinates:
+        lat: 54.489882370123084
+        lon: -2.838245775234413
+    z6:
+      coordinates:
+        lat: 54.83895152931869
+        lon: -1.8191923776929397
+    z7:
+      coordinates:
+        lat: 53.18315565351577
+        lon: -3.17275624137771
+    z8:
+      coordinates:
+        lat: 53.792243182458904
+        lon: -1.0155735082427775
+    z9:
+      coordinates:
+        lat: 53.160801969562044
+        lon: -0.4849307717602714
+  links:
+    z1-z2:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 5.9
+        loss: 0.0086154316070897
+    z1-z3:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 5.9
+        loss: 0.0111587903329236
+    z2-z3:
+      techs:
+      - ac_transmission
+      constraints:
+        loss: 0.0098997886585916
+    z3-z4:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 7.3
+        loss: 0.0067893174291886
+    z4-z5:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 10.2
+        loss: 0.0086497834978852
+    z4-z6:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 10.2
+        loss: 0.0096913463056016
+    z5-z6:
+      techs:
+      - ac_transmission
+      constraints:
+        loss: 0.0049645962565866
+    z5-z7:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 13.5
+        loss: 0.0095614006377243
+    z6-z8:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 13.5
+        loss: 0.0083009783031288
+    z7-z8:
+      techs:
+      - ac_transmission
+      constraints:
+        loss: 0.0102970897026264
+    z13-z7:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 16.4
+        loss: 0.0094936246402351
+    z10-z7:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 16.4
+        loss: 0.0067709276775425
+    z8-z9:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 16.4
+        loss: 0.0051098456952318
+    z10-z8:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 16.4
+        loss: 0.010032393162305
+    z10-z9:
+      techs:
+      - ac_transmission
+      constraints:
+        loss: 0.0081090555892844
+    z11-z9:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 15.3
+        loss: 0.0058164193681007
+    z10-z13:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 2.9
+        loss: 0.0092405285060491
+    z10-z14:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 15.3
+        loss: 0.0070000801685633
+    z10-z11:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 15.3
+        loss: 0.0083572172272935
+    z11-z14:
+      techs:
+      - ac_transmission
+      constraints:
+        loss: 0.0099275081369144
+    z11-z12:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 13.5
+        loss: 0.0056657685230161
+    z11-z17:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 17.3
+        loss: 0.0078614724647475
+    z12-z17:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 17.3
+        loss: 0.0088251631081807
+    z13-z14:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 2.9
+        loss: 0.008894815886772
+    z14-z15:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 5.9
+        loss: 0.0095643427077276
+    z14-z16:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 9.4
+        loss: 0.0052441651483259
+    z16-z17:
+      techs:
+      - ac_transmission
+      constraints:
+        energy_cap_max: 17.3
+        loss: 0.0061737848587644
+  battery:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 3.1
+        z10: 150.5
+        z11: 250.6
+        z12: 0.1
+        z13: 42.0
+        z14: 278.39
+        z15: 64.4
+        z16: 41.3
+        z17: 283.28
+        z2: 1.0
+        z3: 149.7
+        z4: 199.99
+        z5: 61.0
+        z6: 88.9
+        z7: 243.89
+        z8: 277.1
+        z9: 59.0
+      energy_cap_max: {}
+  solar_pv:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 5.5
+        z10: 827.913
+        z11: 1304.20064
+        z12: 456.6052
+        z13: 731.6
+        z14: 1372.901
+        z15: 1618.31812
+        z16: 616.2
+        z17: 673.05423
+        z2: 6.1
+        z3: 32.910000000000004
+        z4: 39.245
+        z5: 152.33
+        z6: 81.259
+        z7: 315.641
+        z8: 430.4794
+        z9: 341.0
+      energy_cap_max: {}
+  biomass:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 29.3
+        z10: 14.5
+        z11: 72.4
+        z12: 104.2
+        z13: 120.19
+        z14: 5.7
+        z15: 6.2
+        z17: 115.8
+        z2: 1.2
+        z3: 6.8
+        z4: 200.5
+        z5: 58.0
+        z6: 500.9
+        z7: 65.995
+        z8: 2769.4
+        z9: 73.5
+      energy_cap_max: {}
+  pumped_hydro:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 300.0
+        z3: 440.0
+        z7: 2088.0
+      energy_cap_max: {}
+  hydro:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 456.9
+        z10: 1.7
+        z13: 8.4
+        z15: 10.0
+        z2: 2.0
+        z3: 89.8
+        z4: 8.2
+        z5: 6.1
+        z7: 46.4
+      energy_cap_max: {}
+  onshore_wind:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z1: 2711.3
+        z10: 134.3
+        z11: 515.7
+        z12: 40.8
+        z13: 850.5
+        z14: 53.3
+        z15: 238.1
+        z16: 2.0
+        z17: 172.7
+        z2: 381.35
+        z3: 736.9
+        z4: 5010.65
+        z5: 252.7
+        z6: 459.95
+        z7: 593.6
+        z8: 703.7
+        z9: 44.2
+      energy_cap_max: {}
+  waste:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z10: 161.6
+        z11: 97.7
+        z12: 20.0
+        z13: 30.0
+        z14: 104.5
+        z15: 55.5
+        z16: 46.6
+        z17: 387.2
+        z2: 11.1
+        z3: 8.3
+        z4: 38.1
+        z6: 131.3
+        z7: 160.3
+        z8: 211.6
+        z9: 16.4
+      energy_cap_max: {}
+  hydrogen:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z15: 0.9
+      energy_cap_max: {}
+  laes:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z7: 5.0
+      energy_cap_max: {}
+  caes:
+    constraints:
+      energy_cap: {}
+      energy_cap_min:
+        z8: 0.0
+      energy_cap_max: {}
+demand:
+  demand_C:
+    description: Commercial electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_C.csv
+      sink_use_equals::z11: file=demand_z11_C.csv
+      sink_use_equals::z12: file=demand_z12_C.csv
+      sink_use_equals::z13: file=demand_z13_C.csv
+      sink_use_equals::z14: file=demand_z14_C.csv
+      sink_use_equals::z15: file=demand_z15_C.csv
+      sink_use_equals::z16: file=demand_z16_C.csv
+      sink_use_equals::z17: file=demand_z17_C.csv
+      sink_use_equals::z1: file=demand_z1_C.csv
+      sink_use_equals::z2: file=demand_z2_C.csv
+      sink_use_equals::z3: file=demand_z3_C.csv
+      sink_use_equals::z4: file=demand_z4_C.csv
+      sink_use_equals::z5: file=demand_z5_C.csv
+      sink_use_equals::z6: file=demand_z6_C.csv
+      sink_use_equals::z7: file=demand_z7_C.csv
+      sink_use_equals::z8: file=demand_z8_C.csv
+      sink_use_equals::z9: file=demand_z9_C.csv
+  demand_D:
+    description: District heating electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_D.csv
+      sink_use_equals::z11: file=demand_z11_D.csv
+      sink_use_equals::z12: file=demand_z12_D.csv
+      sink_use_equals::z13: file=demand_z13_D.csv
+      sink_use_equals::z14: file=demand_z14_D.csv
+      sink_use_equals::z15: file=demand_z15_D.csv
+      sink_use_equals::z16: file=demand_z16_D.csv
+      sink_use_equals::z17: file=demand_z17_D.csv
+      sink_use_equals::z1: file=demand_z1_D.csv
+      sink_use_equals::z2: file=demand_z2_D.csv
+      sink_use_equals::z3: file=demand_z3_D.csv
+      sink_use_equals::z4: file=demand_z4_D.csv
+      sink_use_equals::z5: file=demand_z5_D.csv
+      sink_use_equals::z6: file=demand_z6_D.csv
+      sink_use_equals::z7: file=demand_z7_D.csv
+      sink_use_equals::z8: file=demand_z8_D.csv
+      sink_use_equals::z9: file=demand_z9_D.csv
+  demand_E:
+    description: Electric vehicles electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_E.csv
+      sink_use_equals::z11: file=demand_z11_E.csv
+      sink_use_equals::z12: file=demand_z12_E.csv
+      sink_use_equals::z13: file=demand_z13_E.csv
+      sink_use_equals::z14: file=demand_z14_E.csv
+      sink_use_equals::z15: file=demand_z15_E.csv
+      sink_use_equals::z16: file=demand_z16_E.csv
+      sink_use_equals::z17: file=demand_z17_E.csv
+      sink_use_equals::z1: file=demand_z1_E.csv
+      sink_use_equals::z2: file=demand_z2_E.csv
+      sink_use_equals::z3: file=demand_z3_E.csv
+      sink_use_equals::z4: file=demand_z4_E.csv
+      sink_use_equals::z5: file=demand_z5_E.csv
+      sink_use_equals::z6: file=demand_z6_E.csv
+      sink_use_equals::z7: file=demand_z7_E.csv
+      sink_use_equals::z8: file=demand_z8_E.csv
+      sink_use_equals::z9: file=demand_z9_E.csv
+  demand_H:
+    description: Heat pumps electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_H.csv
+      sink_use_equals::z11: file=demand_z11_H.csv
+      sink_use_equals::z12: file=demand_z12_H.csv
+      sink_use_equals::z13: file=demand_z13_H.csv
+      sink_use_equals::z14: file=demand_z14_H.csv
+      sink_use_equals::z15: file=demand_z15_H.csv
+      sink_use_equals::z16: file=demand_z16_H.csv
+      sink_use_equals::z17: file=demand_z17_H.csv
+      sink_use_equals::z1: file=demand_z1_H.csv
+      sink_use_equals::z2: file=demand_z2_H.csv
+      sink_use_equals::z3: file=demand_z3_H.csv
+      sink_use_equals::z4: file=demand_z4_H.csv
+      sink_use_equals::z5: file=demand_z5_H.csv
+      sink_use_equals::z6: file=demand_z6_H.csv
+      sink_use_equals::z7: file=demand_z7_H.csv
+      sink_use_equals::z8: file=demand_z8_H.csv
+      sink_use_equals::z9: file=demand_z9_H.csv
+  demand_I:
+    description: Industrial electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_I.csv
+      sink_use_equals::z11: file=demand_z11_I.csv
+      sink_use_equals::z12: file=demand_z12_I.csv
+      sink_use_equals::z13: file=demand_z13_I.csv
+      sink_use_equals::z14: file=demand_z14_I.csv
+      sink_use_equals::z15: file=demand_z15_I.csv
+      sink_use_equals::z16: file=demand_z16_I.csv
+      sink_use_equals::z17: file=demand_z17_I.csv
+      sink_use_equals::z1: file=demand_z1_I.csv
+      sink_use_equals::z2: file=demand_z2_I.csv
+      sink_use_equals::z3: file=demand_z3_I.csv
+      sink_use_equals::z4: file=demand_z4_I.csv
+      sink_use_equals::z5: file=demand_z5_I.csv
+      sink_use_equals::z6: file=demand_z6_I.csv
+      sink_use_equals::z7: file=demand_z7_I.csv
+      sink_use_equals::z8: file=demand_z8_I.csv
+      sink_use_equals::z9: file=demand_z9_I.csv
+  demand_R:
+    description: Residential electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_R.csv
+      sink_use_equals::z11: file=demand_z11_R.csv
+      sink_use_equals::z12: file=demand_z12_R.csv
+      sink_use_equals::z13: file=demand_z13_R.csv
+      sink_use_equals::z14: file=demand_z14_R.csv
+      sink_use_equals::z15: file=demand_z15_R.csv
+      sink_use_equals::z16: file=demand_z16_R.csv
+      sink_use_equals::z17: file=demand_z17_R.csv
+      sink_use_equals::z1: file=demand_z1_R.csv
+      sink_use_equals::z2: file=demand_z2_R.csv
+      sink_use_equals::z3: file=demand_z3_R.csv
+      sink_use_equals::z4: file=demand_z4_R.csv
+      sink_use_equals::z5: file=demand_z5_R.csv
+      sink_use_equals::z6: file=demand_z6_R.csv
+      sink_use_equals::z7: file=demand_z7_R.csv
+      sink_use_equals::z8: file=demand_z8_R.csv
+      sink_use_equals::z9: file=demand_z9_R.csv
+  demand_T:
+    description: Transmission direct connects electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_T.csv
+      sink_use_equals::z11: file=demand_z11_T.csv
+      sink_use_equals::z13: file=demand_z13_T.csv
+      sink_use_equals::z14: file=demand_z14_T.csv
+      sink_use_equals::z17: file=demand_z17_T.csv
+      sink_use_equals::z2: file=demand_z2_T.csv
+      sink_use_equals::z4: file=demand_z4_T.csv
+      sink_use_equals::z5: file=demand_z5_T.csv
+      sink_use_equals::z6: file=demand_z6_T.csv
+      sink_use_equals::z7: file=demand_z7_T.csv
+      sink_use_equals::z8: file=demand_z8_T.csv
+      sink_use_equals::z9: file=demand_z9_T.csv
+  demand_Z:
+    description: Electrolyzers electricity demand
+    essentials:
+      carrier: electricity
+      parent: demand
+    constraints:
+      sink_use_equals::z10: file=demand_z10_Z.csv
+      sink_use_equals::z11: file=demand_z11_Z.csv
+      sink_use_equals::z12: file=demand_z12_Z.csv
+      sink_use_equals::z13: file=demand_z13_Z.csv
+      sink_use_equals::z14: file=demand_z14_Z.csv
+      sink_use_equals::z15: file=demand_z15_Z.csv
+      sink_use_equals::z16: file=demand_z16_Z.csv
+      sink_use_equals::z17: file=demand_z17_Z.csv
+      sink_use_equals::z1: file=demand_z1_Z.csv
+      sink_use_equals::z2: file=demand_z2_Z.csv
+      sink_use_equals::z3: file=demand_z3_Z.csv
+      sink_use_equals::z4: file=demand_z4_Z.csv
+      sink_use_equals::z5: file=demand_z5_Z.csv
+      sink_use_equals::z6: file=demand_z6_Z.csv
+      sink_use_equals::z7: file=demand_z7_Z.csv
+      sink_use_equals::z8: file=demand_z8_Z.csv
+      sink_use_equals::z9: file=demand_z9_Z.csv
+constraints:
+  limit_dirty_generation:
+    description: Limit dirty generation to 5% of total generation
+    foreach:
+    - timesteps
+    expression: 'sum(model_output:flow, where={"techs__category": "fossil"}, dims=["techs",
+      "nodes"]) <= 0.05 * sum(model_output:flow, dims=["techs", "nodes"])'
+LDES:
+  essentials:
+    name: LDES
+    storage: true
+  children:
+  - Pumped_Hydro
+  - CAES
+  - LAES

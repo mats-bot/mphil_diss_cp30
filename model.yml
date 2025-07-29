@@ -1,21 +1,26 @@
 model:
   name: "CP30-main-rep"
+  years: [2030]
   timestep: 1h
   calliope_version: 0.7.0.dev6
 
+  techs: techs.yaml
+  spatial: spatial.yaml
+  demand: demand.yaml
 
-# need to include which techs not to allow investment for  e.g. need to include ffs here
-# techs:
-#   hydro_run_of_river:
-#     constraints:
-#       energy_cap_max: 0  
+  # constraints:
+  #   limit_dirty_generation:
+  #     description: "Limit dirty generation to 5% of total generation"
+  #     foreach: [timesteps]
+  #     expression: >
+  #       sum(model_output:flow, where={"techs__category": "fossil"}, dims=["techs", "nodes"]) 
+  #       <= 0.05 * sum(model_output:flow, dims=["techs", "nodes"])
 
-# LDES:
-#   essentials:
-#     name: LDES
-#     storage: true
-#   children:
-#     - Pumped_Hydro
-#     - Hydrogen
-#     - Thermal_Storage
-#     - Other_LDES_Tech
+  # LDES:
+  #   essentials:
+  #     name: LDES
+  #     storage: true
+  #   children:
+  #      - Pumped_Hydro
+  #      - CAES
+  #      - LAES
