@@ -75,7 +75,9 @@ rule generate_offshore_wind_project_defs:
         "data/processed/techs/offshore_wind_projects.csv",
         "data/processed/spatial/offshore_cfs_2030.csv"
     output:
-        "techs/offshore_wind.yaml"
+        "techs/offshore_wind.yaml",
+        "data/processed/techs/offshore_wind_projects_aggregated.csv",
+        "data/processed/spatial/offshore_cfs_2030_aggregated.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:
