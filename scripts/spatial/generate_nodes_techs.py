@@ -1,21 +1,24 @@
-import yaml
 import re
+
 import pandas as pd
+import yaml
+
 
 # Func to clean names for calliope
 def sanitize_tech_name(name):
-    name = re.sub(r"\([^)]*\)", "", name)      
-    name = re.sub(r"[ \-]", "_", name)         
-    name = re.sub(r"[^\w]", "", name)           
+    name = re.sub(r"\([^)]*\)", "", name)
+    name = re.sub(r"[ \-]", "_", name)
+    name = re.sub(r"[^\w]", "", name)
     name = name.lower().strip("_")
     if not name or not name[0].isalpha():
         name = "t_" + name
     return name
 
-with open(snakemake.input.nodes_file) as f:
-    locations = yaml.safe_load(f).get("locations", {})
 
-nodes = list(locations.keys()) 
+with open(snakemake.input.nodes_file) as f:
+    locations = yaml.safe_load(f).get("nodes", {})
+
+nodes = list(locations.keys())
 
 
 all_techs = {}
@@ -30,7 +33,7 @@ offshore_children = {k for k in all_techs.keys() if k.startswith(offshore_parent
 other_techs = set(all_techs.keys()) - offshore_children - {offshore_parent}
 
 df_sites = pd.read_csv(snakemake.input.offshore_df)
-df_sites['tzone'] = df_sites['tzone'].str.strip()
+df_sites["tzone"] = df_sites["tzone"].str.strip()
 
 site_to_zone = {}
 for _, row in df_sites.iterrows():
@@ -56,7 +59,7 @@ nodes_yaml = {}
 for node in nodes:
     nodes_yaml[node] = {
         "coordinates": locations[node]["coordinates"],
-        "techs": techs_per_node.get(node, {})
+        "techs": techs_per_node.get(node, {}),
     }
 
 with open(snakemake.output[0], "w") as f:
