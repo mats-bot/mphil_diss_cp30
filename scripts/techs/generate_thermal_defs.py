@@ -69,7 +69,7 @@ for tech in techs:
 
     flow_cap_max = {
         "data": flow_cap_data,
-        "dims": ["nodes"],
+        "dims": ["carriers"],
         "index": zones
     }
 
@@ -81,7 +81,7 @@ for tech in techs:
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
             "dims": ["costs"]
@@ -91,13 +91,14 @@ for tech in techs:
             "index": "monetary",
             "dims": ["costs"]
         },
+        "flow_cap_max": flow_cap_max
     }
 
     if tech_name not in disallow_investment:
         techs_yaml[f"{tech_name}_new"] = {
             "parent": tech_name,
             "base_tech": "conversion",
-            "cost_energy_cap": {
+            "cost_flow_cap": {
                 "data": float(df.loc["capex", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
@@ -107,7 +108,7 @@ for tech in techs:
                 "index": "monetary",
                 "dims": ["costs"]
             },
-            "cost_om_prod": {
+            "cost_flow_out": {
                 "data": float(df.loc["om_prod", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
@@ -116,7 +117,7 @@ for tech in techs:
                 "data": float(df.loc["fuel_cost", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
-            },
+            }
         }
 
 with open(snakemake.output[0], "w") as f:

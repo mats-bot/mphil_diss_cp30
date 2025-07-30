@@ -6,14 +6,14 @@ techs:
     name: battery
     carrier_in: electricity
     carrier_out: electricity
-    energy_eff: 0.95
+    flow_in_eff: 0.9746794344808963
+    flow_out_eff: 0.9746794344808963
     storage_loss: 0.0001190476190476
-    charge_rate: 0.25
     lifetime: 25
   battery_existing:
     parent: battery
     base_tech: storage
-    cost_energy_cap:
+    cost_flow_cap:
       data: 0
       index: monetary
       dims:
@@ -28,12 +28,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 774308.1371334159
       index: monetary
       dims:
       - costs
-    cost_om_con:
+    cost_flow_in:
       data: 0
       index: monetary
       dims:
@@ -101,8 +101,8 @@ techs:
       index: *id001
   battery_new:
     parent: battery
-    cost_energy_cap:
-      data: 119833.40217540962
+    cost_flow_in:
+      data: 774308.1371334159
       index: monetary
       dims:
       - costs
@@ -116,12 +116,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
-      data: 774308.1371334159
-      index: monetary
-      dims:
-      - costs
-    cost_om_con:
+    cost_flow_out:
       data: 0
       index: monetary
       dims:
@@ -141,14 +136,14 @@ techs:
     name: pumped_hydro
     carrier_in: electricity
     carrier_out: electricity
-    energy_eff: 0.825
+    flow_in_eff: 0.9082951062292475
+    flow_out_eff: 0.9082951062292475
     storage_loss: 0.0005208333333333
-    charge_rate: 0.125
     lifetime: 80
   pumped_hydro_existing:
     parent: pumped_hydro
     base_tech: storage
-    cost_energy_cap:
+    cost_flow_cap:
       data: 0
       index: monetary
       dims:
@@ -163,12 +158,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 0.9217954013493048
       index: monetary
       dims:
       - costs
-    cost_om_con:
+    cost_flow_in:
       data: 0
       index: monetary
       dims:
@@ -224,14 +219,14 @@ techs:
     name: caes
     carrier_in: electricity
     carrier_out: electricity
-    energy_eff: 0.75
+    flow_in_eff: 0.8660254037844386
+    flow_out_eff: 0.8660254037844386
     storage_loss: 0.03125
-    charge_rate: 0.1666666666666666
     lifetime: 25
   caes_existing:
     parent: caes
     base_tech: storage
-    cost_energy_cap:
+    cost_flow_cap:
       data: 0
       index: monetary
       dims:
@@ -246,12 +241,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 6.083849648905411
       index: monetary
       dims:
       - costs
-    cost_om_con:
+    cost_flow_in:
       data: 0
       index: monetary
       dims:
@@ -302,8 +297,8 @@ techs:
       index: *id001
   caes_new:
     parent: caes
-    cost_energy_cap:
-      data: 1832068.3601817435
+    cost_flow_in:
+      data: 6.083849648905411
       index: monetary
       dims:
       - costs
@@ -317,12 +312,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
-      data: 6.083849648905411
-      index: monetary
-      dims:
-      - costs
-    cost_om_con:
+    cost_flow_out:
       data: 0
       index: monetary
       dims:
@@ -342,14 +332,14 @@ techs:
     name: laes
     carrier_in: electricity
     carrier_out: electricity
-    energy_eff: 0.55
+    flow_in_eff: 0.7416198487095663
+    flow_out_eff: 0.7416198487095663
     storage_loss: 0.0062499999999999
-    charge_rate: 0.0714285714285714
     lifetime: 35
   laes_existing:
     parent: laes
     base_tech: storage
-    cost_energy_cap:
+    cost_flow_cap:
       data: 0
       index: monetary
       dims:
@@ -364,12 +354,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 0
       index: monetary
       dims:
       - costs
-    cost_om_con:
+    cost_flow_in:
       data: 146.01239157372987
       index: monetary
       dims:
@@ -420,8 +410,8 @@ techs:
       index: *id001
   laes_new:
     parent: laes
-    cost_energy_cap:
-      data: 1695487.012987013
+    cost_flow_in:
+      data: 0
       index: monetary
       dims:
       - costs
@@ -435,12 +425,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    cost_om_con:
+    cost_flow_out:
       data: 146.01239157372987
       index: monetary
       dims:

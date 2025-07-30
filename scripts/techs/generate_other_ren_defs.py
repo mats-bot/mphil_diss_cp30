@@ -50,12 +50,12 @@ for tech in techs:
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_fuel": {
+        "cost_source": {
             "data": float(df.loc["fuel_cost", tech]),
             "index": "monetary",
             "dims": ["costs"]

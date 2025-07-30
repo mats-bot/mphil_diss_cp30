@@ -1,5 +1,6 @@
 import pandas as pd
 import yaml
+import numpy as np
 
 df = pd.read_csv(snakemake.input[0])
 
@@ -37,9 +38,9 @@ for _, row in df.iterrows():
         "name": tech,
         "carrier_in": "electricity",
         "carrier_out": "electricity",
-        "energy_eff": float(row["energy_eff"]),
+        "flow_in_eff": float(np.sqrt(float(row["energy_eff"]))),
+        "flow_out_eff": float(np.sqrt(float(row["energy_eff"]))),
         "storage_loss": float(row["storage_loss"]),
-        "charge_rate": float(row["charge_rate"]),
         "lifetime": int(row["lifetime"]),
     }
 
@@ -73,11 +74,11 @@ for _, row in df.iterrows():
     storage_techs[f"{tech}_existing"] = {
         "parent": tech,
         "base_tech": "storage",
-        "cost_energy_cap": make_cost_dict(0),
+        "cost_flow_cap": make_cost_dict(0),
         "cost_storage_cap": make_cost_dict(0),
         "cost_om_annual": make_cost_dict(float(row["om_annual"]) if pd.notna(row["om_annual"]) else 0),
-        "cost_om_prod": make_cost_dict(float(row["om_prod"]) if pd.notna(row["om_prod"]) else 0),
-        "cost_om_con": make_cost_dict(float(row["om_con"]) if pd.notna(row["om_con"]) else 0),
+        "cost_flow_out": make_cost_dict(float(row["om_prod"]) if pd.notna(row["om_prod"]) else 0),
+        "cost_flow_in": make_cost_dict(float(row["om_con"]) if pd.notna(row["om_con"]) else 0),
         "flow_cap_max": flow_cap_max,
         "storage_cap_max": storage_cap_max,
     }
@@ -86,11 +87,11 @@ for _, row in df.iterrows():
     if tech not in disallow_investment:
         storage_techs[f"{tech}_new"] = {
             "parent": tech,
-            "cost_energy_cap": make_cost_dict(float(row["cost_energy_cap"]) if pd.notna(row["cost_energy_cap"]) else 0),
+            "cost_flow_in": make_cost_dict(float(row["cost_energy_cap"]) if pd.notna(row["cost_energy_cap"]) else 0),
             "cost_storage_cap": make_cost_dict(float(row["cost_storage_cap"]) if pd.notna(row["cost_storage_cap"]) else 0),
             "cost_om_annual": make_cost_dict(float(row["om_annual"]) if pd.notna(row["om_annual"]) else 0),
-            "cost_om_prod": make_cost_dict(float(row["om_prod"]) if pd.notna(row["om_prod"]) else 0),
-            "cost_om_con": make_cost_dict(float(row["om_con"]) if pd.notna(row["om_con"]) else 0),
+            "cost_flow_in": make_cost_dict(float(row["om_prod"]) if pd.notna(row["om_prod"]) else 0),
+            "cost_flow_out": make_cost_dict(float(row["om_con"]) if pd.notna(row["om_con"]) else 0),
             "flow_cap_min": float(row["energy_cap_equals"]),
             "flow_cap_max": float(row["energy_cap_equals"]),
             "storage_cap_min": float(row["storage_cap_equals"]),

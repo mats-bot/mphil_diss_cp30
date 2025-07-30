@@ -15,7 +15,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 7.198924731182797
       index: monetary
       dims:
@@ -61,13 +61,17 @@ techs:
       - z9
   onshore_wind_new:
     parent: onshore_wind
-    cost_energy_cap: 90351.3935351122
+    cost_flow_cap:
+      data: 90351.3935351122
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 36834.49820788531
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 7.198924731182797
       index: monetary
       dims:
@@ -88,7 +92,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 0.0
       index: monetary
       dims:
@@ -117,13 +121,17 @@ techs:
       index: *id001
   solar_pv_new:
     parent: solar_pv
-    cost_energy_cap: 84527.37455197134
+    cost_flow_cap:
+      data: 84527.37455197134
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 11158.333333333336
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 0.0
       index: monetary
       dims:

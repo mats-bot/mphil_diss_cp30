@@ -66,7 +66,7 @@ for tech in renewable_techs:
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {                          
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
             "dims": ["costs"]
@@ -80,13 +80,17 @@ for tech in renewable_techs:
 
     techs_yaml[f"{tech_base}_new"] = {
         "parent": tech_base,
-        "cost_energy_cap": float(df.loc["capex", tech]),
+        "cost_flow_cap": {
+            "data": float(df.loc["capex", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
         "cost_om_annual": {
             "data": float(df.loc["om_annual", tech]),
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
             "dims": ["costs"]

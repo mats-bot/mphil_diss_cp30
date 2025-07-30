@@ -61,12 +61,12 @@ for tech in fossil_techs:
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_source": {   # fuel cost
+        "cost_source": {
             "data": float(df.loc["fuel_cost", tech]),
             "index": "monetary",
             "dims": ["costs"]
@@ -79,7 +79,7 @@ for tech in fossil_techs:
         techs_yaml[f"{tech_name}_new"] = {
             "parent": tech_name,
             "base_tech": "conversion",
-            "cost_energy_cap": {
+            "cost_flow_cap": {
                 "data": float(df.loc["capex", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
@@ -89,7 +89,7 @@ for tech in fossil_techs:
                 "index": "monetary",
                 "dims": ["costs"]
             },
-            "cost_om_prod": {
+            "cost_flow_out": {
                 "data": float(df.loc["om_prod", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
@@ -98,8 +98,9 @@ for tech in fossil_techs:
                 "data": float(df.loc["fuel_cost", tech]),
                 "index": "monetary",
                 "dims": ["costs"]
-            },
+            }
         }
+
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump({"techs": techs_yaml}, f, sort_keys=False)

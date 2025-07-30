@@ -8,7 +8,7 @@ techs:
     resource_unit: per_unit
     lifetime: 30
     resource: data/processed/spatial/offshore_cfs_2030.csv
-    cost_energy_cap:
+    cost_flow_cap:
       data: 79104.18458781364
       index: monetary
       dims:
@@ -18,7 +18,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 1.199820788530466
       index: monetary
       dims:
@@ -72,7 +72,7 @@ techs:
     resource_column: Hywind Scotland Pilot Park (Hywind 2) Demonstrator
     flow_cap_min: 30.0
     flow_cap_max: 30.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_the_east_anglia_array___norfolk_vanguard:
     category: renewable
     cp30_category: renewable
@@ -92,7 +92,7 @@ techs:
     resource_column: Beatrice Demonstrator
     flow_cap_min: 10.0
     flow_cap_max: 10.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_burbo_bank:
     category: renewable
     cp30_category: renewable
@@ -102,7 +102,7 @@ techs:
     resource_column: Burbo Bank
     flow_cap_min: 90.0
     flow_cap_max: 90.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_gunfleet_sands____extension:
     category: renewable
     cp30_category: renewable
@@ -112,7 +112,7 @@ techs:
     resource_column: Gunfleet Sands - (Demo) Extension
     flow_cap_min: 12.0
     flow_cap_max: 12.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_gunfleet_sands_ii:
     category: renewable
     cp30_category: renewable
@@ -122,7 +122,7 @@ techs:
     resource_column: "Gunfleet Sands II\_"
     flow_cap_min: 64.8
     flow_cap_max: 64.8
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_gunfleet_sands_offshore_wind_scheme:
     category: renewable
     cp30_category: renewable
@@ -132,7 +132,7 @@ techs:
     resource_column: Gunfleet Sands Offshore Wind Scheme
     flow_cap_min: 108.0
     flow_cap_max: 108.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_inner_dowsing:
     category: renewable
     cp30_category: renewable
@@ -142,7 +142,7 @@ techs:
     resource_column: "Inner Dowsing\_"
     flow_cap_min: 97.2
     flow_cap_max: 97.2
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_kentish_flats:
     category: renewable
     cp30_category: renewable
@@ -152,7 +152,7 @@ techs:
     resource_column: "Kentish Flats\_"
     flow_cap_min: 90.0
     flow_cap_max: 90.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_lynn:
     category: renewable
     cp30_category: renewable
@@ -162,7 +162,7 @@ techs:
     resource_column: Lynn
     flow_cap_min: 97.2
     flow_cap_max: 97.2
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_north_hoyle:
     category: renewable
     cp30_category: renewable
@@ -172,7 +172,7 @@ techs:
     resource_column: "North Hoyle\_"
     flow_cap_min: 60.0
     flow_cap_max: 60.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_rhyl_flats:
     category: renewable
     cp30_category: renewable
@@ -182,7 +182,7 @@ techs:
     resource_column: "Rhyl Flats\_"
     flow_cap_min: 90.0
     flow_cap_max: 90.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_robin_rigg_east:
     category: renewable
     cp30_category: renewable
@@ -192,7 +192,7 @@ techs:
     resource_column: Robin Rigg East
     flow_cap_min: 84.0
     flow_cap_max: 84.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_robin_rigg_west:
     category: renewable
     cp30_category: renewable
@@ -202,7 +202,7 @@ techs:
     resource_column: Robin Rigg West
     flow_cap_min: 90.0
     flow_cap_max: 90.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_scroby_sands:
     category: renewable
     cp30_category: renewable
@@ -212,7 +212,7 @@ techs:
     resource_column: "Scroby Sands\_"
     flow_cap_min: 60.0
     flow_cap_max: 60.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_thanet:
     category: renewable
     cp30_category: renewable
@@ -222,7 +222,7 @@ techs:
     resource_column: "Thanet\_"
     flow_cap_min: 300.0
     flow_cap_max: 300.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_walney1:
     category: renewable
     cp30_category: renewable
@@ -232,7 +232,7 @@ techs:
     resource_column: "Walney\_1"
     flow_cap_min: 183.6
     flow_cap_max: 183.6
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_hornsea_2___optimus_and_breesea:
     category: renewable
     cp30_category: renewable
@@ -242,7 +242,7 @@ techs:
     resource_column: Hornsea 2 - Optimus and Breesea
     flow_cap_min: 1320.0
     flow_cap_max: 1320.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_kentish_flats_2:
     category: renewable
     cp30_category: renewable
@@ -252,7 +252,7 @@ techs:
     resource_column: Kentish Flats 2
     flow_cap_min: 49.5
     flow_cap_max: 49.5
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_european_offshore_wind_deployment_centre:
     category: renewable
     cp30_category: renewable
@@ -263,7 +263,7 @@ techs:
       - Demonstration site)
     flow_cap_min: 96.8
     flow_cap_max: 96.8
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_walney2:
     category: renewable
     cp30_category: renewable
@@ -273,7 +273,7 @@ techs:
     resource_column: "Walney\_2"
     flow_cap_min: 183.6
     flow_cap_max: 183.6
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_ormonde_offshore:
     category: renewable
     cp30_category: renewable
@@ -283,7 +283,7 @@ techs:
     resource_column: Ormonde Offshore
     flow_cap_min: 150.0
     flow_cap_max: 150.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_greater_gabbard_wind_farm:
     category: renewable
     cp30_category: renewable
@@ -293,7 +293,7 @@ techs:
     resource_column: Greater Gabbard Wind Farm
     flow_cap_min: 504.0
     flow_cap_max: 504.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_london_arrayphase_1:
     category: renewable
     cp30_category: renewable
@@ -303,7 +303,7 @@ techs:
     resource_column: "London Array\_Phase 1"
     flow_cap_min: 630.0
     flow_cap_max: 630.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_sheringham_shoal:
     category: renewable
     cp30_category: renewable
@@ -313,7 +313,7 @@ techs:
     resource_column: "Sheringham Shoal\_"
     flow_cap_min: 317.0
     flow_cap_max: 317.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_centrica:
     category: renewable
     cp30_category: renewable
@@ -323,7 +323,7 @@ techs:
     resource_column: Centrica (Lincs)
     flow_cap_min: 270.0
     flow_cap_max: 270.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_teeside_offshore_wind_farm:
     category: renewable
     cp30_category: renewable
@@ -333,7 +333,7 @@ techs:
     resource_column: Teeside Offshore Wind Farm
     flow_cap_min: 62.0
     flow_cap_max: 62.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_race_bank:
     category: renewable
     cp30_category: renewable
@@ -343,7 +343,7 @@ techs:
     resource_column: Race Bank (Phase 2)
     flow_cap_min: 283.5
     flow_cap_max: 283.5
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_dogger_bank_c:
     category: renewable
     cp30_category: renewable
@@ -363,7 +363,7 @@ techs:
     resource_column: West of Duddon Sands
     flow_cap_min: 389.0
     flow_cap_max: 389.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_rampion_offshore_wind_farm:
     category: renewable
     cp30_category: renewable
@@ -373,7 +373,7 @@ techs:
     resource_column: Rampion Offshore Wind Farm (Hastings Zone)
     flow_cap_min: 400.0
     flow_cap_max: 400.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_beatrice:
     category: renewable
     cp30_category: renewable
@@ -383,7 +383,7 @@ techs:
     resource_column: Beatrice
     flow_cap_min: 588.0
     flow_cap_max: 588.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_neart_na_gaoithe:
     category: renewable
     cp30_category: renewable
@@ -403,7 +403,7 @@ techs:
     resource_column: "Blyth Offshore\_Wind Test Site"
     flow_cap_min: 41.5
     flow_cap_max: 41.5
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_east_anglia_1:
     category: renewable
     cp30_category: renewable
@@ -413,7 +413,7 @@ techs:
     resource_column: East Anglia 1 (EA 1)
     flow_cap_min: 714.0
     flow_cap_max: 714.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_hornsea_1___heron__njord:
     category: renewable
     cp30_category: renewable
@@ -423,7 +423,7 @@ techs:
     resource_column: Hornsea 1 - Heron & Njord
     flow_cap_min: 1218.0
     flow_cap_max: 1218.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_galloper_wind_farm:
     category: renewable
     cp30_category: renewable
@@ -433,7 +433,7 @@ techs:
     resource_column: Galloper Wind Farm
     flow_cap_min: 353.0
     flow_cap_max: 353.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_inch_cape:
     category: renewable
     cp30_category: renewable
@@ -453,7 +453,7 @@ techs:
     resource_column: Levenmouth demonstration turbine (Fife Energy Park)
     flow_cap_min: 7.0
     flow_cap_max: 7.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_triton_knoll:
     category: renewable
     cp30_category: renewable
@@ -463,7 +463,7 @@ techs:
     resource_column: "Triton Knoll\_"
     flow_cap_min: 857.0
     flow_cap_max: 857.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_walney_3:
     category: renewable
     cp30_category: renewable
@@ -473,7 +473,7 @@ techs:
     resource_column: Walney 3
     flow_cap_min: 659.0
     flow_cap_max: 659.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_moray_east:
     category: renewable
     cp30_category: renewable
@@ -483,7 +483,7 @@ techs:
     resource_column: Moray East
     flow_cap_min: 950.0
     flow_cap_max: 950.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_dudgeon_east:
     category: renewable
     cp30_category: renewable
@@ -493,7 +493,7 @@ techs:
     resource_column: "Dudgeon East\_"
     flow_cap_min: 402.0
     flow_cap_max: 402.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_burbo_bank_extension:
     category: renewable
     cp30_category: renewable
@@ -503,7 +503,7 @@ techs:
     resource_column: Burbo Bank Extension (Burbo Bank 2)
     flow_cap_min: 258.0
     flow_cap_max: 258.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_seagreen:
     category: renewable
     cp30_category: renewable
@@ -513,7 +513,7 @@ techs:
     resource_column: Seagreen
     flow_cap_min: 1075.0
     flow_cap_max: 1075.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_dogger_bank_a__b:
     category: renewable
     cp30_category: renewable
@@ -533,7 +533,7 @@ techs:
     resource_column: "Gwynt y Mor\_"
     flow_cap_min: 576.0
     flow_cap_max: 576.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_humber_gateway_a:
     category: renewable
     cp30_category: renewable
@@ -543,7 +543,7 @@ techs:
     resource_column: Humber Gateway A
     flow_cap_min: 219.0
     flow_cap_max: 219.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_westermost_rough_a:
     category: renewable
     cp30_category: renewable
@@ -553,7 +553,7 @@ techs:
     resource_column: Westermost Rough A
     flow_cap_min: 210.0
     flow_cap_max: 210.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_barrow:
     category: renewable
     cp30_category: renewable
@@ -563,7 +563,7 @@ techs:
     resource_column: "Barrow\_"
     flow_cap_min: 90.0
     flow_cap_max: 90.0
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_east_anglia_2:
     category: renewable
     cp30_category: renewable
@@ -583,7 +583,7 @@ techs:
     resource_column: Kincardine Offshore Windfarm
     flow_cap_min: 49.5
     flow_cap_max: 49.5
-    cost_energy_cap: 0
+    cost_flow_cap: 0
   offshorewind_moray_west_offshore_wind_farm_project:
     category: renewable
     cp30_category: renewable
@@ -888,3 +888,10 @@ techs:
     resource_column: Moray Firth - Caledonia South Offshore Wind Farm
     flow_cap_per_unit: 1100.0
     units_max: 1
+data_tables:
+  offshore_wind_cfs:
+    data: data/processed/spatial/offshore_cfs_2030.csv
+    rows: time
+    columns: techs
+    add_dims:
+      parameters: resource

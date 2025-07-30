@@ -16,7 +16,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -68,7 +68,7 @@ techs:
   gas_ccgt_new:
     parent: gas_ccgt
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 18029.307048984472
       index: monetary
       dims:
@@ -78,7 +78,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -105,7 +105,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 4.799283154121865
       index: monetary
       dims:
@@ -140,7 +140,7 @@ techs:
   gas_ccgt_chp_new:
     parent: gas_ccgt_chp
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 111741.59540877285
       index: monetary
       dims:
@@ -150,7 +150,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 4.799283154121865
       index: monetary
       dims:
@@ -177,7 +177,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -212,7 +212,7 @@ techs:
   gas_ocgt_new:
     parent: gas_ocgt
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 180920.97670250895
       index: monetary
       dims:
@@ -222,7 +222,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -249,7 +249,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 0.0
       index: monetary
       dims:
@@ -298,7 +298,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 4.799283154121865
       index: monetary
       dims:

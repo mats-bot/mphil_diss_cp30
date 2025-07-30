@@ -16,7 +16,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 8.398745519713263
       index: monetary
       dims:
@@ -26,10 +26,49 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 29.3
+      - 14.5
+      - 72.4
+      - 104.2
+      - 120.19
+      - 5.7
+      - 6.2
+      - 0.0
+      - 115.8
+      - 1.2
+      - 6.8
+      - 200.5
+      - 58.0
+      - 500.9
+      - 65.995
+      - 2769.4
+      - 73.5
+      dims:
+      - carriers
+      index: &id001
+      - z1
+      - z10
+      - z11
+      - z12
+      - z13
+      - z14
+      - z15
+      - z16
+      - z17
+      - z2
+      - z3
+      - z4
+      - z5
+      - z6
+      - z7
+      - z8
+      - z9
   biomass_new:
     parent: biomass
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 30209.534502417035
       index: monetary
       dims:
@@ -39,7 +78,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 8.398745519713263
       index: monetary
       dims:
@@ -66,7 +105,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 11.998207885304662
       index: monetary
       dims:
@@ -76,10 +115,32 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
   biomass_chp_new:
     parent: biomass_chp
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 95440.70562919868
       index: monetary
       dims:
@@ -89,7 +150,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 11.998207885304662
       index: monetary
       dims:
@@ -116,7 +177,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 32.395161290322584
       index: monetary
       dims:
@@ -126,10 +187,32 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 0.0
+      - 161.6
+      - 97.7
+      - 20.0
+      - 30.0
+      - 104.5
+      - 55.5
+      - 46.6
+      - 387.2
+      - 11.1
+      - 8.3
+      - 38.1
+      - 0.0
+      - 131.3
+      - 160.3
+      - 211.6
+      - 16.4
+      dims:
+      - carriers
+      index: *id001
   waste_new:
     parent: waste
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 222124.2582296498
       index: monetary
       dims:
@@ -139,7 +222,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 32.395161290322584
       index: monetary
       dims:
@@ -166,7 +249,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 73.18906810035844
       index: monetary
       dims:
@@ -176,10 +259,32 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
   waste_chp_new:
     parent: waste_chp
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 343676.66666666674
       index: monetary
       dims:
@@ -189,7 +294,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 73.18906810035844
       index: monetary
       dims:
@@ -216,7 +321,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -226,10 +331,32 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.9
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
   hydrogen_new:
     parent: hydrogen
     base_tech: conversion
-    cost_energy_cap:
+    cost_flow_cap:
       data: 20948.87096774194
       index: monetary
       dims:
@@ -239,7 +366,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 2.3996415770609323
       index: monetary
       dims:
@@ -266,7 +393,7 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 16.067999999999998
       index: monetary
       dims:
@@ -276,3 +403,25 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 1198.0
+      - 0.0
+      - 0.0
+      - 965.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 1200.0
+      - 2300.0
+      - 1185.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
