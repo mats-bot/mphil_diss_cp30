@@ -5,14 +5,14 @@ df = pd.read_csv(snakemake.input[0])
 
 df = df[df["CP30 technology"] != "Other_Renewables"]
 
-tech_capacities = {"locations": {}}
+tech_capacities = {"nodes": {}}
 
 # To assign storage caps, with charging time in hrs
 storage_techs = {
-    "battery_existing": 4.0,  
+    "battery_existing": 4.0,
     "pumped_hydro_existing": 8,
     "caes_existing": 6,
-    "laes_existing": 14
+    "laes_existing": 14,
 }
 
 for _, row in df.iterrows():
@@ -20,8 +20,8 @@ for _, row in df.iterrows():
     zone = row["zone"]
     cap = float(row["Installed Capacity (MWelec)"])
 
-    if zone not in tech_capacities["locations"]:
-        tech_capacities["locations"][zone] = {"techs": {}}
+    if zone not in tech_capacities["nodes"]:
+        tech_capacities["nodes"][zone] = {"techs": {}}
 
     tech_dict = {"flow_cap_max": cap}
 
@@ -29,9 +29,9 @@ for _, row in df.iterrows():
         multiplier = storage_techs[tech]
         storage_cap = cap * multiplier
         tech_dict["storage_cap_max"] = storage_cap
-    
-    tech_capacities["locations"][zone]["techs"][tech] = tech_dict
-        
+
+    tech_capacities["nodes"][zone]["techs"][tech] = tech_dict
+
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump(tech_capacities, f, sort_keys=False)
