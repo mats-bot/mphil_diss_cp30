@@ -11,9 +11,21 @@ techs:
   gas_ccgt_existing:
     parent: gas_ccgt
     base_tech: conversion
-    om_annual: 24236.37992831541
-    om_prod: 2.3996415770609323
-    fuel: 38.2890289308155
+    cost_om_annual:
+      data: 24236.37992831541
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0
@@ -56,10 +68,26 @@ techs:
   gas_ccgt_new:
     parent: gas_ccgt
     base_tech: conversion
-    cost_energy_cap: 18029.307048984472
-    om_annual: 24236.37992831541
-    om_prod: 2.3996415770609323
-    fuel: 38.2890289308155
+    cost_energy_cap:
+      data: 18029.307048984472
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 24236.37992831541
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
   gas_ccgt_chp:
     category: fossil
     cp30_category: thermal
@@ -72,9 +100,21 @@ techs:
   gas_ccgt_chp_existing:
     parent: gas_ccgt_chp
     base_tech: conversion
-    om_annual: 47272.93906810037
-    om_prod: 4.799283154121865
-    fuel: 38.2890289308155
+    cost_om_annual:
+      data: 47272.93906810037
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 4.799283154121865
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0
@@ -100,10 +140,26 @@ techs:
   gas_ccgt_chp_new:
     parent: gas_ccgt_chp
     base_tech: conversion
-    cost_energy_cap: 111741.59540877285
-    om_annual: 47272.93906810037
-    om_prod: 4.799283154121865
-    fuel: 38.2890289308155
+    cost_energy_cap:
+      data: 111741.59540877285
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 47272.93906810037
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 4.799283154121865
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
   gas_ocgt:
     category: fossil
     cp30_category: thermal
@@ -116,9 +172,21 @@ techs:
   gas_ocgt_existing:
     parent: gas_ocgt
     base_tech: conversion
-    om_annual: 20276.97132616488
-    om_prod: 2.3996415770609323
-    fuel: 38.2890289308155
+    cost_om_annual:
+      data: 20276.97132616488
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0
@@ -144,10 +212,26 @@ techs:
   gas_ocgt_new:
     parent: gas_ocgt
     base_tech: conversion
-    cost_energy_cap: 180920.97670250895
-    om_annual: 20276.97132616488
-    om_prod: 2.3996415770609323
-    fuel: 38.2890289308155
+    cost_energy_cap:
+      data: 180920.97670250895
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 20276.97132616488
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
   diesel:
     category: fossil
     cp30_category: thermal
@@ -160,9 +244,21 @@ techs:
   diesel_existing:
     parent: diesel
     base_tech: conversion
-    om_annual: 0.0
-    om_prod: 0.0
-    fuel: 38.2890289308155
+    cost_om_annual:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 129.5
@@ -197,9 +293,21 @@ techs:
   coal_existing:
     parent: coal
     base_tech: conversion
-    om_annual: 29083.6559139785
-    om_prod: 4.799283154121865
-    fuel: 57.43354339622324
+    cost_om_annual:
+      data: 29083.6559139785
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 4.799283154121865
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 57.43354339622324
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0

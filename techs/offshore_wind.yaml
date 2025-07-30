@@ -7,10 +7,22 @@ techs:
     carrier_out: electricity
     resource_unit: per_unit
     lifetime: 30
-    resource: data/processed/spatial/offshore_cfs_2013.csv
-    cost_energy_cap: 79104.18458781364
-    om_annual: 109303.67383512546
-    om_prod: 1.199820788530466
+    resource: data/processed/spatial/offshore_cfs_2030.csv
+    cost_energy_cap:
+      data: 79104.18458781364
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 109303.67383512546
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 1.199820788530466
+      index: monetary
+      dims:
+      - costs
   offshorewind_east_anglia_3:
     category: renewable
     cp30_category: renewable

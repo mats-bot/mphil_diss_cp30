@@ -12,3 +12,18 @@ rule generate_CFs:
         "../../envs/atlite_data.yaml"
     script:
         "../../scripts/techs/generate_atlite_cfs.py"
+
+
+rule shift_cfs_year:
+    input:
+        "data/processed/spatial/onshore_cf_2013.csv",
+        "data/processed/spatial/solar_cf_2013.csv",
+        "data/processed/spatial/offshore_cfs_2013.csv"
+    output:
+        "data/processed/spatial/onshore_cf_2030.csv",
+        "data/processed/spatial/solar_cf_2030.csv",
+        "data/processed/spatial/offshore_cfs_2030.csv"
+    conda:
+        "../../envs/data_processing.yaml"
+    script:
+        "../../scripts/spatial/shift_year.py"

@@ -13,11 +13,31 @@ techs:
   battery_existing:
     parent: battery
     base_tech: storage
-    cost_energy_cap: 0
-    cost_storage_cap: 0
-    om_annual: 119.83340217540965
-    om_prod: 774308.1371334159
-    om_con: 0
+    cost_energy_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 119.83340217540965
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 774308.1371334159
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 3.1
@@ -81,11 +101,31 @@ techs:
       index: *id001
   battery_new:
     parent: battery
-    cost_energy_cap: 119833.40217540962
-    cost_storage_cap: 0
-    om_annual: 119.83340217540965
-    om_prod: 774308.1371334159
-    om_con: 0
+    cost_energy_cap:
+      data: 119833.40217540962
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 119.83340217540965
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 774308.1371334159
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     flow_cap_min: 30.0
     flow_cap_max: 30.0
     storage_cap_min: 120.0
@@ -108,11 +148,31 @@ techs:
   pumped_hydro_existing:
     parent: pumped_hydro
     base_tech: storage
-    cost_energy_cap: 0
-    cost_storage_cap: 0
-    om_annual: 253.49373537105885
-    om_prod: 0.9217954013493048
-    om_con: 0
+    cost_energy_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 253.49373537105885
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0.9217954013493048
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 300.0
@@ -171,11 +231,31 @@ techs:
   caes_existing:
     parent: caes
     base_tech: storage
-    cost_energy_cap: 0
-    cost_storage_cap: 0
-    om_annual: 474.0662064082138
-    om_prod: 6.083849648905411
-    om_con: 0
+    cost_energy_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 474.0662064082138
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 6.083849648905411
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0
@@ -222,11 +302,31 @@ techs:
       index: *id001
   caes_new:
     parent: caes
-    cost_energy_cap: 1832068.3601817435
-    cost_storage_cap: 46089.77006746524
-    om_annual: 474.0662064082138
-    om_prod: 6.083849648905411
-    om_con: 0
+    cost_energy_cap:
+      data: 1832068.3601817435
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 46089.77006746524
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 474.0662064082138
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 6.083849648905411
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     flow_cap_min: 5.0
     flow_cap_max: 5.0
     storage_cap_min: 30.0
@@ -249,11 +349,31 @@ techs:
   laes_existing:
     parent: laes
     base_tech: storage
-    cost_energy_cap: 0
-    cost_storage_cap: 0
-    om_annual: 20648.216990224428
-    om_prod: 0
-    om_con: 146.01239157372987
+    cost_energy_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 20648.216990224428
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 146.01239157372987
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 0.0
@@ -300,11 +420,31 @@ techs:
       index: *id001
   laes_new:
     parent: laes
-    cost_energy_cap: 1695487.012987013
-    cost_storage_cap: 409897.9591836735
-    om_annual: 20648.216990224428
-    om_prod: 0
-    om_con: 146.01239157372987
+    cost_energy_cap:
+      data: 1695487.012987013
+      index: monetary
+      dims:
+      - costs
+    cost_storage_cap:
+      data: 409897.9591836735
+      index: monetary
+      dims:
+      - costs
+    cost_om_annual:
+      data: 20648.216990224428
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0
+      index: monetary
+      dims:
+      - costs
+    cost_om_con:
+      data: 146.01239157372987
+      index: monetary
+      dims:
+      - costs
     flow_cap_min: 50.0
     flow_cap_max: 50.0
     storage_cap_min: 700.0

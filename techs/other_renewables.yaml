@@ -11,9 +11,21 @@ techs:
   hydro_existing:
     parent: hydro
     base_tech: supply
-    om_annual: 46912.992831541225
-    om_prod: 8.398745519713263
-    fuel: 0.0
+    cost_om_annual:
+      data: 46912.992831541225
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 8.398745519713263
+      index: monetary
+      dims:
+      - costs
+    cost_fuel:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
     flow_cap_max:
       data:
       - 456.9

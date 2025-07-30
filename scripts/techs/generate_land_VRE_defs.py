@@ -1,12 +1,13 @@
 import pandas as pd
 import yaml
+import os
 
 df = pd.read_csv(snakemake.input[0], index_col=0)
 
 renewable_techs = ["Onshore_Wind", "Solar_PV"]
 
-solar_cfs = pd.read_csv(snakemake.input[1])
-onshore_cfs = pd.read_csv(snakemake.input[2])
+solar_cf_path = os.path.relpath(snakemake.input[2], os.getcwd()).replace("\\", "/")
+onshore_cf_path = os.path.relpath(snakemake.input[1], os.getcwd()).replace("\\", "/")
 
 capacity_df = pd.read_csv(snakemake.input[3])
 zones = sorted(capacity_df['zone'].unique())
@@ -31,6 +32,12 @@ for _, row in capacity_df.iterrows():
         tech_zone_capacity[tech][idx] = capacity
 
 techs_yaml = {}
+data_tables_yaml = {}
+
+cf_paths = {
+    "solar_pv": solar_cf_path,
+    "onshore_wind": onshore_cf_path
+}
 
 for tech in renewable_techs:
     tech_base = tech.lower()
@@ -42,7 +49,6 @@ for tech in renewable_techs:
         "base_tech": "supply",
         "carrier_out": "electricity",
         "energy_eff": float(df.loc["efficiency", tech]),
-        "resource": resources[tech],
         "resource_unit": "per_unit",
         "lifetime": int(df.loc["lifetime", tech])
     }
@@ -55,16 +61,52 @@ for tech in renewable_techs:
 
     techs_yaml[f"{tech_base}_existing"] = {
         "parent": tech_base,
-        "om_annual": float(df.loc["om_annual", tech]),
-        "om_prod": float(df.loc["om_prod", tech])
+        "cost_om_annual": {
+            "data": float(df.loc["om_annual", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": float(df.loc["om_prod", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "flow_cap_max": {
+            "data": tech_zone_capacity.get(tech_base, [0.0] * len(zones)),
+            "dims": ["carriers"],
+            "index": zones
+        }
     }
 
     techs_yaml[f"{tech_base}_new"] = {
         "parent": tech_base,
         "cost_energy_cap": float(df.loc["capex", tech]),
-        "om_annual": float(df.loc["om_annual", tech]),
-        "om_prod": float(df.loc["om_prod", tech])
+        "cost_om_annual": {
+            "data": float(df.loc["om_annual", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": float(df.loc["om_prod", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        }
     }
 
+    data_tables_yaml[f"{tech_base}_cf"] = {
+        "data": cf_paths[tech_base],
+        "rows": "time",
+        "columns": "nodes",
+        "add_dims": {
+            "techs": tech_base,
+            "parameters": "resource"
+        }
+    }
+
+    output_yaml = {
+    "techs": techs_yaml,
+    "data_tables": data_tables_yaml
+}
+
 with open(snakemake.output[0], "w") as f:
-    yaml.dump({"techs": techs_yaml}, f, sort_keys=False)
+    yaml.dump(output_yaml, f, sort_keys=False)
