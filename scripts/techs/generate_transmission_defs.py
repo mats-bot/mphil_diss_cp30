@@ -16,25 +16,24 @@ import yaml
 
 techs = {
     "subsea_dc_transmission": {
-        "essentials": {
-            "name": "subsea_dc_transmission",
-            "carrier": "electricity",
-            "carrier_out": "electricity",
-            "parent": "transmission"
-        }
+        "name": "subsea_dc_transmission",
+        "base_tech": "transmission",
+        "carrier_in": "electricity",
+        "carrier_out": "electricity",
+        "link_to": "null",
+        "link_from": "null"
     },
     "ac_transmission": {
-        "essentials": {
-            "name": "ac_transmission",
-            "carrier": "electricity",
-            "carrier_out": "electricity",
-            "parent": "transmission"
-        }
+        "name": "ac_transmission",
+        "base_tech": "transmission",
+        "carrier_in": "electricity",
+        "carrier_out": "electricity",
+        "link_to": "null",
+        "link_from": "null"
     }
 }
 
 with open(snakemake.output[0], "w") as f:
-    yaml.dump(techs, f, sort_keys=False)
+    yaml.dump({"techs": techs}, f, sort_keys=False)
 
-print("Transmission tech definitions written to techs_transmission.yaml")
 

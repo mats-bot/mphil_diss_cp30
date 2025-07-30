@@ -8,25 +8,26 @@ with open("config/default.yaml") as f:
     config = yaml.safe_load(f)
 target_year = str(config["default_year"])
 
-links = {}
+techs = {}
 for _, row in df.iterrows():
     zone_1 = row["Zone 1"].strip()
     zone_2 = row["Zone 2"].strip()
-    zone_pair = "-".join(sorted([zone_1, zone_2]))
-    
-    constraints = {
-        "techs": ["ac_transmission"],
-        "constraints": {}
-    }
-    
-    if not pd.isna(row.loc[target_year]):
-        constraints["constraints"]["energy_cap_max"] = float(row.loc[target_year]) / 1000  # convert to GW
-    
-    if not pd.isna(row["loss"]):
-        constraints["constraints"]["loss"] = float(row["loss"])  
-    
-    links[zone_pair] = constraints
 
+    tech_name = "_".join(sorted([zone_1, zone_2]))
+    
+    tech = {
+        "parent": "ac_transmission",
+        "link_from": zone_1,
+        "link_to": zone_2,
+    }
+
+    if not pd.isna(row.get(target_year)):
+        tech["flow_cap_max"] = float(row[target_year])
+
+    if not pd.isna(row.get("loss")):
+        tech["loss"] = float(row["loss"])
+
+    techs[tech_name] = tech
 
 with open(snakemake.output[0], 'w') as f:
-    yaml.dump({"links": links}, f, sort_keys=False, indent=2)
+    yaml.dump({"techs": techs}, f, sort_keys=False, indent=2)

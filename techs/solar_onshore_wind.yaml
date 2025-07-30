@@ -1,44 +1,39 @@
-onshore_wind:
-  category: renewable
-  cp30_category: renewable
-  essentials:
+techs:
+  onshore_wind:
+    category: renewable
+    cp30_category: renewable
     name: Onshore_Wind
+    base_tech: supply
     carrier_out: electricity
-  constraints:
     energy_eff: 0.0
     resource: data/processed/spatial/onshore_cf_2013.csv
     resource_unit: per_unit
     lifetime: 25
-onshore_wind_existing:
-  parent: onshore_wind
-  costs:
+  onshore_wind_existing:
+    parent: onshore_wind
     om_annual: 36834.49820788531
     om_prod: 7.198924731182797
-onshore_wind_new:
-  parent: onshore_wind
-  costs:
+  onshore_wind_new:
+    parent: onshore_wind
     cost_energy_cap: 90351.3935351122
     om_annual: 36834.49820788531
     om_prod: 7.198924731182797
-solar_pv:
-  category: renewable
-  cp30_category: renewable
-  essentials:
+  solar_pv:
+    category: renewable
+    cp30_category: renewable
     name: Solar_PV
+    base_tech: supply
     carrier_out: electricity
-  constraints:
     energy_eff: 0.0
     resource: data/processed/spatial/solar_cf_2013.csv
     resource_unit: per_unit
     lifetime: 35
-solar_pv_existing:
-  parent: solar_pv
-  costs:
+  solar_pv_existing:
+    parent: solar_pv
     om_annual: 11158.333333333336
     om_prod: 0.0
-solar_pv_new:
-  parent: solar_pv
-  costs:
+  solar_pv_new:
+    parent: solar_pv
     cost_energy_cap: 84527.37455197134
     om_annual: 11158.333333333336
     om_prod: 0.0

@@ -1,19 +1,34 @@
-import:
- - techs.yaml
- - spatial.yaml
- - demand.yaml
-
 config:
   init:
-    name: "CP30-main-rep"
     calliope_version: "0.7.0.dev6"
-    years: [2030]
-    timestep: 1h
+    time_subset: ['2030', '2030']
+    time_resample: 3h
   build:
     backend: gurobi
+    ensure_feasibility: true
   solve:
     solver_options:
-      Threads: 4
+      Threads: 8
+      Method: 2 
+      Crossover: 0 
+      FeasibilityTol: 1e-3
+      OptimalityTol: 1e-4
+      BarConvTol: 1e-4
+
+import:
+  - demand.yaml
+  - techs/transmission.yaml
+  - spatial/onshore_transmission.yaml
+  - techs/CCS.yaml
+  - techs/fossil_fuels.yaml
+  - techs/low_carbon_thermal.yaml
+  - techs/offshore_wind.yaml
+  - techs/other_renewables.yaml
+  - techs/solar_onshore_wind.yaml
+  - techs/storage.yaml
+  - spatial/nodes_techs.yaml
+
+
 
 
 
@@ -24,12 +39,3 @@ config:
   #     expression: >
   #       sum(model_output:flow, where={"techs__category": "fossil"}, dims=["techs", "nodes"]) 
   #       <= 0.05 * sum(model_output:flow, dims=["techs", "nodes"])
-
-  # LDES:
-  #   essentials:
-  #     name: LDES
-  #     storage: true
-  #   children:
-  #      - Pumped_Hydro
-  #      - CAES
-  #      - LAES

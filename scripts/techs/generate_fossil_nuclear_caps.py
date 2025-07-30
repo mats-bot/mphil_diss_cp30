@@ -16,9 +16,7 @@ for _, row in df.iterrows():
         locations_yaml["locations"][zone] = {"techs": {}}
     
     locations_yaml["locations"][zone]["techs"][tech] = {
-        "constraints": {
-            "energy_cap_max": cap
-        }
+        "flow_cap_max": cap
     }
 
 with open(snakemake.output[0], "w") as f:

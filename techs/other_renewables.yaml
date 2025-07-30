@@ -1,16 +1,55 @@
-hydro:
-  category: renewable
-  cp30_category: renewable
-  essentials:
+techs:
+  hydro:
+    category: renewable
+    cp30_category: renewable
+    base_tech: supply
     name: Hydro
     carrier_out: electricity
-  constraints:
     energy_eff: 1.0
     lifetime: 41
     capacity_factor_max: 0.45
-hydro_existing:
-  parent: hydro
-  costs:
-    om_cost: 46912.992831541225
+  hydro_existing:
+    parent: hydro
+    base_tech: supply
+    om_annual: 46912.992831541225
     om_prod: 8.398745519713263
     fuel: 0.0
+    flow_cap_max:
+      data:
+      - 456.9
+      - 1.7
+      - 0.0
+      - 0.0
+      - 8.4
+      - 0.0
+      - 10.0
+      - 0.0
+      - 0.0
+      - 2.0
+      - 89.8
+      - 8.2
+      - 6.1
+      - 0.0
+      - 46.4
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index:
+      - z1
+      - z10
+      - z11
+      - z12
+      - z13
+      - z14
+      - z15
+      - z16
+      - z17
+      - z2
+      - z3
+      - z4
+      - z5
+      - z6
+      - z7
+      - z8
+      - z9

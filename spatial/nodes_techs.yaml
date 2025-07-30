@@ -1,0 +1,497 @@
+nodes:
+  z1:
+    coordinates: 57.89196974328606, -4.501600395631353
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_beatrice: {}
+      offshorewind_beatrice_demonstrator: {}
+      "offshorewind_dounreay_tr\xEC_floating_wind_demonstration": {}
+      offshorewind_moray_east: {}
+      offshorewind_moray_firth___caledonia_north_offshore_wind_farm: {}
+      offshorewind_moray_firth___caledonia_south_offshore_wind_farm: {}
+      offshorewind_moray_west_offshore_wind_farm_project: {}
+      offshorewind_pentland_floating_offshore_wind_farm: {}
+      offshorewind_west_of_orkney_wind_farm: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z10:
+    coordinates: 52.54826713485286, -2.036099483188362
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z11:
+    coordinates: 52.38054847997431, -0.1643338503002302
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_dudgeon_east: {}
+      offshorewind_race_bank: {}
+      offshorewind_triton_knoll: {}
+      offshorewind_westermost_rough_a: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z12:
+    coordinates: 52.40623408967203, 1.1154419004624692
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_dudgeon_extension_project: {}
+      offshorewind_east_anglia_1: {}
+      offshorewind_east_anglia_1_north: {}
+      offshorewind_east_anglia_2: {}
+      offshorewind_east_anglia_3: {}
+      offshorewind_five_estuaries___wind_farm: {}
+      offshorewind_galloper_wind_farm: {}
+      offshorewind_greater_gabbard_wind_farm: {}
+      offshorewind_gunfleet_sands____extension: {}
+      offshorewind_gunfleet_sands_ii: {}
+      offshorewind_gunfleet_sands_offshore_wind_scheme: {}
+      offshorewind_hornsea_1___heron__njord: {}
+      offshorewind_hornsea_3: {}
+      offshorewind_hornsea_4: {}
+      offshorewind_london_arrayphase_1: {}
+      offshorewind_north_falls_offshore_wind_farm: {}
+      offshorewind_outer_dowsing_offshore_wind_farm: {}
+      offshorewind_scroby_sands: {}
+      offshorewind_sheringham_extension_project: {}
+      offshorewind_sheringham_shoal: {}
+      offshorewind_the_east_anglia_array___norfolk_boreas: {}
+      offshorewind_the_east_anglia_array___norfolk_vanguard: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z13:
+    coordinates: 51.940690543282905, -3.8671178676635014
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_erebus___floating_offshore_wind_demonstration_project: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z14:
+    coordinates: 51.581213572316976, -1.9715990431334822
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z15:
+    coordinates: 50.74201353277187, -3.597524902762606
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_twinhub: {}
+      offshorewind_whitecross___offshore_wind_farm: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z16:
+    coordinates: 51.105589523914304, -1.097524548662983
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z17:
+    coordinates: 51.31968275100239, 0.21834144753086449
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_kentish_flats: {}
+      offshorewind_kentish_flats_2: {}
+      offshorewind_rampion_offshore_wind_farm: {}
+      offshorewind_rampion_wind_farm: {}
+      offshorewind_thanet: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z2:
+    coordinates: 57.197034357351, -2.7045442157690354
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_berwick_bank_offshore_wind_farm: {}
+      offshorewind_cenos_offshore_wind_farm: {}
+      offshorewind_culzean_floating_wind_pilot: {}
+      offshorewind_european_offshore_wind_deployment_centre: {}
+      offshorewind_green_volt___offshore_wind_farm: {}
+      offshorewind_hywind_scotland_pilot_park__demonstrator: {}
+      offshorewind_kincardine_offshore_windfarm: {}
+      "offshorewind_muir_mh\xF2r": {}
+      offshorewind_ossian: {}
+      offshorewind_peterhead___the_salamander_project: {}
+      offshorewind_seagreen: {}
+      offshorewind_seagreen_phase_1a: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z3:
+    coordinates: 56.352947764108904, -4.664903644459172
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_inch_cape: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z4:
+    coordinates: 55.548363925553524, -3.8050845899683226
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_forthwind: {}
+      offshorewind_levenmouth_demonstration_turbine: {}
+      offshorewind_neart_na_gaoithe: {}
+      offshorewind_robin_rigg_east: {}
+      offshorewind_robin_rigg_west: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z5:
+    coordinates: 54.489882370123084, -2.838245775234413
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_barrow: {}
+      offshorewind_morecombe_offshore_windfarm: {}
+      offshorewind_morgan_offshore_wind_farm: {}
+      offshorewind_ormonde_offshore: {}
+      offshorewind_walney1: {}
+      offshorewind_walney2: {}
+      offshorewind_walney_3: {}
+      offshorewind_west_of_duddon_sands: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z6:
+    coordinates: 54.83895152931869, -1.8191923776929397
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_blyth_offshore_wind_farm_phase_2_demonstrator_project: {}
+      offshorewind_blyth_offshorewind_test_site: {}
+      offshorewind_teeside_offshore_wind_farm: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z7:
+    coordinates: 53.18315565351577, -3.17275624137771
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_awel_y_mor_offshore_wind_farm: {}
+      offshorewind_burbo_bank: {}
+      offshorewind_burbo_bank_extension: {}
+      offshorewind_gwynt_y_mor: {}
+      offshorewind_mona_offshore_wind_farm: {}
+      offshorewind_north_hoyle: {}
+      offshorewind_rhyl_flats: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z8:
+    coordinates: 53.792243182458904, -1.0155735082427775
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_dogger_bank_a__b: {}
+      offshorewind_dogger_bank_c: {}
+      offshorewind_dogger_bank_south_east__south_west: {}
+      offshorewind_hornsea_2___optimus_and_breesea: {}
+      offshorewind_sofia: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
+  z9:
+    coordinates: 53.160801969562044, -0.4849307717602714
+    techs:
+      battery: {}
+      beccs: {}
+      biomass: {}
+      biomass_chp: {}
+      caes: {}
+      coal: {}
+      diesel: {}
+      gas_ccgt: {}
+      gas_ccgt_chp: {}
+      gas_ccs: {}
+      gas_ocgt: {}
+      hydro: {}
+      hydrogen: {}
+      laes: {}
+      nuclear: {}
+      offshore_wind: {}
+      offshorewind_centrica: {}
+      offshorewind_humber_gateway_a: {}
+      offshorewind_inner_dowsing: {}
+      offshorewind_lynn: {}
+      onshore_wind: {}
+      pumped_hydro: {}
+      solar_pv: {}
+      waste: {}
+      waste_chp: {}
