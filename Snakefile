@@ -8,7 +8,7 @@ include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
 include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
-include: "rules/techs/generate_capacity_factors.smk"
+# include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
 include: "rules/prep_calliope.smk"
 
@@ -17,7 +17,7 @@ include: "rules/prep_calliope.smk"
 
 rule all:
     input:
-        "results/model.nc"
+        directory("results")
     default_target: True
 
 
@@ -25,12 +25,13 @@ rule run_calliope:
     input:
         model="model.yml"
     output:
-        "results/model.nc"
+        directory("results")
+    conda: 
+        "environment.yml"
     shell:
         """
-        calliope run {input.model}
-        mv model.nc {output}
-        """ 
+        calliope run {input.model} --save_csv=results
+        """
         
 
 rule dag_dot:

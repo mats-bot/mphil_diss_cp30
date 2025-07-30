@@ -1,158 +1,158 @@
-links:
-  z1-z2:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 5.9
-      loss: 0.0086154316070897
-  z1-z3:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 5.9
-      loss: 0.0111587903329236
-  z2-z3:
-    techs:
-    - ac_transmission
-    constraints:
-      loss: 0.0098997886585916
-  z3-z4:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 7.3
-      loss: 0.0067893174291886
-  z4-z5:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 10.2
-      loss: 0.0086497834978852
-  z4-z6:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 10.2
-      loss: 0.0096913463056016
-  z5-z6:
-    techs:
-    - ac_transmission
-    constraints:
-      loss: 0.0049645962565866
-  z5-z7:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 13.5
-      loss: 0.0095614006377243
-  z6-z8:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 13.5
-      loss: 0.0083009783031288
-  z7-z8:
-    techs:
-    - ac_transmission
-    constraints:
-      loss: 0.0102970897026264
-  z13-z7:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 16.4
-      loss: 0.0094936246402351
-  z10-z7:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 16.4
-      loss: 0.0067709276775425
-  z8-z9:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 16.4
-      loss: 0.0051098456952318
-  z10-z8:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 16.4
-      loss: 0.010032393162305
-  z10-z9:
-    techs:
-    - ac_transmission
-    constraints:
-      loss: 0.0081090555892844
-  z11-z9:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 15.3
-      loss: 0.0058164193681007
-  z10-z13:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 2.9
-      loss: 0.0092405285060491
-  z10-z14:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 15.3
-      loss: 0.0070000801685633
-  z10-z11:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 15.3
-      loss: 0.0083572172272935
-  z11-z14:
-    techs:
-    - ac_transmission
-    constraints:
-      loss: 0.0099275081369144
-  z11-z12:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 13.5
-      loss: 0.0056657685230161
-  z11-z17:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 17.3
-      loss: 0.0078614724647475
-  z12-z17:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 17.3
-      loss: 0.0088251631081807
-  z13-z14:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 2.9
-      loss: 0.008894815886772
-  z14-z15:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 5.9
-      loss: 0.0095643427077276
-  z14-z16:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 9.4
-      loss: 0.0052441651483259
-  z16-z17:
-    techs:
-    - ac_transmission
-    constraints:
-      energy_cap_max: 17.3
-      loss: 0.0061737848587644
+techs:
+  z1_z2:
+    parent: ac_transmission
+    link_from: z1
+    link_to: z2
+    flow_cap_max: 5900.0
+    loss: 0.0086154316070897
+  z1_z3:
+    parent: ac_transmission
+    link_from: z1
+    link_to: z3
+    flow_cap_max: 5900.0
+    loss: 0.0111587903329236
+  z2_z3:
+    parent: ac_transmission
+    link_from: z2
+    link_to: z3
+    loss: 0.0098997886585916
+  z3_z4:
+    parent: ac_transmission
+    link_from: z3
+    link_to: z4
+    flow_cap_max: 7300.0
+    loss: 0.0067893174291886
+  z4_z5:
+    parent: ac_transmission
+    link_from: z4
+    link_to: z5
+    flow_cap_max: 10200.0
+    loss: 0.0086497834978852
+  z4_z6:
+    parent: ac_transmission
+    link_from: z4
+    link_to: z6
+    flow_cap_max: 10200.0
+    loss: 0.0096913463056016
+  z5_z6:
+    parent: ac_transmission
+    link_from: z5
+    link_to: z6
+    loss: 0.0049645962565866
+  z5_z7:
+    parent: ac_transmission
+    link_from: z5
+    link_to: z7
+    flow_cap_max: 13500.0
+    loss: 0.0095614006377243
+  z6_z8:
+    parent: ac_transmission
+    link_from: z6
+    link_to: z8
+    flow_cap_max: 13500.0
+    loss: 0.0083009783031288
+  z7_z8:
+    parent: ac_transmission
+    link_from: z7
+    link_to: z8
+    loss: 0.0102970897026264
+  z13_z7:
+    parent: ac_transmission
+    link_from: z7
+    link_to: z13
+    flow_cap_max: 16400.0
+    loss: 0.0094936246402351
+  z10_z7:
+    parent: ac_transmission
+    link_from: z7
+    link_to: z10
+    flow_cap_max: 16400.0
+    loss: 0.0067709276775425
+  z8_z9:
+    parent: ac_transmission
+    link_from: z8
+    link_to: z9
+    flow_cap_max: 16400.0
+    loss: 0.0051098456952318
+  z10_z8:
+    parent: ac_transmission
+    link_from: z8
+    link_to: z10
+    flow_cap_max: 16400.0
+    loss: 0.010032393162305
+  z10_z9:
+    parent: ac_transmission
+    link_from: z9
+    link_to: z10
+    loss: 0.0081090555892844
+  z11_z9:
+    parent: ac_transmission
+    link_from: z9
+    link_to: z11
+    flow_cap_max: 15300.0
+    loss: 0.0058164193681007
+  z10_z13:
+    parent: ac_transmission
+    link_from: z10
+    link_to: z13
+    flow_cap_max: 2900.0
+    loss: 0.0092405285060491
+  z10_z14:
+    parent: ac_transmission
+    link_from: z10
+    link_to: z14
+    flow_cap_max: 15300.0
+    loss: 0.0070000801685633
+  z10_z11:
+    parent: ac_transmission
+    link_from: z10
+    link_to: z11
+    flow_cap_max: 15300.0
+    loss: 0.0083572172272935
+  z11_z14:
+    parent: ac_transmission
+    link_from: z11
+    link_to: z14
+    loss: 0.0099275081369144
+  z11_z12:
+    parent: ac_transmission
+    link_from: z11
+    link_to: z12
+    flow_cap_max: 13500.0
+    loss: 0.0056657685230161
+  z11_z17:
+    parent: ac_transmission
+    link_from: z11
+    link_to: z17
+    flow_cap_max: 17300.0
+    loss: 0.0078614724647475
+  z12_z17:
+    parent: ac_transmission
+    link_from: z12
+    link_to: z17
+    flow_cap_max: 17300.0
+    loss: 0.0088251631081807
+  z13_z14:
+    parent: ac_transmission
+    link_from: z13
+    link_to: z14
+    flow_cap_max: 2900.0
+    loss: 0.008894815886772
+  z14_z15:
+    parent: ac_transmission
+    link_from: z14
+    link_to: z15
+    flow_cap_max: 5900.0
+    loss: 0.0095643427077276
+  z14_z16:
+    parent: ac_transmission
+    link_from: z14
+    link_to: z16
+    flow_cap_max: 9400.0
+    loss: 0.0052441651483259
+  z16_z17:
+    parent: ac_transmission
+    link_from: z16
+    link_to: z17
+    flow_cap_max: 17300.0
+    loss: 0.0061737848587644

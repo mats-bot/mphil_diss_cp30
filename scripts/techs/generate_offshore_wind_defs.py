@@ -1,5 +1,6 @@
 import pandas as pd
 import yaml
+import re
 
 costs_df  = pd.read_csv(snakemake.input[0], index_col=0)
 projects_df = pd.read_csv(snakemake.input[1])
@@ -19,29 +20,38 @@ techs = {
     "offshore_wind": {
         "category": "renewable",
         "cp30_category": "renewable",
-        "essentials": {
-            "name": "offshore_wind",
-            "carrier_out": "electricity"
-        },
-        "constraints": {
-            "resource_unit": "per_unit",
-            "lifetime": lifetime
-        },
-        "costs": {
-            "cost_energy_cap": capex,
-            "om_annual": om_annual,
-            "om_prod": om_prod
-        }
+        "base_tech": "supply",
+        "name": "offshore_wind",
+        "carrier_out": "electricity",
+        "resource_unit": "per_unit",
+        "lifetime": lifetime,
+        "resource": cfs_path,
+        "cost_energy_cap": capex,
+        "om_annual": om_annual,
+        "om_prod": om_prod
     }
 }
 
+
+# Func to clean names for calliope
+def sanitize_tech_name(name):
+    name = re.sub(r"\([^)]*\)", "", name)      
+    name = re.sub(r"[ \-]", "_", name)         
+    name = re.sub(r"[^\w]", "", name)           
+    name = name.lower().strip("_")
+    if not name or not name[0].isalpha():
+        name = "t_" + name
+    return name
+
+
 cf_columns = pd.read_csv(cfs_path, nrows=1).columns
+
 # Site specific
 for _, row in projects_df.iterrows():
     site = row["Site Name"]
-    slug = site.replace(" ", "_").replace("-", "_")
-    tech_name = f"OffshoreWind_{slug}"
-    tech_name = tech_name.lower()
+    slug = sanitize_tech_name(site)
+    tech_name = f"offshorewind_{slug}"
+    
     installed_cap = row["Installed Capacity (MWelec)"]
 
     status = row["Development Status (short)"]
@@ -52,46 +62,37 @@ for _, row in projects_df.iterrows():
     if matched_column is None:
         raise ValueError(f"Could not match '{site}' to any column in {cfs_path}")
 
-    # Start with a copy of parent constraints and update with site-specific
-    costs = techs["offshore_wind"]["costs"].copy()
-    constraints = techs["offshore_wind"]["constraints"].copy()
-    
-    constraints.update({
-        "resource": cfs_path,
+    base = techs["offshore_wind"]
+
+    tech = {
+        "category": "renewable",
+        "cp30_category": "renewable",
+        "parent": "offshore_wind",
+        "base_tech": "supply",
+        "carrier_out": "electricity",
         "resource_column": matched_column,
-        "resource_area": matched_column,
-        "energy_cap_per_unit": installed_cap,
-        "integer": True,
-        "units_max": 1
-    })
+        "flow_cap_per_unit": installed_cap,
+        "units_max": 1,
+    }
 
     # Category 1 override: Operational by end of 2023
     if pd.notnull(op_date) and op_date < cutoff_date:
-        constraints = {
-            "resource": cfs_path,
-            "resource_column": matched_column,
-            "resource_area": matched_column,
-            "energy_cap_equals": installed_cap
-        }
-        costs["cost_energy_cap"] = 0  # Override capex for built projects
+        tech.update({
+            "flow_cap_min": installed_cap,
+            "flow_cap_max": installed_cap,
+            "cost_energy_cap": 0,
+        })
+        # remove keys not needed when energy_cap_equals is used
+        tech.pop("flow_cap_per_unit", None)
+        tech.pop("units_max", None)
+        tech.pop("integer", None)
 
     # Category 2 override: Will be built by 2030
     elif status in {"Operational", "Under Construction", "Awaiting Construction"}:
-        constraints["units_min"] = 1
+        tech["units_min"] = 1
 
     # Category 3 (all others): use constraints as is (model decides)
-    tech = {
-        "parent_category": "offshore_wind",
-        "essentials": {
-            "name": tech_name,
-            "location": row["tzone"]
-        },
-        "constraints": constraints,
-        "costs": costs
-    }
-
-
     techs[tech_name] = tech
 
 with open(snakemake.output[0], "w") as f:
-    yaml.dump(techs, f, sort_keys=False)
+    yaml.dump({"techs": techs}, f, sort_keys=False)

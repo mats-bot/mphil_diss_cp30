@@ -5,10 +5,7 @@ centroids = gpd.read_file(snakemake.input[0])
 
 locations_dict = {
     row["z1"]: {
-        "coordinates": {
-            "lat": float(row.geometry.y),
-            "lon": float(row.geometry.x)
-        }
+        "coordinates": f"{float(row.geometry.y)}, {float(row.geometry.x)}"
     }
     for _, row in centroids.iterrows()
 }

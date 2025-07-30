@@ -3,44 +3,67 @@ import yaml
 
 # From FES24 regional breakdown
 type_labels = {
-    "R": "Residential",
     "C": "Commercial",
     "I": "Industrial",
-    "T": "Transmission direct connects",
-    "D": "District heating",
-    "E": "Electric vehicles",
-    "H": "Heat pumps",
-    "Z": "Electrolyzers"
+    "R": "Residential",
 }
 
 def generate_demand_yaml(input_dir, output_path):
-    demand_data = {}
+    techs = {}
+    data_tables = {}
+    nodes = {}
+
+    # Parent tech
+    techs["demand"] = {
+        "name": "Overall demand technology parent",
+        "carrier_in": "electricity"
+    }
 
     for filename in os.listdir(input_dir):
+        if not filename.endswith(".csv"):
+            continue
+
         parts = filename.replace(".csv", "").split("_")
         if len(parts) != 3:
             continue
 
         _, zone, dtype = parts
-        label = type_labels.get(dtype, dtype)
+        dtype_label = type_labels.get(dtype, dtype)
         tech_name = f"demand_{dtype}"
 
-        if tech_name not in demand_data:
-            demand_data[tech_name] = {
-                "description": f"{label} electricity demand",
-                "essentials": {
-                    "carrier": "electricity",
-                    "parent": "demand"
-                },
-                "constraints": {}
+        # Add tech if not already
+        if tech_name not in techs:
+            techs[tech_name] = {
+                "name": f"{dtype_label} electricity demand",
+                "base_tech": "demand",
+                "carrier_in": "electricity"
             }
 
-        demand_data[tech_name]["constraints"][f"sink_use_equals::{zone}"] = f"file={filename}"
+        filepath = os.path.relpath(os.path.join(input_dir, filename), os.getcwd())
 
-    yaml_output = {demand_data}
+        dt_key = f"{tech_name}_{zone}"
+        data_tables[dt_key] = {
+            "data": filepath.replace("\\", "/"),  # Use forward slashes in YAML
+            "rows": "timesteps",
+            "columns": "nodes",
+            "add_dims": {
+                "techs": tech_name,
+                "parameters": "sink_use_equals"
+            }
+        }
+
+        # Add node entry for zone and tech
+        node_key = f"{zone}.techs.{tech_name}"
+        nodes[node_key] = None
+
+    # Compose full dict to dump
+    out_dict = {
+        "techs": techs,
+        "data_tables": data_tables,
+        "nodes": nodes
+    }
 
     with open(output_path, "w") as f:
-        yaml.dump(yaml_output, f, sort_keys=False)
-
+        yaml.dump(out_dict, f, sort_keys=False, default_flow_style=False, indent=4)
 
 generate_demand_yaml(snakemake.input[0], snakemake.output[0])

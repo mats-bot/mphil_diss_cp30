@@ -1,138 +1,282 @@
-biomass:
-  category: thermal
-  cp30_category: renewable
-  essentials:
+techs:
+  biomass:
+    category: thermal
+    cp30_category: renewable
+    base_tech: conversion
     name: Biomass
     carrier_in: biomass
     carrier_out: electricity
-  constraints:
     energy_eff: 1.0
     lifetime: 25
-biomass_existing:
-  parent: biomass
-  costs:
-    om_cost: 123461.55913978496
+  biomass_existing:
+    parent: biomass
+    base_tech: conversion
+    om_annual: 123461.55913978496
     om_prod: 8.398745519713263
     fuel: 0.0
-biomass_new:
-  parent: biomass
-  costs:
+    flow_cap_max:
+      data:
+      - 29.3
+      - 14.5
+      - 72.4
+      - 104.2
+      - 120.19
+      - 5.7
+      - 6.2
+      - 0.0
+      - 115.8
+      - 1.2
+      - 6.8
+      - 200.5
+      - 58.0
+      - 500.9
+      - 65.995
+      - 2769.4
+      - 73.5
+      dims:
+      - carriers
+      index: &id001
+      - z1
+      - z10
+      - z11
+      - z12
+      - z13
+      - z14
+      - z15
+      - z16
+      - z17
+      - z2
+      - z3
+      - z4
+      - z5
+      - z6
+      - z7
+      - z8
+      - z9
+  biomass_new:
+    parent: biomass
+    base_tech: conversion
     cost_energy_cap: 30209.534502417035
-    om_cost: 123461.55913978496
+    om_annual: 123461.55913978496
     om_prod: 8.398745519713263
     fuel: 0.0
-biomass_chp:
-  category: thermal
-  cp30_category: renewable
-  essentials:
+  biomass_chp:
+    category: thermal
+    cp30_category: renewable
+    base_tech: conversion
     name: Biomass_CHP
     carrier_in: biomass
     carrier_out: electricity
-  constraints:
     energy_eff: 0.21
     lifetime: 24
-biomass_chp_existing:
-  parent: biomass_chp
-  costs:
-    om_cost: 418017.5627240144
+  biomass_chp_existing:
+    parent: biomass_chp
+    base_tech: conversion
+    om_annual: 418017.5627240144
     om_prod: 11.998207885304662
     fuel: 0.0
-biomass_chp_new:
-  parent: biomass_chp
-  costs:
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
+  biomass_chp_new:
+    parent: biomass_chp
+    base_tech: conversion
     cost_energy_cap: 95440.70562919868
-    om_cost: 418017.5627240144
+    om_annual: 418017.5627240144
     om_prod: 11.998207885304662
     fuel: 0.0
-waste:
-  category: thermal
-  cp30_category: renewable
-  essentials:
+  waste:
+    category: thermal
+    cp30_category: renewable
+    base_tech: conversion
     name: Waste
     carrier_in: waste
     carrier_out: electricity
-  constraints:
     energy_eff: 0.28
     lifetime: 35
-waste_existing:
-  parent: waste
-  costs:
-    om_cost: 245363.35125448037
+  waste_existing:
+    parent: waste
+    base_tech: conversion
+    om_annual: 245363.35125448037
     om_prod: 32.395161290322584
     fuel: 0.0
-waste_new:
-  parent: waste
-  costs:
+    flow_cap_max:
+      data:
+      - 0.0
+      - 161.6
+      - 97.7
+      - 20.0
+      - 30.0
+      - 104.5
+      - 55.5
+      - 46.6
+      - 387.2
+      - 11.1
+      - 8.3
+      - 38.1
+      - 0.0
+      - 131.3
+      - 160.3
+      - 211.6
+      - 16.4
+      dims:
+      - carriers
+      index: *id001
+  waste_new:
+    parent: waste
+    base_tech: conversion
     cost_energy_cap: 222124.2582296498
-    om_cost: 245363.35125448037
+    om_annual: 245363.35125448037
     om_prod: 32.395161290322584
     fuel: 0.0
-waste_chp:
-  category: thermal
-  cp30_category: renewable
-  essentials:
+  waste_chp:
+    category: thermal
+    cp30_category: renewable
+    base_tech: conversion
     name: Waste_CHP
     carrier_in: waste
     carrier_out: electricity
-  constraints:
     energy_eff: 0.24
     lifetime: 27
-waste_chp_existing:
-  parent: waste_chp
-  costs:
-    om_cost: 335109.9462365592
+  waste_chp_existing:
+    parent: waste_chp
+    base_tech: conversion
+    om_annual: 335109.9462365592
     om_prod: 73.18906810035844
     fuel: 0.0
-waste_chp_new:
-  parent: waste_chp
-  costs:
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
+  waste_chp_new:
+    parent: waste_chp
+    base_tech: conversion
     cost_energy_cap: 343676.66666666674
-    om_cost: 335109.9462365592
+    om_annual: 335109.9462365592
     om_prod: 73.18906810035844
     fuel: 0.0
-hydrogen:
-  category: thermal
-  cp30_category: thermal
-  essentials:
+  hydrogen:
+    category: thermal
+    cp30_category: thermal
+    base_tech: conversion
     name: Hydrogen
     carrier_in: hydrogen
     carrier_out: electricity
-  constraints:
     energy_eff: 0.48
     lifetime: 25
-hydrogen_existing:
-  parent: hydrogen
-  costs:
-    om_cost: 26516.0394265233
+  hydrogen_existing:
+    parent: hydrogen
+    base_tech: conversion
+    om_annual: 26516.0394265233
     om_prod: 2.3996415770609323
     fuel: 45.94683471697859
-hydrogen_new:
-  parent: hydrogen
-  costs:
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.9
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
+  hydrogen_new:
+    parent: hydrogen
+    base_tech: conversion
     cost_energy_cap: 20948.87096774194
-    om_cost: 26516.0394265233
+    om_annual: 26516.0394265233
     om_prod: 2.3996415770609323
     fuel: 45.94683471697859
-nuclear:
-  category: thermal
-  cp30_category: low_carbon
-  essentials:
+  nuclear:
+    category: thermal
+    cp30_category: low_carbon
+    base_tech: conversion
     name: Nuclear
     carrier_in: nuclear_fuel
     carrier_out: electricity
-  constraints:
     energy_eff: 1.0
     lifetime: 60
-nuclear_existing:
-  parent: nuclear
-  costs:
-    om_cost: 111672.6
+  nuclear_existing:
+    parent: nuclear
+    base_tech: conversion
+    om_annual: 111672.6
     om_prod: 16.067999999999998
     fuel: 0.0
-nuclear_new:
-  parent: nuclear
-  costs:
+    flow_cap_max:
+      data:
+      - 0.0
+      - 0.0
+      - 0.0
+      - 1198.0
+      - 0.0
+      - 0.0
+      - 965.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 0.0
+      - 1200.0
+      - 2300.0
+      - 1185.0
+      - 0.0
+      - 0.0
+      - 0.0
+      dims:
+      - carriers
+      index: *id001
+  nuclear_new:
+    parent: nuclear
+    base_tech: conversion
     cost_energy_cap: 5815926.212121211
-    om_cost: 111672.6
+    om_annual: 111672.6
     om_prod: 16.067999999999998
     fuel: 0.0
