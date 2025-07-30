@@ -11,7 +11,7 @@ fuels = {
     "Waste": "waste",
     "Waste_CHP": "waste",
     "Hydrogen": "hydrogen",
-    "Nuclear": "nuclear_fuel"
+    "Nuclear": "nuclear_fuel",
 }
 
 # Per cp30 outputs
@@ -21,27 +21,30 @@ classif = {
     "Waste": "renewable",
     "Waste_CHP": "renewable",
     "Hydrogen": "thermal",
-    "Nuclear": "low_carbon"
+    # TODO: special treatment for nuclear in a separate file to fix its capacity based on known 2030 capacity
+    "Nuclear": "low_carbon",
 }
 
 disallow_investment = {"nuclear"}
 
 capacity_df = pd.read_csv(snakemake.input[1])  # renewable capacities CSV
 nuclear_capacity_df = pd.read_csv(snakemake.input[2])  # nuclear/fossil capacities CSV
-zones = sorted(capacity_df['zone'].unique())
+zones = sorted(capacity_df["zone"].unique())
+
 
 def build_capacity_dict(df, cap_col_name):
     tech_zone_capacity = {}
-    for tech in df['CP30 technology'].unique():
+    for tech in df["CP30 technology"].unique():
         tech_zone_capacity[tech.lower()] = [0.0] * len(zones)
     for _, row in df.iterrows():
-        zone = row['zone']
-        tech = row['CP30 technology'].lower()
+        zone = row["zone"]
+        tech = row["CP30 technology"].lower()
         capacity = float(row[cap_col_name])
         if tech in tech_zone_capacity and zone in zones:
             idx = zones.index(zone)
             tech_zone_capacity[tech][idx] = capacity
     return tech_zone_capacity
+
 
 main_capacity = build_capacity_dict(capacity_df, "Installed Capacity (MWelec)")
 nuclear_capacity = build_capacity_dict(nuclear_capacity_df, "InstalledCapacity (MW)")
@@ -51,6 +54,13 @@ techs_yaml = {}
 for tech in techs:
     tech_name = tech.lower()
 
+    if tech_name == "nuclear":
+        flow_cap_data = nuclear_capacity.get(tech_name, [0.0] * len(zones))
+    else:
+        flow_cap_data = main_capacity.get(tech_name, [0.0] * len(zones))
+
+    flow_cap_max = {"data": flow_cap_data, "dims": ["nodes"], "index": zones}
+
     techs_yaml[tech_name] = {
         "category": "thermal",
         "cp30_category": classif[tech],
@@ -58,67 +68,29 @@ for tech in techs:
         "name": tech,
         "carrier_in": fuels[tech],
         "carrier_out": "electricity",
-        "energy_eff": float(df.loc["efficiency", tech]),
-        "lifetime": int(df.loc["lifetime", tech])
-    }
-
-    if tech_name == "nuclear":
-        flow_cap_data = nuclear_capacity.get(tech_name, [0.0] * len(zones))
-    else:
-        flow_cap_data = main_capacity.get(tech_name, [0.0] * len(zones))
-
-    flow_cap_max = {
-        "data": flow_cap_data,
-        "dims": ["carriers"],
-        "index": zones
-    }
-
-    techs_yaml[f"{tech_name}_existing"] = {
-        "parent": tech_name,
-        "base_tech": "conversion",
+        "flow_out_eff": float(df.loc["efficiency", tech]),
+        "lifetime": int(df.loc["lifetime", tech]),
         "cost_om_annual": {
             "data": float(df.loc["om_annual", tech]),
             "index": "monetary",
-            "dims": ["costs"]
+            "dims": ["costs"],
         },
         "cost_flow_out": {
             "data": float(df.loc["om_prod", tech]),
             "index": "monetary",
-            "dims": ["costs"]
+            "dims": ["costs"],
         },
-        "cost_source": {
+        "cost_flow_in": {
             "data": float(df.loc["fuel_cost", tech]),
             "index": "monetary",
-            "dims": ["costs"]
+            "dims": ["costs"],
         },
-        "flow_cap_max": flow_cap_max
+        "cost_flow_cap": {
+            "data": float(df.loc["capex", tech]),
+            "index": "monetary",
+            "dims": ["costs"],
+        },
     }
-
-    if tech_name not in disallow_investment:
-        techs_yaml[f"{tech_name}_new"] = {
-            "parent": tech_name,
-            "base_tech": "conversion",
-            "cost_flow_cap": {
-                "data": float(df.loc["capex", tech]),
-                "index": "monetary",
-                "dims": ["costs"]
-            },
-            "cost_om_annual": {
-                "data": float(df.loc["om_annual", tech]),
-                "index": "monetary",
-                "dims": ["costs"]
-            },
-            "cost_flow_out": {
-                "data": float(df.loc["om_prod", tech]),
-                "index": "monetary",
-                "dims": ["costs"]
-            },
-            "cost_source": {
-                "data": float(df.loc["fuel_cost", tech]),
-                "index": "monetary",
-                "dims": ["costs"]
-            }
-        }
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump({"techs": techs_yaml}, f, sort_keys=False)
