@@ -32,7 +32,7 @@ import:
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
   - spatial/nodes_techs.yaml
-#  - spatial/renewables_2023_caps.yaml
+  - spatial/renewables_2023_caps.yaml
 
 
 # constraints:
