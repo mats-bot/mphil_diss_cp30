@@ -11,13 +11,17 @@ techs:
   beccs_new:
     parent: beccs
     base_tech: conversion
-    cost_energy_cap: 4786586.868686869
+    cost_flow_cap:
+      data: 4786586.868686869
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 259899.9
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 31.072834
       index: monetary
       dims:
@@ -39,13 +43,17 @@ techs:
   gas_ccs_new:
     parent: gas_ccs
     base_tech: conversion
-    cost_energy_cap: 2042304.6780303027
+    cost_flow_cap:
+      data: 2042304.6780303027
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 60790.6
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 32.411834
       index: monetary
       dims:

@@ -15,20 +15,28 @@ include: "rules/techs/generate_tech_files.smk"
 
 rule all:
     input:
-        directory("results")
-    default_target: True
-
+        "results/model_results.nc"
 
 rule run_calliope:
     input:
         model="model.yml"
     output:
-        directory("results")
-    conda: 
+        "results/model_results.nc"
+    conda:
         "environment.yml"
     shell:
         """
-        calliope run {input.model} --save_csv=results
+        calliope run {input.model} --save_netcdf={output}
+        """
+
+rule serve_calligraph:
+    input:
+        "results/model_results.nc"
+    conda:
+        "environment.yml"
+    shell:
+        """
+        calligraph {input}
         """
         
 

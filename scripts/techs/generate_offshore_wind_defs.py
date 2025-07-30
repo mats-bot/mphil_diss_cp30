@@ -26,7 +26,7 @@ techs = {
         "resource_unit": "per_unit",
         "lifetime": lifetime,
         "resource": cfs_path,
-        "cost_energy_cap": {
+        "cost_flow_cap": {
             "data": capex,
             "index": "monetary",
             "dims": ["costs"]
@@ -36,7 +36,7 @@ techs = {
             "index": "monetary",
             "dims": ["costs"]
         },
-        "cost_om_prod": {
+        "cost_flow_out": {
             "data": om_prod,
             "index": "monetary",
             "dims": ["costs"]
@@ -91,7 +91,7 @@ for _, row in projects_df.iterrows():
         tech.update({
             "flow_cap_min": installed_cap,
             "flow_cap_max": installed_cap,
-            "cost_energy_cap": 0,  # keep scalar zero here
+            "cost_flow_cap": 0, 
         })
         # remove keys not needed when energy_cap_equals is used
         tech.pop("flow_cap_per_unit", None)
@@ -105,5 +105,17 @@ for _, row in projects_df.iterrows():
     # Category 3 (all others): use constraints as is (model decides)
     techs[tech_name] = tech
 
+
+    data_tables_yaml= {
+        "offshore_wind_cfs": {
+            "data": cfs_path ,
+            "rows": "time",
+            "columns": "techs",
+            "add_dims": {
+                "parameters": "resource"
+                    }
+            }
+    }
+
 with open(snakemake.output[0], "w") as f:
-    yaml.dump({"techs": techs}, f, sort_keys=False)
+    yaml.dump({"techs": techs, "data_tables": data_tables_yaml}, f, sort_keys=False)

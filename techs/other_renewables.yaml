@@ -16,12 +16,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_prod:
+    cost_flow_out:
       data: 8.398745519713263
       index: monetary
       dims:
       - costs
-    cost_fuel:
+    cost_source:
       data: 0.0
       index: monetary
       dims:
