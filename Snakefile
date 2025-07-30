@@ -8,10 +8,8 @@ include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
 include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
-# include: "rules/techs/generate_capacity_factors.smk"
+include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
-include: "rules/prep_calliope.smk"
-
 
 
 

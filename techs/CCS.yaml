@@ -12,9 +12,21 @@ techs:
     parent: beccs
     base_tech: conversion
     cost_energy_cap: 4786586.868686869
-    om_annual: 259899.9
-    om_prod: 31.072834
-    fuel: 0.0
+    cost_om_annual:
+      data: 259899.9
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 31.072834
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
   gas_ccs:
     category: ccs
     cp30_category: low_carbon
@@ -28,6 +40,18 @@ techs:
     parent: gas_ccs
     base_tech: conversion
     cost_energy_cap: 2042304.6780303027
-    om_annual: 60790.6
-    om_prod: 32.411834
-    fuel: 38.2890289308155
+    cost_om_annual:
+      data: 60790.6
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 32.411834
+      index: monetary
+      dims:
+      - costs
+    cost_source:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs

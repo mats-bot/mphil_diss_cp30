@@ -1,4 +1,3 @@
-import pandas as pd 
 import pandas as pd
 import yaml
 
@@ -43,13 +42,24 @@ for tech in techs:
         "index": zones,
     }
 
-    # Existing tech: no capex, only operational/fuel costs
     techs_yaml[f"{tech_name}_existing"] = {
         "parent": tech_name,
         "base_tech": "supply",
-        "om_annual": float(df.loc["om_annual", tech]),
-        "om_prod": float(df.loc["om_prod", tech]),
-        "fuel": float(df.loc["fuel_cost", tech]),
+        "cost_om_annual": {
+            "data": float(df.loc["om_annual", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": float(df.loc["om_prod", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_fuel": {
+            "data": float(df.loc["fuel_cost", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
         "flow_cap_max": flow_cap_max,
     }
 

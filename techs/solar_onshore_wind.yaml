@@ -6,18 +6,72 @@ techs:
     base_tech: supply
     carrier_out: electricity
     energy_eff: 0.0
-    resource: data/processed/spatial/onshore_cf_2013.csv
     resource_unit: per_unit
     lifetime: 25
   onshore_wind_existing:
     parent: onshore_wind
-    om_annual: 36834.49820788531
-    om_prod: 7.198924731182797
+    cost_om_annual:
+      data: 36834.49820788531
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 7.198924731182797
+      index: monetary
+      dims:
+      - costs
+    flow_cap_max:
+      data:
+      - 2711.3
+      - 134.3
+      - 515.7
+      - 40.8
+      - 850.5
+      - 53.3
+      - 238.1
+      - 2.0
+      - 172.7
+      - 381.35
+      - 736.9
+      - 5010.65
+      - 252.7
+      - 459.95
+      - 593.6
+      - 703.7
+      - 44.2
+      dims:
+      - carriers
+      index: &id001
+      - z1
+      - z10
+      - z11
+      - z12
+      - z13
+      - z14
+      - z15
+      - z16
+      - z17
+      - z2
+      - z3
+      - z4
+      - z5
+      - z6
+      - z7
+      - z8
+      - z9
   onshore_wind_new:
     parent: onshore_wind
     cost_energy_cap: 90351.3935351122
-    om_annual: 36834.49820788531
-    om_prod: 7.198924731182797
+    cost_om_annual:
+      data: 36834.49820788531
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 7.198924731182797
+      index: monetary
+      dims:
+      - costs
   solar_pv:
     category: renewable
     cp30_category: renewable
@@ -25,15 +79,67 @@ techs:
     base_tech: supply
     carrier_out: electricity
     energy_eff: 0.0
-    resource: data/processed/spatial/solar_cf_2013.csv
     resource_unit: per_unit
     lifetime: 35
   solar_pv_existing:
     parent: solar_pv
-    om_annual: 11158.333333333336
-    om_prod: 0.0
+    cost_om_annual:
+      data: 11158.333333333336
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    flow_cap_max:
+      data:
+      - 5.5
+      - 827.913
+      - 1304.20064
+      - 456.6052
+      - 731.6
+      - 1372.901
+      - 1618.31812
+      - 616.2
+      - 673.05423
+      - 6.1
+      - 32.910000000000004
+      - 39.245
+      - 152.33
+      - 81.259
+      - 315.641
+      - 430.4794
+      - 341.0
+      dims:
+      - carriers
+      index: *id001
   solar_pv_new:
     parent: solar_pv
     cost_energy_cap: 84527.37455197134
-    om_annual: 11158.333333333336
-    om_prod: 0.0
+    cost_om_annual:
+      data: 11158.333333333336
+      index: monetary
+      dims:
+      - costs
+    cost_om_prod:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+data_tables:
+  onshore_wind_cf:
+    data: data/processed/spatial/onshore_cf_2030.csv
+    rows: time
+    columns: nodes
+    add_dims:
+      techs: onshore_wind
+      parameters: resource
+  solar_pv_cf:
+    data: data/processed/spatial/solar_cf_2030.csv
+    rows: time
+    columns: nodes
+    add_dims:
+      techs: solar_pv
+      parameters: resource

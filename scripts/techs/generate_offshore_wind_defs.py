@@ -26,12 +26,23 @@ techs = {
         "resource_unit": "per_unit",
         "lifetime": lifetime,
         "resource": cfs_path,
-        "cost_energy_cap": capex,
-        "om_annual": om_annual,
-        "om_prod": om_prod
+        "cost_energy_cap": {
+            "data": capex,
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_annual": {
+            "data": om_annual,
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": om_prod,
+            "index": "monetary",
+            "dims": ["costs"]
+        }
     }
 }
-
 
 # Func to clean names for calliope
 def sanitize_tech_name(name):
@@ -80,7 +91,7 @@ for _, row in projects_df.iterrows():
         tech.update({
             "flow_cap_min": installed_cap,
             "flow_cap_max": installed_cap,
-            "cost_energy_cap": 0,
+            "cost_energy_cap": 0,  # keep scalar zero here
         })
         # remove keys not needed when energy_cap_equals is used
         tech.pop("flow_cap_per_unit", None)

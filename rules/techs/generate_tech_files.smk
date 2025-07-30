@@ -17,7 +17,7 @@ rule generate_other_renewable_capacities:
         "data/processed/techs/renewables_2023.csv"
     output: 
         "spatial/renewables_2023_caps.yaml"
-    conda: 
+    conda:
         "../../envs/data_processing.yaml"
     script:
         "../../scripts/techs/generate_renewables_caps.py"
@@ -59,8 +59,8 @@ rule generate_ccs_techs_definitions:
 rule generate_solar_onshore_wind_definitions:
     input: 
         "data/processed/techs/generation_costs.csv",
-        f"data/processed/spatial/onshore_cf_{weather_year}.csv",
-        f"data/processed/spatial/solar_cf_{weather_year}.csv",
+        "data/processed/spatial/onshore_cf_2030.csv",
+        "data/processed/spatial/solar_cf_2030.csv",
         "data/processed/techs/renewables_2023.csv"
     output:
         "techs/solar_onshore_wind.yaml"
@@ -73,7 +73,7 @@ rule generate_offshore_wind_project_defs:
     input: 
         "data/processed/techs/generation_costs.csv",
         "data/processed/techs/offshore_wind_projects.csv",
-        f"data/processed/spatial/offshore_cfs_{weather_year}.csv"
+        "data/processed/spatial/offshore_cfs_2030.csv"
     output:
         "techs/offshore_wind.yaml"
     conda: 

@@ -30,9 +30,21 @@ for tech in techs:
         "parent": tech_name,
         "base_tech": "conversion",
         "cost_energy_cap": float(df.loc["capex", tech]),
-        "om_annual": float(df.loc["om_annual", tech]),
-        "om_prod": float(df.loc["om_prod", tech]),
-        "fuel": float(df.loc["fuel_cost", tech])
+        "cost_om_annual": {
+            "data": float(df.loc["om_annual", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": float(df.loc["om_prod", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_source": {
+            "data": float(df.loc["fuel_cost", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        }
     }
 
 # Write output YAML

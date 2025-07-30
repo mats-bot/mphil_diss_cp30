@@ -6,12 +6,17 @@ type_labels = {
     "C": "Commercial",
     "I": "Industrial",
     "R": "Residential",
+    "E": "Electric Vehicles",
+    "I": "Industrial",
+    "H": "Heat Pumps",
+    "D": "District heat",
+    "T": "Transmission direct connects",
+    "Z": "Electrolyzers"
 }
 
 def generate_demand_yaml(input_dir, output_path):
     techs = {}
     data_tables = {}
-    nodes = {}
 
     # Parent tech
     techs["demand"] = {
@@ -31,7 +36,6 @@ def generate_demand_yaml(input_dir, output_path):
         dtype_label = type_labels.get(dtype, dtype)
         tech_name = f"demand_{dtype}"
 
-        # Add tech if not already
         if tech_name not in techs:
             techs[tech_name] = {
                 "name": f"{dtype_label} electricity demand",
@@ -43,24 +47,18 @@ def generate_demand_yaml(input_dir, output_path):
 
         dt_key = f"{tech_name}_{zone}"
         data_tables[dt_key] = {
-            "data": filepath.replace("\\", "/"),  # Use forward slashes in YAML
+            "data": filepath.replace("\\", "/"),
             "rows": "timesteps",
-            "columns": "nodes",
             "add_dims": {
                 "techs": tech_name,
-                "parameters": "sink_use_equals"
+                "parameters": "sink_use_equals",
+                "nodes": zone         
             }
         }
 
-        # Add node entry for zone and tech
-        node_key = f"{zone}.techs.{tech_name}"
-        nodes[node_key] = None
-
-    # Compose full dict to dump
     out_dict = {
         "techs": techs,
-        "data_tables": data_tables,
-        "nodes": nodes
+        "data_tables": data_tables
     }
 
     with open(output_path, "w") as f:

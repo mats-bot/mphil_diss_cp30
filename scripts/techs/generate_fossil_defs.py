@@ -56,9 +56,21 @@ for tech in fossil_techs:
     techs_yaml[f"{tech_name}_existing"] = {
         "parent": tech_name,
         "base_tech": "conversion",
-        "om_annual": float(df.loc["om_annual", tech]),
-        "om_prod": float(df.loc["om_prod", tech]),
-        "fuel": float(df.loc["fuel_cost", tech]),
+        "cost_om_annual": {
+            "data": float(df.loc["om_annual", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_om_prod": {
+            "data": float(df.loc["om_prod", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
+        "cost_source": {   # fuel cost
+            "data": float(df.loc["fuel_cost", tech]),
+            "index": "monetary",
+            "dims": ["costs"]
+        },
         "flow_cap_max": flow_cap_max
     }
 
@@ -67,12 +79,27 @@ for tech in fossil_techs:
         techs_yaml[f"{tech_name}_new"] = {
             "parent": tech_name,
             "base_tech": "conversion",
-            "cost_energy_cap": float(df.loc["capex", tech]),
-            "om_annual": float(df.loc["om_annual", tech]),
-            "om_prod": float(df.loc["om_prod", tech]),
-            "fuel": float(df.loc["fuel_cost", tech]),
+            "cost_energy_cap": {
+                "data": float(df.loc["capex", tech]),
+                "index": "monetary",
+                "dims": ["costs"]
+            },
+            "cost_om_annual": {
+                "data": float(df.loc["om_annual", tech]),
+                "index": "monetary",
+                "dims": ["costs"]
+            },
+            "cost_om_prod": {
+                "data": float(df.loc["om_prod", tech]),
+                "index": "monetary",
+                "dims": ["costs"]
+            },
+            "cost_source": {
+                "data": float(df.loc["fuel_cost", tech]),
+                "index": "monetary",
+                "dims": ["costs"]
+            },
         }
-
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump({"techs": techs_yaml}, f, sort_keys=False)

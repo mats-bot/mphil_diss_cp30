@@ -1,19 +1,19 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030', '2030']
-    time_resample: 3h
+    time_subset: ['2030-01', '2030-02']
+    time_resample: 1h
   build:
+    mode: plan
+    pre_validate_math_strings: false
+    add_math:
+      - additional-math.yaml
     backend: gurobi
-    ensure_feasibility: true
   solve:
+    save_logs: "outputs/logs/"
     solver_options:
       Threads: 8
-      Method: 2 
-      Crossover: 0 
-      FeasibilityTol: 1e-3
-      OptimalityTol: 1e-4
-      BarConvTol: 1e-4
+
 
 import:
   - demand.yaml
@@ -27,15 +27,16 @@ import:
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
   - spatial/nodes_techs.yaml
+#  - spatial/renewables_2023_caps.yaml
 
 
 
-
-
-  # constraints:
-  #   limit_dirty_generation:
-  #     description: "Limit dirty generation to 5% of total generation"
-  #     foreach: [timesteps]
-  #     expression: >
-  #       sum(model_output:flow, where={"techs__category": "fossil"}, dims=["techs", "nodes"]) 
-  #       <= 0.05 * sum(model_output:flow, dims=["techs", "nodes"])
+# model:
+#   name: my_model
+#   constraints:
+#     fossil_generation_max_share:
+#       techs: .where(techs.category == "fossil")
+#       carrier: electricity
+#       sense: "<="
+#       rhs: 0.05
+#       expression: "sum(energy_prod) / sum(energy_prod_all)"
