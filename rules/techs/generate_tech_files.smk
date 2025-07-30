@@ -22,6 +22,9 @@ rule generate_other_renewable_capacities:
     script:
         "../../scripts/techs/generate_renewables_caps.py"
 
+
+# new rule to produce minimum capacities by zone ()
+
         
 rule generate_fossil_fuel_definitions:
     input:
