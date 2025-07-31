@@ -6,15 +6,27 @@ techs:
     name: battery
     carrier_in: electricity
     carrier_out: electricity
-    flow_in_eff: 0.9746794344808963
-    flow_out_eff: 0.9746794344808963
+    flow_out_eff: 0.95
     storage_loss: 0.0001190476190476
+    flow_cap_per_storage_cap_max: 0.25
     lifetime: 25
-  battery_existing:
-    parent: battery
-    base_tech: storage
+    cost_om_annual:
+      data: 119.83340217540965
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 774308.1371334159
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 0
+      index: monetary
+      dims:
+      - costs
     cost_flow_cap:
-      data: 0
+      data: 119833.40217540962
       index: monetary
       dims:
       - costs
@@ -23,112 +35,6 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 119.83340217540965
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 774308.1371334159
-      index: monetary
-      dims:
-      - costs
-    cost_flow_in:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    flow_cap_max:
-      data:
-      - 3.1
-      - 150.5
-      - 250.6
-      - 0.1
-      - 42.0
-      - 278.39
-      - 64.4
-      - 41.3
-      - 283.28
-      - 1.0
-      - 149.7
-      - 199.99
-      - 61.0
-      - 88.9
-      - 243.89
-      - 277.1
-      - 59.0
-      dims:
-      - carriers
-      index: &id001
-      - z1
-      - z10
-      - z11
-      - z12
-      - z13
-      - z14
-      - z15
-      - z16
-      - z17
-      - z2
-      - z3
-      - z4
-      - z5
-      - z6
-      - z7
-      - z8
-      - z9
-    storage_cap_max:
-      data:
-      - 12.4
-      - 602.0
-      - 1002.4
-      - 0.4
-      - 168.0
-      - 1113.56
-      - 257.6
-      - 165.2
-      - 1133.12
-      - 4.0
-      - 598.8
-      - 799.96
-      - 244.0
-      - 355.6
-      - 975.56
-      - 1108.4
-      - 236.0
-      dims:
-      - carriers
-      index: *id001
-  battery_new:
-    parent: battery
-    cost_flow_in:
-      data: 774308.1371334159
-      index: monetary
-      dims:
-      - costs
-    cost_storage_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    cost_om_annual:
-      data: 119.83340217540965
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    flow_cap_min: 30.0
-    flow_cap_max: 30.0
-    storage_cap_min: 120.0
-    storage_cap_max: 120.0
-    flow_cap_per_unit: 30.0
-    storage_cap_per_unit: 120.0
-    integer: true
-    units_max: 1
   pumped_hydro:
     category: ldes
     cp30_category: storage
@@ -136,23 +42,10 @@ techs:
     name: pumped_hydro
     carrier_in: electricity
     carrier_out: electricity
-    flow_in_eff: 0.9082951062292475
-    flow_out_eff: 0.9082951062292475
+    flow_out_eff: 0.825
     storage_loss: 0.0005208333333333
+    flow_cap_per_storage_cap_max: 0.125
     lifetime: 80
-  pumped_hydro_existing:
-    parent: pumped_hydro
-    base_tech: storage
-    cost_flow_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    cost_storage_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
     cost_om_annual:
       data: 253.49373537105885
       index: monetary
@@ -168,50 +61,16 @@ techs:
       index: monetary
       dims:
       - costs
-    flow_cap_max:
-      data:
-      - 300.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 440.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 2088.0
-      - 0.0
-      - 0.0
+    cost_flow_cap:
+      data: 1382693.102023957
+      index: monetary
       dims:
-      - carriers
-      index: *id001
-    storage_cap_max:
-      data:
-      - 2400.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 3520.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 16704.0
-      - 0.0
-      - 0.0
+      - costs
+    cost_storage_cap:
+      data: 27653.86204047914
+      index: monetary
       dims:
-      - carriers
-      index: *id001
+      - costs
   caes:
     category: ldes
     cp30_category: storage
@@ -219,23 +78,10 @@ techs:
     name: caes
     carrier_in: electricity
     carrier_out: electricity
-    flow_in_eff: 0.8660254037844386
-    flow_out_eff: 0.8660254037844386
+    flow_out_eff: 0.75
     storage_loss: 0.03125
+    flow_cap_per_storage_cap_max: 0.1666666666666666
     lifetime: 25
-  caes_existing:
-    parent: caes
-    base_tech: storage
-    cost_flow_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    cost_storage_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
     cost_om_annual:
       data: 474.0662064082138
       index: monetary
@@ -251,54 +97,8 @@ techs:
       index: monetary
       dims:
       - costs
-    flow_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
-    storage_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
-  caes_new:
-    parent: caes
-    cost_flow_in:
-      data: 6.083849648905411
+    cost_flow_cap:
+      data: 1832068.3601817435
       index: monetary
       dims:
       - costs
@@ -307,24 +107,6 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 474.0662064082138
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    flow_cap_min: 5.0
-    flow_cap_max: 5.0
-    storage_cap_min: 30.0
-    storage_cap_max: 30.0
-    flow_cap_per_unit: 5.0
-    storage_cap_per_unit: 30.0
-    integer: true
-    units_max: 1
   laes:
     category: ldes
     cp30_category: storage
@@ -332,23 +114,10 @@ techs:
     name: laes
     carrier_in: electricity
     carrier_out: electricity
-    flow_in_eff: 0.7416198487095663
-    flow_out_eff: 0.7416198487095663
+    flow_out_eff: 0.55
     storage_loss: 0.0062499999999999
+    flow_cap_per_storage_cap_max: 0.0714285714285714
     lifetime: 35
-  laes_existing:
-    parent: laes
-    base_tech: storage
-    cost_flow_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
-    cost_storage_cap:
-      data: 0
-      index: monetary
-      dims:
-      - costs
     cost_om_annual:
       data: 20648.216990224428
       index: monetary
@@ -364,54 +133,8 @@ techs:
       index: monetary
       dims:
       - costs
-    flow_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 5.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
-    storage_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 70.00000000000003
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
-  laes_new:
-    parent: laes
-    cost_flow_in:
-      data: 0
+    cost_flow_cap:
+      data: 1695487.012987013
       index: monetary
       dims:
       - costs
@@ -420,21 +143,10 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 20648.216990224428
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 146.01239157372987
-      index: monetary
-      dims:
-      - costs
-    flow_cap_min: 50.0
-    flow_cap_max: 50.0
-    storage_cap_min: 700.0
-    storage_cap_max: 700.0
-    flow_cap_per_unit: 50.0
-    storage_cap_per_unit: 700.0
-    integer: true
-    units_max: 1
+data_tables:
+  flow_cap_min:
+    data: data/processed/techs/storage_capacities.csv
+    rows: techs
+    columns: nodes
+    add_dims:
+      parameters: flow_cap_min

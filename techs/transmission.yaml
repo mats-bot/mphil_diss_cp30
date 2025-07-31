@@ -1,4 +1,4 @@
-techs:
+templates:
   subsea_dc_transmission:
     name: subsea_dc_transmission
     base_tech: transmission

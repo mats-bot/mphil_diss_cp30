@@ -1,4 +1,4 @@
-locations:
+nodes:
   z1:
     techs:
       battery_existing:

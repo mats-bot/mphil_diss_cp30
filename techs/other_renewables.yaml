@@ -5,12 +5,9 @@ techs:
     base_tech: supply
     name: Hydro
     carrier_out: electricity
-    energy_eff: 1.0
+    flow_out_eff: 1.0
     lifetime: 41
     capacity_factor_max: 0.45
-  hydro_existing:
-    parent: hydro
-    base_tech: supply
     cost_om_annual:
       data: 46912.992831541225
       index: monetary
@@ -21,12 +18,12 @@ techs:
       index: monetary
       dims:
       - costs
-    cost_source:
+    cost_flow_in:
       data: 0.0
       index: monetary
       dims:
       - costs
-    flow_cap_max:
+    flow_cap_min: &id001
       data:
       - 456.9
       - 1.7
@@ -65,3 +62,4 @@ techs:
       - z7
       - z8
       - z9
+    flow_cap_max: *id001

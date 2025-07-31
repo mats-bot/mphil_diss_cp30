@@ -102,7 +102,8 @@ rule generate_storage_tech_definitions:
         "data/processed/techs/storage_costs.csv",
         "data/processed/techs/renewables_2023.csv"
     output:
-        "techs/storage.yaml"
+        "techs/storage.yaml",
+        "data/processed/techs/storage_capacities.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:
