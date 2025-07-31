@@ -52,7 +52,7 @@ for tech in techs:
         },
         # Fix hydro capacity to today's values
         "flow_cap_min": flow_cap_max,
-        "flow_cap_max": flow_cap_max,  #
+        "flow_cap_max": flow_cap_max,  
     }
 
 

@@ -48,7 +48,6 @@ for tech in renewable_techs:
         "name": tech,
         "base_tech": "supply",
         "carrier_out": "electricity",
-        "flow_out_eff": float(df.loc["efficiency", tech]),
         "source_unit": "per_cap",
         "lifetime": int(df.loc["lifetime", tech]),
         "cost_om_annual": {
@@ -73,6 +72,9 @@ for tech in renewable_techs:
         "rows": "timesteps",
         "columns": "nodes",
         "add_dims": {"techs": tech_base, "parameters": "source_use_max"},
+        'rename_dims': {
+                'time': 'timesteps'
+        },
     }
 
     output_yaml = {"techs": techs_yaml, "data_tables": data_tables_yaml}

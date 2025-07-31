@@ -5,7 +5,7 @@ techs:
     base_tech: supply
     name: offshore_wind
     carrier_out: electricity
-    resource_unit: per_unit
+    source_unit: per_cap
     lifetime: 30
     cost_flow_cap:
       data: 79104.18458781364
@@ -23,81 +23,18 @@ techs:
       dims:
       - costs
 data_tables:
-  capacityfactors_wind_offshore:
+  offshore_wind_cf:
     data: data/processed/spatial/offshore_cfs_2030_aggregated.csv
-    rows: time
+    rows: timesteps
     columns: nodes
     add_dims:
-      techs: wind_offshore
+      techs: offshore_wind
       parameters: source_use_max
-nodes:
-  z1:
-    techs:
-      wind_offshore:
-        flow_cap_min: 1548.0
-        flow_cap_max: 6540.0
-  z11:
-    techs:
-      wind_offshore:
-        flow_cap_min: 2042.3
-        flow_cap_max: 2042.3
-  z12:
-    techs:
-      wind_offshore:
-        flow_cap_min: 3980.8
-        flow_cap_max: 19354.8
-  z17:
-    techs:
-      wind_offshore:
-        flow_cap_min: 839.5
-        flow_cap_max: 2039.5
-  z2:
-    techs:
-      wind_offshore:
-        flow_cap_min: 1251.3
-        flow_cap_max: 12504.3
-  z4:
-    techs:
-      wind_offshore:
-        flow_cap_min: 181.0
-        flow_cap_max: 651.0
-  z5:
-    techs:
-      wind_offshore:
-        flow_cap_min: 1655.2
-        flow_cap_max: 3635.2
-  z6:
-    techs:
-      wind_offshore:
-        flow_cap_min: 103.5
-        flow_cap_max: 161.9
-  z7:
-    techs:
-      wind_offshore:
-        flow_cap_min: 1074.0
-        flow_cap_max: 3150.0
-  z8:
-    techs:
-      wind_offshore:
-        flow_cap_min: 1320.0
-        flow_cap_max: 9320.0
-  z9:
-    techs:
-      wind_offshore:
-        flow_cap_min: 683.4
-        flow_cap_max: 683.4
-  z13:
-    techs:
-      wind_offshore:
-        flow_cap_min: .nan
-        flow_cap_max: 100.0
-  z15:
-    techs:
-      wind_offshore:
-        flow_cap_min: .nan
-        flow_cap_max: 132.0
-  z3:
-    techs:
-      wind_offshore:
-        flow_cap_min: .nan
-        flow_cap_max: 1080.0
+    rename_dims:
+      time: timesteps
+  offshore_wind_capacities:
+    data: data/processed/techs/offshore_wind_projects_aggregated.csv
+    rows: parameters
+    columns: nodes
+    add_dims:
+      techs: offshore_wind

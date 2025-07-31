@@ -1,31 +1,6 @@
 techs:
-  gas_ccgt:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    name: Gas_CCGT
-    carrier_in: gas
-    carrier_out: electricity
-    energy_eff: 0.53
-    lifetime: 25
   gas_ccgt_existing:
-    parent: gas_ccgt
-    base_tech: conversion
-    cost_om_annual:
-      data: 24236.37992831541
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 2.3996415770609323
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
+    template: gas_ccgt
     flow_cap_max:
       data:
       - 0.0
@@ -66,55 +41,14 @@ techs:
       - z8
       - z9
   gas_ccgt_new:
-    parent: gas_ccgt
-    base_tech: conversion
+    template: gas_ccgt
     cost_flow_cap:
       data: 18029.307048984472
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 24236.37992831541
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 2.3996415770609323
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
-  gas_ccgt_chp:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    name: Gas_CCGT_CHP
-    carrier_in: gas
-    carrier_out: electricity
-    energy_eff: 0.33
-    lifetime: 25
   gas_ccgt_chp_existing:
-    parent: gas_ccgt_chp
-    base_tech: conversion
-    cost_om_annual:
-      data: 47272.93906810037
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 4.799283154121865
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
+    template: gas_ccgt_chp
     flow_cap_max:
       data:
       - 0.0
@@ -138,55 +72,14 @@ techs:
       - carriers
       index: *id001
   gas_ccgt_chp_new:
-    parent: gas_ccgt_chp
-    base_tech: conversion
+    template: gas_ccgt_chp
     cost_flow_cap:
       data: 111741.59540877285
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 47272.93906810037
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 4.799283154121865
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
-  gas_ocgt:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    name: Gas_OCGT
-    carrier_in: gas
-    carrier_out: electricity
-    energy_eff: 0.35
-    lifetime: 25
   gas_ocgt_existing:
-    parent: gas_ocgt
-    base_tech: conversion
-    cost_om_annual:
-      data: 20276.97132616488
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 2.3996415770609323
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
+    template: gas_ocgt
     flow_cap_max:
       data:
       - 0.0
@@ -210,55 +103,14 @@ techs:
       - carriers
       index: *id001
   gas_ocgt_new:
-    parent: gas_ocgt
-    base_tech: conversion
+    template: gas_ocgt
     cost_flow_cap:
       data: 180920.97670250895
       index: monetary
       dims:
       - costs
-    cost_om_annual:
-      data: 20276.97132616488
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 2.3996415770609323
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
-  diesel:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    name: Diesel
-    carrier_in: diesel
-    carrier_out: electricity
-    energy_eff: 0.34
-    lifetime: 15
   diesel_existing:
-    parent: diesel
-    base_tech: conversion
-    cost_om_annual:
-      data: 0.0
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 0.0
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
+    template: diesel
     flow_cap_max:
       data:
       - 129.5
@@ -281,33 +133,8 @@ techs:
       dims:
       - carriers
       index: *id001
-  coal:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    name: Coal
-    carrier_in: coal
-    carrier_out: electricity
-    energy_eff: 0.25
-    lifetime: 25
   coal_existing:
-    parent: coal
-    base_tech: conversion
-    cost_om_annual:
-      data: 29083.6559139785
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 4.799283154121865
-      index: monetary
-      dims:
-      - costs
-    cost_source:
-      data: 57.43354339622324
-      index: monetary
-      dims:
-      - costs
+    template: coal
     flow_cap_max:
       data:
       - 0.0
@@ -330,3 +157,119 @@ techs:
       dims:
       - carriers
       index: *id001
+templates:
+  gas_ccgt:
+    category: fossil
+    cp30_category: thermal
+    base_tech: conversion
+    carrier_in: gas
+    carrier_out: electricity
+    flow_out_eff: 0.53
+    lifetime: 25
+    cost_om_annual:
+      data: 24236.37992831541
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
+  gas_ccgt_chp:
+    category: fossil
+    cp30_category: thermal
+    base_tech: conversion
+    carrier_in: gas
+    carrier_out: electricity
+    flow_out_eff: 0.33
+    lifetime: 25
+    cost_om_annual:
+      data: 47272.93906810037
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 4.799283154121865
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
+  gas_ocgt:
+    category: fossil
+    cp30_category: thermal
+    base_tech: conversion
+    carrier_in: gas
+    carrier_out: electricity
+    flow_out_eff: 0.35
+    lifetime: 25
+    cost_om_annual:
+      data: 20276.97132616488
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 2.3996415770609323
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
+  diesel:
+    category: fossil
+    cp30_category: thermal
+    base_tech: conversion
+    carrier_in: diesel
+    carrier_out: electricity
+    flow_out_eff: 0.34
+    lifetime: 15
+    cost_om_annual:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 38.2890289308155
+      index: monetary
+      dims:
+      - costs
+  coal:
+    category: fossil
+    cp30_category: thermal
+    base_tech: conversion
+    carrier_in: coal
+    carrier_out: electricity
+    flow_out_eff: 0.25
+    lifetime: 25
+    cost_om_annual:
+      data: 29083.6559139785
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 4.799283154121865
+      index: monetary
+      dims:
+      - costs
+    cost_flow_in:
+      data: 57.43354339622324
+      index: monetary
+      dims:
+      - costs
