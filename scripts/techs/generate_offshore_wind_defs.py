@@ -8,7 +8,8 @@ projects_df = pd.read_csv(snakemake.input[1])
 cfs = pd.read_csv(snakemake.input[2])
 
 # Get min and max capacity per zone (max = full queue, min = 2023 operational)
-zones = projects_df['tzone'].unique()
+zones = [f"z{i}" for i in range(1, 18)]
+print(zones)
 
 projects_df["Operational"] = pd.to_datetime(projects_df["Operational"], errors="coerce")
 cutoff_date = pd.Timestamp("2024-01-01")
