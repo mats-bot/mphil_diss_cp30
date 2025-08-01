@@ -111,16 +111,16 @@ for _, row in df.iterrows():
     }
 
 
-data_table = {
-    'flow_cap_min': {
-        'data': 'data/processed/techs/storage_capacities.csv',
-        'rows': 'techs',
-        'columns': 'nodes',
-        'add_dims': {
-            'parameters': 'flow_cap_min'
-            }
-        }
-    }
+# data_table = {
+#     'flow_cap_min': {
+#         'data': 'data/processed/techs/storage_capacities.csv',
+#         'rows': 'techs',
+#         'columns': 'nodes',
+#         'add_dims': {
+#             'parameters': 'flow_cap_min'
+#             }
+#         }
+#     }
 
 with open(snakemake.output[0], "w") as f:
-    yaml.dump({"techs": storage_techs, "data_tables": data_table}, f, sort_keys=False)
+    yaml.dump({"techs": storage_techs}, f, sort_keys=False)

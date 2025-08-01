@@ -60,16 +60,16 @@ for tech in fossil_techs:
         },
     }
 
-    flow_cap_max = {
-        "data": tech_zone_capacity.get(tech_name, [0.0] * len(zones)),
-        "dims": ["carriers"],
-        "index": zones,
-    }
+    # flow_cap_max = {
+    #     "data": tech_zone_capacity.get(tech_name, [0.0] * len(zones)),
+    #     "dims": ["carriers"],
+    #     "index": zones,
+    # }
 
     # Existing tech: no capex, only operational/fuel costs
     techs_yaml[f"{tech_name}_existing"] = {
         "template": tech_name,
-        "flow_cap_max": flow_cap_max,
+        # "flow_cap_max": flow_cap_max,
     }
 
     # New tech: full cost structure

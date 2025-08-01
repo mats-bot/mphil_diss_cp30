@@ -191,22 +191,22 @@ if not unassigned_gdf.empty:
 operational_2023_df['zone'] = joined_gdf['z1']
 
 # Check all entries assigned a zone
-unassigned_final = operational_2023_df[operational_2023_df["zone"].isna()]
-print("Unassigned entries after final zone mapping:")
-print(unassigned_final[["Site Name", "Latitude", "Longitude", "CP30 technology", "Installed Capacity (MWelec)"]])
+# unassigned_final = operational_2023_df[operational_2023_df["zone"].isna()]
+# print("Unassigned entries after final zone mapping:")
+# print(unassigned_final[["Site Name", "Latitude", "Longitude", "CP30 technology", "Installed Capacity (MWelec)"]])
 
 
 # Handle entries where capacity is empty - 40 entries out of ~2000
-operational_2023_df["Installed Capacity (MWelec)"] = pd.to_numeric(
-    operational_2023_df["Installed Capacity (MWelec)"], errors="coerce"
-)
+# operational_2023_df["Installed Capacity (MWelec)"] = pd.to_numeric(
+#     operational_2023_df["Installed Capacity (MWelec)"], errors="coerce"
+# )
 
 # Check these entries 
-missing_capacity = operational_2023_df[operational_2023_df["Installed Capacity (MWelec)"].isna()]
-print("Entries with missing Installed Capacity:\n")
-print(missing_capacity[["Site Name", "CP30 technology", "zone", "Latitude", "Longitude"]])
-print(f"Total entries with missing capacity: {len(missing_capacity)}")
-print(f"Entries with missing capacity and technology 'Battery': {len(missing_capacity[missing_capacity['CP30 technology'] == 'Battery'])}\n\n")
+# missing_capacity = operational_2023_df[operational_2023_df["Installed Capacity (MWelec)"].isna()]
+# print("Entries with missing Installed Capacity:\n")
+# print(missing_capacity[["Site Name", "CP30 technology", "zone", "Latitude", "Longitude"]])
+# print(f"Total entries with missing capacity: {len(missing_capacity)}")
+# print(f"Entries with missing capacity and technology 'Battery': {len(missing_capacity[missing_capacity['CP30 technology'] == 'Battery'])}\n\n")
 
 
 
@@ -223,3 +223,52 @@ operational_2023_df = (
 operational_2023_df.to_csv(snakemake.output[1], index=False)
 
 
+
+
+# part to generate max capacities for renewables
+full_queue_statuses = ["Operational", "Under Construction", "Awaiting Construction", "Application Submitted"]
+full_queue_df = REPD_df[REPD_df["Development Status (short)"].isin(full_queue_statuses)].copy()
+full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Pumped_Hydro"] # Since handled elsewhere
+full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Offshore_Wind"]
+full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Other_Renewables"]
+full_queue_df["CP30 technology"] = full_queue_df["CP30 technology"].str.lower()
+
+
+
+full_queue_gdf = gpd.GeoDataFrame(
+    full_queue_df,
+    geometry=gpd.points_from_xy(full_queue_df["Longitude"], full_queue_df["Latitude"]),
+    crs="EPSG:4326"
+)
+
+full_joined = gpd.sjoin(full_queue_gdf, zones_gdf[["z1", "geometry"]], how="left", predicate="within")
+
+unassigned_mask_full = full_joined['z1'].isna()
+unassigned_gdf_full = full_queue_gdf[unassigned_mask_full].copy()
+
+if not unassigned_gdf_full.empty:
+    for idx, point in unassigned_gdf_full.geometry.items():
+        nearest_zone = None
+        min_distance = 5
+        for zone_idx, zone in zones_gdf.iterrows():
+            distance = point.distance(zone.geometry)
+            if distance < min_distance:
+                min_distance = distance
+                nearest_zone = zone['z1']
+        full_joined.loc[idx, 'z1'] = nearest_zone
+
+full_queue_df['zone'] = full_joined['z1']
+full_queue_df["Installed Capacity (MWelec)"] = pd.to_numeric(full_queue_df["Installed Capacity (MWelec)"], errors="coerce")
+
+full_queue_agg = (
+    full_queue_df
+    .groupby(["zone", "CP30 technology"])["Installed Capacity (MWelec)"]
+    .sum()
+    .reset_index()
+)
+# full_queue_agg.columns.values[0] = "techs"
+full_queue_agg = full_queue_agg.rename(columns={"CP30 technology": "techs"})
+
+
+full_queue_pivot = full_queue_agg.pivot(index="techs", columns="zone", values="Installed Capacity (MWelec)").fillna(0)
+full_queue_pivot.to_csv(snakemake.output[2])

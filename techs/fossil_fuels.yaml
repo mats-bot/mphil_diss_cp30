@@ -1,45 +1,6 @@
 techs:
   gas_ccgt_existing:
     template: gas_ccgt
-    flow_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 2475.0
-      - 420.0
-      - 3049.0
-      - 1234.0
-      - 905.0
-      - 2348.0
-      - 5568.0
-      - 1180.0
-      - 1029.0
-      - 0.0
-      - 165.0
-      - 120.0
-      - 3100.0
-      - 5408.0
-      - 3605.0
-      dims:
-      - carriers
-      index: &id001
-      - z1
-      - z10
-      - z11
-      - z12
-      - z13
-      - z14
-      - z15
-      - z16
-      - z17
-      - z2
-      - z3
-      - z4
-      - z5
-      - z6
-      - z7
-      - z8
-      - z9
   gas_ccgt_new:
     template: gas_ccgt
     cost_flow_cap:
@@ -49,28 +10,6 @@ techs:
       - costs
   gas_ccgt_chp_existing:
     template: gas_ccgt_chp
-    flow_cap_max:
-      data:
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
   gas_ccgt_chp_new:
     template: gas_ccgt_chp
     cost_flow_cap:
@@ -80,28 +19,6 @@ techs:
       - costs
   gas_ocgt_existing:
     template: gas_ocgt
-    flow_cap_max:
-      data:
-      - 0.0
-      - 150.0
-      - 294.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 100.0
-      - 100.0
-      - 94.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 60.0
-      - 660.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
   gas_ocgt_new:
     template: gas_ocgt
     cost_flow_cap:
@@ -111,52 +28,8 @@ techs:
       - costs
   diesel_existing:
     template: diesel
-    flow_cap_max:
-      data:
-      - 129.5
-      - 34.0
-      - 17.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 140.0
-      - 240.0
-      - 194.0
-      - 0.0
-      - 177.5
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
   coal_existing:
     template: coal
-    flow_cap_max:
-      data:
-      - 0.0
-      - 2021.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index: *id001
 templates:
   gas_ccgt:
     category: fossil

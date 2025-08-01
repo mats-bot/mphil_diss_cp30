@@ -8,12 +8,14 @@ projects_df = pd.read_csv(snakemake.input[1])
 cfs = pd.read_csv(snakemake.input[2])
 
 # Get min and max capacity per zone (max = full queue, min = 2023 operational)
+zones = projects_df['tzone'].unique()
+
 projects_df["Operational"] = pd.to_datetime(projects_df["Operational"], errors="coerce")
 cutoff_date = pd.Timestamp("2024-01-01")
 
 df_pre2024 = projects_df[projects_df['Operational'] < cutoff_date]
-flow_cap_min = df_pre2024.groupby('tzone')['Installed Capacity (MWelec)'].sum().rename('flow_cap_min')
-flow_cap_max = projects_df.groupby('tzone')['Installed Capacity (MWelec)'].sum().rename('flow_cap_max')
+flow_cap_min = df_pre2024.groupby('tzone')['Installed Capacity (MWelec)'].sum().reindex(zones, fill_value=0).rename('flow_cap_min')
+flow_cap_max = projects_df.groupby('tzone')['Installed Capacity (MWelec)'].sum().reindex(zones, fill_value=0).rename('flow_cap_max')
 capacities_df = pd.concat([flow_cap_min, flow_cap_max], axis=1).T
 capacities_df.index = ['flow_cap_min', 'flow_cap_max']
 
