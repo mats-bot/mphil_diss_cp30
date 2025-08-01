@@ -143,10 +143,10 @@ techs:
       index: monetary
       dims:
       - costs
-data_tables:
-  flow_cap_min:
-    data: data/processed/techs/storage_capacities.csv
-    rows: techs
-    columns: nodes
-    add_dims:
-      parameters: flow_cap_min
+# data_tables:
+#   flow_cap_min:
+#     data: data/processed/techs/storage_capacities.csv
+#     rows: techs
+#     columns: nodes
+#     add_dims:
+#       parameters: flow_cap_min

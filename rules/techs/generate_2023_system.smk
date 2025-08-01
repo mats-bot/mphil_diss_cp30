@@ -36,7 +36,8 @@ rule clean_REPD_queue:
         "uploaded_data/tzones.gpkg"
     output:
         "data/intermediates/techs/offshore_wind_queue.csv",
-        "data/processed/techs/renewables_2023.csv"
+        "data/processed/techs/renewables_2023.csv",
+        "data/processed/techs/renewables_2030_queue.csv"
     conda:
         "../../envs/gpkg_data.yaml"
     script:
@@ -76,6 +77,5 @@ rule clean_offshore_wind:
         "../../envs/gpkg_data.yaml"
     script:
         "../../scripts/techs/clean_offshore_wind.py"
-
 
 

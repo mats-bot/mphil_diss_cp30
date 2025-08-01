@@ -1,0 +1,23 @@
+data_tables:
+  flow_cap_min:
+    data: data/processed/spatial/min_zonal_caps.csv
+    rows: techs
+    columns: nodes
+    add_dims:
+      parameters: flow_cap_min
+    rename_dims:
+      tech: techs
+  flow_cap_max:
+    data: data/processed/spatial/max_zonal_caps.csv
+    rows: techs
+    columns: nodes
+    add_dims:
+      parameters: flow_cap_max
+    rename_dims:
+      tech: techs
+  renewables_flow_cap_max:
+    data: data/processed/techs/renewables_2030_queue.csv
+    rows: techs
+    columns: nodes
+    add_dims:
+      parameters: flow_cap_max

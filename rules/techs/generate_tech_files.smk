@@ -1,29 +1,19 @@
 weather_year = config["weather_year"]
 
 # redundant in current version
-rule generate_fossil_nuclear_capacities:
+rule generate_minimum_capacities:
     input: 
-        "data/processed/techs/fossil_nuclear_2023.csv"
+        "data/processed/techs/fossil_nuclear_2023.csv",
+        "data/processed/techs/renewables_2023.csv",
+        "data/processed/techs/renewables_2030_queue.csv"
     output: 
-        "spatial/fossil_nuclear_2023_caps.yaml"
+        "data/processed/spatial/min_zonal_caps.csv",
+        "data/processed/spatial/max_zonal_caps.csv",
+        "spatial/capacities_2023.yaml"
     conda: 
         "../../envs/data_processing.yaml"
     script:
-        "../../scripts/techs/generate_fossil_nuclear_caps.py"
-
-# redundant in current version
-rule generate_other_renewable_capacities:
-    input: 
-        "data/processed/techs/renewables_2023.csv"
-    output: 
-        "spatial/renewables_2023_caps.yaml"
-    conda:
-        "../../envs/data_processing.yaml"
-    script:
-        "../../scripts/techs/generate_renewables_caps.py"
-
-
-# new rule to produce minimum capacities by zone ()
+        "../../scripts/techs/generate_2023_caps.py"
 
         
 rule generate_fossil_fuel_definitions:
@@ -91,7 +81,8 @@ rule generate_other_renewables_definitions:
         "data/processed/techs/generation_costs.csv",
         "data/processed/techs/renewables_2023.csv"
     output:
-        "techs/other_renewables.yaml"
+        "techs/other_renewables.yaml",
+        "data/processed/techs/hydro_capacities.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:

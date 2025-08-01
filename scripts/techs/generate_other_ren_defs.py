@@ -7,25 +7,31 @@ zones = sorted(capacity_df["zone"].unique())
 
 techs = ["Hydro"]
 
-tech_zone_capacity = {}
-for tech in capacity_df["CP30 technology"].unique():
-    tech_zone_capacity[tech.lower()] = [0.0] * len(zones)
 
+# build csv with per zone capacity
+flow_caps = [0.0] * len(zones)
 for _, row in capacity_df.iterrows():
-    zone = row["zone"]
-    tech = row["CP30 technology"].lower()
-    capacity = float(row["Installed Capacity (MWelec)"])
-    if tech in tech_zone_capacity and zone in zones:
-        idx = zones.index(zone)
-        tech_zone_capacity[tech][idx] = capacity
+    if row["CP30 technology"].lower() == "hydro":
+        zone = row["zone"]
+        capacity = float(row["Installed Capacity (MWelec)"])
+        if zone in zones:
+            idx = zones.index(zone)
+            flow_caps[idx] = capacity
+
+cap_df = pd.DataFrame(
+    [flow_caps, flow_caps],
+    index=["flow_cap_min", "flow_cap_max"],
+    columns=zones)
+
+cap_df.to_csv(snakemake.output[1])
 
 techs_yaml = {}
 
 for tech in techs:
     tech_name = tech.lower()
 
-    flow_cap_data = tech_zone_capacity.get(tech_name, [0.0] * len(zones))
-    flow_cap_max = {"data": flow_cap_data, "dims": ["carriers"], "index": zones}
+    # flow_cap_data = tech_zone_capacity.get(tech_name, [0.0] * len(zones))
+    # flow_cap_max = {"data": flow_cap_data, "dims": ["carriers"], "index": zones}
     techs_yaml[tech_name] = {
         "category": "renewable",
         "cp30_category": "renewable",
@@ -51,11 +57,21 @@ for tech in techs:
             "dims": ["costs"],
         },
         # Fix hydro capacity to today's values
-        "flow_cap_min": flow_cap_max,
-        "flow_cap_max": flow_cap_max,  
+        # "flow_cap_min": flow_cap_max,
+        # "flow_cap_max": flow_cap_max,  
     }
 
+data_tables_yaml = {
+    "hydro_capacities": {
+        "data": "data/processed/techs/hydro_capacities.csv",
+        "rows": "parameters",
+        "columns": "nodes",
+        "add_dims": {
+            "techs": tech_name
+        }
+    }
+}
 
 # Write output YAML
 with open(snakemake.output[0], "w") as f:
-    yaml.dump({"techs": techs_yaml}, f, sort_keys=False)
+    yaml.dump({"techs": techs_yaml, "data_tables": data_tables_yaml}, f, sort_keys=False)

@@ -23,43 +23,10 @@ techs:
       index: monetary
       dims:
       - costs
-    flow_cap_min: &id001
-      data:
-      - 456.9
-      - 1.7
-      - 0.0
-      - 0.0
-      - 8.4
-      - 0.0
-      - 10.0
-      - 0.0
-      - 0.0
-      - 2.0
-      - 89.8
-      - 8.2
-      - 6.1
-      - 0.0
-      - 46.4
-      - 0.0
-      - 0.0
-      dims:
-      - carriers
-      index:
-      - z1
-      - z10
-      - z11
-      - z12
-      - z13
-      - z14
-      - z15
-      - z16
-      - z17
-      - z2
-      - z3
-      - z4
-      - z5
-      - z6
-      - z7
-      - z8
-      - z9
-    flow_cap_max: *id001
+data_tables:
+  hydro_capacities:
+    data: data/processed/techs/hydro_capacities.csv
+    rows: parameters
+    columns: nodes
+    add_dims:
+      techs: hydro

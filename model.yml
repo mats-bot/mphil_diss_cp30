@@ -7,6 +7,7 @@ config:
     mode: plan
     objective: min_cost_optimisation
     pre_validate_math_strings: false
+    ensure_feasibility: True
     # add_math:
     #   - additional_math.yaml
     backend: gurobi
@@ -32,7 +33,8 @@ import:
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
   - spatial/nodes_techs.yaml
-#  - spatial/renewables_2023_caps.yaml
+  - spatial/capacities_2023.yaml
+
 
 
 # constraints:
