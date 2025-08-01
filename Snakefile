@@ -6,11 +6,11 @@ include: "rules/demand/aggregate_demand_tzone.smk"
 include: "rules/demand/generate_demand_final.smk"
 include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
+include: "rules/spatial/eligible_areas.smk"
 include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
 include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
-
 
 
 rule all:
@@ -21,7 +21,7 @@ rule run_calliope:
     input:
         model="model.yml"
     output:
-        "results/model_results.nc"
+        directory("results")
     conda:
         "environment.yml"
     shell:
@@ -38,7 +38,7 @@ rule serve_calligraph:
         """
         calligraph {input}
         """
-        
+
 
 rule dag_dot:
     output: temp("data/interim/dag.dot")
