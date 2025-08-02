@@ -25,6 +25,7 @@ import:
   - demand.yaml
   - techs/transmission.yaml
   - spatial/onshore_transmission.yaml
+  - spatial/offshore_transmission.yaml
   - techs/CCS.yaml
   - techs/fossil_fuels.yaml
   - techs/low_carbon_thermal.yaml
