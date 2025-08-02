@@ -1,4 +1,4 @@
-rule calculate_onshore_transmission_losses:
+rule create_offshore_links_yaml:
     input:
         "uploaded_data/offshore_links.xlsx"
     output:

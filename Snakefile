@@ -10,7 +10,8 @@ include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
 include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
-
+include: "rules/spatial/generate_offshore_transmission.smk"
+ 
 
 
 rule all:
@@ -19,14 +20,27 @@ rule all:
 
 rule run_calliope:
     input:
-        model="model.yml"
+        "model.yml",
+        "demand.yaml",
+        "techs/transmission.yaml",
+        "spatial/onshore_transmission.yaml",
+        "spatial/offshore_transmission.yaml",
+        "techs/CCS.yaml",
+        "techs/fossil_fuels.yaml",
+        "techs/low_carbon_thermal.yaml",
+        "techs/offshore_wind.yaml",
+        "techs/other_renewables.yaml",
+        "techs/solar_onshore_wind.yaml",
+        "techs/storage.yaml",
+        "spatial/nodes_techs.yaml",
+        "spatial/capacities_2023.yaml"
     output:
         "results/model_results.nc"
     conda:
         "environment.yml"
     shell:
         """
-        calliope run {input.model} --save_netcdf={output}
+        calliope run model.yml --save_netcdf={output}
         """
 
 rule serve_calligraph:
