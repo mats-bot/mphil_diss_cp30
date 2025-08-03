@@ -8,13 +8,13 @@ config:
     objective: min_cost_optimisation
     pre_validate_math_strings: false
     ensure_feasibility: True
-    # add_math:
-    #   - additional_math.yaml
+    add_math:
+      - cp30_constraint.yaml
     backend: gurobi
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 8
+      Threads: 4
       Method: 2 # use barrier, but do not run simplex in parallel
       Crossover: 0 # stop after barrier, do not perform crossover
       FeasibilityTol: 1e-3
@@ -38,10 +38,3 @@ import:
   - techs/thermal_power_constraints.yaml
 
 
-# constraints:
-#   fossil_generation_max_share:
-#     techs: .where(techs.category == "fossil")
-#     carrier: electricity
-#     sense: "<="
-#     rhs: 0.05
-#     expression: "sum(energy_prod) / sum(energy_prod_all)"

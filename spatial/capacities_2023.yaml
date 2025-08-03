@@ -15,9 +15,9 @@ data_tables:
       parameters: flow_cap_max
     rename_dims:
       tech: techs
-  renewables_flow_cap_max:
-    data: data/processed/techs/renewables_2030_queue.csv
-    rows: techs
-    columns: nodes
-    add_dims:
-      parameters: flow_cap_max
+  # renewables_flow_cap_max:
+  #   data: data/processed/techs/renewables_2030_queue.csv
+  #   rows: techs
+  #   columns: nodes
+  #   add_dims:
+  #     parameters: flow_cap_max
