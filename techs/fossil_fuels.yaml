@@ -8,15 +8,15 @@ techs:
       index: monetary
       dims:
       - costs
-  gas_ccgt_chp_existing:
-    template: gas_ccgt_chp
-  gas_ccgt_chp_new:
-    template: gas_ccgt_chp
-    cost_flow_cap:
-      data: 111741.59540877285
-      index: monetary
-      dims:
-      - costs
+  # gas_ccgt_chp_existing:
+  #   template: gas_ccgt_chp
+  # gas_ccgt_chp_new:
+  #   template: gas_ccgt_chp
+  #   cost_flow_cap:
+  #     data: 111741.59540877285
+  #     index: monetary
+  #     dims:
+  #     - costs
   gas_ocgt_existing:
     template: gas_ocgt
   gas_ocgt_new:
@@ -54,29 +54,29 @@ templates:
       index: monetary
       dims:
       - costs
-  gas_ccgt_chp:
-    category: fossil
-    cp30_category: thermal
-    base_tech: conversion
-    carrier_in: gas
-    carrier_out: electricity
-    flow_out_eff: 0.33
-    lifetime: 25
-    cost_om_annual:
-      data: 47272.93906810037
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 4.799283154121865
-      index: monetary
-      dims:
-      - costs
-    cost_flow_in:
-      data: 38.2890289308155
-      index: monetary
-      dims:
-      - costs
+  # gas_ccgt_chp:
+  #   category: fossil
+  #   cp30_category: thermal
+  #   base_tech: conversion
+  #   carrier_in: gas
+  #   carrier_out: electricity
+  #   flow_out_eff: 0.33
+  #   lifetime: 25
+  #   cost_om_annual:
+  #     data: 47272.93906810037
+  #     index: monetary
+  #     dims:
+  #     - costs
+  #   cost_flow_out:
+  #     data: 4.799283154121865
+  #     index: monetary
+  #     dims:
+  #     - costs
+  #   cost_flow_in:
+  #     data: 38.2890289308155
+  #     index: monetary
+  #     dims:
+  #     - costs
   gas_ocgt:
     category: fossil
     cp30_category: thermal
