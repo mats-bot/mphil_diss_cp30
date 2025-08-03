@@ -33,7 +33,8 @@ rule run_calliope:
         "techs/solar_onshore_wind.yaml",
         "techs/storage.yaml",
         "spatial/nodes_techs.yaml",
-        "spatial/capacities_2023.yaml"
+        "spatial/capacities_2023.yaml",
+        "techs/thermal_power_constraints.yaml"
     output:
         "results/model_results.nc"
     conda:

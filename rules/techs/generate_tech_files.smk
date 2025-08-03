@@ -49,6 +49,18 @@ rule generate_ccs_techs_definitions:
     script:
         "../../scripts/techs/generate_CCS_defs.py"
 
+rule generate_thermal_params:
+    input:
+        "uploaded_data/thermal_params.xlsx"
+    output:
+        "data/processed/techs/thermal_params.csv",
+        "techs/thermal_power_constraints.yaml"
+    conda: 
+        "../../envs/data_processing.yaml"
+    script:
+        "../../scripts/techs/generate_thermal_params.py"
+
+
 rule generate_solar_onshore_wind_definitions:
     input: 
         "data/processed/techs/generation_costs.csv",

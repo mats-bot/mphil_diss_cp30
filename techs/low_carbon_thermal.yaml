@@ -28,35 +28,35 @@ techs:
       index: monetary
       dims:
       - costs
-  biomass_chp:
-    category: thermal
-    cp30_category: renewable
-    base_tech: conversion
-    name: Biomass_CHP
-    carrier_in: biomass
-    carrier_out: electricity
-    flow_out_eff: 0.21
-    lifetime: 24
-    cost_om_annual:
-      data: 418017.5627240144
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 11.998207885304662
-      index: monetary
-      dims:
-      - costs
-    cost_flow_in:
-      data: 0.0
-      index: monetary
-      dims:
-      - costs
-    cost_flow_cap:
-      data: 95440.70562919868
-      index: monetary
-      dims:
-      - costs
+  # biomass_chp:
+    # category: thermal
+    # cp30_category: renewable
+    # base_tech: conversion
+    # name: Biomass_CHP
+    # carrier_in: biomass
+    # carrier_out: electricity
+    # flow_out_eff: 0.21
+    # lifetime: 24
+    # cost_om_annual:
+    #   data: 418017.5627240144
+    #   index: monetary
+    #   dims:
+    #   - costs
+    # cost_flow_out:
+    #   data: 11.998207885304662
+    #   index: monetary
+    #   dims:
+    #   - costs
+    # cost_flow_in:
+    #   data: 0.0
+    #   index: monetary
+    #   dims:
+    #   - costs
+    # cost_flow_cap:
+    #   data: 95440.70562919868
+    #   index: monetary
+    #   dims:
+    #   - costs
   waste:
     category: thermal
     cp30_category: renewable
@@ -86,35 +86,35 @@ techs:
       index: monetary
       dims:
       - costs
-  waste_chp:
-    category: thermal
-    cp30_category: renewable
-    base_tech: conversion
-    name: Waste_CHP
-    carrier_in: waste
-    carrier_out: electricity
-    flow_out_eff: 0.24
-    lifetime: 27
-    cost_om_annual:
-      data: 335109.9462365592
-      index: monetary
-      dims:
-      - costs
-    cost_flow_out:
-      data: 73.18906810035844
-      index: monetary
-      dims:
-      - costs
-    cost_flow_in:
-      data: 0.0
-      index: monetary
-      dims:
-      - costs
-    cost_flow_cap:
-      data: 343676.66666666674
-      index: monetary
-      dims:
-      - costs
+  # waste_chp:
+  #   category: thermal
+  #   cp30_category: renewable
+  #   base_tech: conversion
+  #   name: Waste_CHP
+  #   carrier_in: waste
+  #   carrier_out: electricity
+  #   flow_out_eff: 0.24
+  #   lifetime: 27
+  #   cost_om_annual:
+  #     data: 335109.9462365592
+  #     index: monetary
+  #     dims:
+  #     - costs
+  #   cost_flow_out:
+  #     data: 73.18906810035844
+  #     index: monetary
+  #     dims:
+  #     - costs
+  #   cost_flow_in:
+  #     data: 0.0
+  #     index: monetary
+  #     dims:
+  #     - costs
+  #   cost_flow_cap:
+  #     data: 343676.66666666674
+  #     index: monetary
+  #     dims:
+  #     - costs
   hydrogen:
     category: thermal
     cp30_category: thermal
@@ -124,6 +124,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.48
     lifetime: 25
+    flow_cap_max: 3000 #####
     cost_om_annual:
       data: 26516.0394265233
       index: monetary
