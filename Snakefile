@@ -22,6 +22,7 @@ rule run_calliope:
     input:
         "model.yml",
         "demand.yaml",
+        "cp30_constraint.yaml",
         "techs/transmission.yaml",
         "spatial/onshore_transmission.yaml",
         "spatial/offshore_transmission.yaml",

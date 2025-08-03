@@ -120,6 +120,9 @@ rule generate_transmission_definitions:
     script:
         "../../scripts/techs/generate_transmission_defs.py"
 
+rule generate_import_export:
+
+
 rule generate_nodes_techs:
     input:
         tech_files=expand("techs/{tech}.yaml", tech=["CCS", "fossil_fuels", "low_carbon_thermal", 
