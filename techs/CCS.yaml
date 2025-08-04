@@ -6,7 +6,6 @@ techs:
     name: beccs
     carrier_in: biomass
     carrier_out: electricity
-    flow_cap_max: 3000 #####
     flow_out_eff: 1.0
     lifetime: 25
     cost_flow_cap: 4786586.868686869
@@ -32,7 +31,6 @@ techs:
     name: gas_ccs
     carrier_in: gas
     carrier_out: electricity
-    flow_cap_max: 3000 #####
     flow_out_eff: 0.47
     lifetime: 25
     cost_flow_cap: 2042304.6780303027

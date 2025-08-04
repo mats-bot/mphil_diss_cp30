@@ -121,7 +121,17 @@ rule generate_transmission_definitions:
         "../../scripts/techs/generate_transmission_defs.py"
 
 rule generate_import_export:
-
+    input:
+        "uploaded_data/uk-import-price-2013(in).csv",
+        "uploaded_data/Interconnectors.xlsx"
+    output:
+        "data/processed/demand/import_prices.csv",
+        "data/processed/demand/export_prices.csv",
+        "techs/import_export.yaml"
+    conda:
+        "../../envs/data_processing.yaml"
+    script:
+        "../../scripts/techs/generate_import_export_defs.py"
 
 rule generate_nodes_techs:
     input:

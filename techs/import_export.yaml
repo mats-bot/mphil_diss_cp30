@@ -1,0 +1,158 @@
+templates:
+  import_electricity:
+    name: Electricity import
+    base_tech: supply
+    carrier_out: electricity
+  export_electricity:
+    name: Electricity export
+    base_tech: demand
+    carrier_in: electricity
+techs:
+  ic_fra_z17_import:
+    template: import_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_out_eff: 0.998215
+  ic_fra_z17_export:
+    template: export_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_in_eff: 0.998215
+  ic_nld_z17_import:
+    template: import_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_out_eff: 0.9909
+  ic_nld_z17_export:
+    template: export_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_in_eff: 0.9909
+  ic_irl_z7_import:
+    template: import_electricity
+    flow_cap_min: 750.0
+    flow_cap_max: 750.0
+    flow_out_eff: 0.991425
+  ic_irl_z7_export:
+    template: export_electricity
+    flow_cap_min: 750.0
+    flow_cap_max: 750.0
+    flow_in_eff: 0.991425
+  ic_bel_z17_import:
+    template: import_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_out_eff: 0.9951
+  ic_bel_z17_export:
+    template: export_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_in_eff: 0.9951
+  ic_fra_z16_import:
+    template: import_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_out_eff: 0.99286
+  ic_fra_z16_export:
+    template: export_electricity
+    flow_cap_min: 1000.0
+    flow_cap_max: 1000.0
+    flow_in_eff: 0.99286
+  ic_nor_z6_import:
+    template: import_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_out_eff: 0.9748
+  ic_nor_z6_export:
+    template: export_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_in_eff: 0.9748
+  ic_dnk_z11_import:
+    template: import_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_out_eff: 0.973225
+  ic_dnk_z11_export:
+    template: export_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_in_eff: 0.973225
+  ic_irl_z13_import:
+    template: import_electricity
+    flow_cap_min: 500.0
+    flow_cap_max: 500.0
+    flow_out_eff: 0.99335
+  ic_irl_z13_export:
+    template: export_electricity
+    flow_cap_min: 500.0
+    flow_cap_max: 500.0
+    flow_in_eff: 0.99335
+  ic_irl_z4_import:
+    template: import_electricity
+    flow_cap_min: 500.0
+    flow_cap_max: 500.0
+    flow_out_eff: 0.9977775
+  ic_irl_z4_export:
+    template: export_electricity
+    flow_cap_min: 500.0
+    flow_cap_max: 500.0
+    flow_in_eff: 0.9977775
+  ic_deu_z17_import:
+    template: import_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_out_eff: 0.974625
+  ic_deu_z17_export:
+    template: export_electricity
+    flow_cap_min: 1400.0
+    flow_cap_max: 1400.0
+    flow_in_eff: 0.974625
+nodes:
+  z17:
+    techs:
+      ic_fra_z17_import: {}
+      ic_fra_z17_export: {}
+      ic_nld_z17_import: {}
+      ic_nld_z17_export: {}
+      ic_bel_z17_import: {}
+      ic_bel_z17_export: {}
+      ic_deu_z17_import: {}
+      ic_deu_z17_export: {}
+  z7:
+    techs:
+      ic_irl_z7_import: {}
+      ic_irl_z7_export: {}
+  z16:
+    techs:
+      ic_fra_z16_import: {}
+      ic_fra_z16_export: {}
+  z6:
+    techs:
+      ic_nor_z6_import: {}
+      ic_nor_z6_export: {}
+  z11:
+    techs:
+      ic_dnk_z11_import: {}
+      ic_dnk_z11_export: {}
+  z13:
+    techs:
+      ic_irl_z13_import: {}
+      ic_irl_z13_export: {}
+  z4:
+    techs:
+      ic_irl_z4_import: {}
+      ic_irl_z4_export: {}
+data_tables:
+  import_prices:
+    data: data/processed/demand/import_prices.csv
+    rows: timesteps
+    columns: techs
+    add_dims:
+      parameters: cost_flow_out
+  export_prices:
+    data: data/processed/demand/export_prices.csv
+    rows: timesteps
+    columns: techs
+    add_dims:
+      parameters: cost_flow_in

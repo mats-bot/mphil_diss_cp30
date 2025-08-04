@@ -33,6 +33,7 @@ rule run_calliope:
         "techs/other_renewables.yaml",
         "techs/solar_onshore_wind.yaml",
         "techs/storage.yaml",
+        "techs/import_export.yaml",
         "spatial/nodes_techs.yaml",
         "spatial/capacities_2023.yaml",
         "techs/thermal_power_constraints.yaml"
