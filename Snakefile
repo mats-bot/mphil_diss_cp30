@@ -11,6 +11,9 @@ include: "rules/techs/generate_monetary_costs.smk"
 include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
 include: "rules/spatial/generate_offshore_transmission.smk"
+include: "rules/demand/generate_demand_flex.smk"
+
+
  
 
 
@@ -35,7 +38,7 @@ rule run_calliope:
         "techs/storage.yaml",
         "techs/import_export.yaml",
         "spatial/nodes_techs.yaml",
-        "spatial/capacities_2023.yaml",
+#        "spatial/capacities_2023.yaml",
         "techs/thermal_power_constraints.yaml"
     output:
         "results/model_results.nc"
