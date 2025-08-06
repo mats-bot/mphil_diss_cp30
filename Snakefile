@@ -14,8 +14,8 @@ include: "rules/techs/generate_tech_files.smk"
 include: "rules/spatial/generate_offshore_transmission.smk"
 include: "rules/demand/generate_demand_flex.smk"
 
-
-include: ""
+# Interpret model results and data used to generate these
+include: "rules/results/generate_method_plots.smk"
 
 
 rule all:

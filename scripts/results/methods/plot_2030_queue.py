@@ -3,10 +3,20 @@ import matplotlib.pyplot as plt
 
 df = pd.read_csv(snakemake.input[0], index_col=0)
 
-cp30 = pd. read_excel(snakemake.input[1])
+cp30 = pd. read_excel(snakemake.input[1], sheet_name="CP.10")
 
 total_caps_mw = df.sum(axis=1)
 total_caps_gw = total_caps_mw / 1000 # convert to GW
+
+
+tech_to_group = {
+    'solar_pv': 'Solar',
+    'pv_rooftop': 'Solar',
+    'onshore_wind': 'Wind',
+    'offshore_wind': 'Wind',
+    'battery_storage': 'Storage',
+    'hydro_pumped': 'Storage',
+}
 
 
 plt.figure(figsize=(10,6))
