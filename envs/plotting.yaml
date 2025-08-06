@@ -1,0 +1,12 @@
+# For generating figures
+name: plotting
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - matplotlib=3.8.2
+  - seaborn=0.13.2
+  - pandas=2.2.2
+  - xarray=2024.1.1
+  - netcdf4=1.6.5
+  - numpy=1.26.4

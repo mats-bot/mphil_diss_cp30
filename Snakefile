@@ -1,5 +1,6 @@
 configfile: "config/default.yaml"
 
+# Generate data files and definitions for model
 include: "rules/demand/clean_demand.smk"
 include: "rules/demand/estimate_demand_timeseries.smk"
 include: "rules/demand/aggregate_demand_tzone.smk"
@@ -14,7 +15,7 @@ include: "rules/spatial/generate_offshore_transmission.smk"
 include: "rules/demand/generate_demand_flex.smk"
 
 
- 
+include: ""
 
 
 rule all:
