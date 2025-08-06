@@ -89,7 +89,7 @@ math = {
 }
 
 model = calliope.Model(
-    snakemake.input.model_yaml, time_resample=f"{snakemake.params.resolution_hrs}h"
+    snakemake.input[0], time_resample=f"{snakemake.params.resolution_hrs}h"
 )
 
 calliope.set_log_verbosity("INFO")

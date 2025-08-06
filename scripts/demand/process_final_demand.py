@@ -11,27 +11,26 @@ def convert_demand_csv(input_csv, output_folder, target_year=30):
     hour_cols = sorted([col for col in df.columns if col.startswith('h_')],
                        key=lambda x: int(x.split('_')[1]))
 
-    grouped = df_year.groupby(['zone', 'type'])
-
-    full_year = target_year+2000
-
+    full_year = target_year + 2000
     os.makedirs(output_folder, exist_ok=True)
 
-    for (zone, dtype), group in grouped:
-        row = group.iloc[0]
+    grouped = df_year.groupby('type')
 
+    for dtype, group in grouped:
         start_datetime = datetime(full_year, 1, 1, 0, 0)
         datetimes = [start_datetime + timedelta(hours=i) for i in range(len(hour_cols))]
-        values = row[hour_cols].values.astype(float)
 
-        df_out = pd.DataFrame({
-            'timesteps': [dt.isoformat() for dt in datetimes],
-            'value': values
-        })
+        zone_values = {}
+        for _, row in group.iterrows():
+            zone = row['zone']
+            values = row[hour_cols].values.astype(float)
+            zone_values[zone] = values
 
-        filename = os.path.join(output_folder, f"demand_{zone}_{dtype}.csv")
+        df_out = pd.DataFrame(zone_values)
+        df_out.insert(0, 'timesteps', [dt.isoformat() for dt in datetimes])
+
+        filename = os.path.join(output_folder, f"demand_{dtype}.csv")
         df_out.to_csv(filename, index=False)
-
 
 convert_demand_csv(
     input_csv=snakemake.input[0],

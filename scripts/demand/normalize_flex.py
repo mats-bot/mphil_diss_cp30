@@ -39,8 +39,10 @@ df_melted['demand_type'] = df_melted['flex_type'].map(category_to_types)
 # Flex split proportionally by type since no data on supply by type
 df_melted['num_types'] = df_melted['demand_type'].apply(len)
 df_melted = df_melted.explode('demand_type')
-df_melted['flex_gw'] = df_melted['flex_gw'] / df_melted['num_types']
+df_melted['flex_gw'] = df_melted['flex_gw'] / df_melted['num_types'] * 1000 # convert to MW
 
-df_final = df_melted[['flex_type', 'demand_type', 'year', 'flex_gw']]
+df_2030 = df_melted[df_melted['year'] == '2030'][['flex_type', 'demand_type', 'flex_gw']].reset_index(drop=True)
+df_2035 = df_melted[df_melted['year'] == '2035'][['flex_type', 'demand_type', 'flex_gw']].reset_index(drop=True)
 
-df_final.to_csv(snakemake.output[0], index=False)
+df_2030.to_csv(snakemake.output[0], index=False)
+df_2035.to_csv(snakemake.output[1], index=False)

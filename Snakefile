@@ -24,7 +24,7 @@ rule all:
 rule run_calliope:
     input:
         "model.yml",
-        "demand.yaml",
+        "demand_ND.yaml", ## Sens
         "cp30_constraint.yaml",
         "techs/transmission.yaml",
         "spatial/onshore_transmission.yaml",
@@ -44,10 +44,15 @@ rule run_calliope:
         "results/model_results.nc"
     conda:
         "environment.yml"
-    shell:
-        """
-        calliope run model.yml --save_netcdf={output}
-        """
+    params:
+        response_hrs=4, # Max flexibility window
+        resolution_hrs=1,
+    script:
+        "scripts/run_calliope.py"
+    # shell:
+    #     """
+    #     calliope run model.yml --save_netcdf={output}
+    #     """
 
 rule serve_calligraph:
     input:
