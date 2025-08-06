@@ -12,7 +12,8 @@ rule normalize_flex_data:
     input:
         "data/raw/demand/FES24_workbook.xlsx"
     output:
-        "data/intermediates/demand/flexibility_caps.csv"
+        "data/intermediates/demand/ND_flexibility_caps.csv",
+        "data/intermediates/demand/FFR_flexibility_caps.csv",
     conda:
         "../../envs/data_processing.yaml"
     script:
