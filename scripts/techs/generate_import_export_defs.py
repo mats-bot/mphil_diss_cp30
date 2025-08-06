@@ -67,6 +67,7 @@ for _, row in interconnectors.iterrows():
     }
     techs[f"{name}_export"] = {
         "template": "export_electricity",
+        "category": "export",
         "flow_cap_min": flow_cap,
         "flow_cap_max": flow_cap,
         "flow_in_eff": 1 - loss

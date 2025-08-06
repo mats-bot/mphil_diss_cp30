@@ -1,6 +1,6 @@
 constraints:
   fossil_fuel_share_limit:
-    foreach: [nodes, techs]
+    foreach: []
     where: supply_share_equals
     description: >
       Limit total fossil fuel generation to less than 5% of total generation.
@@ -9,3 +9,13 @@ constraints:
           sum(flow_out, over=[nodes, techs:category=fossil, carriers, timesteps])
           <=
           0.05 * sum(flow_out, over=[nodes, techs:carrier_prod, carriers, timesteps])
+  non_fossil_meets_national_demand:
+    foreach: []
+    description: >
+      Ensure non fossil electricityfuels generation is greater than domestic demand.
+    where: base_tech=demand AND NOT category=export AND NOT category=fossil
+    equations:
+      - expression: >
+          sum(flow_out, over=[nodes, techs, carriers, timesteps])
+          >=
+          sum(flow_in, over=[nodes, techs, carriers, timesteps])
