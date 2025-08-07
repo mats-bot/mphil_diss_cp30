@@ -68,7 +68,7 @@ rule serve_calligraph:
 
 rule dag_dot:
     output: temp("data/interim/dag.dot")
-    shell: "snakemake --rulegraph > {output}"
+    shell: "snakemake all --rulegraph > {output}"
 
 
 rule rulegraph:
