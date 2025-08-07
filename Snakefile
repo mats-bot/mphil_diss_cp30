@@ -7,6 +7,7 @@ include: "rules/demand/aggregate_demand_tzone.smk"
 include: "rules/demand/generate_demand_final.smk"
 include: "rules/spatial/create_zones.smk"
 include: "rules/spatial/generate_onshore_transmission.smk"
+include: "rules/spatial/eligible_areas.smk"
 include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
 include: "rules/techs/generate_capacity_factors.smk"
@@ -16,7 +17,6 @@ include: "rules/demand/generate_demand_flex.smk"
 
 # Interpret model results and data used to generate these
 include: "rules/results/generate_method_plots.smk"
-
 
 rule all:
     input:
@@ -42,7 +42,7 @@ rule run_calliope:
 #        "spatial/capacities_2023.yaml",
         "techs/thermal_power_constraints.yaml"
     output:
-        "results/model_results.nc"
+        directory("results")
     conda:
         "environment.yml"
     params:
@@ -64,7 +64,7 @@ rule serve_calligraph:
         """
         calligraph {input}
         """
-        
+
 
 rule dag_dot:
     output: temp("data/interim/dag.dot")
