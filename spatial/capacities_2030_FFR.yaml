@@ -1,0 +1,36 @@
+gas_ccgt:
+  flow_cap_max: 25942.891821200003
+gas_ocgt:
+  flow_cap_max: 0.0
+diesel:
+  flow_cap_max: 165.80269700000002
+hydrogen:
+  flow_cap_max: 0.0
+coal:
+  flow_cap_max: 0.0
+battery:
+  flow_cap_max: 27448.67220509363
+pumped_hydro:
+  flow_cap_max: 5487.28510637919
+caes:
+  flow_cap_max: 3.31339383675
+laes:
+  flow_cap_max: 457.04623190249066
+nuclear:
+  flow_cap_max: 0.0
+beccs:
+  flow_cap_max: 604.6007495407476
+gas_ccs:
+  flow_cap_max: 0.0
+biomass:
+  flow_cap_max: 4190.508990799999
+hydro:
+  flow_cap_max: 1900.792403810503
+waste:
+  flow_cap_max: 2333.852455726086
+offshore_wind:
+  flow_cap_max: 53896.835813481994
+onshore_wind:
+  flow_cap_max: 27442.719217860336
+solar_pv:
+  flow_cap_max: 0.0

@@ -3,7 +3,8 @@ import yaml
 
 df = pd.read_excel(snakemake.input[0])
 
-df = df[~df["params"].isin(["start_time", "min_uptime"])]
+# Currently removed flow out min cause am not using integers to determine whether one or off
+df = df[~df["params"].isin(["start_time", "min_uptime", "flow_out_min_relative"])] 
 
 df.to_csv(snakemake.output[0], index=False)
 

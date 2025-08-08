@@ -21,7 +21,6 @@ classif = {
     "Waste": "renewable",
     "Waste_CHP": "renewable",
     "Hydrogen": "thermal",
-    # TODO: special treatment for nuclear in a separate file to fix its capacity based on known 2030 capacity
     "Nuclear": "low_carbon",
 }
 
@@ -61,6 +60,16 @@ for tech in techs:
 
     flow_cap_max = {"data": flow_cap_data, "dims": ["nodes"], "index": zones}
 
+    # Set CAPEX for nuclear to 0 since all new build, and set min flow to 0.5 of cap
+    if tech_name == "nuclear":
+        flow_cap_data = nuclear_capacity.get(tech_name, [0.0] * len(zones))
+        cost_flow_cap_val = 0.0
+        flow_out_min_relative = 0.5
+    else:
+        flow_cap_data = main_capacity.get(tech_name, [0.0] * len(zones))
+        cost_flow_cap_val = float(df.loc["capex", tech])
+        flow_out_min_relative = ".null"
+
     techs_yaml[tech_name] = {
         "category": "thermal",
         "cp30_category": classif[tech],
@@ -70,6 +79,7 @@ for tech in techs:
         "carrier_out": "electricity",
         "flow_out_eff": float(df.loc["efficiency", tech]),
         "lifetime": int(df.loc["lifetime", tech]),
+        "flow_out_min_relative": flow_out_min_relative,
         "cost_om_annual": {
             "data": float(df.loc["om_annual", tech]),
             "index": "monetary",
@@ -86,7 +96,7 @@ for tech in techs:
             "dims": ["costs"],
         },
         "cost_flow_cap": {
-            "data": float(df.loc["capex", tech]),
+            "data": cost_flow_cap_val,
             "index": "monetary",
             "dims": ["costs"],
         },

@@ -1,20 +1,4 @@
 weather_year = config["weather_year"]
-
-# redundant in current version
-rule generate_minimum_capacities:
-    input: 
-        "data/processed/techs/fossil_nuclear_2023.csv",
-        "data/processed/techs/renewables_2023.csv",
-        "data/processed/techs/renewables_2030_queue.csv"
-    output: 
-        "data/processed/spatial/min_zonal_caps.csv",
-        "data/processed/spatial/max_zonal_caps.csv",
-        "spatial/capacities_2023.yaml"
-    conda: 
-        "../../envs/data_processing.yaml"
-    script:
-        "../../scripts/techs/generate_2023_caps.py"
-
         
 rule generate_fossil_fuel_definitions:
     input:
@@ -64,8 +48,8 @@ rule generate_thermal_params:
 rule generate_solar_onshore_wind_definitions:
     input: 
         "data/processed/techs/generation_costs.csv",
-        "data/processed/spatial/onshore_cf_2030.csv",
-        "data/processed/spatial/solar_cf_2030.csv",
+        "data/processed/spatial/onshore_cf_2013.csv",
+        "data/processed/spatial/solar_cf_2013.csv",
         "data/processed/techs/renewables_2023.csv"
     output:
         "techs/solar_onshore_wind.yaml"
@@ -78,11 +62,11 @@ rule generate_offshore_wind_project_defs:
     input: 
         "data/processed/techs/generation_costs.csv",
         "data/processed/techs/offshore_wind_projects.csv",
-        "data/processed/spatial/offshore_cfs_2030.csv"
+        "data/processed/spatial/offshore_cfs_2013.csv"
     output:
         "techs/offshore_wind.yaml",
         "data/processed/techs/offshore_wind_projects_aggregated.csv",
-        "data/processed/spatial/offshore_cfs_2030_aggregated.csv"
+        "data/processed/spatial/offshore_cfs_2013_aggregated.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:

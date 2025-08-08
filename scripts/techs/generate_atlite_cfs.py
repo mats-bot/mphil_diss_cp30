@@ -20,7 +20,7 @@ if not cdsapirc.exists():
 import atlite
 print(f"Using atlite version: {atlite.__version__}")
 print(f'\n\n If the weather year has not been run before or the output files are missing, \n',
-      "This process will take a while due to the large amount of data needed. \n")
+      "this process will take a while due to the large amount of data needed. \n")
 
 
 zones = gpd.read_file(snakemake.input[0])
@@ -55,7 +55,8 @@ for i, time_range in enumerate(time_ranges):
             path=cutout_path,
             module="era5",
             bounds=zones.total_bounds.tolist(),
-            time=time_range
+            time=time_range,
+            features=["pv", "onshore_wind"]
         )
         cutout.prepare()
 
@@ -126,14 +127,15 @@ for i, month in enumerate(range(1, 13)):
             path=cutout_path,
             module="era5",
             bounds=bounds2,
-            time=time_range_c
+            time=time_range_c,
+            features=["offshore_wind"]
         )
         cutout2.prepare()
 
     cf_offshore = cutout2.wind(
         turbine="NREL_ReferenceTurbine_2020ATB_15MW_offshore",
         shapes=offshore_gdf_buffered,
-        add_cutout_windspeed=True
+        add_cutout_windspeed=True,
     )
 
     df_month = cf_offshore.to_pandas()
