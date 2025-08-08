@@ -88,6 +88,7 @@ math = {
     )
 }
 
+
 model = calliope.Model(
     snakemake.input[0], time_resample=f"{snakemake.params.resolution_hrs}h"
 )

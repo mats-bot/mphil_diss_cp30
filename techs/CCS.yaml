@@ -8,7 +8,11 @@ techs:
     carrier_out: electricity
     flow_out_eff: 1.0
     lifetime: 25
-    cost_flow_cap: 4786586.868686869
+    cost_flow_cap:
+      data: 4786586.868686869
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 259899.9
       index: monetary
@@ -33,7 +37,11 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.47
     lifetime: 25
-    cost_flow_cap: 2042304.6780303027
+    cost_flow_cap:
+      data: 2042304.6780303027
+      index: monetary
+      dims:
+      - costs
     cost_om_annual:
       data: 60790.6
       index: monetary

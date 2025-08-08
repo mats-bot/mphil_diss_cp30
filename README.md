@@ -3,14 +3,19 @@
 
 ## Requirements
 
-# This model uses weather data from the Climate Data Store, which requires a personal API key.
-# Instructions for setup can be found here:
-# https://cds.climate.copernicus.eu/how-to-api
+```sh
+This model uses weather data from the Climate Data Store, which requires a personal API key.
+Instructions for setup can be found here:
+https://cds.climate.copernicus.eu/how-to-api
 
-# Additionally, the terms of use for each dataset must be accepted for the key to be valid.
-# This model uses era5 datasets, for which terms of use can be found and accepted here:
-# https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview
+Additionally, the terms of use for each dataset must be accepted for the key to be valid.
+This model uses era5 datasets, for which terms of use can be found and accepted here:
+https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview
 
+Lastly, the model uses available area data from Euro-Calliope (see report). This needs to be 
+downloaded and placed into the data/raw/spatial folder.
+
+```
 
 ## Install
 

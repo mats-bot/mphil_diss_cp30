@@ -21,7 +21,11 @@ for tech in techs:
         "carrier_out": "electricity",
         "flow_out_eff": float(df.loc["efficiency", tech]),  # unitless (fraction)
         "lifetime": int(df.loc["lifetime", tech]),  # years
-        "cost_flow_cap": float(df.loc["capex", tech]),
+        "cost_flow_cap": {
+            "data": float(df.loc["capex", tech]),
+            "index": "monetary",
+            "dims": ["costs"],
+        },
         "cost_om_annual": {
             "data": float(df.loc["om_annual", tech]),
             "index": "monetary",

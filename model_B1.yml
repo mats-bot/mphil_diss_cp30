@@ -7,7 +7,7 @@ config:
     mode: plan
     objective: min_cost_optimisation
     pre_validate_math_strings: false
-    ensure_feasibility: True
+    ensure_feasibility: true
     add_math:
       - cp30_constraint.yaml
     backend: gurobi
@@ -21,8 +21,12 @@ config:
       OptimalityTol: 1e-4
       BarConvTol: 1e-4
 
+
 import:
-  - demand_ND.yaml
+# Specific to B1
+  - demand_ND.yaml 
+  - spatial/capacities_2030_REPD.yaml
+# General
   - techs/transmission.yaml
   - spatial/onshore_transmission.yaml
   - spatial/offshore_transmission.yaml
@@ -35,7 +39,7 @@ import:
   - techs/storage.yaml
   - techs/import_export.yaml
   - spatial/nodes_techs.yaml
-#  - spatial/capacities_2023.yaml
+  - spatial/capacities_2023.yaml # Minimum (installed already) capacities
   - techs/thermal_power_constraints.yaml
 
 

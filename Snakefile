@@ -14,18 +14,17 @@ include: "rules/techs/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
 include: "rules/spatial/generate_offshore_transmission.smk"
 include: "rules/demand/generate_demand_flex.smk"
+include: "rules/techs/generate_capacities.smk"
 
 # Interpret model results and data used to generate these
 include: "rules/results/generate_method_plots.smk"
 
+
 rule all:
     input:
-        "results/model_results.nc"
-
-rule run_calliope:
-    input:
-        "model.yml",
+        "model_B1.yml",
         "demand_ND.yaml", ## Sens
+        "demand_FFR.yaml", ## Sens
         "cp30_constraint.yaml",
         "techs/transmission.yaml",
         "spatial/onshore_transmission.yaml",
@@ -39,10 +38,34 @@ rule run_calliope:
         "techs/storage.yaml",
         "techs/import_export.yaml",
         "spatial/nodes_techs.yaml",
-#        "spatial/capacities_2023.yaml",
-        "techs/thermal_power_constraints.yaml"
+        "spatial/capacities_2023.yaml",
+        "techs/thermal_power_constraints.yaml",
+        "spatial/capacities_2030_REPD.yaml",
+        "spatial/capacities_2030_ND.yaml", ## Sens
+        "spatial/capacities_2030_FFR.yaml", ## Sens
+#        "results/model_results_B1.nc"
+
+rule run_calliope_B1:
+    input:
+        "model_B1.yml",
+        "demand_ND.yaml",
+        "cp30_constraint.yaml",
+        "techs/transmission.yaml",
+        "spatial/onshore_transmission.yaml",
+        "spatial/offshore_transmission.yaml",
+        "techs/CCS.yaml",
+        "techs/fossil_fuels.yaml",
+        "techs/low_carbon_thermal.yaml",
+        "techs/offshore_wind.yaml",
+        "techs/other_renewables.yaml",
+        "techs/solar_onshore_wind.yaml",
+        "techs/storage.yaml",
+        "techs/import_export.yaml",
+        "spatial/nodes_techs.yaml", 
+        "spatial/capacities_2023.yaml",
+        "techs/thermal_power_constraints.yaml",
     output:
-        directory("results")
+        "results/model_results_B1.nc"
     conda:
         "environment.yml"
     params:
@@ -50,14 +73,11 @@ rule run_calliope:
         resolution_hrs=1,
     script:
         "scripts/run_calliope.py"
-    # shell:
-    #     """
-    #     calliope run model.yml --save_netcdf={output}
-    #     """
+
 
 rule serve_calligraph:
     input:
-        "results/model_results.nc"
+        "results/model_results_B1.nc"
     conda:
         "environment.yml"
     shell:

@@ -164,7 +164,7 @@ yaml_data = {
     },
     'data_tables': {
         'offshore_wind_cf': {
-            'data': 'data/processed/spatial/offshore_cfs_2030_aggregated.csv',
+            'data': 'data/processed/spatial/offshore_cfs_2013.csv',
             'rows': 'timesteps',
             'columns': 'nodes',
             'add_dims': {

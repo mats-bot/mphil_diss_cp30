@@ -24,13 +24,13 @@ df["tech"] = df["base_tech"].replace({
 exclude_techs = ["offshore_wind", "hydro", "gas_ccgt_new", "gas_ccgt_chp_new", "gas_ocgt_new", "other_renewables"]
 df = df[~df["tech"].isin([t.lower() for t in exclude_techs])]
 
-# Techs where no new investment allowed
+# Techs where no new investment allowed - set maximum but no minimum
 no_investment_techs = ["diesel_existing", "coal_existing", "nuclear", "pumped_hydro"]
 
 
 
 pivot = df.pivot_table(index="tech", columns="zone", values="capacity", aggfunc="sum", fill_value=0)
-pivot_min = pivot.copy()
+pivot_min = pivot_min = pivot.loc[~pivot.index.isin(no_investment_techs)]
 pivot_max = pivot.loc[pivot.index.isin(no_investment_techs)]
 
 pivot_min.to_csv(snakemake.output[0])
@@ -56,22 +56,10 @@ flow_cap_max_table = {
     }
 }
 
-
-# For renewables max capacities (from REPD queue, entries with missing capacities omitted)
-df3 = pd.read_csv(snakemake.input[2])
-
-ren_flow_cap_max_table = {
-    "data": "data/processed/techs/renewables_2030_queue.csv",
-    "rows": "techs",
-    "columns": "nodes",
-    "add_dims": {"parameters": "flow_cap_max"},
-}
-
 output_data = {
     "data_tables": {
         "flow_cap_min": flow_cap_min_table,
         "flow_cap_max": flow_cap_max_table,
-        "renewables_flow_cap_max": ren_flow_cap_max_table
     }
 }
 
