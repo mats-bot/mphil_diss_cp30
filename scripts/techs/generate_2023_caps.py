@@ -25,7 +25,7 @@ exclude_techs = ["offshore_wind", "hydro", "gas_ccgt_new", "gas_ccgt_chp_new", "
 df = df[~df["tech"].isin([t.lower() for t in exclude_techs])]
 
 # Techs where no new investment allowed - set maximum but no minimum
-no_investment_techs = ["diesel_existing", "coal_existing", "nuclear", "pumped_hydro"]
+no_investment_techs = ["gas_ccgt_existing", "gas_ocgt_existing", "diesel_existing", "coal_existing", "nuclear", "pumped_hydro"]
 
 
 

@@ -68,7 +68,7 @@ for tech in techs:
     else:
         flow_cap_data = main_capacity.get(tech_name, [0.0] * len(zones))
         cost_flow_cap_val = float(df.loc["capex", tech])
-        flow_out_min_relative = ".null"
+        flow_out_min_relative = 0
 
     techs_yaml[tech_name] = {
         "category": "thermal",

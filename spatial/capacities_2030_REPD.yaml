@@ -5,3 +5,10 @@ data_tables:
     columns: nodes
     add_dims:
       parameters: flow_cap_max
+  unconstrained_flow_cap_max:
+    data: data/processed/techs/unconstrained_techs_2030.csv
+    rows: techs
+    columns: nodes
+    add_dims:
+      parameters:
+      - flow_cap_max

@@ -79,7 +79,7 @@ def build_yaml(tech_map, filename):
                 (df["SubType"] == crit["subtype"])
             )
             total_val += df.loc[mask, year_col].sum()
-        out[tech] = {"flow_cap_max": float(total_val)}
+        out[tech] = {"flow_cap_max_systemwide": float(total_val)}
     
     with open(filename, "w") as f:
         yaml.safe_dump(out, f, sort_keys=False)

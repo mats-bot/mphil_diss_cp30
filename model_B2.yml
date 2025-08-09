@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-12']
+    time_subset: ['2030-01', '2030-02']
     time_resample: 1h
   build:
     mode: plan
@@ -14,17 +14,14 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 8
+      Threads: 4
       Method: 2 # use barrier, but do not run simplex in parallel
-      Crossover: 0 
+      Crossover: 1 # stop after barrier, do not perform crossover
+      FeasibilityTol: 1e-3
+      OptimalityTol: 1e-4
+      BarConvTol: 1e-4
       BarHomogeneous: 1
-      BarIterLimit: 500
-      BarOrder: 1
-      FeasibilityTol: 1e-6
-      OptimalityTol: 1e-6 
-      BarConvTol: 1e-8
-      NumericFocus: 1 
-      
+
 
 import:
 # Specific to B1
@@ -45,5 +42,3 @@ import:
   - spatial/nodes_techs.yaml
   - spatial/capacities_2023.yaml # Minimum (installed already) capacities
   - techs/thermal_power_constraints.yaml
-
-
