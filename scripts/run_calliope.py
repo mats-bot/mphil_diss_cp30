@@ -2,7 +2,6 @@ import calliope
 import xarray as xr
 from calliope.backend.helper_functions import ParsingHelperFunction
 
-
 # Just loading this class in creates the hook within calliope to make this math helper function (sum_next_n) available.
 class SumNextN(ParsingHelperFunction):
     """Sum the next N items in an array. Works best for ordered arrays (datetime, integer)."""

@@ -8,7 +8,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 1.0
     lifetime: 25
-    flow_out_min_relative: .null
+    flow_out_min_relative: 0
     cost_om_annual:
       data: 123461.55913978496
       index: monetary
@@ -38,7 +38,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.21
     lifetime: 24
-    flow_out_min_relative: .null
+    flow_out_min_relative: 0
     cost_om_annual:
       data: 418017.5627240144
       index: monetary
@@ -68,7 +68,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.28
     lifetime: 35
-    flow_out_min_relative: .null
+    flow_out_min_relative: 0
     cost_om_annual:
       data: 245363.35125448037
       index: monetary
@@ -98,7 +98,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.24
     lifetime: 27
-    flow_out_min_relative: .null
+    flow_out_min_relative: 0
     cost_om_annual:
       data: 335109.9462365592
       index: monetary
@@ -128,7 +128,7 @@ techs:
     carrier_out: electricity
     flow_out_eff: 0.48
     lifetime: 25
-    flow_out_min_relative: .null
+    flow_out_min_relative: 0
     cost_om_annual:
       data: 26516.0394265233
       index: monetary

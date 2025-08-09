@@ -15,7 +15,8 @@ rule generate_renewables_max_zonal_capacities:
     input:
         "data/processed/techs/renewables_2030_queue.csv"
     output:
-        "spatial/capacities_2030_REPD.yaml"
+        "spatial/capacities_2030_REPD.yaml",
+        "data/processed/techs/unconstrained_techs_2030.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:
