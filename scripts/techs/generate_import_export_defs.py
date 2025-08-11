@@ -8,16 +8,14 @@ import_prices["timesteps"] = pd.to_datetime(import_prices["timesteps"], format="
 # https://euro-calliope.readthedocs.io/en/stable/model/customisatio
 
 # https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/consumerpriceinflation
-CPI_14_24 = 133.9/100.0
+CPI_14_24 = 133.9 / 100.0
 
 # https://www.exchangerates.org.uk/GBP-EUR-spot-exchange-rates-history-2014.html
-eur14_gbp14 = 1.2411111 # EUR/GBP|2014
+eur14_gbp14 = 1.2411111
 
 units = 10000 # bn/100GWh -> £/Mwh
 
-
 import_prices.iloc[:, 1:] = import_prices.iloc[:, 1:] * CPI_14_24 * eur14_gbp14 * units
-
 
 templates = {
     "import_electricity": {
@@ -35,49 +33,45 @@ templates = {
 # # Subsea HVDC: 0.35%/100km, from https://www.eia.gov/analysis/studies/electricity/hvdctransmission/pdf/transmission.pdf#page=18
 loss_per_100 = 0.0035
 
-all_nodes = [f"z{i}" for i in range(1, 18)]
-
 interconnectors = pd.read_excel(snakemake.input[1])
+interconnectors['loss'] = loss_per_100 * (interconnectors['Distance (km)'] / 100)
+
+grouped = interconnectors.groupby(['Country', 'Zone']).apply(
+    lambda df: pd.Series({
+        'total_capacity': df['Capacity (MW)'].sum(),
+        'weighted_loss': (df['loss'] * df['Capacity (MW)']).sum() / df['Capacity (MW)'].sum()
+    })
+).reset_index()
 
 techs = {}
 nodes = {}
 
-for _, row in interconnectors.iterrows():
-    country = str(row["Country"])
-    ic_name = str(row["Name"])
-    zone = str(row["Zone"])
-    name = f"IC_{country}_{zone}".lower()
-    name = name.lower()
+for country in grouped['Country'].unique():
+    tech_import = f"import_{country.lower()}_electricity"
+    tech_export = f"export_{country.lower()}_electricity"
+    techs[tech_import] = {"template": "import_electricity"}
+    techs[tech_export] = {"template": "export_electricity", "category": "export"}
 
-    # Add cols specific to each name
     if country in import_prices.columns:
-        import_prices[name] = import_prices[country]
-    else:
-        raise print(f"{country} not found in price CSV columns.")
-    
-    flow_cap = float(row['Capacity (MW)'])
-    distance = float(row['Distance (km)'])
-    loss = loss_per_100 * (distance / 100)
+        import_prices[tech_import] = import_prices[country]
 
-    techs[f"{name}_import"] = {
-        "template": "import_electricity",
-        "flow_cap_min": flow_cap,
-        "flow_cap_max": flow_cap,
-        "flow_out_eff": 1 - loss  # correct efficiency
-    }
-    techs[f"{name}_export"] = {
-        "template": "export_electricity",
-        "category": "export",
-        "flow_cap_min": flow_cap,
-        "flow_cap_max": flow_cap,
-        "flow_in_eff": 1 - loss
-    }
-
-    if zone not in nodes:
-        nodes[zone] = {"techs": {}}
-    nodes[zone]["techs"][f"{name}_import"] = {}
-    nodes[zone]["techs"][f"{name}_export"] = {}
-
+    zones_for_country = grouped[grouped['Country'] == country]
+    for _, row in zones_for_country.iterrows():
+        zone = row['Zone']
+        cap = float(row['total_capacity'])
+        loss = float(row['weighted_loss'])
+        if zone not in nodes:
+            nodes[zone] = {"techs": {}}
+        nodes[zone]["techs"][tech_import] = {
+            "flow_cap_min": cap,
+            "flow_cap_max": cap,
+            "flow_out_eff": 1 - loss,
+        }
+        nodes[zone]["techs"][tech_export] = {
+            "flow_cap_min": cap,
+            "flow_cap_max": cap,
+            "flow_in_eff": 1 - loss,
+        }
 
 data = {
     "import_prices": {
@@ -98,7 +92,6 @@ data = {
     },
 }
 
-# Remove initial names and make export prices negative
 import_prices.drop(columns=interconnectors["Country"].unique(), inplace=True)
 export_prices = import_prices.copy()
 export_prices.iloc[:, 1:] = -export_prices.iloc[:, 1:]
@@ -107,4 +100,4 @@ import_prices.to_csv(snakemake.output[0], index=False)
 export_prices.to_csv(snakemake.output[1], index=False)
 
 with open(snakemake.output[2], "w") as f:
-    yaml.dump({"templates": templates,"techs": techs, "nodes": nodes, "data_tables": data}, f, sort_keys=False, indent=2)
+    yaml.dump({"templates": templates, "techs": techs, "nodes": nodes, "data_tables": data}, f, sort_keys=False, indent=2)
