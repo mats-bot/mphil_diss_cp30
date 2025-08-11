@@ -20,9 +20,8 @@ include: "rules/techs/generate_capacities.smk"
 include: "rules/results/generate_method_plots.smk"
 
 
-rule all:
+rule prepare_inputs:
     input:
-        "model_B1.yml",
         "demand_ND.yaml", ## Sens
         "demand_FFR.yaml", ## Sens
         "cp30_constraint.yaml",
@@ -44,33 +43,21 @@ rule all:
         "spatial/capacities_2030_ND.yaml", ## Sens
         "spatial/capacities_2030_FFR.yaml", ## Sens
 #        "results/model_results_B1.nc"
+    output:
+        temp(touch("model_inputs.done"))
 
 rule run_calliope_B1:
     input:
-        "model_B1.yml",
-        "demand_ND.yaml",
-        "cp30_constraint.yaml",
-        "techs/transmission.yaml",
-        "spatial/onshore_transmission.yaml",
-        "spatial/offshore_transmission.yaml",
-        "techs/CCS.yaml",
-        "techs/fossil_fuels.yaml",
-        "techs/low_carbon_thermal.yaml",
-        "techs/offshore_wind.yaml",
-        "techs/other_renewables.yaml",
-        "techs/solar_onshore_wind.yaml",
-        "techs/storage.yaml",
-        "techs/import_export.yaml",
-        "spatial/nodes_techs.yaml", 
-        "spatial/capacities_2023.yaml",
-        "techs/thermal_power_constraints.yaml",
+        model_yaml = "model_B1.yml",
+        other_inputs = rules.prepare_inputs.output[0]
     output:
         "results/model_results_B1.nc"
     conda:
-        "environment.yml"
+        "envs/calliope.yaml"
     params:
         response_hrs=4, # Max flexibility window
         resolution_hrs=1,
+    default_target: True
     script:
         "scripts/run_calliope.py"
 
@@ -79,7 +66,7 @@ rule serve_calligraph:
     input:
         "results/model_results_B1.nc"
     conda:
-        "environment.yml"
+        "envs/calliope.yaml"
     shell:
         """
         calligraph {input}
