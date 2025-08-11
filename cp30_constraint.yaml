@@ -1,55 +1,40 @@
+# constraints:
+#   fossil_fuel_share_limit:
+#     description: Limit total fossil fuel generation to less than 5% of total generation.
+#     foreach: []
+#     equations:
+#       - expression: $fossil_output <= 0.05 * $total_generation_output
+#     sub_expressions:
+#       fossil_output:
+#         - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
+#           where: category=fossil
+#       total_generation_output:
+#         - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
+#           where: base_tech=supply
+#   non_fossil_meets_national_demand:
+#     description: Ensure non-fossil generation >= domestic demand (excluding exports).
+#     foreach: []
+#     equations:
+#       - expression: $non_fossil_output >= $domestic_demand
+#     sub_expressions:
+#       non_fossil_output:
+#         - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
+#           where: (base_tech=supply) AND NOT category=fossil
+#       domestic_demand:
+#         - expression: sum(flow_in, over=[nodes, techs, carriers, timesteps])
+#           where: base_tech=demand AND NOT category=export
+
 constraints:
   fossil_fuel_share_limit:
     description: Limit total fossil fuel generation to less than 5% of total generation.
+    foreach: []
     equations:
       - expression: $fossil_output <= 0.05 * $total_generation_output
     sub_expressions:
       fossil_output:
-        - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
-          where: category=fossil
+        - where: category=fossil
+          expression: sum(flow_out, over=[nodes, techs, carriers, timesteps]) 
       total_generation_output:
-        - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
-          where: base_tech=supply OR base_tech=conversion
-  non_fossil_meets_national_demand:
-    description: Ensure non-fossil generation >= domestic demand (excluding exports).
-    equations:
-      - expression: $non_fossil_output >= $domestic_demand
-    sub_expressions:
-      non_fossil_output:
-        - expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
-          where: (base_tech=supply OR base_tech=conversion) AND NOT category=fossil
-      domestic_demand:
-        - expression: sum(flow_in, over=[nodes, techs, carriers, timesteps])
-          where: base_tech=demand AND NOT category=export
-
-
-# constraints:
-#   fossil_fuel_share_limit:
-#     description: Limit total fossil fuel generation to less than 5% of total generation.
-#     equations:
-#       - expression: $fossil_output <= 0.05 * $total_generation_output
-#     sub_expressions:
-#       fossil_output_per_timestep:
-#         - expression: sum(flow_out, over=[nodes, techs, carriers])
-#           where: category=fossil
-#       fossil_output:
-#         - expression: sum($fossil_output_per_timestep, over=timesteps)
-#       total_generation_per_timestep:
-#         - expression: sum(flow_out, over=[nodes, techs, carriers])
-#           where: base_tech=supply OR base_tech=conversion
-#       total_generation_output:
-#         - expression: sum($total_generation_per_timestep, over=timesteps)
-
-#   non_fossil_meets_national_demand:
-#     description: Ensure non-fossil generation >= domestic demand (excluding exports).
-#     equations:
-#       - expression: $non_fossil_output >= $domestic_demand
-#     sub_expressions:
-#       non_fossil_output_per_timestep:
-#         - expression: sum(flow_out, over=[nodes, techs, carriers])
-#           where: "(base_tech=supply OR base_tech=conversion) AND NOT category=fossil"
-#       non_fossil_output:
-#         - expression: sum($non_fossil_output_per_timestep, over=timesteps)
-#       domestic_demand:
-#         - expression: sum(flow_in, over=[nodes, techs, carriers, timesteps])
-#           where: "base_tech=demand AND NOT category=export"
+        - where: base_tech=supply
+          expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
+          

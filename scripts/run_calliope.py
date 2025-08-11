@@ -94,6 +94,7 @@ model = calliope.Model(
 
 calliope.set_log_verbosity("INFO")
 model.build(add_math_dict=math)
+#model.build()
 model.solve()
 
 model.to_netcdf(snakemake.output[0])

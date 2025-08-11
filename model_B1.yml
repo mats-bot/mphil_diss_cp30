@@ -1,13 +1,13 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-12']
+    time_subset: ['2030-01', '2030-01']
     time_resample: 1h
   build:
     mode: plan
     objective: min_cost_optimisation
     pre_validate_math_strings: false
-    ensure_feasibility: true
+    ensure_feasibility: false
     add_math:
       - cp30_constraint.yaml
     backend: gurobi

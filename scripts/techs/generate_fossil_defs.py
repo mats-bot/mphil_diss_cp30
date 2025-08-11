@@ -4,9 +4,12 @@ import yaml
 df = pd.read_csv(snakemake.input[0], index_col=0)
 capacity_df = pd.read_csv(snakemake.input[1])
 
-fossil_techs = ["Gas_CCGT", "Gas_CCGT_CHP", "Gas_OCGT", "Diesel", "Coal"]
+# remvoed coal since not present in 2030
+fossil_techs = ["Gas_CCGT", "Gas_CCGT_CHP", "Gas_OCGT", "Diesel"]
 techs_yaml = {}
 templates_yaml = {}
+
+# removal of fuels since defining as supply and not conversion
 fuels = {
     "Gas_CCGT": "gas",
     "Gas_CCGT_CHP": "gas",
@@ -38,8 +41,8 @@ for tech in fossil_techs:
     templates_yaml[tech_name] = {
         "category": "fossil",
         "cp30_category": "thermal",
-        "base_tech": "conversion",
-        "carrier_in": fuels[tech],
+        "base_tech": "supply",
+#        "carrier_in": fuels[tech],
         "carrier_out": "electricity",
         "flow_out_eff": float(df.loc["efficiency", tech]),
         "lifetime": int(df.loc["lifetime", tech]),

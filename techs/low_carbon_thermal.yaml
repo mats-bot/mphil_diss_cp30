@@ -2,13 +2,11 @@ techs:
   biomass:
     category: thermal
     cp30_category: renewable
-    base_tech: conversion
+    base_tech: supply
     name: Biomass
-    carrier_in: biomass
     carrier_out: electricity
     flow_out_eff: 1.0
     lifetime: 25
-    flow_out_min_relative: 0
     cost_om_annual:
       data: 123461.55913978496
       index: monetary
@@ -32,13 +30,11 @@ techs:
   biomass_chp:
     category: thermal
     cp30_category: renewable
-    base_tech: conversion
+    base_tech: supply
     name: Biomass_CHP
-    carrier_in: biomass
     carrier_out: electricity
     flow_out_eff: 0.21
     lifetime: 24
-    flow_out_min_relative: 0
     cost_om_annual:
       data: 418017.5627240144
       index: monetary
@@ -62,13 +58,11 @@ techs:
   waste:
     category: thermal
     cp30_category: renewable
-    base_tech: conversion
+    base_tech: supply
     name: Waste
-    carrier_in: waste
     carrier_out: electricity
     flow_out_eff: 0.28
     lifetime: 35
-    flow_out_min_relative: 0
     cost_om_annual:
       data: 245363.35125448037
       index: monetary
@@ -92,13 +86,11 @@ techs:
   waste_chp:
     category: thermal
     cp30_category: renewable
-    base_tech: conversion
+    base_tech: supply
     name: Waste_CHP
-    carrier_in: waste
     carrier_out: electricity
     flow_out_eff: 0.24
     lifetime: 27
-    flow_out_min_relative: 0
     cost_om_annual:
       data: 335109.9462365592
       index: monetary
@@ -122,13 +114,11 @@ techs:
   hydrogen:
     category: thermal
     cp30_category: thermal
-    base_tech: conversion
+    base_tech: supply
     name: Hydrogen
-    carrier_in: hydrogen
     carrier_out: electricity
     flow_out_eff: 0.48
     lifetime: 25
-    flow_out_min_relative: 0
     cost_om_annual:
       data: 26516.0394265233
       index: monetary
@@ -152,13 +142,11 @@ techs:
   nuclear:
     category: thermal
     cp30_category: low_carbon
-    base_tech: conversion
+    base_tech: supply
     name: Nuclear
-    carrier_in: nuclear_fuel
     carrier_out: electricity
     flow_out_eff: 1.0
     lifetime: 60
-    flow_out_min_relative: 0.5
     cost_om_annual:
       data: 111672.6
       index: monetary
@@ -179,3 +167,4 @@ techs:
       index: monetary
       dims:
       - costs
+    flow_out_min_relative: 0.5
