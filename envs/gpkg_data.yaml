@@ -2,10 +2,11 @@ name: gpkg_data
 channels:
 - conda-forge
 dependencies:
-  - python=3.11      
-  - geopandas=0.14.3  
-  - pandas=2.2.1      
-  - pyproj=3.6.1    
-  - shapely=2.0.2 
+  - python=3.11
+  - geopandas=0.14.3
+  - pandas=2.2.1
+  - pyproj=3.6.1
+  - shapely=2.0.2
   - pyyaml=6.0.1
   - geopy=2.3.0
+  - openpyxl=3.1.5
