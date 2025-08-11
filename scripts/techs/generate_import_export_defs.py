@@ -40,7 +40,8 @@ grouped = interconnectors.groupby(['Country', 'Zone']).apply(
     lambda df: pd.Series({
         'total_capacity': df['Capacity (MW)'].sum(),
         'weighted_loss': (df['loss'] * df['Capacity (MW)']).sum() / df['Capacity (MW)'].sum()
-    })
+    }),
+    include_groups=False
 ).reset_index()
 
 techs = {}
