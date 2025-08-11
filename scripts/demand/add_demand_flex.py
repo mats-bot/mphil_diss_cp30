@@ -3,22 +3,17 @@ import os
 import shutil
 
 def split_demand_by_flexibility_combined(demand_csv, flex_caps_df, output_folder):
-    import pandas as pd
-    import os
-    import shutil
 
     df = pd.read_csv(demand_csv)
     zones = df.columns.drop('timesteps')
 
     demand_type = os.path.basename(demand_csv).split('_')[1].split('.')[0]
 
-    # Sum all flex capacities for this demand_type
     matching_rows = flex_caps_df[flex_caps_df['demand_type'] == demand_type]
 
     if not matching_rows.empty:
         total_flex_gw = matching_rows['flex_gw'].sum()
 
-        # Calculate GB-wide peak demand
         gb_series = df[zones].sum(axis=1)
         gb_peak = gb_series.max()
 
