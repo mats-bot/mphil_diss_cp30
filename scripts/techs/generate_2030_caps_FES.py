@@ -22,9 +22,9 @@ tech_map = {
         {"pathway": "Net Zero Pathway", "type": "Hydrogen", "subtype": "Hydrogen"},
         {"pathway": "Net Zero Pathway", "type": "Hydrogen", "subtype": "Hydrogen CHP"},
     ],
-    "coal": [
-        {"pathway": "Holistic Transition", "type": "Coal", "subtype": "Coal"},
-    ],
+    # "coal": [
+    #     {"pathway": "Holistic Transition", "type": "Coal", "subtype": "Coal"},
+    # ],
     "battery": [
         {"pathway": "Holistic Transition", "type": "Storage", "subtype": "Battery"},
     ],

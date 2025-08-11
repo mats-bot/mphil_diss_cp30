@@ -14,18 +14,18 @@ df["base_tech"] = df["CP30 technology"].str.lower()
 # for fossil fuels _existing / _new
 df["tech"] = df["base_tech"].replace({
     "diesel": "diesel_existing",
-    "coal": "coal_existing",
+#    "coal": "coal_existing",
     "gas_ccgt": "gas_ccgt_existing",
     "gas_ocgt": "gas_ocgt_existing"
 })
 
 
-# Excluding techs defined elsewhere or "new" techs
-exclude_techs = ["offshore_wind", "hydro", "gas_ccgt_new", "gas_ccgt_chp_new", "gas_ocgt_new", "other_renewables"]
+# Excluding techs defined elsewhere or "new" techs or coal (removed from model)
+exclude_techs = ["offshore_wind", "hydro", "gas_ccgt_new", "gas_ccgt_chp_new", "gas_ocgt_new", "other_renewables", "coal"]
 df = df[~df["tech"].isin([t.lower() for t in exclude_techs])]
 
 # Techs where no new investment allowed - set maximum but no minimum
-no_investment_techs = ["gas_ccgt_existing", "gas_ocgt_existing", "diesel_existing", "coal_existing", "nuclear", "pumped_hydro"]
+no_investment_techs = ["gas_ccgt_existing", "gas_ocgt_existing", "diesel_existing", "nuclear", "pumped_hydro"]
 
 
 

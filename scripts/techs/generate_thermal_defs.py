@@ -5,6 +5,7 @@ df = pd.read_csv(snakemake.input[0], index_col=0)
 
 techs = ["Biomass", "Biomass_CHP", "Waste", "Waste_CHP", "Hydrogen", "Nuclear"]
 
+# removal of fuels since defining as supply and not conversion
 fuels = {
     "Biomass": "biomass",
     "Biomass_CHP": "biomass",
@@ -73,13 +74,12 @@ for tech in techs:
     techs_yaml[tech_name] = {
         "category": "thermal",
         "cp30_category": classif[tech],
-        "base_tech": "conversion",
+        "base_tech": "supply",
         "name": tech,
-        "carrier_in": fuels[tech],
+#        "carrier_in": fuels[tech],
         "carrier_out": "electricity",
         "flow_out_eff": float(df.loc["efficiency", tech]),
         "lifetime": int(df.loc["lifetime", tech]),
-        "flow_out_min_relative": flow_out_min_relative,
         "cost_om_annual": {
             "data": float(df.loc["om_annual", tech]),
             "index": "monetary",
@@ -101,6 +101,9 @@ for tech in techs:
             "dims": ["costs"],
         },
     }
+
+    if tech_name == "nuclear":
+        techs_yaml[tech_name]["flow_out_min_relative"] = 0.5
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump({"techs": techs_yaml}, f, sort_keys=False)

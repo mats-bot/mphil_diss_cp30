@@ -2,9 +2,8 @@ techs:
   beccs:
     category: ccs
     cp30_category: low_carbon
-    base_tech: conversion
+    base_tech: supply
     name: beccs
-    carrier_in: biomass
     carrier_out: electricity
     flow_out_eff: 1.0
     lifetime: 25
@@ -31,9 +30,8 @@ techs:
   gas_ccs:
     category: ccs
     cp30_category: low_carbon
-    base_tech: conversion
+    base_tech: supply
     name: gas_ccs
-    carrier_in: gas
     carrier_out: electricity
     flow_out_eff: 0.47
     lifetime: 25

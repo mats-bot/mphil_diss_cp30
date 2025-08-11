@@ -5,6 +5,7 @@ df = pd.read_csv(snakemake.input[0], index_col=0)
 
 techs = ["BECCS", "Gas_CCS"]
 
+# removal of fuels since defining as supply and not conversion
 fuels = {"BECCS": "biomass", "Gas_CCS": "gas"}
 
 techs_yaml = {}
@@ -15,9 +16,9 @@ for tech in techs:
     techs_yaml[tech_name] = {
         "category": "ccs",
         "cp30_category": "low_carbon",
-        "base_tech": "conversion",
+        "base_tech": "supply",
         "name": tech_name,
-        "carrier_in": fuels[tech],
+#        "carrier_in": fuels[tech],
         "carrier_out": "electricity",
         "flow_out_eff": float(df.loc["efficiency", tech]),  # unitless (fraction)
         "lifetime": int(df.loc["lifetime", tech]),  # years
