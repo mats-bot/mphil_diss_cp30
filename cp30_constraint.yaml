@@ -32,9 +32,12 @@ constraints:
       - expression: $fossil_output <= 0.05 * $total_generation_output
     sub_expressions:
       fossil_output:
-        - where: category=fossil
-          expression: sum(flow_out, over=[nodes, techs, carriers, timesteps]) 
+        - expression: sum(flow_out[techs=$fossil_techs], over=[nodes, techs, carriers, timesteps])
       total_generation_output:
-        - where: base_tech=supply
-          expression: sum(flow_out, over=[nodes, techs, carriers, timesteps])
-          
+        - expression: sum(flow_out[techs=$non_fossil_techs], over=[nodes, techs, carriers, timesteps])
+    slices:
+      fossil_techs:
+        - expression: "[gas_ccgt_existing, gas_ccgt_new, gas_ccgt_chp_existing, gas_ocgt_existing]"
+      non_fossil_techs:
+        - expression: "[diesel_existing, beccs, gas_ccs, onshore_wind, solar_pv, hydro, offshore_wind, biomass, biomass_chp, waste, waste_chp, nuclear]"
+
