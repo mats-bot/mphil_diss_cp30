@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-02']
+    time_subset: ['2030-01', '2030-01']
     time_resample: 1h
   build:
     mode: plan
@@ -24,9 +24,10 @@ config:
 
 
 import:
-# Specific to B1
-  - demand_ND.yaml 
+# Specific to B2
+  - demand/demand_ND.yaml 
   - spatial/capacities_2030_REPD.yaml
+  - spatial/capacities_2030_ND.yaml
 # General
   - techs/transmission.yaml
   - spatial/onshore_transmission.yaml
