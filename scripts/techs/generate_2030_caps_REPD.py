@@ -31,6 +31,26 @@ unconstrained_df.index.name = "techs"
 unconstrained_df.columns.name = "nodes"
 unconstrained_df.to_csv(snakemake.output[1])
 
+# set chp techs to 0 capacity since aggregated with regular techs
+chp_techs = ["biomass_chp", "waste_chp"]
+chp_df = pd.DataFrame(
+    data=0,
+    index=chp_techs,
+    columns=nodes
+)
+chp_df.index.name = "techs"
+chp_df.columns.name = "nodes"
+chp_df.to_csv(snakemake.output[2])
+
+chp_zero_flow_cap_table = {
+    "data": "data/processed/techs/CHP_zero_caps.csv",
+    "rows": "techs",
+    "columns": "nodes",
+    "add_dims": {
+        "parameters": ["flow_cap_max"]
+    },
+}
+
 unconstrained_caps_table = {
     "data": "data/processed/techs/unconstrained_techs_2030.csv",
     "rows": "techs",
@@ -44,6 +64,7 @@ output_data = {
     "data_tables": {
         "renewables_flow_cap_max": ren_flow_cap_max_table,
         "unconstrained_flow_cap_max": unconstrained_caps_table,
+        "chp_zero_flow_cap": chp_zero_flow_cap_table
     }
 }
 

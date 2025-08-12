@@ -27,7 +27,7 @@ rule generate_demand_yaml:
     params:
         scenario=lambda wildcards: wildcards.scenario
     output:
-        "demand_{scenario}.yaml"
+        "demand/demand_{scenario}.yaml"
     conda:
         "../../envs/data_processing.yaml"
     script:

@@ -23,9 +23,7 @@ dependencies:
   - bottleneck
   - numexpr
   - toolz
-  # other dependencies if you know them or from your earlier environment
-
-  - pip  # to allow pip installs
+  - pip  
   - pip:
     - atlite==0.3.0
 

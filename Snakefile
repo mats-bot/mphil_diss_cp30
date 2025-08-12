@@ -22,8 +22,8 @@ include: "rules/results/generate_method_plots.smk"
 
 rule prepare_inputs:
     input:
-        "demand_ND.yaml", ## Sens
-        "demand_FFR.yaml", ## Sens
+        "demand/demand_ND.yaml", ## Sens
+        "demand/demand_FFR.yaml", ## Sens
         "cp30_constraint.yaml",
         "techs/transmission.yaml",
         "spatial/onshore_transmission.yaml",
@@ -42,7 +42,6 @@ rule prepare_inputs:
         "spatial/capacities_2030_REPD.yaml",
         "spatial/capacities_2030_ND.yaml", ## Sens
         "spatial/capacities_2030_FFR.yaml", ## Sens
-#        "results/model_results_B1.nc"
     output:
         temp(touch("model_inputs.done"))
 
@@ -60,6 +59,23 @@ rule run_calliope_B1:
     default_target: True
     script:
         "scripts/run_calliope.py"
+
+
+rule run_calliope_B2:
+    input:
+        model_yaml = "model_B2.yml",
+        other_inputs = rules.prepare_inputs.output[0]
+    output:
+        "results/model_results_B2.nc"
+    conda:
+        "envs/calliope.yaml"
+    params:
+        response_hrs=4, # Max flexibility window
+        resolution_hrs=1,
+    default_target: True
+    script:
+        "scripts/run_calliope.py"
+
 
 
 rule serve_calligraph:

@@ -28,7 +28,7 @@ config:
 
 import:
 # Specific to B1
-  - demand_ND.yaml 
+  - demand/demand_ND.yaml 
   - spatial/capacities_2030_REPD.yaml
 # General
   - techs/transmission.yaml
