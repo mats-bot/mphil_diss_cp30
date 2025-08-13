@@ -38,10 +38,10 @@ rule generate_offshore_cutouts:
 rule generate_onshore_CFs:
     input:
         zones = "uploaded_data/tzones.gpkg",
-        cutouts = expand(
-            ancient("data/intermediates/spatial/onshore_cutouts/{{weather_year}}/cutout_{month}.nc"),
+        cutouts = ancient(expand(
+            "data/intermediates/spatial/onshore_cutouts/{{weather_year}}/cutout_{month}.nc",
             month=MONTHS
-        )
+        ))
     output:
         solar_cf = "data/intermediates/spatial/solar_cf_{weather_year}_raw.csv",
         onshore_cf = "data/intermediates/spatial/onshore_cf_{weather_year}_raw.csv",
@@ -53,10 +53,10 @@ rule generate_onshore_CFs:
 rule generate_offshore_CFs:
     input:
         zones = rules.generate_offshore_region.output[0],
-        cutouts = expand(
-            ancient("data/intermediates/spatial/offshore_cutouts/{{weather_year}}/cutout_{month}.nc"),
+        cutouts = ancient(expand(
+            "data/intermediates/spatial/offshore_cutouts/{{weather_year}}/cutout_{month}.nc",
             month=MONTHS
-        )
+        ))
     output:
         offshore_cf = "data/intermediates/spatial/offshore_cf_{weather_year}_raw.csv"
     conda:
