@@ -2,6 +2,7 @@ import calliope
 import xarray as xr
 from calliope.backend.helper_functions import ParsingHelperFunction
 
+
 # Just loading this class in creates the hook within calliope to make this math helper function (sum_next_n) available.
 class SumNextN(ParsingHelperFunction):
     """Sum the next N items in an array. Works best for ordered arrays (datetime, integer)."""
@@ -91,10 +92,22 @@ math = {
 model = calliope.Model(
     snakemake.input[0], time_resample=f"{snakemake.params.resolution_hrs}h"
 )
+for var, scaler in snakemake.params.data_scaling["scalers"].items():
+    if var not in model.inputs.data_vars:
+        print(f"Cannot scale parameter {var} as it doesn't exist in the model")
+        continue
+    if "_per_" in scaler:
+        numerator, denominator = scaler.split("_per_")
+        scaling_factor = float(
+            snakemake.params.data_scaling["scaling_factors"][numerator]
+        ) / float(snakemake.params.data_scaling["scaling_factors"][denominator])
+    else:
+        scaling_factor = float(snakemake.params.data_scaling["scaling_factors"][scaler])
 
-calliope.set_log_verbosity("INFO")
+    model._model_data[var] /= scaling_factor
+
+calliope.set_log_verbosity("DEBUG")
 model.build(add_math_dict=math)
-#model.build()
 model.solve()
 
 model.to_netcdf(snakemake.output[0])
