@@ -10,26 +10,22 @@ config:
     ensure_feasibility: true
     add_math:
      - cp30_constraint.yaml
-     - LDES_constraint_ND.yaml
     backend: gurobi
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 8
-      Method: -1 # use barrier, but do not run simplex in parallel
-      Crossover: 1 # stop after barrier, do not perform crossover
-      FeasibilityTol: 1e-2
-      OptimalityTol: 1e-3
-      BarConvTol: 1e-3
+      Threads: 4
+      Method: 2 # use barrier, but do not run simplex in parallel
+      Crossover: 0 # stop after barrier, do not perform crossover
+      FeasibilityTol: 1e-3
+      OptimalityTol: 1e-4
+      BarConvTol: 1e-4
       BarHomogeneous: 1
-      Presolve: 2
-      NumericFocus: 1
-      NodefileStart: 0.5
-      
+
 
 import:
 # Specific to B1
-  - demand/demand_ND.yaml 
+  - demand/demand_ND.yaml
   - spatial/capacities_2030_REPD.yaml
   - spatial/capacities_2030_ND.yaml
 # General
@@ -48,4 +44,5 @@ import:
   - techs/import_export.yaml
   - techs/thermal_power_constraints.yaml
 
-
+parameters:
+  ldes_max_cap: 4573.89 # MW | for FFR is 4524.29

@@ -1,7 +1,0 @@
-data_tables:
-  thermal_params:
-    data: data/processed/techs/thermal_params.csv
-    rows: parameters
-    columns: techs
-    rename_dims:
-      params: parameters

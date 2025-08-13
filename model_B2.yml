@@ -16,7 +16,7 @@ config:
     solver_options:
       Threads: 4
       Method: 2 # use barrier, but do not run simplex in parallel
-      Crossover: 1 # stop after barrier, do not perform crossover
+      Crossover: 0 # stop after barrier, do not perform crossover
       FeasibilityTol: 1e-3
       OptimalityTol: 1e-4
       BarConvTol: 1e-4
@@ -25,7 +25,7 @@ config:
 
 import:
 # Specific to B2
-  - demand/demand_ND.yaml 
+  - demand/demand_ND.yaml
   - spatial/capacities_2030_REPD.yaml
   - spatial/capacities_2030_ND.yaml
 # General
