@@ -19,7 +19,9 @@ fuels = {
 }
 
 # Choose which techs can invest in
-allow_investment = {"Gas_CCGT", "Gas_CCGT_CHP", "Gas_OCGT"}
+allow_investment = {"Gas_CCGT", 
+#                    "Gas_CCGT_CHP", "Gas_OCGT"
+                    }
 
 zones = sorted(capacity_df["zone"].unique())
 tech_zone_capacity = {}

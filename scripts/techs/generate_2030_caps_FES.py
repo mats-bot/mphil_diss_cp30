@@ -8,7 +8,7 @@ year_col = 2030
 # commented for difference between cp30 and FES24 if need to grab those
 def make_tech_map(pathway):
     return {
-        "gas_ccgt": [
+        "gas_ccgt_new": [
             {"pathway": pathway, "type": "Gas", "subtype": "Gas"},
             {"pathway": pathway, "type": "Gas", "subtype": "Gas CHP"},
         ],
@@ -28,9 +28,9 @@ def make_tech_map(pathway):
         # "coal": [
         #     {"pathway": pathway, "type": "Coal", "subtype": "Coal"},
         # ],
-        # "battery": [
-        #     {"pathway": pathway, "type": "Storage", "subtype": "Battery"},
-        # ],
+        "battery": [
+            {"pathway": pathway, "type": "Storage", "subtype": "Battery"},
+        ],
         # "pumped_hydro": [
         #     {"pathway": pathway, "type": "Storage", "subtype": "Pumped Hydro"},
         # ],
@@ -63,9 +63,9 @@ def make_tech_map(pathway):
             {"pathway": pathway, "type": "Waste", "subtype": "Waste"},
             {"pathway": pathway, "type": "Waste", "subtype": "Waste CHP"},
         ],
-        "offshore_wind": [
-            {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
-        ],
+        # "offshore_wind": [
+        #     {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
+        # ],
         # "onshore_wind": [
         #     {"pathway": pathway, "type": "Onshore Wind", "subtype": "Onshore Wind"},
         # ],

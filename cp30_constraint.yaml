@@ -2,7 +2,7 @@ global_expressions:
   total_non_fossil_supply:
     description: Sum of all supplied electricity
     foreach: [techs]
-    where: base_tech=supply AND NOT category=fossil
+    where: base_tech=supply AND NOT category=fossil AND NOT category=import
     equations:
       - expression: sum(flow_out, over=[nodes, carriers, timesteps])
   total_fossil_supply:

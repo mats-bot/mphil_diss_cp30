@@ -10,22 +10,8 @@ techs:
       - costs
   gas_ccgt_chp_existing:
     template: gas_ccgt_chp
-  gas_ccgt_chp_new:
-    template: gas_ccgt_chp
-    cost_flow_cap:
-      data: 111741.59540877285
-      index: monetary
-      dims:
-      - costs
   gas_ocgt_existing:
     template: gas_ocgt
-  gas_ocgt_new:
-    template: gas_ocgt
-    cost_flow_cap:
-      data: 180920.97670250895
-      index: monetary
-      dims:
-      - costs
   diesel_existing:
     template: diesel
 templates:
