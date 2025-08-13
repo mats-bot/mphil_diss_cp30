@@ -16,6 +16,12 @@ global_expressions:
     where: base_tech=demand AND NOT category=export
     equations:
       - expression: sum(flow_in, over=[nodes, carriers, timesteps])
+  total_ldes_capacity:
+    description: Sum of all installed ldes
+    foreach: [techs]
+    where: category=ldes and ldes_max_cap
+    equations:
+      - expression: sum(flow_cap, over=[nodes, carriers])
 
 constraints:
   fossil_fuel_share_limit:
@@ -28,3 +34,9 @@ constraints:
     foreach: []
     equations:
       - expression: sum(total_non_fossil_supply, over=techs) >= sum(domestic_demand, over=techs)
+
+  LDES_max_capacity:
+    description: Uses the LDES max capacity from CP30 outputs
+    where: total_ldes_capacity
+    equations:
+      - expression: sum(total_ldes_capacity, over=techs) <= ldes_max_cap

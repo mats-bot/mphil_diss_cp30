@@ -10,7 +10,7 @@ include: "rules/spatial/generate_onshore_transmission.smk"
 include: "rules/spatial/eligible_areas.smk"
 include: "rules/techs/generate_2023_system.smk"
 include: "rules/techs/generate_monetary_costs.smk"
-include: "rules/techs/generate_capacity_factors.smk"
+include: "rules/spatial/generate_capacity_factors.smk"
 include: "rules/techs/generate_tech_files.smk"
 include: "rules/spatial/generate_offshore_transmission.smk"
 include: "rules/demand/generate_demand_flex.smk"
@@ -45,38 +45,25 @@ rule prepare_inputs:
     output:
         temp(touch("model_inputs.done"))
 
-rule run_calliope_B1:
+rule run_calliope:
     input:
-        model_yaml = "model_B1.yml",
+        model_yaml = "model_B{run_number}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_B1.nc"
+        "results/model_results_B{run_number}.nc"
     conda:
         "envs/calliope.yaml"
     params:
         response_hrs=4, # Max flexibility window
         resolution_hrs=1,
-    default_target: True
+        data_scaling=config["data_scaling"]
     script:
         "scripts/run_calliope.py"
 
-
-rule run_calliope_B2:
+rule run_scenarios:
     input:
-        model_yaml = "model_B2.yml",
-        other_inputs = rules.prepare_inputs.output[0]
-    output:
-        "results/model_results_B2.nc"
-    conda:
-        "envs/calliope.yaml"
-    params:
-        response_hrs=4, # Max flexibility window
-        resolution_hrs=1,
+        expand("results/model_results_B{run_number}.nc", run_number=[1, 2])
     default_target: True
-    script:
-        "scripts/run_calliope.py"
-
-
 
 rule serve_calligraph:
     input:

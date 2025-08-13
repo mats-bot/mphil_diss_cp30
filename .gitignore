@@ -9,3 +9,7 @@ personal.txt
 .snakemake/
 gurobi.log
 logs
+
+/techs/
+/spatial/
+/demand/

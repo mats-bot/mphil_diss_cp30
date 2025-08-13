@@ -1,3 +1,2 @@
 software-deployment-method: conda
 cores: all
-conda-prefix: ~/
