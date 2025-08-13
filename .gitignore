@@ -10,6 +10,6 @@ personal.txt
 gurobi.log
 logs
 
-techs/
-spatial/
-demand/
+./techs/
+./spatial/
+./demand/
