@@ -19,3 +19,7 @@ techs:
     flow_cap_max_systemwide: 1897.2800000000004
   waste:
     flow_cap_max_systemwide: 2481.1099999999997
+  onshore_wind:
+    flow_cap_max_systemwide: 27326.37
+  solar_pv:
+    flow_cap_max_systemwide: 47353.979999999996

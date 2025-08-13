@@ -4,4 +4,12 @@ global_expressions:
     foreach: [techs]
     where: category=ldes
     equations:
-      - expression: sum(flow_out, over=[nodes, carriers, timesteps])
+      - expression: sum(flow_cap, over=[nodes, carriers])
+
+constraints:
+  ND_LDES_max_capacity:
+    description: Uses the LDES max capacity from CP30 outputs
+    foreach: []
+    equations:
+      - expression: sum(total_ldes_capacity, over=techs) <= 4573.89
+      # for FFR is 4524.29
