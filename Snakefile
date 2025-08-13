@@ -45,38 +45,25 @@ rule prepare_inputs:
     output:
         temp(touch("model_inputs.done"))
 
-rule run_calliope_B1:
+rule run_calliope:
     input:
-        model_yaml = "model_B1.yml",
+        model_yaml = "model_B{run_number}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_B1.nc"
+        "results/model_results_B{run_number}.nc"
     conda:
         "envs/calliope.yaml"
     params:
         response_hrs=4, # Max flexibility window
         resolution_hrs=1,
-    default_target: True
+        data_scaling=config["data_scaling"]
     script:
         "scripts/run_calliope.py"
 
-
-rule run_calliope_B2:
+rule run_scenarios:
     input:
-        model_yaml = "model_B2.yml",
-        other_inputs = rules.prepare_inputs.output[0]
-    output:
-        "results/model_results_B2.nc"
-    conda:
-        "envs/calliope.yaml"
-    params:
-        response_hrs=4, # Max flexibility window
-        resolution_hrs=1,
+        expand("results/model_results_B{run_number}.nc", run_number=[1, 2])
     default_target: True
-    script:
-        "scripts/run_calliope.py"
-
-
 
 rule serve_calligraph:
     input:

@@ -9,5 +9,20 @@ demand_data:
 default_year: 2030
 
 weather_year: 2013
-  
-  
+
+data_scaling:
+  scalers:
+    cost_flow_cap: "cost_per_energy_power"
+    cost_om_annual: "cost_per_energy_power"
+    flow_cap_max_systemwide: "energy_power"
+    cost_storage_cap: "cost_per_energy_power"
+    flow_cap_max: "energy_power"
+    flow_cap_min: "energy_power"
+    cost_flow_in: "energy_power"
+    cost_flow_out: "energy_power"
+    sink_use_equals: "energy_power"
+    sink_use_dsr: "energy_power"
+    ldes_max_cap: "energy_power"
+  scaling_factors:
+    energy_power: 1e6  # MWh -> GWh / MW -> GW
+    cost: 1e9 # GBP -> billion GBP
