@@ -1,0 +1,7 @@
+global_expressions:
+  total_ldes_capacity:
+    description: Sum of all installed ldes
+    foreach: [techs]
+    where: category=ldes
+    equations:
+      - expression: sum(flow_out, over=[nodes, carriers, timesteps])

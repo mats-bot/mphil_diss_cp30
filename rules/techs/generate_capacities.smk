@@ -17,7 +17,6 @@ rule generate_renewables_max_zonal_capacities:
     output:
         "spatial/capacities_2030_REPD.yaml",
         "data/processed/techs/unconstrained_techs_2030.csv",
-        "data/processed/techs/CHP_zero_caps.csv"
     conda: 
         "../../envs/data_processing.yaml"
     script:
@@ -25,10 +24,12 @@ rule generate_renewables_max_zonal_capacities:
 
 rule generate_GB_max_capacities_FES:
     input:
-        "data/raw/demand/FES24_workbook.xlsx"
+        "data/raw/techs/CP30_workbook.xlsx"
     output:
         "spatial/capacities_2030_FFR.yaml",
         "spatial/capacities_2030_ND.yaml",
+        "data/processed/spatial/CP30_FFR_caps.csv",
+        "data/processed/spatial/CP30_ND_caps.csv",
     conda:
         "../../envs/data_processing.yaml"
     script:

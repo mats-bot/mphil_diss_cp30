@@ -1,7 +1,8 @@
 rule compare_connection_queues:
     input:
         "data/processed/techs/renewables_2030_queue.csv",
-        "data/raw/techs/CP30_workbook.xlsx"
+        "data/raw/techs/CP30_workbook.xlsx",
+        "data/processed/techs/offshore_wind_projects_aggregated.csv"
     output:
         "results/figures/methods/total_2030_capacities.png"
     conda:
