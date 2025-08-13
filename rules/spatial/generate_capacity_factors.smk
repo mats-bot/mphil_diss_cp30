@@ -39,7 +39,7 @@ rule generate_onshore_CFs:
     input:
         zones = "uploaded_data/tzones.gpkg",
         cutouts = expand(
-            "data/intermediates/spatial/onshore_cutouts/{{weather_year}}/cutout_{month}.nc",
+            ancient("data/intermediates/spatial/onshore_cutouts/{{weather_year}}/cutout_{month}.nc"),
             month=MONTHS
         )
     output:
@@ -54,7 +54,7 @@ rule generate_offshore_CFs:
     input:
         zones = rules.generate_offshore_region.output[0],
         cutouts = expand(
-            "data/intermediates/spatial/offshore_cutouts/{{weather_year}}/cutout_{month}.nc",
+            ancient("data/intermediates/spatial/offshore_cutouts/{{weather_year}}/cutout_{month}.nc"),
             month=MONTHS
         )
     output:
