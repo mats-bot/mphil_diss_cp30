@@ -3,14 +3,15 @@ import yaml
 
 df = pd.read_csv(snakemake.input[0], index_col=0)
 
-techs = ["Biomass", "Biomass_CHP", "Waste", "Waste_CHP", "Hydrogen", "Nuclear"]
+# removed waste and biomass chp
+techs = ["Biomass", "Waste", "Hydrogen", "Nuclear"]
 
 # removal of fuels since defining as supply and not conversion
 fuels = {
     "Biomass": "biomass",
-    "Biomass_CHP": "biomass",
+    # "Biomass_CHP": "biomass",
     "Waste": "waste",
-    "Waste_CHP": "waste",
+    # "Waste_CHP": "waste",
     "Hydrogen": "hydrogen",
     "Nuclear": "nuclear_fuel",
 }
@@ -18,9 +19,9 @@ fuels = {
 # Per cp30 outputs
 classif = {
     "Biomass": "renewable",
-    "Biomass_CHP": "renewable",
+    # "Biomass_CHP": "renewable",
     "Waste": "renewable",
-    "Waste_CHP": "renewable",
+    # "Waste_CHP": "renewable",
     "Hydrogen": "thermal",
     "Nuclear": "low_carbon",
 }

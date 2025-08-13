@@ -35,6 +35,7 @@ cfs_zone_avg = cfs_with_zone.groupby('tzone')[numeric_cols].mean()
 
 cf_zone_avg_T = cfs_zone_avg.T
 cf_zone_avg_T.insert(0, 'time', time)
+cf_zone_avg_T.loc[:, cf_zone_avg_T.columns != 'time'] *= 100
 
 cf_zone_avg_T.to_csv(snakemake.output[2], index=None)
 
@@ -192,3 +193,12 @@ yaml_data = {
 with open(snakemake.output[0], 'w') as f:
    yaml.dump(yaml_data, f, sort_keys=False)
 
+
+
+stats = pd.DataFrame({
+    "min": cf_zone_avg_T.iloc[:, 1:].min(),
+    "max": cf_zone_avg_T.iloc[:, 1:].max(),
+    "mean": cf_zone_avg_T.iloc[:, 1:].mean()
+}).round(4)
+
+print(stats)

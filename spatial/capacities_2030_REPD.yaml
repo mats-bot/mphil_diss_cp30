@@ -12,10 +12,3 @@ data_tables:
     add_dims:
       parameters:
       - flow_cap_max
-  chp_zero_flow_cap:
-    data: data/processed/techs/CHP_zero_caps.csv
-    rows: techs
-    columns: nodes
-    add_dims:
-      parameters:
-      - flow_cap_max

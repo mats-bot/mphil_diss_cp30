@@ -64,14 +64,15 @@ for i, time_range in enumerate(time_ranges):
     solar_cf = cutout.pv(
         panel="CSi",
         orientation="latitude_optimal",
-        shapes=zones
+        shapes=zones,
     ).to_pandas()
     solar_cf.columns = zones['z1'].values
     solar_cf = solar_cf[sorted(solar_cf.columns, key=lambda x: int(x[1:]))]
     solar_dfs.append(solar_cf)
 
+
     wind_cf = cutout.wind(
-        turbine="Vestas_V112_3MW",
+        turbine="NREL_ReferenceTurbine_2020ATB_7MW",
         shapes=zones,
         add_cutout_windspeed=True
     ).to_pandas()
@@ -96,7 +97,7 @@ offshore_gdf = gpd.GeoDataFrame(
 
 utm_crs = "EPSG:3035"  # projected CRS for buffering
 offshore_gdf_proj = offshore_gdf.to_crs(utm_crs)
-offshore_gdf_proj['geometry'] = offshore_gdf_proj.geometry.buffer(5000)  # 5km buffer
+offshore_gdf_proj['geometry'] = offshore_gdf_proj.geometry.buffer(1000)  # 5km buffer
 offshore_gdf_buffered = offshore_gdf_proj.to_crs("EPSG:4326")
 
 bounds2 = offshore_gdf_buffered.total_bounds.tolist()
@@ -136,6 +137,7 @@ for i, month in enumerate(range(1, 13)):
         turbine="NREL_ReferenceTurbine_2020ATB_15MW_offshore",
         shapes=offshore_gdf_buffered,
         add_cutout_windspeed=True,
+        capacity_factor=True
     )
 
     df_month = cf_offshore.to_pandas()

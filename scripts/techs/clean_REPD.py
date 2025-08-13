@@ -228,10 +228,9 @@ operational_2023_df.to_csv(snakemake.output[1], index=False)
 # part to generate max capacities for renewables
 full_queue_statuses = ["Operational", "Under Construction", "Awaiting Construction", "Application Submitted"]
 full_queue_df = REPD_df[REPD_df["Development Status (short)"].isin(full_queue_statuses)].copy()
-full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Pumped_Hydro"] # Since handled elsewhere
-full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Offshore_Wind"]
-full_queue_df = full_queue_df[full_queue_df["CP30 technology"] != "Other_Renewables"]
 full_queue_df["CP30 technology"] = full_queue_df["CP30 technology"].str.lower()
+full_queue_df = full_queue_df[full_queue_df["CP30 technology"].isin(["onshore_wind", "solar_pv"])]
+
 
 
 
@@ -260,15 +259,16 @@ if not unassigned_gdf_full.empty:
 full_queue_df['zone'] = full_joined['z1']
 full_queue_df["Installed Capacity (MWelec)"] = pd.to_numeric(full_queue_df["Installed Capacity (MWelec)"], errors="coerce")
 
+solar_mask = full_queue_df["CP30 technology"] == "solar_pv"
+full_queue_df.loc[solar_mask, "Installed Capacity (MWelec)"] *= 1.5
+
 full_queue_agg = (
     full_queue_df
     .groupby(["zone", "CP30 technology"])["Installed Capacity (MWelec)"]
     .sum()
     .reset_index()
 )
-# full_queue_agg.columns.values[0] = "techs"
 full_queue_agg = full_queue_agg.rename(columns={"CP30 technology": "techs"})
-
 
 full_queue_pivot = full_queue_agg.pivot(index="techs", columns="zone", values="Installed Capacity (MWelec)").fillna(0)
 full_queue_pivot.to_csv(snakemake.output[2])
