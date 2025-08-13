@@ -21,7 +21,11 @@ nodes.remove('techs')
 
 unconstrained_techs = ["gas_ccgt_new", 
 #                       "gas_ocgt_new", 
-                       "beccs", "gas_ccs", "biomass", "waste", "hydrogen", "battery", "caes", "laes"]
+                       "beccs", "gas_ccs", 
+#                       "biomass", "waste", 
+                       "hydrogen", 
+#                       "battery", "caes", "laes"
+]
 
 unconstrained_df = pd.DataFrame(
     data=999999,

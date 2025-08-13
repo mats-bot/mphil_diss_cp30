@@ -11,12 +11,12 @@ techs:
     flow_cap_per_storage_cap_max: 0.25
     lifetime: 25
     cost_om_annual:
-      data: 8.949469916012668e-05
+      data: 119.83340217540965
       index: monetary
       dims:
       - costs
     cost_flow_out:
-      data: 0.774308137133416
+      data: 774308.1371334159
       index: monetary
       dims:
       - costs
@@ -26,7 +26,7 @@ techs:
       dims:
       - costs
     cost_flow_cap:
-      data: 0.0894946991601266
+      data: 119833.40217540962
       index: monetary
       dims:
       - costs
@@ -47,12 +47,12 @@ techs:
     flow_cap_per_storage_cap_max: 0.125
     lifetime: 80
     cost_om_annual:
-      data: 0.000253493735371
+      data: 253.49373537105885
       index: monetary
       dims:
       - costs
     cost_flow_out:
-      data: 9.217954013493048e-07
+      data: 0.9217954013493048
       index: monetary
       dims:
       - costs
@@ -62,12 +62,12 @@ techs:
       dims:
       - costs
     cost_flow_cap:
-      data: 1.382693102023957
+      data: 1382693.102023957
       index: monetary
       dims:
       - costs
     cost_storage_cap:
-      data: 0.0276538620404791
+      data: 27653.86204047914
       index: monetary
       dims:
       - costs
@@ -83,12 +83,12 @@ techs:
     flow_cap_per_storage_cap_max: 0.1666666666666666
     lifetime: 25
     cost_om_annual:
-      data: 0.0004740662064082
+      data: 474.0662064082138
       index: monetary
       dims:
       - costs
     cost_flow_out:
-      data: 6.083849648905411e-06
+      data: 6.083849648905411
       index: monetary
       dims:
       - costs
@@ -98,12 +98,12 @@ techs:
       dims:
       - costs
     cost_flow_cap:
-      data: 1.8320683601817431
+      data: 1832068.3601817435
       index: monetary
       dims:
       - costs
     cost_storage_cap:
-      data: 0.0460897700674652
+      data: 46089.77006746524
       index: monetary
       dims:
       - costs
@@ -119,7 +119,7 @@ techs:
     flow_cap_per_storage_cap_max: 0.0714285714285714
     lifetime: 35
     cost_om_annual:
-      data: 0.0206482169902244
+      data: 20648.216990224428
       index: monetary
       dims:
       - costs
@@ -129,17 +129,17 @@ techs:
       dims:
       - costs
     cost_flow_in:
-      data: 0.0001460123915737
+      data: 146.01239157372987
       index: monetary
       dims:
       - costs
     cost_flow_cap:
-      data: 1.695487012987013
+      data: 1695487.012987013
       index: monetary
       dims:
       - costs
     cost_storage_cap:
-      data: 0.4098979591836735
+      data: 409897.9591836735
       index: monetary
       dims:
       - costs
