@@ -78,6 +78,7 @@ LAES_storage_cap = 330 * c19 * 1000 # £/MWh
 LAES_om_fixed = 11.2 * 1 / 0.7263 * c15 * 1000 # euro/MW/yr * pound/euro|2015 #https://www.exchangerates.org.uk/EUR-GBP-spot-exchange-rates-history-2015.html
 LAES_om_con = 30 * 0.00264 * 1 / 0.7263 * c15 * 1000 # euro/MWh * pound/euro|2015
 
+
 storage_data = {
     "technology": ["battery", "pumped_hydro", "caes", "laes"],
     

@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030', '2030']
+    time_subset: ['2030-06', '2030-06']
     time_resample: 1h
   build:
     mode: plan
@@ -14,14 +14,14 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 4
+      Threads: 8
       Method: 2 # use barrier, but do not run simplex in parallel
       Crossover: 0 # stop after barrier, do not perform crossover
-      FeasibilityTol: 1e-3
-      OptimalityTol: 1e-4
-      BarConvTol: 1e-4
+      FeasibilityTol: 1e-2
+      OptimalityTol: 1e-3
+      BarConvTol: 1e-3
       BarHomogeneous: 1
-      Presolve: 2
+      Presolve: 0
       
 
 import:

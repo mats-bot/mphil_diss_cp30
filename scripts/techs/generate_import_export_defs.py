@@ -50,7 +50,9 @@ nodes = {}
 for country in grouped['Country'].unique():
     tech_import = f"import_{country.lower()}_electricity"
     tech_export = f"export_{country.lower()}_electricity"
-    techs[tech_import] = {"template": "import_electricity"}
+    techs[tech_import] = {"template": "import_electricity", 
+                         "category": "import"
+}
     techs[tech_export] = {"template": "export_electricity", "category": "export"}
 
     if country in import_prices.columns:
@@ -95,7 +97,11 @@ data = {
 
 import_prices.drop(columns=interconnectors["Country"].unique(), inplace=True)
 export_prices = import_prices.copy()
-export_prices.iloc[:, 1:] = -export_prices.iloc[:, 1:]
+
+export_prices.iloc[:, 1:] = -export_prices.iloc[:, 1:] 
+
+# apply import prices offset to disinseitivize
+import_prices.iloc[:, 1:] = import_prices.iloc[:, 1:] * 5
 
 import_prices.to_csv(snakemake.output[0], index=False)
 export_prices.to_csv(snakemake.output[1], index=False)

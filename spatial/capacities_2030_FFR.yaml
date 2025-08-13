@@ -1,10 +1,12 @@
 techs:
-  gas_ccgt:
+  gas_ccgt_new:
     flow_cap_max_systemwide: 35000.0
   diesel:
     flow_cap_max_systemwide: 165.8
   hydrogen:
     flow_cap_max_systemwide: 276.09999999999997
+  battery:
+    flow_cap_max_systemwide: 27383.45
   nuclear:
     flow_cap_max_systemwide: 3515.0
   beccs:
@@ -17,5 +19,3 @@ techs:
     flow_cap_max_systemwide: 1897.2800000000004
   waste:
     flow_cap_max_systemwide: 2481.1099999999997
-  offshore_wind:
-    flow_cap_max_systemwide: 50649.09

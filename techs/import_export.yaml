@@ -10,36 +10,43 @@ templates:
 techs:
   import_bel_electricity:
     template: import_electricity
+    category: import
   export_bel_electricity:
     template: export_electricity
     category: export
   import_deu_electricity:
     template: import_electricity
+    category: import
   export_deu_electricity:
     template: export_electricity
     category: export
   import_dnk_electricity:
     template: import_electricity
+    category: import
   export_dnk_electricity:
     template: export_electricity
     category: export
   import_fra_electricity:
     template: import_electricity
+    category: import
   export_fra_electricity:
     template: export_electricity
     category: export
   import_irl_electricity:
     template: import_electricity
+    category: import
   export_irl_electricity:
     template: export_electricity
     category: export
   import_nld_electricity:
     template: import_electricity
+    category: import
   export_nld_electricity:
     template: export_electricity
     category: export
   import_nor_electricity:
     template: import_electricity
+    category: import
   export_nor_electricity:
     template: export_electricity
     category: export

@@ -19,7 +19,9 @@ ren_flow_cap_max_table = {
 nodes = df3.columns.tolist()
 nodes.remove('techs')
 
-unconstrained_techs = ["gas_ccgt_new", "gas_ocgt_new", "beccs", "gas_ccs", "biomass", "waste", "hydrogen", "battery", "caes", "laes"]
+unconstrained_techs = ["gas_ccgt_new", 
+#                       "gas_ocgt_new", 
+                       "beccs", "gas_ccs", "biomass", "waste", "hydrogen", "battery", "caes", "laes"]
 
 unconstrained_df = pd.DataFrame(
     data=999999,
