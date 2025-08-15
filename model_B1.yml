@@ -21,6 +21,10 @@ config:
       OptimalityTol: 1e-4
       BarConvTol: 1e-4
       BarHomogeneous: 1
+      Presolve: 2
+   
+
+
 
 
 import:

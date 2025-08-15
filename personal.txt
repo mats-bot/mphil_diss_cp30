@@ -12,3 +12,95 @@ if permission issue with files, run from command prompt:
     attrib -r +s "path of the folder"
 
 
+Solver testing:
+    Option 1: Initial (known to work)
+        Threads: 4
+        Method: 2 # use barrier, but do not run simplex in parallel
+        Crossover: 0 # stop after barrier, do not perform crossover
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-4
+        BarConvTol: 1e-4
+        BarHomogeneous: 1
+
+    Result:  193s for April
+
+    Option 2 (with presolve):
+        Threads: 4
+        Method: 2 # use barrier, but do not run simplex in parallel
+        Crossover: 0 # stop after barrier, do not perform crossover
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-4
+        BarConvTol: 1e-4
+        BarHomogeneous: 1
+        Presolve: 2
+
+    Result: 185s for April -> better with presolve
+      
+
+    Option 3: added numericfocus
+        Threads: 4
+        Method: 2 # use barrier, but do not run simplex in parallel
+        Crossover: 0 # stop after barrier, do not perform crossover
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-4
+        BarConvTol: 1e-4
+        BarHomogeneous: 1
+        NumericFocus: 2
+        Presolve: 2
+
+    Result: 250s+ -> no numeric focus
+
+    
+
+    Option 5: (with crossover, presolve but no numeric focus):
+        Threads: 4
+        Method: 2           # barrier
+        Crossover: 1        # let simplex finish the last mile
+        Presolve: 2
+        BarHomogeneous: 1   
+        BarConvTol: 1e-4    
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-4
+
+    Result: crossover time 175s, solve at 300s+ -> model struggles with simplex
+
+
+    Option 6 (additional scaling):
+        Threads: 4
+        Method: 2           # barrier
+        Crossover: 0       # let simplex finish the last mile
+        Presolve: 2
+        NumericFocus: 2
+        BarHomogeneous: 1   
+        BarConvTol: 1e-4    # keep your current tolerances
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-4
+        ObjScale: 1e-6      
+        ScaleFlag: 2        
+
+    Result: no solution
+
+
+    Option 7: relaxed constraints (based on option 2, quickest so far)
+
+        Threads: 4
+        Method: 2 # use barrier, but do not run simplex in parallel
+        Crossover: 0 # stop after barrier, do not perform crossover
+        FeasibilityTol: 1e-3
+        OptimalityTol: 1e-3
+        BarConvTol: 1e-3
+        BarHomogeneous: 1
+        Presolve: 2
+
+    Result: 194s
+
+
+Option 2 best for now. Presolve may see diminishing returns but will try like this first since numeric trouble encountered with option 1.
+
+Full year runs:
+    Option 2 - 2 hours.
+
+Next iter, increase threads to 6 and barconvtol to 1e-3
+
+
+      
