@@ -79,7 +79,7 @@ def build_yaml(tech_map):
 
     # gas offset to account for existing capacity
     # 35 GW - ccgt_existing - ocgt_existing = 35 - 33 = 2
-    offset = {
+    offsets = {
         "gas_ccgt_new": 33000,
     }
 
@@ -94,8 +94,7 @@ def build_yaml(tech_map):
             )
             total_val += df.loc[mask, year_col].sum()
 
-            offset = offset.get(tech, 0)
-            total_val += offset
+            total_val += offsets.get(tech, 0)
 
         out["techs"][tech] = {"flow_cap_max_systemwide": float(total_val)}
     return out
