@@ -71,16 +71,18 @@ rule generate_offshore_wind_project_defs:
         "../../envs/data_processing.yaml"
     script:
         "../../scripts/techs/generate_offshore_wind_defs.py"
+     
 
 rule generate_other_renewables_definitions:
     input:
         "data/processed/techs/generation_costs.csv",
-        "data/processed/techs/renewables_2023.csv"
+        "uploaded_data/hydropower_existing.xlsx",
+        "uploaded_data/tzones.gpkg"
     output:
         "techs/other_renewables.yaml",
         "data/processed/techs/hydro_capacities.csv"
     conda:
-        "../../envs/data_processing.yaml"
+        "../../envs/gpkg_data.yaml"
     script:
         "../../scripts/techs/generate_other_ren_defs.py"
 

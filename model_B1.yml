@@ -14,14 +14,14 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 6
-      Method: 2 # use barrier, but do not run simplex in parallel
-      Crossover: 0 # stop after barrier, do not perform crossover
-      FeasibilityTol: 1e-3
-      OptimalityTol: 1e-4
-      BarConvTol: 1e-3
+      Threads: 4
+      Method: 1 # use barrier, but do not run simplex in parallel
+      Crossover: 0 # last resort since getting close to solution
+      FeasibilityTol: 1e-2
+      OptimalityTol: 1e-3
+      BarConvTol: 1e-2
       BarHomogeneous: 1
-      Presolve: 2
+      Presolve: 1
    
 
 

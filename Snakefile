@@ -67,7 +67,7 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_B1_base.nc"
+        "results/model_results_B1.nc"
     conda:
         "envs/calliope.yaml"
     shell:

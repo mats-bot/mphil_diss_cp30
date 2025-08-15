@@ -1,29 +1,58 @@
 import pandas as pd
+import geopandas as gpd
 import yaml
 
 df = pd.read_csv(snakemake.input[0], index_col=0)
-capacity_df = pd.read_csv(snakemake.input[1])
+capacity_df = pd.read_excel(snakemake.input[1], sheet_name="Onshore - hydropower", header=0, engine="openpyxl")
 zones = sorted(capacity_df["zone"].unique())
 
-techs = ["Hydro"]
+zones_gdf = gpd.read_file(snakemake.input[2])
 
 
-# build csv with per zone capacity
-flow_caps = [0.0] * len(zones)
-for _, row in capacity_df.iterrows():
-    if row["CP30 technology"].lower() == "hydro":
-        zone = row["zone"]
-        capacity = float(row["Installed Capacity (MWelec)"])
-        if zone in zones:
-            idx = zones.index(zone)
-            flow_caps[idx] = capacity
+hydro_df = capacity_df[
+    (capacity_df["Country"] != "NI") &
+    (capacity_df["Hydro Type"].str.lower() != "pumped storage")
+].copy()
 
-cap_df = pd.DataFrame(
-    [flow_caps, flow_caps],
-    index=["flow_cap_min", "flow_cap_max"],
-    columns=zones)
+hydro_df["IC (MW)"] = pd.to_numeric(hydro_df["IC (MW)"], errors="coerce")
+hydro_df = hydro_df.dropna(subset=["IC (MW)"])
 
-cap_df.to_csv(snakemake.output[1])
+lat_lon_missing = hydro_df[hydro_df["Powerhouse Latitude"].isna() | hydro_df["Powerhouse Longitude"].isna()]
+if not lat_lon_missing.empty:
+    print("Hydropower plants with missing Latitude or Longitude:")
+    print(lat_lon_missing)
+hydro_df = hydro_df.dropna(subset=["Powerhouse Latitude", "Powerhouse Longitude"])
+
+hydro_gdf = gpd.GeoDataFrame(
+    hydro_df,
+    geometry=gpd.points_from_xy(hydro_df["Powerhouse Longitude"], hydro_df["Powerhouse Latitude"]),
+    crs="EPSG:4326"
+)
+
+joined_gdf = gpd.sjoin(hydro_gdf, zones_gdf[["z1", "geometry"]], how="left", predicate="within")
+
+unassigned_mask = joined_gdf['z1'].isna()
+unassigned_gdf = hydro_gdf[unassigned_mask].copy()
+
+if not unassigned_gdf.empty:
+    for idx, point in unassigned_gdf.geometry.items():
+        nearest_zone = None
+        min_distance = float('inf')
+        for zone_idx, zone in zones_gdf.iterrows():
+            distance = point.distance(zone.geometry)
+            if distance < min_distance:
+                min_distance = distance
+                nearest_zone = zone['z1']
+        joined_gdf.loc[idx, 'z1'] = nearest_zone
+
+hydro_df['zone'] = joined_gdf['z1']
+zone_capacity = hydro_df.groupby("zone")["IC (MW)"].sum()
+
+output_df = pd.DataFrame({
+    zone: [cap, cap] for zone, cap in zone_capacity.items()
+}, index=["flow_cap_min", "flow_cap_max"])
+
+output_df.to_csv(snakemake.output[1])
 
 techs_yaml = {}
 

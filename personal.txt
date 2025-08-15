@@ -100,7 +100,19 @@ Option 2 best for now. Presolve may see diminishing returns but will try like th
 Full year runs:
     Option 2 - 2 hours.
 
-Next iter, increase threads to 6 and barconvtol to 1e-3
+
+Implementing last constraints.
+    No solution:
+        Option 2 with threads 6 and barconvtol 1e-3
+        Option 2 with presolve 1
+        Reverting to dual simplext method with presolve 1 and lowered tolerances
+
+    Out of memory:
+        Option 2, with crossover, relaxed all constraints by 10 and set presolve 0
+
+        Option 2 with presolve 0
+
+
 
 
       
