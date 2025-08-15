@@ -63,9 +63,9 @@ def make_tech_map(pathway):
             {"pathway": pathway, "type": "Waste", "subtype": "Waste"},
             {"pathway": pathway, "type": "Waste", "subtype": "Waste CHP"},
         ],
-        # "offshore_wind": [
-        #     {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
-        # ],
+        "offshore_wind": [
+            {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
+        ],
         "onshore_wind": [
             {"pathway": pathway, "type": "Onshore Wind", "subtype": "Onshore Wind"},
         ],
@@ -76,6 +76,13 @@ def make_tech_map(pathway):
 
 def build_yaml(tech_map):
     out = {"techs": {}} 
+
+    # gas offset to account for existing capacity
+    # 35 GW - ccgt_existing - ocgt_existing = 35 - 33 = 2
+    offset = {
+        "gas_ccgt_new": 33000,
+    }
+
     for tech, combos in tech_map.items():
         total_val = 0
         for crit in combos:
@@ -86,6 +93,10 @@ def build_yaml(tech_map):
                 (df["Variable"] == "Capacity (MW)")
             )
             total_val += df.loc[mask, year_col].sum()
+
+            offset = offset.get(tech, 0)
+            total_val += offset
+
         out["techs"][tech] = {"flow_cap_max_systemwide": float(total_val)}
     return out
     
