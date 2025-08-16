@@ -101,7 +101,7 @@ export_prices = import_prices.copy()
 export_prices.iloc[:, 1:] = -export_prices.iloc[:, 1:] 
 
 # apply import prices offset to disinseitivize
-import_prices.iloc[:, 1:] = import_prices.iloc[:, 1:] * 5
+import_prices.iloc[:, 1:] = import_prices.iloc[:, 1:] 
 
 import_prices.to_csv(snakemake.output[0], index=False)
 export_prices.to_csv(snakemake.output[1], index=False)

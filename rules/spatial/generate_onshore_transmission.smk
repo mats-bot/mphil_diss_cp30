@@ -36,7 +36,8 @@ rule generate_onshore_transmission_yaml:
     input:
         "data/processed/spatial/onshore_transmission.csv"
     output: 
-        "spatial/onshore_transmission.yaml"
+        "spatial/onshore_transmission.yaml",
+        "sensitivities/S1/S1_onshore_transmission.yaml"
     conda:
         "../../envs/data_processing.yaml"
     script:

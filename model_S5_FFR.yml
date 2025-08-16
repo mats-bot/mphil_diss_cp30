@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030', '2030']
+    time_subset: ['2030-01', '2030-01']
     time_resample: 1h
   build:
     mode: plan
@@ -24,12 +24,10 @@ config:
       Presolve: 1
    
 
-
-
-
 import:
-# Specific to B1
-  - demand/demand_ND.yaml
+# Specific to S5
+  - sensitivities/S5/demand_S5_ND.yaml
+# Specific to FFR
   - spatial/capacities_2030_ND.yaml
 # General
   - spatial/capacities_2030_REPD.yaml
@@ -40,8 +38,8 @@ import:
   - spatial/capacities_2023.yaml # Minimum (installed already) capacities
   - techs/CCS.yaml
   - techs/fossil_fuels.yaml
-  - techs/low_carbon_thermal.yaml
   - techs/offshore_wind.yaml
+  - techs/low_carbon_thermal.yaml
   - techs/other_renewables.yaml
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
@@ -49,4 +47,4 @@ import:
   - techs/thermal_power_constraints.yaml
 
 parameters:
-  ldes_max_cap: 4573.89 # MW | for FFR is 4524.29
+  ldes_max_cap: 4524.29  # MW | for ND is 4573.89

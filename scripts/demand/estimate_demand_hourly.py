@@ -99,3 +99,51 @@ FES['Demand'] = FES['Demand'].apply(
     lambda x: '[' + ' '.join([f"{val:.6f}" for val in x]) + ']')
 
 FES.to_csv(snakemake.output[0], index=False,)
+
+
+
+# Scenario 2 config
+S2_HIS = pd.read_csv(snakemake.input["S2_HISdemand"])
+S2_FES = pd.read_csv(snakemake.input["FESdemand"])
+
+S2_HIS["SETTLEMENT_DATE"] = pd.to_datetime(S2_HIS["SETTLEMENT_DATE"])
+S2_HIS["Hour_yearly"] = (S2_HIS["SETTLEMENT_DATE"].dt.dayofyear - 1) * 24 + (S2_HIS["HOUR"] - 1)
+S2_HIS = S2_HIS.sort_values("Hour_yearly")
+
+S2_HIS_peak = S2_HIS["ND"].max()
+S2_HIS["ND_norm"] = S2_HIS["ND"] / S2_HIS_peak
+
+S2_peak_hour = S2_HIS.loc[HIS["ND_norm"].idxmax(), "HOUR"]
+S2_AM_HIS = S2_HIS[S2_HIS["HOUR"].between(1, 12)]
+S2_AM_min_hour = S2_AM_HIS.loc[S2_AM_HIS["ND_norm"].idxmin(), "HOUR"]
+S2_PM_HIS = S2_HIS[S2_HIS["HOUR"].between(13, 24)]
+S2_PM_min_hour = S2_PM_HIS.loc[S2_PM_HIS["ND_norm"].idxmin(), "HOUR"]
+
+S2_HIS_norm_series = S2_HIS.set_index("Hour_yearly")["ND_norm"]
+
+S2_results = []
+
+for idx, row in S2_FES.iterrows():
+    S2_scaled_ts = create_timeseries(
+        S2_HIS_norm_series,
+        peak_hour=int(S2_peak_hour),
+        AM_min_hour=int(S2_AM_min_hour),
+        PM_min_hour=int(S2_PM_min_hour),
+        P=row["DemandPk"],
+        A=row["DemandAM"],
+        M=row["DemandPM"],
+    )
+    
+    S2_scaled_ts= S2_scaled_ts.values.astype(np.float16)
+    S2_results.append(S2_scaled_ts)
+
+S2_FES['Demand'] = S2_results
+S2_FES = S2_FES.drop(columns=['DemandPk', 'DemandAM', 'DemandPM'])
+
+# Store with one data point per hour of year
+S2_FES['Demand'] = S2_FES['Demand'].apply(
+    lambda x: '[' + ' '.join([f"{val:.6f}" for val in x]) + ']')
+
+S2_FES.to_csv(snakemake.output[1], index=False,)
+
+

@@ -49,3 +49,11 @@ process_all_demand_files_combined(
     flex_caps_df=flex_caps_df,    
     output_folder=snakemake.output[0],
 )           
+
+
+flex_caps_df = pd.read_csv(snakemake.input[1])
+process_all_demand_files_combined(
+    input_folder=snakemake.input[2],
+    flex_caps_df=flex_caps_df,    
+    output_folder=snakemake.output[1],
+)           

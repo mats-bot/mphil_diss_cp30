@@ -110,3 +110,9 @@ def generate_demand_yaml(input_dir, output_path):
         yaml.dump(out_dict, f, sort_keys=False, default_flow_style=False, indent=4)
 
 generate_demand_yaml(snakemake.input[0], snakemake.output[0])
+
+# S2 
+generate_demand_yaml(snakemake.input[1], snakemake.output[1])
+
+# S5,
+generate_demand_yaml(snakemake.input[0], snakemake.output[2])

@@ -242,9 +242,12 @@ gas_cost = (
 )  # GBP/therm * therm/MWh https://www.metric-conversions.org/energy-and-power/therms-uk-to-kilowatt-hours.htm
 hydrogen_cost = 1.2 * gas_cost
 
-# Own assumption for now.
+#cp 30 assumption
 waste_cost = 0
-biomass_cost = 0
+
+# from https://drawdown.org/solutions/biomass-power
+# 2014 dollar https://www.exchangerates.org.uk/USD-GBP-spot-exchange-rates-history-2014.html
+biomass_cost = 14.3 * 0.6446 * c14 
 
 # giving coal random high values since cannot be used in 2030
 coal_cost = 1.5 * gas_cost
@@ -271,6 +274,7 @@ fuel_costs = {
     "Waste_CHP": waste_cost,
     "Biomass_CHP": biomass_cost,
     "Biomass": biomass_cost,
+    "Beccs": biomass_cost,
 }
 
 fuel_cost_row = pd.Series(

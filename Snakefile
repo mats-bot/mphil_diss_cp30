@@ -15,6 +15,7 @@ include: "rules/techs/generate_tech_files.smk"
 include: "rules/spatial/generate_offshore_transmission.smk"
 include: "rules/demand/generate_demand_flex.smk"
 include: "rules/techs/generate_capacities.smk"
+include: "rules/techs/generate_carbon_costs.smk"
 
 # Interpret model results and data used to generate these
 include: "rules/results/generate_method_plots.smk"
@@ -62,18 +63,30 @@ rule run_calliope:
 
 rule run_scenarios:
     input:
-        expand("results/model_results_B{run_number}.nc", run_number=[1, 2])
-    default_target: True
+        model_yaml = "model_{run_number}_{sens}.yml",
+        other_inputs = rules.prepare_inputs.output[0]
+    output:
+        "results/model_results_{run_number}_{sens}.nc"
+    conda:
+        "envs/calliope.yaml"
+    params:
+        response_hrs=4, # Max flexibility window
+        resolution_hrs=1,
+        data_scaling=config["data_scaling"]
+    script:
+        "scripts/run_calliope.py"
 
 rule serve_calligraph:
     input:
-        "results/model_results_B1.nc"
+        "results/model_results_B1_final.nc"
     conda:
         "envs/calliope.yaml"
     shell:
         """
         calligraph {input}
         """
+
+# snakemake results/model_results_S3_FFR.nc results/model_results_S3_ND.nc
 
 
 rule dag_dot:

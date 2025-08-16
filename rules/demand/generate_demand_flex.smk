@@ -14,6 +14,8 @@ rule normalize_flex_data:
     output:
         "data/intermediates/demand/ND_flexibility_caps.csv",
         "data/intermediates/demand/FFR_flexibility_caps.csv",
+        "data/intermediates/demand/S5_ND_flexibility_caps.csv",
+        "data/intermediates/demand/S5_FFR_flexibility_caps.csv",
     conda:
         "../../envs/data_processing.yaml"
     script:

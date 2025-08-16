@@ -50,9 +50,12 @@ rule generate_solar_onshore_wind_definitions:
         "data/processed/techs/generation_costs.csv",
         "data/processed/spatial/onshore_cf_2013.csv",
         "data/processed/spatial/solar_cf_2013.csv",
-        "data/processed/techs/renewables_2023.csv"
+        "data/processed/techs/renewables_2023.csv",
+        "data/processed/spatial/onshore_cf_2017.csv",
+        "data/processed/spatial/solar_cf_2017.csv",
     output:
-        "techs/solar_onshore_wind.yaml"
+        "techs/solar_onshore_wind.yaml",
+        "sensitivities/S2/S2_solar_onshore_wind.yaml"
     conda:
         "../../envs/data_processing.yaml"
     script:
@@ -62,11 +65,14 @@ rule generate_offshore_wind_project_defs:
     input:
         "data/processed/techs/generation_costs.csv",
         "data/processed/techs/offshore_wind_projects.csv",
-        "data/processed/spatial/offshore_cf_2013.csv"
+        "data/processed/spatial/offshore_cf_2013.csv",
+        "data/processed/spatial/offshore_cf_2017.csv"
     output:
         "techs/offshore_wind.yaml",
         "data/processed/techs/offshore_wind_projects_aggregated.csv",
-        "data/processed/spatial/offshore_cfs_2013_aggregated.csv"
+        "data/processed/spatial/offshore_cfs_2013_aggregated.csv",
+        "data/processed/spatial/offshore_cfs_2017_aggregated.csv",
+        "sensitivities/S2/S2_offshore_wind.yaml"
     conda:
         "../../envs/data_processing.yaml"
     script:
@@ -76,7 +82,7 @@ rule generate_offshore_wind_project_defs:
 rule generate_other_renewables_definitions:
     input:
         "data/processed/techs/generation_costs.csv",
-        "uploaded_data/hydropower_existing.xlsx",
+        "uploaded_data/Existing_hydropower_database.xlsx",
         "uploaded_data/tzones.gpkg"
     output:
         "techs/other_renewables.yaml",

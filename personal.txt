@@ -110,7 +110,11 @@ Implementing last constraints.
     Out of memory:
         Option 2, with crossover, relaxed all constraints by 10 and set presolve 0
 
-        Option 2 with presolve 0
+
+
+        Option 2 with presolve 0 (with updated hydro - small diff)
+
+        Option 2 with crossover but 2 threads?
 
 
 

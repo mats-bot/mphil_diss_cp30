@@ -27,3 +27,29 @@ for _, row in df.iterrows():
 
 with open(snakemake.output[0], "w") as f:
     yaml.dump({"techs": techs}, f, sort_keys=False, indent=2)
+
+
+
+
+# For sensitivities
+sens_year = "2029"
+
+techs_sens = {}
+for _, row in df.iterrows():
+    zone_1 = row["Zone 1"].strip()
+    zone_2 = row["Zone 2"].strip()
+
+    tech_name = "_".join(sorted([zone_1, zone_2]))
+
+    tech = {"template": "ac_transmission", "link_from": zone_1, "link_to": zone_2}
+
+    if not pd.isna(row.get(sens_year)):
+        tech["flow_cap_max"] = float(row[sens_year])
+
+    if not pd.isna(row.get("loss")):
+        tech["flow_out_eff"] = float(row["loss"])
+
+    techs_sens[tech_name] = tech
+
+with open(snakemake.output[1], "w") as f:
+    yaml.dump({"techs": techs_sens}, f, sort_keys=False, indent=2)

@@ -24,17 +24,15 @@ config:
       Presolve: 1
    
 
-
-
-
 import:
-# Specific to B1
+# Specific to S1
+  - sensitivities/S1/S1_onshore_transmission.yaml
+# Specific to ND
   - demand/demand_ND.yaml
   - spatial/capacities_2030_ND.yaml
 # General
   - spatial/capacities_2030_REPD.yaml
   - techs/transmission.yaml
-  - spatial/onshore_transmission.yaml
   - spatial/offshore_transmission.yaml
   - spatial/nodes_techs.yaml
   - spatial/capacities_2023.yaml # Minimum (installed already) capacities

@@ -3,9 +3,7 @@ import geopandas as gpd
 import yaml
 
 df = pd.read_csv(snakemake.input[0], index_col=0)
-capacity_df = pd.read_excel(snakemake.input[1], sheet_name="Onshore - hydropower", header=0, engine="openpyxl")
-zones = sorted(capacity_df["zone"].unique())
-
+capacity_df = pd.read_excel(snakemake.input[1], sheet_name="Onshore - hydropower", header=0)
 zones_gdf = gpd.read_file(snakemake.input[2])
 
 
@@ -17,10 +15,20 @@ hydro_df = capacity_df[
 hydro_df["IC (MW)"] = pd.to_numeric(hydro_df["IC (MW)"], errors="coerce")
 hydro_df = hydro_df.dropna(subset=["IC (MW)"])
 
-lat_lon_missing = hydro_df[hydro_df["Powerhouse Latitude"].isna() | hydro_df["Powerhouse Longitude"].isna()]
-if not lat_lon_missing.empty:
-    print("Hydropower plants with missing Latitude or Longitude:")
-    print(lat_lon_missing)
+
+hydro_df["Powerhouse Latitude"] = (
+    hydro_df["Powerhouse Latitude"]
+    .astype(str)
+    .str.split("\n").str[0]
+)
+hydro_df["Powerhouse Longitude"] = (
+    hydro_df["Powerhouse Longitude"]
+    .astype(str)
+    .str.split("\n").str[0]
+)
+
+hydro_df["Powerhouse Latitude"] = pd.to_numeric(hydro_df["Powerhouse Latitude"], errors="coerce")
+hydro_df["Powerhouse Longitude"] = pd.to_numeric(hydro_df["Powerhouse Longitude"], errors="coerce")
 hydro_df = hydro_df.dropna(subset=["Powerhouse Latitude", "Powerhouse Longitude"])
 
 hydro_gdf = gpd.GeoDataFrame(
@@ -53,6 +61,8 @@ output_df = pd.DataFrame({
 }, index=["flow_cap_min", "flow_cap_max"])
 
 output_df.to_csv(snakemake.output[1])
+
+techs = ["Hydro"]
 
 techs_yaml = {}
 

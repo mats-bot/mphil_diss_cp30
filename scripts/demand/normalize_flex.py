@@ -46,3 +46,27 @@ df_2035 = df_melted[df_melted['year'] == '2035'][['flex_type', 'demand_type', 'f
 
 df_2030.to_csv(snakemake.output[0], index=False)
 df_2035.to_csv(snakemake.output[1], index=False)
+
+
+
+# S5 config
+S5_df = pd.read_excel(
+    snakemake.input[0],
+    sheet_name="EC.05",
+    usecols="AB,AG",
+    skiprows=8,  
+    nrows=6,
+    header=None    
+)
+
+reduction_factor = 2.07/3.37 # From FES24 workbook
+
+
+df_2030_reduced = df_2030.copy()
+df_2030_reduced['flex_gw'] = df_2030_reduced['flex_gw'] * reduction_factor
+
+df_2035_reduced = df_2035.copy()
+df_2035_reduced['flex_gw'] = df_2035_reduced['flex_gw'] * reduction_factor
+
+df_2030_reduced.to_csv(snakemake.output[2], index=False)  
+df_2035_reduced.to_csv(snakemake.output[3], index=False)  

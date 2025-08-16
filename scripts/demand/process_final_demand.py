@@ -36,3 +36,10 @@ convert_demand_csv(
     input_csv=snakemake.input[0],
     output_folder=snakemake.output[0]
 )
+
+
+# Sensitivity 2
+convert_demand_csv(
+    input_csv=snakemake.input[1],
+    output_folder=snakemake.output[1]
+)

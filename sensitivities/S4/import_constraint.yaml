@@ -1,0 +1,8 @@
+constraints:
+  S4_total_import:
+    description: Sum of imports over year less than 10 TWh (half of CP30), converted to GWh per scaling
+    foreach: [techs]
+    where: base_tech=supply and category=import
+    equations: 
+     - expression: sum(flow_out, over=[nodes, carriers, timesteps]) <=  10000
+

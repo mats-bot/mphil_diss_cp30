@@ -13,7 +13,7 @@ rule extract_demand_GSPs:
     input:
         "data/raw/demand/demand.xlsx"
     output:
-        "data/intermediates/demand/GSP_demand_peaks.csv"
+        "data/intermediates/demand/GSP_demand_peaks.csv",
     conda:
         "../../envs/data_processing.yaml"
     script:

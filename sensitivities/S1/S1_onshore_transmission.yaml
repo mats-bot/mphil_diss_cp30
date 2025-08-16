@@ -1,0 +1,158 @@
+techs:
+  z1_z2:
+    template: ac_transmission
+    link_from: z1
+    link_to: z2
+    flow_cap_max: 3600.0
+    flow_out_eff: 0.0086154316070897
+  z1_z3:
+    template: ac_transmission
+    link_from: z1
+    link_to: z3
+    flow_cap_max: 3600.0
+    flow_out_eff: 0.0111587903329236
+  z2_z3:
+    template: ac_transmission
+    link_from: z2
+    link_to: z3
+    flow_out_eff: 0.0098997886585916
+  z3_z4:
+    template: ac_transmission
+    link_from: z3
+    link_to: z4
+    flow_cap_max: 4900.0
+    flow_out_eff: 0.0067893174291886
+  z4_z5:
+    template: ac_transmission
+    link_from: z4
+    link_to: z5
+    flow_cap_max: 11400.0
+    flow_out_eff: 0.0086497834978852
+  z4_z6:
+    template: ac_transmission
+    link_from: z4
+    link_to: z6
+    flow_cap_max: 11400.0
+    flow_out_eff: 0.0096913463056016
+  z5_z6:
+    template: ac_transmission
+    link_from: z5
+    link_to: z6
+    flow_out_eff: 0.0049645962565866
+  z5_z7:
+    template: ac_transmission
+    link_from: z5
+    link_to: z7
+    flow_cap_max: 10600.0
+    flow_out_eff: 0.0095614006377243
+  z6_z8:
+    template: ac_transmission
+    link_from: z6
+    link_to: z8
+    flow_cap_max: 10600.0
+    flow_out_eff: 0.0083009783031288
+  z7_z8:
+    template: ac_transmission
+    link_from: z7
+    link_to: z8
+    flow_out_eff: 0.0102970897026264
+  z13_z7:
+    template: ac_transmission
+    link_from: z7
+    link_to: z13
+    flow_cap_max: 14000.0
+    flow_out_eff: 0.0094936246402351
+  z10_z7:
+    template: ac_transmission
+    link_from: z7
+    link_to: z10
+    flow_cap_max: 14000.0
+    flow_out_eff: 0.0067709276775425
+  z8_z9:
+    template: ac_transmission
+    link_from: z8
+    link_to: z9
+    flow_cap_max: 14000.0
+    flow_out_eff: 0.0051098456952318
+  z10_z8:
+    template: ac_transmission
+    link_from: z8
+    link_to: z10
+    flow_cap_max: 14000.0
+    flow_out_eff: 0.010032393162305
+  z10_z9:
+    template: ac_transmission
+    link_from: z9
+    link_to: z10
+    flow_out_eff: 0.0081090555892844
+  z11_z9:
+    template: ac_transmission
+    link_from: z9
+    link_to: z11
+    flow_cap_max: 12900.0
+    flow_out_eff: 0.0058164193681007
+  z10_z13:
+    template: ac_transmission
+    link_from: z10
+    link_to: z13
+    flow_cap_max: 2900.0
+    flow_out_eff: 0.0092405285060491
+  z10_z14:
+    template: ac_transmission
+    link_from: z10
+    link_to: z14
+    flow_cap_max: 12900.0
+    flow_out_eff: 0.0070000801685633
+  z10_z11:
+    template: ac_transmission
+    link_from: z10
+    link_to: z11
+    flow_cap_max: 12900.0
+    flow_out_eff: 0.0083572172272935
+  z11_z14:
+    template: ac_transmission
+    link_from: z11
+    link_to: z14
+    flow_out_eff: 0.0099275081369144
+  z11_z12:
+    template: ac_transmission
+    link_from: z11
+    link_to: z12
+    flow_cap_max: 5900.0
+    flow_out_eff: 0.0056657685230161
+  z11_z17:
+    template: ac_transmission
+    link_from: z11
+    link_to: z17
+    flow_cap_max: 13900.0
+    flow_out_eff: 0.0078614724647475
+  z12_z17:
+    template: ac_transmission
+    link_from: z12
+    link_to: z17
+    flow_cap_max: 13900.0
+    flow_out_eff: 0.0088251631081807
+  z13_z14:
+    template: ac_transmission
+    link_from: z13
+    link_to: z14
+    flow_cap_max: 2900.0
+    flow_out_eff: 0.008894815886772
+  z14_z15:
+    template: ac_transmission
+    link_from: z14
+    link_to: z15
+    flow_cap_max: 6500.0
+    flow_out_eff: 0.0095643427077276
+  z14_z16:
+    template: ac_transmission
+    link_from: z14
+    link_to: z16
+    flow_cap_max: 8000.0
+    flow_out_eff: 0.0052441651483259
+  z16_z17:
+    template: ac_transmission
+    link_from: z16
+    link_to: z17
+    flow_cap_max: 13900.0
+    flow_out_eff: 0.0061737848587644

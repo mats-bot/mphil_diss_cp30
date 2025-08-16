@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-01']
+    time_subset: ['2030', '2030']
     time_resample: 1h
   build:
     mode: plan
@@ -14,24 +14,27 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 4
+      Threads: 2
       Method: 2 # use barrier, but do not run simplex in parallel
-      Crossover: 0 # stop after barrier, do not perform crossover
-      FeasibilityTol: 1e-3
-      OptimalityTol: 1e-4
-      BarConvTol: 1e-4
+      Crossover: 0 # last resort since getting close to solution
+      FeasibilityTol: 1e-2
+      OptimalityTol: 1e-3
+      BarConvTol: 1e-2
       BarHomogeneous: 1
+      Presolve: 1
 
 
 import:
 # Specific to B2
-  - demand/demand_ND.yaml
-  - spatial/capacities_2030_REPD.yaml
-  - spatial/capacities_2030_ND.yaml
+  - demand/demand_FFR.yaml
+  - spatial/capacities_2030_FFR.yaml
 # General
+  - spatial/capacities_2030_REPD.yaml
   - techs/transmission.yaml
   - spatial/onshore_transmission.yaml
   - spatial/offshore_transmission.yaml
+  - spatial/nodes_techs.yaml
+  - spatial/capacities_2023.yaml # Minimum (installed already) capacities
   - techs/CCS.yaml
   - techs/fossil_fuels.yaml
   - techs/low_carbon_thermal.yaml
@@ -40,6 +43,7 @@ import:
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
   - techs/import_export.yaml
-  - spatial/nodes_techs.yaml
-  - spatial/capacities_2023.yaml # Minimum (installed already) capacities
   - techs/thermal_power_constraints.yaml
+
+parameters:
+  ldes_max_cap: 4524.29 # MW | for ND is 4573.89
