@@ -60,6 +60,8 @@ output_df = pd.DataFrame({
     zone: [cap, cap] for zone, cap in zone_capacity.items()
 }, index=["flow_cap_min", "flow_cap_max"])
 
+output_df = output_df.mask(output_df < 10, 0) # remove <10 MW for solver
+
 output_df.to_csv(snakemake.output[1])
 
 techs = ["Hydro"]

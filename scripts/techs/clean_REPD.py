@@ -229,7 +229,7 @@ operational_2023_df.to_csv(snakemake.output[1], index=False)
 full_queue_statuses = ["Operational", "Under Construction", "Awaiting Construction", "Application Submitted"]
 full_queue_df = REPD_df[REPD_df["Development Status (short)"].isin(full_queue_statuses)].copy()
 full_queue_df["CP30 technology"] = full_queue_df["CP30 technology"].str.lower()
-full_queue_df = full_queue_df[full_queue_df["CP30 technology"].isin(["onshore_wind", "solar_pv"])]
+full_queue_df = full_queue_df[full_queue_df["CP30 technology"].isin(["onshore_wind", "solar_pv", "battery"])]
 
 
 
@@ -261,6 +261,9 @@ full_queue_df["Installed Capacity (MWelec)"] = pd.to_numeric(full_queue_df["Inst
 
 solar_mask = full_queue_df["CP30 technology"] == "solar_pv"
 full_queue_df.loc[solar_mask, "Installed Capacity (MWelec)"] *= 1.5
+
+# batteries_mask = full_queue_df["CP30 technology"] == "battery"
+# full_queue_df.loc[batteries_mask, "Installed Capacity (MWelec)"] *= 0.35
 
 full_queue_agg = (
     full_queue_df

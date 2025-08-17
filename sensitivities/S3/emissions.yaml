@@ -1,0 +1,123 @@
+overrides:
+  emissions:
+    techs:
+      beccs:
+        cost_flow_out:
+          data: 0.057
+          index: emissions
+          dims: costs
+      diesel_existing:
+        cost_flow_out:
+          data: 0.935
+          index: emissions
+          dims: costs
+      gas_ocgt_existing:
+        cost_flow_out:
+          data: 0.8
+          index: emissions
+          dims: costs
+      biomass:
+        cost_flow_out:
+          data: 0.12
+          index: emissions
+          dims: costs
+      gas_ccgt_existing:
+        cost_flow_out:
+          data: 0.394
+          index: emissions
+          dims: costs
+      gas_ccgt_new:
+        cost_flow_out:
+          data: 0.394
+          index: emissions
+          dims: costs
+      gas_ccs:
+        cost_flow_out:
+          data: 0.057
+          index: emissions
+          dims: costs
+      waste:
+        cost_flow_out:
+          data: 0.3
+          index: emissions
+          dims: costs
+      hydrogen:
+        cost_flow_out:
+          data: 0.03
+          index: emissions
+          dims: costs
+      nuclear:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      offshore_wind:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      hydro:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      solar_pv:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      onshore_wind:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      battery:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      pumped_hydro:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      caes:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      laes:
+        cost_flow_out:
+          data: 0.0
+          index: emissions
+          dims: costs
+      import_bel_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs
+      import_deu_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs
+      import_dnk_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs
+      import_fra_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs
+      import_irl_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs
+      import_nor_electricity:
+        cost_flow_out:
+          data: 0.05
+          index: emissions
+          dims: costs

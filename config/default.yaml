@@ -24,5 +24,5 @@ data_scaling:
     sink_use_dsr: "energy_power"
     ldes_max_cap: "energy_power"
   scaling_factors:
-    energy_power: 1e6  # MWh -> GWh / MW -> GW
+    energy_power: 1e3  # MWh -> GWh / MW -> GW
     cost: 1e9 # GBP -> billion GBP

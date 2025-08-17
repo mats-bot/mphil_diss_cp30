@@ -28,9 +28,9 @@ def make_tech_map(pathway):
         # "coal": [
         #     {"pathway": pathway, "type": "Coal", "subtype": "Coal"},
         # ],
-        # "battery": [
-        #     {"pathway": pathway, "type": "Storage", "subtype": "Battery"},
-        # ],
+        "battery": [
+            {"pathway": pathway, "type": "Storage", "subtype": "Battery"},
+        ],
         # "pumped_hydro": [
         #     {"pathway": pathway, "type": "Storage", "subtype": "Pumped Hydro"},
         # ],
@@ -63,9 +63,9 @@ def make_tech_map(pathway):
             {"pathway": pathway, "type": "Waste", "subtype": "Waste"},
             {"pathway": pathway, "type": "Waste", "subtype": "Waste CHP"},
         ],
-        "offshore_wind": [
-            {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
-        ],
+        # "offshore_wind": [
+        #     {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
+        # ],
         # "onshore_wind": [
         #     {"pathway": pathway, "type": "Onshore Wind", "subtype": "Onshore Wind"},
         # ],
@@ -81,6 +81,7 @@ def build_yaml(tech_map):
     # 35 GW - ccgt_existing - ocgt_existing = 35 - 33 = 2
     offsets = {
         "gas_ccgt_new": -33000,
+#        "battery": 10000,
     }
 
     for tech, combos in tech_map.items():

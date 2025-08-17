@@ -31,6 +31,7 @@ no_investment_techs = ["gas_ccgt_existing", "gas_ocgt_existing", "diesel_existin
 
 pivot = df.pivot_table(index="tech", columns="zone", values="capacity", aggfunc="sum", fill_value=0)
 pivot_min = pivot_min = pivot.loc[~pivot.index.isin(no_investment_techs)]
+pivot_min = pivot_min.mask(pivot_min < 10, 0) # remove caps <10 MW for solver 
 pivot_max = pivot.loc[pivot.index.isin(no_investment_techs)]
 
 pivot_min.to_csv(snakemake.output[0])

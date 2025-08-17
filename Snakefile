@@ -78,7 +78,7 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_B1_final.nc"
+        "results/model_results_B1.nc"
     conda:
         "envs/calliope.yaml"
     shell:
@@ -86,7 +86,10 @@ rule serve_calligraph:
         calligraph {input}
         """
 
-# snakemake results/model_results_S3_FFR.nc results/model_results_S3_ND.nc
+# snakemake --cores 1 results/model_results_S5_FFR.nc results/model_results_S5_ND.nc
+# snakemake --cores 1 results/model_results_B2.nc results/model_results_S1_FFR.nc results/model_results_S1_ND.nc results/model_results_S2_FFR.nc results/model_results_S2_ND.nc results/model_results_S3_FFR.nc results/model_results_S3_ND.nc results/model_results_S4_FFR.nc results/model_results_S4_ND.nc results/model_results_S5_FFR.nc results/model_results_S5_ND.nc results/model_results_S6_ND.nc
+
+# snakemake --rerun-incomplete --cores 1 results/model_results_B1.nc results/model_results_B2.nc
 
 
 rule dag_dot:
@@ -103,4 +106,4 @@ rule rulegraph:
 
 
 
-
+# snakemake --touch data/intermediates/spatial/offshore_cutouts/2017/cutout_01.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_02.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_04.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_03.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_05.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_06.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_07.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_08.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_09.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_10.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_11.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_12.nc

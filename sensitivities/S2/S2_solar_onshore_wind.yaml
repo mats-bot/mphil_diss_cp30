@@ -1,0 +1,66 @@
+techs:
+  onshore_wind:
+    category: renewable
+    cp30_category: renewable
+    name: Onshore_Wind
+    base_tech: supply
+    carrier_out: electricity
+    source_unit: per_cap
+    lifetime: 25
+    cost_om_annual:
+      data: 36834.49820788531
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 7.198924731182797
+      index: monetary
+      dims:
+      - costs
+    cost_flow_cap:
+      data: 90351.3935351122
+      index: monetary
+      dims:
+      - costs
+  solar_pv:
+    category: renewable
+    cp30_category: renewable
+    name: Solar_PV
+    base_tech: supply
+    carrier_out: electricity
+    source_unit: per_cap
+    lifetime: 35
+    cost_om_annual:
+      data: 11158.333333333336
+      index: monetary
+      dims:
+      - costs
+    cost_flow_out:
+      data: 0.0
+      index: monetary
+      dims:
+      - costs
+    cost_flow_cap:
+      data: 84527.37455197134
+      index: monetary
+      dims:
+      - costs
+data_tables:
+  onshore_wind_cf:
+    data: data/processed/spatial/onshore_cf_2017.csv
+    rows: timesteps
+    columns: nodes
+    add_dims:
+      techs: onshore_wind
+      parameters: source_use_max
+    rename_dims:
+      time: timesteps
+  solar_pv_cf:
+    data: data/processed/spatial/solar_cf_2017.csv
+    rows: timesteps
+    columns: nodes
+    add_dims:
+      techs: solar_pv
+      parameters: source_use_max
+    rename_dims:
+      time: timesteps

@@ -19,23 +19,23 @@ ren_flow_cap_max_table = {
 nodes = df3.columns.tolist()
 nodes.remove('techs')
 
-unconstrained_techs = ["gas_ccgt_new", 
-#                       "gas_ocgt_new", 
-                       "beccs", "gas_ccs", 
-#                       "biomass", "waste", 
-                       "hydrogen", 
-#                       "battery", "caes", "laes"
-]
+# unconstrained_techs = ["gas_ccgt_new", 
+# #                       "gas_ocgt_new", 
+#                        "beccs", "gas_ccs", 
+# #                       "biomass", "waste", 
+#                        "hydrogen", 
+# #                       "battery", "caes", "laes"
+# ]
 
-unconstrained_df = pd.DataFrame(
-    data=999999,
-    index=unconstrained_techs,
-    columns=nodes
-)
+# unconstrained_df = pd.DataFrame(
+#     data=999999,
+#     index=unconstrained_techs,
+#     columns=nodes
+#)
 
-unconstrained_df.index.name = "techs"
-unconstrained_df.columns.name = "nodes"
-unconstrained_df.to_csv(snakemake.output[1])
+# unconstrained_df.index.name = "techs"
+# unconstrained_df.columns.name = "nodes"
+# unconstrained_df.to_csv(snakemake.output[1])
 
 chp_zero_flow_cap_table = {
     "data": "data/processed/techs/CHP_zero_caps.csv",
@@ -58,7 +58,7 @@ unconstrained_caps_table = {
 output_data = {
     "data_tables": {
         "renewables_flow_cap_max": ren_flow_cap_max_table,
-        "unconstrained_flow_cap_max": unconstrained_caps_table,
+#        "unconstrained_flow_cap_max": unconstrained_caps_table,
     }
 }
 

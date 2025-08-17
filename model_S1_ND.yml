@@ -14,7 +14,7 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 2
+      Threads: 3
       Method: 2 # use barrier, but do not run simplex in parallel
       Crossover: 0 # last resort since getting close to solution
       FeasibilityTol: 1e-2
@@ -44,7 +44,7 @@ import:
   - techs/solar_onshore_wind.yaml
   - techs/storage.yaml
   - techs/import_export.yaml
-  - techs/thermal_power_constraints.yaml
+#  - techs/thermal_power_constraints.yaml
 
 parameters:
   ldes_max_cap: 4573.89 # MW | for FFR is 4524.29

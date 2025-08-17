@@ -49,17 +49,25 @@ for tech, source in mapping.items():
                            "Emissions Intensity [gCO2/kWh]"]
     if not row.empty:
         g_per_kWh = row.values[0]
-        tech_emissions_yaml[tech] = g_per_kWh / 1e3
+        tech_emissions_yaml[tech] = float(g_per_kWh / 1e3)
     else:
         tech_emissions_yaml[tech] = 0.0
 
 for tech in import_techs:
-    g_per_kWh = import_emissions
-    tech_emissions_yaml[tech] = g_per_kWh / 1e3
+    tech_emissions_yaml[tech] = float(import_emissions / 1e3)
 
-yaml_dict = {f"techs.{tech}.emissions": value for tech, value in tech_emissions_yaml.items()}
+yaml_dict = {"overrides": {"emissions": {"techs": {}}}}
+
+for tech, value in tech_emissions_yaml.items():
+    yaml_dict["overrides"]["emissions"]["techs"][tech] = {
+        "cost_flow_out": {
+            "data": value,
+            "index": "emissions",
+            "dims": "costs"
+        }
+    }
+
+
 with open(snakemake.output[0], "w") as f:
     yaml.dump(yaml_dict, f, sort_keys=False)
-
-
 

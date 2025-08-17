@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-01']
+    time_subset: ['2030', '2030']
     time_resample: 1h
   build:
     mode: plan
@@ -14,7 +14,7 @@ config:
   solve:
     # save_logs: "outputs/logs/"
     solver_options:
-      Threads: 2
+      Threads: 3
       Method: 2 # use barrier, but do not run simplex in parallel
       Crossover: 0 # last resort since getting close to solution
       FeasibilityTol: 1e-2
@@ -27,7 +27,7 @@ config:
 import:
 # Specific to S2
   - sensitivities/S2/demand_S2_FFR.yaml
-  - sensitivites/S2/S2_offshore_wind.yaml
+  - sensitivities/S2/S2_offshore_wind.yaml
   - sensitivities/S2/S2_solar_onshore_wind.yaml
 # Specific to FFR
   - spatial/capacities_2030_FFR.yaml
@@ -44,7 +44,7 @@ import:
   - techs/other_renewables.yaml
   - techs/storage.yaml
   - techs/import_export.yaml
-  - techs/thermal_power_constraints.yaml
+#  - techs/thermal_power_constraints.yaml
 
 parameters:
   ldes_max_cap: 4524.29  # MW | for ND is 4573.89
