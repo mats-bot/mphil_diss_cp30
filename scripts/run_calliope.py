@@ -109,6 +109,10 @@ for var, scaler in snakemake.params.data_scaling["scalers"].items():
 calliope.set_log_verbosity("DEBUG")
 model.build(add_math_dict=math)
 
+
+# model.backend.verbose_strings()
+# model.backend.to_lp("foo.lp")
+
 model.solve()
 
 model.to_netcdf(snakemake.output[0])

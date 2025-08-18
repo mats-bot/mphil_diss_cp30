@@ -20,5 +20,6 @@ for cutout_path in snakemake.input.cutouts:
     df_month = cf_offshore.to_pandas()
     offshore_dfs.append(df_month)
 
+aggregate_df = pd.concat(offshore_dfs)
 
-pd.concat(offshore_dfs).to_csv(snakemake.output["offshore_cf"])
+aggregate_df.to_csv(snakemake.output["offshore_cf"])

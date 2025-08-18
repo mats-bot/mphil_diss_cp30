@@ -1,6 +1,7 @@
 # For generating figures
 name: plotting
 channels:
+  - conda-forge/label/calliope_dev
   - conda-forge
 dependencies:
   - python=3.10
@@ -10,3 +11,9 @@ dependencies:
   - xarray=2024.1.1
   - netcdf4=1.6.5
   - numpy=1.26.4
+  - geopandas=0.14.3
+  - pyproj=3.6.1
+  - shapely=2.0.2
+  - pyyaml=6.0.1
+  - openpyxl=3.1.5
+  - calliope=0.7.0dev6

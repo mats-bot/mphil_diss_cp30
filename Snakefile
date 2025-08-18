@@ -19,6 +19,7 @@ include: "rules/techs/generate_carbon_costs.smk"
 
 # Interpret model results and data used to generate these
 include: "rules/results/generate_method_plots.smk"
+include: "rules/results/generate_results_plots.smk"
 
 rule prepare_inputs:
     input:
@@ -50,7 +51,7 @@ rule run_calliope:
         model_yaml = "model_B{run_number}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_B{run_number}.nc"
+        "results/TEMP/model_results_B{run_number}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -65,7 +66,7 @@ rule run_scenarios:
         model_yaml = "model_{run_number}_{sens}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_{run_number}_{sens}.nc"
+        "results/TEMP/model_results_{run_number}_{sens}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -77,7 +78,7 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_B2.nc"
+        "results/model_results_S2_ND.nc"
     conda:
         "envs/calliope.yaml"
     shell:

@@ -41,6 +41,9 @@ cf_zone_avg_T.to_csv(snakemake.output[2], index=None)
 print("\nStatistics across zones (per time step):")
 print(cfs_zone_avg.agg(['mean', 'min', 'max'], axis=1))
 
+print("\nStatistics across zones (per time step):")
+print(cfs_zone_avg.agg(['mean', 'min', 'max'], axis=1))
+
 
 # Generate yaml file
 cost_flow_cap = float(costs_df.at["capex", "Offshore_Wind"])
