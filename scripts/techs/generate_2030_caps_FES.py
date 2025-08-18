@@ -63,15 +63,15 @@ def make_tech_map(pathway):
             {"pathway": pathway, "type": "Waste", "subtype": "Waste"},
             {"pathway": pathway, "type": "Waste", "subtype": "Waste CHP"},
         ],
-        # "offshore_wind": [
-        #     {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
-        # ],
-        # "onshore_wind": [
-        #     {"pathway": pathway, "type": "Onshore Wind", "subtype": "Onshore Wind"},
-        # ],
-        # "solar_pv": [
-        #     {"pathway": pathway, "type": "Solar", "subtype": "Solar PV"},
-        # ],   
+        "offshore_wind": [
+            {"pathway": pathway, "type": "Offshore Wind", "subtype": "Offshore Wind"},
+        ],
+        "onshore_wind": [
+            {"pathway": pathway, "type": "Onshore Wind", "subtype": "Onshore Wind"},
+        ],
+        "solar_pv": [
+            {"pathway": pathway, "type": "Solar", "subtype": "Solar PV"},
+        ],   
     }
 
 def build_yaml(tech_map):
