@@ -60,98 +60,98 @@ techs:
         carrier_in: electricity
 data_tables:
     demand_C_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_C_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_C_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_C_flex
             parameters: sink_use_dsr
     demand_C_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_C_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_C_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_C_inflex
             parameters: sink_use_equals
     demand_D_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_D_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_D_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_D_flex
             parameters: sink_use_dsr
     demand_D_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_D_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_D_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_D_inflex
             parameters: sink_use_equals
     demand_E_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_E_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_E_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_E_flex
             parameters: sink_use_dsr
     demand_E_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_E_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_E_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_E_inflex
             parameters: sink_use_equals
     demand_H_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_H_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_H_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_H_flex
             parameters: sink_use_dsr
     demand_H_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_H_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_H_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_H_inflex
             parameters: sink_use_equals
     demand_I_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_I_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_I_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_I_flex
             parameters: sink_use_dsr
     demand_I_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_I_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_I_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_I_inflex
             parameters: sink_use_equals
     demand_R_flex:
-        data: data/processed/demand/split_by_flex/ND/demand_R_flex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_R_flex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_R_flex
             parameters: sink_use_dsr
     demand_R_inflex:
-        data: data/processed/demand/split_by_flex/ND/demand_R_inflex.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_R_inflex.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_R_inflex
             parameters: sink_use_equals
     demand_T:
-        data: data/processed/demand/split_by_flex/ND/demand_T.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_T.csv
         rows: timesteps
         columns: nodes
         add_dims:
             techs: demand_T
             parameters: sink_use_equals
     demand_Z:
-        data: data/processed/demand/split_by_flex/ND/demand_Z.csv
+        data: data/processed/demand/split_by_flex/S5_ND/demand_Z.csv
         rows: timesteps
         columns: nodes
         add_dims:

@@ -115,4 +115,6 @@ generate_demand_yaml(snakemake.input[0], snakemake.output[0])
 generate_demand_yaml(snakemake.input[1], snakemake.output[1])
 
 # S5,
-generate_demand_yaml(snakemake.input[0], snakemake.output[2])
+scenario = snakemake.params.scenario
+s5_input = os.path.join("data/processed/demand/split_by_flex", f"S5_{scenario}")
+generate_demand_yaml(s5_input, snakemake.output[2])
