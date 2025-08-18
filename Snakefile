@@ -20,7 +20,6 @@ include: "rules/techs/generate_carbon_costs.smk"
 # Interpret model results and data used to generate these
 include: "rules/results/generate_method_plots.smk"
 
-
 rule prepare_inputs:
     input:
         "demand/demand_ND.yaml", ## Sens
