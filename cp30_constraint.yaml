@@ -40,3 +40,10 @@ constraints:
     where: total_ldes_capacity
     equations:
       - expression: sum(total_ldes_capacity, over=techs) <= ldes_max_cap
+
+  annual_capacity_factor_max:
+    description: Limits annual generation of a tech to a percentage of capacity.
+    foreach: [nodes, techs, carriers]
+    where: capacity_factor_max
+    equations:
+      - expression: sum(flow_out, over=timesteps) <= sum(flow_cap * capacity_factor_max, over=timesteps)

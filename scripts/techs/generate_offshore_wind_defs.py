@@ -35,9 +35,11 @@ cfs_zone_avg = cfs_with_zone.groupby('tzone')[numeric_cols].mean()
 
 cf_zone_avg_T = cfs_zone_avg.T
 cf_zone_avg_T.insert(0, 'time', time)
-cf_zone_avg_T.loc[:, cf_zone_avg_T.columns != 'time'] *= 100
+# cf_zone_avg_T.loc[:, cf_zone_avg_T.columns != 'time'] *= 100
 
 cf_zone_avg_T.to_csv(snakemake.output[2], index=None)
+print("\nStatistics across zones (per time step):")
+print(cfs_zone_avg.agg(['mean', 'min', 'max'], axis=1))
 
 
 # Generate yaml file

@@ -12,7 +12,7 @@ for index, row in df.iterrows():
     link_name = f"{row['Zone 1']}_{row['Zone 2']}_offshore"
     flow_cap_max = float(row['2030 Capacity (MW)'])
     distance = float(row['Distance (km)'])
-    loss = loss_per_100 * (distance / 100)
+    loss = 1 - loss_per_100 * (distance / 100)
 
     techs[link_name] = {
         "template": "subsea_dc_transmission",

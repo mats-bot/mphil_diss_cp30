@@ -32,7 +32,7 @@ def calculate_loss(zone1, zone2, loss_rate_per_100km):
                    locations_dict[z2]["coordinates"]["lon"])
         
     distance_km = geodesic(coords1, coords2).km
-    return (distance_km / 100) * loss_rate_per_100km 
+    return 1 - (distance_km / 100) * loss_rate_per_100km 
 
 df["loss"] = df.apply(
     lambda row: calculate_loss(
