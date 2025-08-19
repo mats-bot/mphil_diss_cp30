@@ -237,6 +237,7 @@ df.loc["lifetime", "Gas_CCS"] = 25
 
 # Gas cost said to be ~100 p/therm in CP30 assumptions, close to Oct 23/24 values. took 23 yr avg.
 # 2022 cost
+# assumed efficiency from ECG2023
 gas_cost = (
     102 / 100 * 1 / 29.31 * c22 * 1000
 )  # GBP/therm * therm/MWh https://www.metric-conversions.org/energy-and-power/therms-uk-to-kilowatt-hours.htm
@@ -252,8 +253,16 @@ biomass_cost = 14.3 * 0.6446 * c14
 # giving coal random high values since cannot be used in 2030
 coal_cost = 1.5 * gas_cost
 
-# own assumption for diesel
+# own assumption for diesel, only represents ~100 MW in 2030
 diesel_fuel_oil_cost = gas_cost
+
+
+# apply effiencies from ECG2023
+gas_cost *= 1/((0.53+0.35)/2) # mean of ccgt H class and
+hydrogen_cost *= 1/0.48
+biomass_cost *= 1/0.25
+diesel_fuel_oil_cost *= 1/0.34
+
 
 # Overwriting diesel om_annual since in data is negative (receives subsidies to operate), set to zero for now
 df.loc["om_annual", "Diesel"] = 0

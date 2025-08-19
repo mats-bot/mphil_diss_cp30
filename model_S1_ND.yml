@@ -47,4 +47,4 @@ import:
 #  - techs/thermal_power_constraints.yaml
 
 parameters:
-  ldes_max_cap: 4573.89 # MW | for FFR is 4524.29
+  ldes_max_cap: 4573.89 # MW | for FFR is 7858.19

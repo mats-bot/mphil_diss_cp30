@@ -51,7 +51,7 @@ rule run_calliope:
         model_yaml = "model_B{run_number}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/TEMP/model_results_B{run_number}.nc"
+        "results/model_results_B{run_number}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -66,7 +66,7 @@ rule run_scenarios:
         model_yaml = "model_{run_number}_{sens}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/TEMP/model_results_{run_number}_{sens}.nc"
+        "results/model_results_{run_number}_{sens}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -78,7 +78,7 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_S2_ND.nc"
+        "results/model_results_B1.nc"
     conda:
         "envs/calliope.yaml"
     shell:
@@ -89,7 +89,7 @@ rule serve_calligraph:
         
 
 # snakemake --cores 1 results/model_results_S1_FFR.nc results/model_results_S2_FFR.nc results/model_results_S3_FFR.nc results/model_results_S4_FFR.nc results/model_results_S5_FFR.nc
-# snakemake --cores 1 results/model_results_B2.nc results/model_results_S1_FFR.nc results/model_results_S1_ND.nc results/model_results_S2_FFR.nc results/model_results_S2_ND.nc results/model_results_S3_FFR.nc results/model_results_S3_ND.nc results/model_results_S4_FFR.nc results/model_results_S4_ND.nc results/model_results_S5_FFR.nc results/model_results_S5_ND.nc results/model_results_S6_ND.nc
+# snakemake --cores 1 results/model_results_B1.nc results/model_results_B2.nc results/model_results_S1_FFR.nc results/model_results_S1_ND.nc results/model_results_S2_FFR.nc results/model_results_S2_ND.nc results/model_results_S3_FFR.nc results/model_results_S3_ND.nc results/model_results_S4_FFR.nc results/model_results_S4_ND.nc results/model_results_S5_ND.nc results/model_results_S5_FFR.nc
 
 # snakemake --rerun-incomplete --cores 1 results/model_results_S5_ND.nc results/model_results_S5_FFR.nc
 
