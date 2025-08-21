@@ -22,6 +22,7 @@ config:
       BarConvTol: 1e-2
       BarHomogeneous: 1
       Presolve: 1
+      NumericFocus: 1
    
 
 import:

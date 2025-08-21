@@ -1,7 +1,7 @@
 config:
   init:
     calliope_version: "0.7.0.dev6"
-    time_subset: ['2030-01', '2030-01']
+    time_subset: ['2030', '2030']
     time_resample: 1h
   build:
     mode: plan
@@ -22,6 +22,7 @@ config:
       BarConvTol: 1e-2
       BarHomogeneous: 1
       Presolve: 1
+      NumericFocus: 1
    
 
 import:
@@ -47,4 +48,4 @@ import:
 #  - techs/thermal_power_constraints.yaml
 
 parameters:
-  ldes_max_cap: 4524.29  # MW | for FFR is 7858.19
+  ldes_max_cap: 4573.89  # MW | for FFR is 7858.19
