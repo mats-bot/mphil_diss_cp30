@@ -25,12 +25,12 @@ tech_group_map = {
     "gas_ccgt_new": "Unabated gas",
     "gas_ocgt_existing": "Unabated gas",
     "diesel_existing": "Unabated gas",
-    "import_bel_electricity": "Interconnectors",
-    "import_deu_electricity": "Interconnectors",
-    "import_dnk_electricity": "Interconnectors",
-    "import_fra_electricity": "Interconnectors",
-    "import_irl_electricity": "Interconnectors",
-    "import_nor_electricity": "Interconnectors",
+    # "import_bel_electricity": "Interconnectors",
+    # "import_deu_electricity": "Interconnectors",
+    # "import_dnk_electricity": "Interconnectors",
+    # "import_fra_electricity": "Interconnectors",
+    # "import_irl_electricity": "Interconnectors",
+    # "import_nor_electricity": "Interconnectors",
 }
 
 tech_colors = {
@@ -47,7 +47,7 @@ tech_colors = {
     "Battery":        "#FF69B4",  
     "LDES":           "#984EA3",  
     "Unabated gas":   "#4D4D4D",  
-    "Interconnectors":"#FFFF99",  
+    # "Interconnectors":"#FFFF99",  
 }
 
 
@@ -57,7 +57,6 @@ def collect_capacity_grouped(inputs, tech_group_map):
         filepath = inputs.get(scen)
         if filepath is None:
             continue
-        print(f"Loading {filepath} for {scen}...")
         model = calliope.read_netcdf(filepath)
 
         for tech, group in tech_group_map.items():
@@ -128,62 +127,62 @@ def collect_cp30_capacities(filepath, pathway):
 
 
 def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, output_path):
+    high_value_techs = ["Solar PV", "Onshore wind", "Offshore wind", "Battery", "Unabated gas"]
+    other_techs = [t for t in df_grouped["tech_group"].unique() if t not in high_value_techs]
 
-    tech_order = [
-        "Solar PV", "Onshore wind", "Offshore wind", "Hydro",
-        "Nuclear", "Biomass", "BECCS", "Waste", "Gas CCS", "Hydrogen",
-        "Battery", "LDES", "Unabated gas"
-    ]
-    df_grouped["tech_group"] = pd.Categorical(df_grouped["tech_group"], categories=tech_order, ordered=True)
-    df_grouped = df_grouped.sort_values("tech_group")
-    df_grouped["capacity_GW"] = df_grouped["capacity_GW"].replace(0, 1e-3)
+    fig, axes = plt.subplots(2, 2, figsize=(14, 10), sharey=False)
 
-    fig, axes = plt.subplots(1, 2, figsize=(10, 5), sharey=False)
+    pathway_list = ["ND", "FFR"]
+    max_high = df_grouped[df_grouped["tech_group"].isin(high_value_techs)]["capacity_GW"].max() * 1.1
+    max_other = df_grouped[df_grouped["tech_group"].isin(other_techs)]["capacity_GW"].max() * 1.1
 
-    for ax, pathway in zip(axes, ["ND", "FFR"]):
-        subset = df_grouped[df_grouped["pathway"] == pathway]
-        subset = subset[subset["tech_group"] != "Interconnectors"]
-        subset = subset.dropna(subset=["tech_group"])
+    for row_idx, tech_group in enumerate([high_value_techs, other_techs]):
+        for col_idx, pathway in enumerate(pathway_list):
+            ax = axes[row_idx, col_idx]
+            subset = df_grouped[df_grouped["pathway"] == pathway]
+            subset = subset[subset["tech_group"].isin(tech_group)]
+            subset = subset.dropna(subset=["tech_group"])
 
-        ax.bar(
-            subset["tech_group"],
-            subset["capacity_GW"],
-            color=[tech_colors.get(t, "gray") for t in subset["tech_group"]],
-            alpha=0.85,
-            width=0.6,
-            zorder=2  
-        )
+            ax.bar(
+                subset["tech_group"],
+                subset["capacity_GW"].replace(0, 1e-3),
+                color=[tech_colors.get(t, "gray") for t in subset["tech_group"]],
+                alpha=0.85,
+                width=0.6,
+                zorder=2
+            )
 
-        cp30_subset = df_cp30[df_cp30["pathway"] == pathway]
-        cp30_subset = cp30_subset[cp30_subset["tech_group"] != "Interconnectors"]
-        ax.scatter(
-            cp30_subset["tech_group"],
-            cp30_subset["capacity_GW"].replace(0, 1e-3),
-            marker='D',
-            color='black',
-            zorder=3,
-            s=20
-        )
+            cp30_subset = df_cp30[df_cp30["pathway"] == pathway]
+            cp30_subset = cp30_subset[cp30_subset["tech_group"].isin(tech_group)]
+            ax.scatter(
+                cp30_subset["tech_group"],
+                cp30_subset["capacity_GW"].replace(0, 1e-3),
+                marker='D',
+                color='black',
+                zorder=3,
+                s=30
+            )
 
-        title = "New Dispatch" if pathway == "ND" else "Further Flex and Renewables"
-        ax.set_title(title, fontsize=11)
-        ax.set_xticks(range(len(subset)))
-        ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=11)
-        ax.tick_params(axis="y", labelsize=11)
+            title = "New Dispatch" if pathway == "ND" else "Further Flex & Renewables"
+            ax.set_title(title + (" major capacities" if row_idx==0 else " minor capacities"), fontsize=13)
+            ax.set_xticks(range(len(subset)))
+            ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=13)
+            ax.tick_params(axis="y", labelsize=13)
 
-        ax.set_yscale("log")
+            ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
+            ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
+            ax.yaxis.set_minor_locator(AutoMinorLocator(5))
 
-        ax.yaxis.set_major_locator(LogLocator(base=10.0, subs=None, numticks=10))
-        ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
+            high_value_techs = ["Solar PV", "Onshore wind", "Offshore wind", "Battery", "Interconnectors", "Demand"]
+            other_techs = [t for t in df_grouped["tech_group"].unique() if t not in high_value_techs]
 
-        ax.yaxis.set_minor_locator(LogLocator(base=10.0, subs=np.arange(1.0, 10.0) * 0.1, numticks=10))
-        ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
+            if row_idx == 0:  
+                ax.set_ylim(0, max_high)
+            else:  
+                ax.set_ylim(0, max_other)
 
-        # ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
-        # ax.yaxis.set_minor_locator(AutoMinorLocator())
-        # ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
-
-    axes[0].set_ylabel("Installed capacity [GW]", fontsize=11)
+    axes[0, 0].set_ylabel("Installed capacity [GW]", fontsize=13)
+    axes[1, 0].set_ylabel("Installed capacity [GW]", fontsize=13)
     fig.tight_layout()
     fig.savefig(output_path, dpi=300)
     plt.close(fig)

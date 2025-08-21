@@ -1,9 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.ticker import AutoMinorLocator
+from matplotlib.ticker import AutoMinorLocator, MaxNLocator
 from matplotlib.ticker import LogLocator, LogFormatter
 import numpy as np
 import calliope
+
 
 tech_group_map = {
     "solar_pv": "Solar PV",
@@ -36,6 +37,20 @@ tech_group_map = {
     "export_fra_electricity": "Interconnectors",
     "export_irl_electricity": "Interconnectors",
     "export_nor_electricity": "Interconnectors",
+    "demand_C_flex": "Demand",
+    "demand_C_inflex": "Demand",
+    "demand_D_flex": "Demand",
+    "demand_D_inflex": "Demand",
+    "demand_E_flex": "Demand",
+    "demand_E_inflex": "Demand",
+    "demand_H_flex": "Demand",
+    "demand_H_inflex": "Demand",
+    "demand_I_flex": "Demand",
+    "demand_I_inflex": "Demand",
+    "demand_R_flex": "Demand",
+    "demand_R_inflex": "Demand",
+    "demand_T": "Demand",
+    "demand_Z": "Demand",
 }
 
 tech_colors = {
@@ -53,7 +68,9 @@ tech_colors = {
     "LDES":           "#984EA3",  
     "Unabated gas":   "#4D4D4D",  
     "Interconnectors":"#FFFF99",  
+    "Demand":         "#7F7F7F",
 }
+
 
 
 def collect_flows_grouped(inputs, tech_group_map):
@@ -72,6 +89,8 @@ def collect_flows_grouped(inputs, tech_group_map):
             try:
                 if tech.startswith("import_"):
                     flow_out_val = model.results.flow_out.loc[{"techs": tech}].sum().item()
+                elif tech.startswith("demand_"):
+                    flow_in_val = model.results.flow_in.loc[{"techs": tech}].sum().item()
                 elif tech.startswith("export_"):
                     flow_in_val = model.results.flow_in.loc[{"techs": tech}].sum().item()
                 else:
@@ -93,6 +112,12 @@ def collect_flows_grouped(inputs, tech_group_map):
           .agg({"flow_out_GWh": "sum", "flow_in_GWh": "sum"})
     )
     df_grouped["net_flow_GWh"] = df_grouped["flow_out_GWh"] - df_grouped["flow_in_GWh"]
+
+    interconnectors = df_grouped[df_grouped["tech_group"] == "Interconnectors"]
+    print(f"{scen} Calliope interconnectors net flow values:")
+    print(interconnectors)
+
+
     return df_grouped
 
 def collect_cp30_capacities(filepath, pathway):
@@ -104,7 +129,7 @@ def collect_cp30_capacities(filepath, pathway):
         "Solar PV", "Onshore wind", "Offshore wind", "Hydro",
         "Nuclear", "Biomass", "BECCS", "Waste", "Gas CCS", "Hydrogen",
         "Battery", "LDES", "Unabated gas", 
-        "Interconnectors"
+        "Interconnectors", "Demand"
     ]
 
     if pathway == "ND":
@@ -141,7 +166,9 @@ def collect_cp30_capacities(filepath, pathway):
         elif tech == "BECCS":
             value = df_path[(df_path["SubType"] == "CCS Biomass") & (df_path["Variable"] == "Generation (GWh)")][2030].sum()
         elif tech == "Interconnectors":
-            value = df_path[(df_path["SubType"] == "Interconnectors") & (df_path["Variable"] == "Netflows (GWh)")][2030].sum()
+            value = abs(df_path[(df_path["SubType"] == "Interconnectors") & (df_path["Variable"] == "Netflows (GWh)")][2030].sum())
+        elif tech == "Demand":
+            value = df_path[(df_path["Variable"] == "Electrolysis Demand (GWh)") | (df_path["Variable"] == "Demand Total (GWh) - Excluding Electrolysis")][2030].sum()
         else:
             value = 0
 
@@ -151,63 +178,74 @@ def collect_cp30_capacities(filepath, pathway):
 
 
 def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, output_path):
-
-    tech_order = [
+    major_techs = ["Solar PV", "Onshore wind", "Offshore wind", "Battery", "Interconnectors", "Demand"]
+    all_tech_order = [
         "Solar PV", "Onshore wind", "Offshore wind", "Hydro",
         "Nuclear", "Biomass", "BECCS", "Waste", "Gas CCS", "Hydrogen",
-        "Battery", "LDES", "Unabated gas", "Interconnectors"
+        "Battery", "LDES", "Unabated gas", "Interconnectors", "Demand"
     ]
-    df_grouped["tech_group"] = pd.Categorical(df_grouped["tech_group"], categories=tech_order, ordered=True)
+
+    df_grouped["tech_group"] = pd.Categorical(df_grouped["tech_group"], categories=all_tech_order, ordered=True)
     df_grouped = df_grouped.sort_values("tech_group")
-    df_grouped["net_flow_GWh"] = df_grouped["net_flow_GWh"].replace(0, 1e-3)
+    df_grouped["net_flow_GWh"] = df_grouped["net_flow_GWh"].abs().replace(0, 1e0)
 
-    fig, axes = plt.subplots(1, 2, figsize=(10, 5), sharey=False)
+    other_techs = [t for t in all_tech_order if t not in major_techs]
+    max_other = df_grouped[df_grouped["tech_group"].isin(other_techs)]["net_flow_GWh"].max() * 1.1
 
-    for ax, pathway in zip(axes, ["ND", "FFR"]):
-        subset = df_grouped[df_grouped["pathway"] == pathway]
-        #subset = subset[subset["tech_group"] != "Interconnectors"]
-        subset = subset.dropna(subset=["tech_group"])
+    fig, axes = plt.subplots(2, 2, figsize=(16, 12), sharey=False)
 
-        ax.bar(
-            subset["tech_group"],
-            subset["net_flow_GWh"],
-            color=[tech_colors.get(t, "gray") for t in subset["tech_group"]],
-            alpha=0.85,
-            width=0.6,
-            zorder=2  
-        )
+    pathways = ["ND", "FFR"]
+    for row_idx, tech_set in enumerate([major_techs, other_techs]):
+        for col_idx, pathway in enumerate(pathways):
+            ax = axes[row_idx, col_idx]
+            subset = df_grouped[(df_grouped["pathway"] == pathway) & (df_grouped["tech_group"].isin(tech_set))].dropna(subset=["tech_group"])
+            ax.bar(
+                subset["tech_group"],
+                subset["net_flow_GWh"],
+                color=[tech_colors.get(t, "gray") for t in subset["tech_group"]],
+                alpha=0.85,
+                width=0.6,
+                zorder=2
+            )
 
-        cp30_subset = df_cp30[df_cp30["pathway"] == pathway]
-        #cp30_subset = cp30_subset[cp30_subset["tech_group"] != "Interconnectors"]
-        ax.scatter(
-            cp30_subset["tech_group"],
-            cp30_subset["net_flow_GWh"].replace(0, 1e-3),
-            marker='D',
-            color='black',
-            zorder=3,
-            s=20
-        )
+            cp30_subset = df_cp30[(df_cp30["pathway"] == pathway) & (df_cp30["tech_group"].isin(tech_set))]
+            y_values = cp30_subset["net_flow_GWh"].replace(0, 1e-1)
+            ax.scatter(
+                cp30_subset["tech_group"],
+                y_values,
+                marker='D',
+                color='black',
+                zorder=3,
+                s=60
+            )
 
-        title = "New Dispatch" if pathway == "ND" else "Further Flex and Renewables"
-        ax.set_title(title, fontsize=11)
-        ax.set_xticks(range(len(subset)))
-        ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=11)
-        ax.tick_params(axis="y", labelsize=11)
+            title = "New Dispatch" if pathway == "ND" else "Further Flex & Renewables"
+            ax.set_title(title + (" major flows" if row_idx==0 else " minor flows"), fontsize=13)
+            ax.set_xticks(range(len(subset)))
+            ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=13)
+            ax.tick_params(axis="y", labelsize=13)
+            ax.tick_params(axis="x", labelsize=13)
 
-        ax.set_yscale("log")
+            ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
+            ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
+            ax.yaxis.set_minor_locator(AutoMinorLocator(4))
+            ax.yaxis.set_major_locator(MaxNLocator(integer=True))
+            ax.set_axisbelow(True)
 
-        ax.yaxis.set_major_locator(LogLocator(base=10.0, subs=None, numticks=10))
-        ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
+            if row_idx == 1:  
+                ax.set_ylim(0, max_other)
+            else:
+                y_max = subset["net_flow_GWh"].max() * 1.1
+                ax.set_ylim(0, y_max)
 
-        ax.yaxis.set_minor_locator(LogLocator(base=10.0, subs=np.arange(1.0, 10.0) * 0.1, numticks=10))
-        ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
+            if col_idx == 0:
+                ax.set_ylabel("Total net flows [GWh]", fontsize=13)
+            else:
+                ax.set_ylabel("")
 
-    axes[0].set_ylabel("Total generation [GWh]", fontsize=11)
     fig.tight_layout()
     fig.savefig(output_path, dpi=300)
     plt.close(fig)
-
-
 
 
 

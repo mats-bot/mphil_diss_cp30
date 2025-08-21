@@ -70,7 +70,20 @@ rule compare_generation:
         "../../scripts/results/discuss/plot_compare_flows.py"
 
 rule plot_network_stress_base:
-    
+    input:
+        zones = "uploaded_data/tzones.gpkg",
+        centroids = "uploaded_data/tzones_centroids.gpkg",
+        onshore_links = "spatial/onshore_transmission.yaml",
+        offshore_links = "spatial/offshore_transmission.yaml",
+        ND = "results/model_results_B1.nc",
+        FFR = "results/model_results_B2.nc",
+    output:
+        caps_comp="results/figures/discuss/network_stress_base.png",
+    conda:
+        "../../envs/plotting.yaml"
+    script:
+        "../../scripts/results/discuss/plot_network_stress_base.py"
+
 
 
 
