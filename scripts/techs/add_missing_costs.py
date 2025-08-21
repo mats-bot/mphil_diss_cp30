@@ -197,7 +197,7 @@ co2ts = (
 # sawmill residue CCS at 88% capture rate: https://www.sciencedirect.com/science/article/pii/S0961953421002002
 BECCS_co2 = 1067 * co2ts / 1000  # kgCO2/MWh * £/tCO2 * tCO2/kgCO2  = £/MWh
 
-# CCGT + CCS source for UK, but considers co2e
+# CCGT + CCS source for UK, calculated from https://pmc.ncbi.nlm.nih.gov/articles/PMC10407117/pdf/main.pdf
 gas_ccs_co2 = 676.8 * co2ts / 1000  # kgCO2/MWh * £/tCO2 * tCO2/kgCO2 = £/MWh
 
 

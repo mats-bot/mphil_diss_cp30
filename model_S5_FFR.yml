@@ -26,9 +26,9 @@ config:
 
 import:
 # Specific to S5
-  - sensitivities/S5/demand_S5_ND.yaml
+  - sensitivities/S5/demand_S5_FFR.yaml
 # Specific to FFR
-  - spatial/capacities_2030_ND.yaml
+  - spatial/capacities_2030_FFR.yaml
 # General
   - spatial/capacities_2030_REPD.yaml
   - techs/transmission.yaml

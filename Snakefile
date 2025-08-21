@@ -51,7 +51,7 @@ rule run_calliope:
         model_yaml = "model_B{run_number}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_B{run_number}.nc"
+        "results/TEMP/model_results_B{run_number}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -78,7 +78,7 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_B1.nc"
+        "results/model_results_S5_FFR.nc"
     conda:
         "envs/calliope.yaml"
     shell:

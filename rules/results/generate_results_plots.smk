@@ -21,7 +21,6 @@ rule compare_installed_caps:
     script:
         "../../scripts/results/discuss/plot_capacities.py"
 
-
 rule plot_flex_flows:
     input:
         cp30 = "data/raw/techs/CP30_workbook.xlsx",
@@ -44,4 +43,38 @@ rule plot_flex_flows:
         "../../envs/plotting.yaml"
     script:
         "../../scripts/results/discuss/plot_flex_flows.py"
+
+
+rule compare_capacities:
+    input:
+        cp30 = "data/raw/techs/CP30_workbook.xlsx",
+        ND = "results/model_results_B1.nc",
+        FFR = "results/model_results_B2.nc",
+    output:
+        caps_comp="results/figures/discuss/comp_capacities.png",
+    conda:
+        "../../envs/plotting.yaml"
+    script:
+        "../../scripts/results/discuss/plot_compare_capacities.py"
+
+rule compare_generation:
+    input:
+        cp30 = "data/raw/techs/CP30_workbook.xlsx",
+        ND = "results/model_results_B1.nc",
+        FFR = "results/model_results_B2.nc",
+    output:
+        caps_comp="results/figures/discuss/comp_generation.png",
+    conda:
+        "../../envs/plotting.yaml"
+    script:
+        "../../scripts/results/discuss/plot_compare_flows.py"
+
+rule plot_network_stress_base:
+    
+
+
+
+
+
+
 
