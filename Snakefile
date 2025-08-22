@@ -58,15 +58,33 @@ rule run_calliope:
         response_hrs=4, # Max flexibility window
         resolution_hrs=1,
         data_scaling=config["data_scaling"]
+    default_target: True
     script:
         "scripts/run_calliope.py"
+
+
+rule prepare_scenario_inputs:
+    input:
+        "sensitivities/S1/S1_onshore_transmission.yaml",
+        "sensitivities/S2/demand_S2_FFR.yaml",
+        "sensitivities/S2/demand_S2_ND.yaml",
+        "sensitivities/S2/S2_offshore_wind.yaml",
+        "sensitivities/S2/S2_solar_onshore_wind.yaml",
+        "sensitivities/S3/emissions.yaml",
+        "sensitivities/S4/import_constraints.yaml",
+        "sensitivities/S5/demand_S5_FFR.yaml",
+        "sensitivities/S5/demand_S5_ND.yaml",
+    output:
+        temp(touch("scenario_inputs.done"))
+
 
 rule run_scenarios:
     input:
         model_yaml = "model_{run_number}_{sens}.yml",
         other_inputs = rules.prepare_inputs.output[0]
+        scenario_inputs = rules.prepare_scenario_inputs.output[0]
     output:
-        "results/TEMP/model_results_{run_number}_{sens}.nc"
+        "results/model_results_{run_number}_{sens}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -76,9 +94,11 @@ rule run_scenarios:
     script:
         "scripts/run_calliope.py"
 
+# Vary input files to view results
+
 rule serve_calligraph:
     input:
-        "results/model_results_S2_ND.nc"
+        "results/model_results_B1.nc"
     conda:
         "envs/calliope.yaml"
     shell:

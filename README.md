@@ -12,8 +12,6 @@ Additionally, the terms of use for each dataset must be accepted for the key to 
 This model uses era5 datasets, for which terms of use can be found and accepted here:
 https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels?tab=overview
 
-Lastly, the model uses available area data from Euro-Calliope (see report). This needs to be 
-downloaded and placed into the data/raw/spatial folder.
 
 ```
 
@@ -27,7 +25,7 @@ conda activate calliope-CP30-rep
 ## Dry run (check what will run)
 
 ```sh
-snakemake --dry-run data/intermediates/GSP_timeseries.csv
+snakemake --dry-run --cores 1 results/model_results_B1.nc results/model_results_S1_NC.nc
 ```
 
 ## Run
