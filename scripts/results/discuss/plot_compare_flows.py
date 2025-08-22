@@ -98,6 +98,8 @@ def collect_flows_grouped(inputs, tech_group_map):
             except KeyError:
                 pass
 
+            
+
             records.append({
                 "scenario": scen,
                 "pathway": "ND" if "ND" in scen else "FFR",
@@ -177,7 +179,7 @@ def collect_cp30_capacities(filepath, pathway):
     return pd.DataFrame(records)
 
 
-def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, output_path):
+def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, out_nd, out_ffr):
     major_techs = ["Solar PV", "Onshore wind", "Offshore wind", "Battery", "Interconnectors", "Demand"]
     all_tech_order = [
         "Solar PV", "Onshore wind", "Offshore wind", "Hydro",
@@ -190,70 +192,84 @@ def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, output_path):
     df_grouped["net_flow_GWh"] = df_grouped["net_flow_GWh"].abs().replace(0, 1e0)
 
     other_techs = [t for t in all_tech_order if t not in major_techs]
-    max_other = df_grouped[df_grouped["tech_group"].isin(other_techs)]["net_flow_GWh"].max() * 1.1
 
-    fig, axes = plt.subplots(2, 2, figsize=(16, 12), sharey=False)
+    tech_sets = [("major", major_techs), ("minor", other_techs)]
+    pathways = [("ND", out_nd), ("FFR", out_ffr)]
 
-    pathways = ["ND", "FFR"]
-    for row_idx, tech_set in enumerate([major_techs, other_techs]):
-        for col_idx, pathway in enumerate(pathways):
-            ax = axes[row_idx, col_idx]
-            subset = df_grouped[(df_grouped["pathway"] == pathway) & (df_grouped["tech_group"].isin(tech_set))].dropna(subset=["tech_group"])
+    for pathway_name, out_file in pathways:
+        fig, axes = plt.subplots(1, 2, figsize=(12, 8), sharey=False)
+
+        for ax_idx, (flow_type, tech_set) in enumerate(tech_sets):
+            ax = axes[ax_idx]
+            subset = df_grouped[
+                (df_grouped["pathway"] == pathway_name) &
+                (df_grouped["tech_group"].isin(tech_set))
+            ].dropna(subset=["tech_group"]).copy()
+
+            subset["net_flow_TWh"] = subset["net_flow_GWh"] / 1000
+
             ax.bar(
                 subset["tech_group"],
-                subset["net_flow_GWh"],
+                subset["net_flow_TWh"],
                 color=[tech_colors.get(t, "gray") for t in subset["tech_group"]],
                 alpha=0.85,
-                width=0.6,
+                width=0.3,
                 zorder=2
             )
 
-            cp30_subset = df_cp30[(df_cp30["pathway"] == pathway) & (df_cp30["tech_group"].isin(tech_set))]
-            y_values = cp30_subset["net_flow_GWh"].replace(0, 1e-1)
+            cp30_subset = df_cp30[
+                (df_cp30["pathway"] == pathway_name) &
+                (df_cp30["tech_group"].isin(tech_set))
+            ].copy()
+            cp30_subset["net_flow_TWh"] = cp30_subset["net_flow_GWh"] / 1000
+
+            y_values = cp30_subset["net_flow_TWh"].clip(lower=1e-1)
             ax.scatter(
                 cp30_subset["tech_group"],
                 y_values,
-                marker='D',
-                color='black',
+                marker="D",
+                color="black",
                 zorder=3,
-                s=60
+                s=80
             )
 
-            title = "New Dispatch" if pathway == "ND" else "Further Flex & Renewables"
-            ax.set_title(title + (" major flows" if row_idx==0 else " minor flows"), fontsize=13)
+            title = "New Dispatch" if pathway_name == "ND" else "Further Flex & Renewables"
+            ax.set_title(f"{title} – {flow_type} flows", fontsize=16)
             ax.set_xticks(range(len(subset)))
-            ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=13)
-            ax.tick_params(axis="y", labelsize=13)
-            ax.tick_params(axis="x", labelsize=13)
+            ax.set_xticklabels(subset["tech_group"], rotation=45, ha="right", fontsize=16)
+            ax.tick_params(axis="y", labelsize=16)
+            ax.tick_params(axis="x", labelsize=16)
 
-            ax.grid(axis='y', which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
-            ax.grid(axis='y', which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
+            ax.grid(axis="y", which="major", linestyle="-", linewidth=0.8, alpha=0.8, zorder=1)
+            ax.grid(axis="y", which="minor", linestyle="--", linewidth=0.5, alpha=0.5, zorder=1)
             ax.yaxis.set_minor_locator(AutoMinorLocator(4))
             ax.yaxis.set_major_locator(MaxNLocator(integer=True))
             ax.set_axisbelow(True)
 
-            if row_idx == 1:  
-                ax.set_ylim(0, max_other)
-            else:
-                y_max = subset["net_flow_GWh"].max() * 1.1
-                ax.set_ylim(0, y_max)
+            combined_max = pd.concat([subset["net_flow_TWh"], y_values]).max() * 1.1
+            if flow_type == "minor":
+                max_other = df_grouped[df_grouped["tech_group"].isin(other_techs)]["net_flow_GWh"].max() / 1000
+                combined_max = max(combined_max, max_other * 1.1)
+            ax.set_ylim(0, combined_max)
+            ax.set_ylabel("Total net flows [TWh]", fontsize=16)
 
-            if col_idx == 0:
-                ax.set_ylabel("Total net flows [GWh]", fontsize=13)
-            else:
-                ax.set_ylabel("")
+        fig.tight_layout()
+        fig.savefig(out_file, dpi=300)
+        plt.close(fig)
 
-    fig.tight_layout()
-    fig.savefig(output_path, dpi=300)
-    plt.close(fig)
 
 
 
 inputs = snakemake.input
-output = snakemake.output.caps_comp
 df_grouped = collect_flows_grouped(inputs, tech_group_map)
 cp30_nd = collect_cp30_capacities(inputs.cp30, "ND")
 cp30_ffr = collect_cp30_capacities(inputs.cp30, "FFR")
 df_cp30 = pd.concat([cp30_nd, cp30_ffr], ignore_index=True)
 
-plot_capacity_baselines(df_grouped, df_cp30, tech_colors, output)
+plot_capacity_baselines(
+    df_grouped,
+    df_cp30,
+    tech_colors,
+    snakemake.output.ND,
+    snakemake.output.FFR
+)

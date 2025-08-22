@@ -198,15 +198,21 @@ def plot_capacity_baselines(df_grouped, df_cp30, tech_colors, out_nd, out_ffr):
 
 
 inputs = snakemake.input
+outputs = snakemake.output
+
 df_grouped = collect_capacity_grouped(inputs, tech_group_map)
+
 cp30_nd = collect_cp30_capacities(inputs.cp30, "ND")
 cp30_ffr = collect_cp30_capacities(inputs.cp30, "FFR")
 df_cp30 = pd.concat([cp30_nd, cp30_ffr], ignore_index=True)
 
-plot_capacity_baselines(
-    df_grouped,
-    df_cp30,
-    tech_colors,
-    snakemake.output.ND,
-    snakemake.output.FFR
-)
+for scen in [k for k in inputs.keys() if k != "cp30"]:
+    df_sub = df_grouped[df_grouped["scenario"] == scen]
+    pathway = "ND" if "ND" in scen else "FFR"
+    cp30_sub = df_cp30[df_cp30["pathway"] == pathway]
+    plot_capacity_baselines(
+        df_sub,
+        cp30_sub,
+        tech_colors,
+        outputs[scen]
+    )

@@ -19,7 +19,7 @@ def plot_zones(ax, zones_gdf):
         ax.annotate(
             row['z1'], 
             xy=(row.geometry.centroid.x, row.geometry.centroid.y + 0.2),
-            ha='center', va='center', fontsize=14, fontweight='bold', color='black'
+            ha='center', va='center', fontsize=20, fontweight='bold', color='black'
         )
 
 def plot_centroids(ax, centroids_gdf, marker="*", color="black", size=100):
@@ -51,7 +51,7 @@ def plot_onshore_links(ax, centroids_gdf, onshore_yaml_path, usage_df, cmap, nor
                 color = "grey"
 
         line = LineString([start_point, end_point])
-        ax.plot(*line.xy, color=color, linewidth=2, alpha=0.9)
+        ax.plot(*line.xy, color=color, linewidth=4, alpha=0.9)
 
 
 curvature_dict = {
@@ -66,7 +66,7 @@ apex_offset_dict = {
 }
 
 def plot_offshore_links(ax, centroids_gdf, offshore_yaml_path, usage_df, cmap, norm,
-            curvature_dict=None, apex_offset_dict=None, default_color="darkorange", linewidth=2):
+            curvature_dict=None, apex_offset_dict=None, default_color="darkorange", linewidth=4):
     data = load_yaml(offshore_yaml_path)
 
     for link_name, link_info in data["techs"].items():
@@ -177,15 +177,17 @@ for ax, usage_df, title in zip(axes, [usage_nd, usage_ffr], ["New Dispatch", "Fu
     plot_onshore_links(ax, centroids_gdf, snakemake.input.onshore_links, usage_df, cmap, norm)
     plot_offshore_links(ax, centroids_gdf, snakemake.input.offshore_links, usage_df, cmap, norm,
                         curvature_dict=curvature_dict, apex_offset_dict=apex_offset_dict)
-    ax.set_title(title, fontsize=14)
+    ax.set_title(title, fontsize=20)
     ax.axis("off")  
 
-fig.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.15, wspace=0.02, hspace=0.02)
+fig.subplots_adjust(left=0.05, right=0.95, top=0.95, bottom=0.15, wspace=0.00001, hspace=0.02)
 
 sm = cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
 cbar_ax = fig.add_axes([0.1, 0.05, 0.8, 0.03])  
 cbar = fig.colorbar(sm, cax=cbar_ax, orientation="horizontal")
-cbar.set_label("Transmission Utilization (%)", fontsize=11)
+cbar.set_label("Transmission Utilization (%)", fontsize=20)
+cbar.ax.tick_params(labelsize=20)
+
 
 plt.savefig(snakemake.output.caps_comp, dpi=300, bbox_inches="tight")

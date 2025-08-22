@@ -66,7 +66,7 @@ rule run_scenarios:
         model_yaml = "model_{run_number}_{sens}.yml",
         other_inputs = rules.prepare_inputs.output[0]
     output:
-        "results/model_results_{run_number}_{sens}.nc"
+        "results/TEMP/model_results_{run_number}_{sens}.nc"
     conda:
         "envs/calliope.yaml"
     params:
@@ -78,20 +78,13 @@ rule run_scenarios:
 
 rule serve_calligraph:
     input:
-        "results/model_results_S5_FFR.nc"
+        "results/model_results_S2_ND.nc"
     conda:
         "envs/calliope.yaml"
     shell:
         """
         calligraph {input}
         """
-
-        
-
-# snakemake --cores 1 results/model_results_S1_FFR.nc results/model_results_S2_FFR.nc results/model_results_S3_FFR.nc results/model_results_S4_FFR.nc results/model_results_S5_FFR.nc
-# snakemake --cores 1 results/model_results_B1.nc results/model_results_B2.nc results/model_results_S1_FFR.nc results/model_results_S1_ND.nc results/model_results_S2_FFR.nc results/model_results_S2_ND.nc results/model_results_S3_FFR.nc results/model_results_S3_ND.nc results/model_results_S4_FFR.nc results/model_results_S4_ND.nc results/model_results_S5_ND.nc results/model_results_S5_FFR.nc
-
-# snakemake --rerun-incomplete --cores 1 results/model_results_S5_ND.nc results/model_results_S5_FFR.nc
 
 
 rule dag_dot:
@@ -102,10 +95,6 @@ rule dag_dot:
 rule rulegraph:
     message: "Plot dependency graph of the workflow."
     input: rules.dag_dot.output[0]
-    # Output is deliberately omitted so rule is executed each time.
     conda: "envs/dag.yaml"
     shell: "dot -Tpdf {input} -o rulegraph.pdf"
 
-
-
-# snakemake --touch data/intermediates/spatial/offshore_cutouts/2017/cutout_01.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_02.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_04.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_03.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_05.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_06.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_07.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_08.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_09.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_10.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_11.nc data/intermediates/spatial/offshore_cutouts/2017/cutout_12.nc
